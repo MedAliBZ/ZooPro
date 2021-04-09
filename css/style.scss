@@ -226,7 +226,7 @@ header {
         .drop-down {
           float: right;
           font-size: 12px;
-          margin-top: 3px;
+          margin-top: 8px;
         }
 
         &:hover {
@@ -242,7 +242,7 @@ header {
 .wrapper .sidebar .sidebar-menu .item .sub-menu-profile,
 .wrapper .sidebar .sidebar-menu .item .sub-menu-messages,
 .wrapper .sidebar .sidebar-menu .item .sub-menu-settings {
-  background: var(--accent);
+  background: transparent;
   overflow: hidden;
   max-height: 0;
   transition: 0.3s;
@@ -251,7 +251,7 @@ header {
   a {
     display: block;
     position: relative;
-    color: var(--sideBarTxt);
+    color: white;
     white-space: nowrap;
     font-size: 15px;
     padding: 20px;
@@ -259,11 +259,11 @@ header {
     transition-property: background;
 
     &:hover {
-      background: #55B1F0;
+      background: var(--sideBarHover);
     }
 
     &:not(last-child) {
-      border-bottom: 1px solid #8FC5E9;
+      border-bottom: 1px solid whitesmoke;
     }
   }
 
@@ -343,9 +343,9 @@ header {
 
 .active {
   background-color: var(--sideBarHover);
-  a{
-    color: var(--activeColor)!important;
-  }
+  // a{
+  //   color: var(--activeColor)!important;
+  // }
 }
 
 @keyframes spin {
@@ -364,6 +364,64 @@ header {
   width: 100%;
   z-index: 99;
 }
+
+
+.input-field {
+  border: solid 1px #e8e8e9;
+  max-width: 380px;
+  width: 100%;
+  background-color: transparent;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.input-field input[placeholder="noIcon"] {
+  margin-left: 8px;
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 1.1rem;
+  width: 350px;
+  color: #333;
+}
+
+.meriam{
+  border: 0;
+  color: white;
+  background-color: rgba(150, 150, 150, 0.103);
+  border-bottom: rgb(38, 171, 216) 2px solid;
+  font-size: 1.5rem;
+  width: 500px;
+  height: 50px;
+  padding-left:20px;
+  
+}
+
 
 @media screen and (max-width: $mobile) {
   .sidebar-btn {

@@ -395,7 +395,7 @@ header {
   line-height: 1;
   font-weight: 400;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--tc);
 }
 
 .input-field input[placeholder="noIcon"] {
@@ -407,19 +407,7 @@ header {
   font-weight: 400;
   font-size: 1.1rem;
   width: 350px;
-  color: #333;
-}
-
-.meriam{
-  border: 0;
-  color: white;
-  background-color: rgba(150, 150, 150, 0.103);
-  border-bottom: rgb(38, 171, 216) 2px solid;
-  font-size: 1.5rem;
-  width: 500px;
-  height: 50px;
-  padding-left:20px;
-  
+  color: var(--tc);
 }
 
 

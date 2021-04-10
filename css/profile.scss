@@ -1,0 +1,72 @@
+@use "style";
+$mobile: 1050px;
+
+
+.wrapper .main-container{
+    .card.profile{
+        display: grid;
+        
+        .input-field i{
+          max-width: 55px;
+        }
+        .input-field {
+          max-width: 100%;
+        }
+        .sectionTitle{
+          grid-area: 1;
+          font-weight: 600;
+          font-size: 25px;
+          margin: 0 2% 2% 2%;
+          color: var(--accent);
+        }
+        .one{
+          grid-area: 2 / 1 / 3 / 2;
+        }
+        .two{
+          grid-area: 2 / 2 / 3 / 5;
+          margin-left: 2%;
+        }
+        .three{
+          grid-area: 3 / 1 / 5 / 3;
+        }
+        .four{
+          grid-area: 3 / 3 / 5 / 5;
+          margin-left: 2%;
+        }
+        .btn{
+          grid-area: 5 / 4 / 6 / 5;
+          margin-left: auto;
+        }
+      }
+}
+
+@media screen and (max-width: $mobile){
+  .wrapper .main-container{
+    .card.profile{
+        display: grid;
+        .input-field i{
+          max-width: 55px;
+        }
+        .input-field {
+          max-width: 100%;
+        }
+        .one{
+          grid-area: 2;
+        }
+        .two{
+          grid-area: 3;
+          margin-left: 0;
+        }
+        .three{
+          grid-area: 4;
+        }
+        .four{
+          grid-area: 5;
+          margin-left: 0;
+        }
+        .btn{
+          grid-area: 6;
+        }
+      }
+    }
+}

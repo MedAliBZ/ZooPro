@@ -4,10 +4,12 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Brainstormers</title>
-	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 	<script src="https://unpkg.com/feather-icons"></script>
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/profile.css" />
+	<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -45,7 +47,7 @@
 				</li>
 				<li class="item active" id="profile">
 					<a href="#" class="menu-btn profilebtn">
-						<i class="fas fa-user-circle"></i><span>Profile <i
+						<i class="fas fa-user-circle"></i><span> Profile <i
 								class="fas fa-chevron-down drop-down"></i></span>
 					</a>
 					<div class="sub-menu-profile">
@@ -61,7 +63,7 @@
 				</li>
 				<li class="item" id="messages">
 					<a href="#" class="menu-btn">
-						<i class="fas fa-envelope"></i><span>Messages <i
+						<i class="fas fa-envelope"></i><span> Messages <i
 								class="fas fa-chevron-down drop-down"></i></span>
 					</a>
 					<div class="sub-menu-messages">
@@ -72,7 +74,7 @@
 				</li>
 				<li class="item" id="settings">
 					<a href="#" class="menu-btn">
-						<i class="fas fa-cog"></i><span>Settings <i class="fas fa-chevron-down drop-down"></i></span>
+						<i class="fas fa-cog"></i><span> Settings <i class="fas fa-chevron-down drop-down"></i></span>
 					</a>
 					<div class="sub-menu-settings">
 						<a href="#"><i class="fas fa-lock"></i><span>Password</span></a>
@@ -80,7 +82,7 @@
 				</li>
 				<li class="item">
 					<a href="#" class="menu-btn">
-						<i class="fas fa-info-circle"></i><span>About</span>
+						<i class="fas fa-info-circle"></i><span> About</span>
 					</a>
 				</li>
 			</div>
@@ -88,65 +90,47 @@
 		<!--sidebar end-->
 		<!--main container start-->
 		<div class="main-container">
-
-			<input class="meriam" placeholder="username" name="Icon" />
-
-			<div class="input-field">
-				<i class="fas fa-user"></i>
-				<input type="text" placeholder="Icon" name="Icon" />
-			</div>
-
-			<div class="input-field">
-				<input type="text" placeholder="noIcon" name="NO icon" />
-			</div>
-
-			<div class="card">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-					facilis officia optio asperiores, fugit, facere rem veritatis aut
-					consectetur quae, provident repellendus magni aliquid adipisci.
-					Omnis illum impedit minima minus velit adipisci ipsum consectetur,
-					necessitatibus odit magni obcaecati molestiae voluptatum similique
-					ratione libero saepe error. Nam optio, animi amet et harum libero,
-					similique fugit tempore, distinctio perspiciatis numquam asperiores
-					deserunt! Iure sit molestiae odit vel corrupti similique harum,
-					facilis culpa esse tempora id exercitationem nostrum quos sequi qui
-					molestias. Odio aspernatur, unde ipsum et harum alias in. Atque
-					soluta sint incidunt assumenda officiis corrupti nobis! Sequi,
-					repellat alias laborum odio ullam tenetur praesentium consequatur
-					cum aliquid nostrum vitae aperiam, pariatur totam, quia autem ex!
-					Quisquam accusamus quis temporibus ullam hic beatae pariatur.
-					Molestiae saepe omnis maxime. Eos, alias maxime, libero modi
-					repellendus aliquam cupiditate eaque sed aliquid dolore ratione
-					asperiores molestias itaque atque debitis praesentium esse porro
-					dignissimos nam ut voluptatem nemo cum sapiente. At illum sit rem
-					totam ab quaerat eius nulla, ex facilis nam ea repudiandae iste.
-					Commodi, dignissimos. Itaque fugiat illo alias voluptatibus unde,
-					dicta a temporibus dignissimos pariatur, odit ab ducimus officiis
-					veritatis eius doloribus dolorem quae est, excepturi dolor? Possimus
-					asperiores nisi dolore ad cumque!
-				</p>
-			</div>
-			<div class="card">
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry. Lorem Ipsum has been the industry's standard dummy text
-					ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not
-					only five centuries, but also the leap into electronic typesetting,
-					remaining essentially unchanged.
-				</p>
-			</div>
-			<div class="card">
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry. Lorem Ipsum has been the industry's standard dummy text
-					ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not
-					only five centuries, but also the leap into electronic typesetting,
-					remaining essentially unchanged.
-				</p>
-			</div>
+			<form class="card profile">
+				<p class="sectionTitle">Mon profile</p>
+				<div class="input-field one">
+					<i class="fas fa-user"></i>
+					<input type="text" placeholder="Username" name="Username" />
+				</div>
+				<div class="input-field two">
+					<i class="fas fa-envelope"></i>
+					<input type="text" placeholder="Email" name="email" />
+				</div>
+				<div class="input-field three">
+					<i class="fas fa-lock"></i>
+					<input type="password" placeholder="Password" name="password" />
+				</div>
+				<div class="input-field four">
+					<i class="fas fa-lock"></i>
+					<input type="password" placeholder="Confirm password" name="ConfirmPassword" />
+				</div>
+				<input type="submit" class="btn" value="Sauvegrader" />
+			</form>
+			
+			<form class="card profile ajouter">
+				<p class="sectionTitle">Ajouter un compte admin</p>
+				<div class="input-field one">
+					<i class="fas fa-user"></i>
+					<input type="text" placeholder="Username" name="Username" />
+				</div>
+				<div class="input-field two">
+					<i class="fas fa-envelope"></i>
+					<input type="text" placeholder="Email" name="email" />
+				</div>
+				<div class="input-field three">
+					<i class="fas fa-lock"></i>
+					<input type="password" placeholder="Password" name="password" />
+				</div>
+				<div class="input-field four">
+					<i class="fas fa-lock"></i>
+					<input type="password" placeholder="Confirm password" name="ConfirmPassword" />
+				</div>
+				<input type="submit" class="btn" value="Ajouter" />
+			</form>
 		</div>
 		<!--main container end-->
 	</div>

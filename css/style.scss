@@ -13,7 +13,7 @@
 $shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
-$mobile: 768px;
+$mobile: 1050px;
 
 
 :root {
@@ -323,6 +323,7 @@ header {
     border-radius: 5px;
     border: solid 2px #e8e8e9;
     padding: 40px;
+    background-color: transparent;
   }
 }
 
@@ -369,13 +370,13 @@ header {
 .input-field {
   border: solid 1px #e8e8e9;
   max-width: 380px;
-  width: 100%;
+  min-width: 100%;
   background-color: transparent;
   margin: 10px 0;
   height: 55px;
   border-radius: 55px;
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 55px 89%;
   padding: 0 0.4rem;
   position: relative;
 }
@@ -410,6 +411,23 @@ header {
   color: var(--tc);
 }
 
+.btn {
+  width: 150px;
+  background-color: var(--accent);
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    background-color: #07aa94;
+  }
+}
 
 @media screen and (max-width: $mobile) {
   .sidebar-btn {

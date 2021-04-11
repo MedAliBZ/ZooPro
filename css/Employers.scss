@@ -1,0 +1,157 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+
+    small {
+        font-size: 0.5em;
+    }
+}
+
+.col-5 {
+    min-width: 62px;
+}
+
+.col-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translate(-50%, 0);
+}
+
+.responsive-table {
+    li {
+        border-radius: 3px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        color: var(--tc);
+    }
+
+    .table-header {
+        color: white;
+        background-color: var(--accent);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: transparent;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        flex-basis: 20%;
+    }
+
+    .col-2 {
+        flex-basis: 25%;
+    }
+
+    .col-3 {
+        flex-basis: 25%;
+    }
+
+    .col-4 {
+        flex-basis: 20%;
+    }
+
+    .clo-5 {
+        flex-basis: 5%;
+    }
+
+    input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    @media all and (max-width: 767px) {
+        .table-header {
+            display: none;
+        }
+
+        li {
+            display: block;
+        }
+
+        .col {
+
+            flex-basis: 100%;
+
+        }
+
+        .col {
+            display: flex;
+            padding: 10px 0;
+
+            &:before {
+                color: var(--accent);
+                padding-right: 10px;
+                content: attr(data-label);
+                flex-basis: 50%;
+                text-align: right;
+            }
+        }
+    }
+}
+
+.employ {
+    margin: 0 auto;
+    width: fit-content;
+    display: grid;
+    margin-bottom: 3% !important;
+    grid-template-areas:
+        'a a b b c c'
+        'd d d e e e'
+        'f f f f f f';
+    grid-gap: 10px;
+    justify-content: center;
+    .a{
+        grid-area: a;
+    }
+    .b{
+        grid-area: b;
+    }
+    .c{
+        grid-area: c;
+    }
+    .d{
+        grid-area: d;
+    }
+    .e{
+        grid-area: e;
+    }
+    .f{
+        grid-area: f;
+        margin-left: auto;
+    }
+    @media all and (max-width: 767px){
+        padding-right: 0!important;
+        .a{
+            grid-area: 1;
+        }
+        .b{
+            grid-area: 2;
+        }
+        .c{
+            grid-area: 3;
+        }
+        .d{
+            grid-area: 4;
+        }
+        .e{
+            grid-area: 5;
+        }
+        .f{
+            grid-area: 6;
+        }
+    }
+}

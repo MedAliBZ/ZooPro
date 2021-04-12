@@ -5,6 +5,7 @@
 	<meta charset="utf-8" />
 	<title>Brainstormers</title>
 	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/plante.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 	<script src="https://unpkg.com/feather-icons"></script>
@@ -43,7 +44,7 @@
 						<i class="fas fa-desktop"></i><span>Dashboard</span>
 					</a>
 				</li>
-				<li class="item active" id="profile">
+				<li class="item active" id="Ajout">
 					<a href="#" class="menu-btn profilebtn">
 						<i class="fas fa-user-circle"></i><span>Profile <i
 								class="fas fa-chevron-down drop-down"></i></span>
@@ -89,66 +90,37 @@
 		<!--main container start-->
 		<div class="main-container">
 
-			<input class="meriam" placeholder="username" name="Icon" />
+			<form action="" class="card">
 
-			<div class="input-field">
-				<i class="fas fa-user"></i>
-				<input type="text" placeholder="Icon" name="Icon" />
-			</div>
+				<h2> Ajouter une plante</h2>
+				<br>
 
-			<div class="input-field">
-				<input type="text" placeholder="noIcon" name="NO icon" />
-			</div>
+				<div class="formCss">
+					<input type="text" placeholder="Nom du plante" name="nomPlante" />
+				</div>
+				<div class="formCss">
+					<input type="text" placeholder="Description" name="Description" />
+				</div>
+				<div class="formCss">
+					<input type="text" placeholder="Categorie" name="categorie" />
+				</div>
 
-			<div class="card">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-					facilis officia optio asperiores, fugit, facere rem veritatis aut
-					consectetur quae, provident repellendus magni aliquid adipisci.
-					Omnis illum impedit minima minus velit adipisci ipsum consectetur,
-					necessitatibus odit magni obcaecati molestiae voluptatum similique
-					ratione libero saepe error. Nam optio, animi amet et harum libero,
-					similique fugit tempore, distinctio perspiciatis numquam asperiores
-					deserunt! Iure sit molestiae odit vel corrupti similique harum,
-					facilis culpa esse tempora id exercitationem nostrum quos sequi qui
-					molestias. Odio aspernatur, unde ipsum et harum alias in. Atque
-					soluta sint incidunt assumenda officiis corrupti nobis! Sequi,
-					repellat alias laborum odio ullam tenetur praesentium consequatur
-					cum aliquid nostrum vitae aperiam, pariatur totam, quia autem ex!
-					Quisquam accusamus quis temporibus ullam hic beatae pariatur.
-					Molestiae saepe omnis maxime. Eos, alias maxime, libero modi
-					repellendus aliquam cupiditate eaque sed aliquid dolore ratione
-					asperiores molestias itaque atque debitis praesentium esse porro
-					dignissimos nam ut voluptatem nemo cum sapiente. At illum sit rem
-					totam ab quaerat eius nulla, ex facilis nam ea repudiandae iste.
-					Commodi, dignissimos. Itaque fugiat illo alias voluptatibus unde,
-					dicta a temporibus dignissimos pariatur, odit ab ducimus officiis
-					veritatis eius doloribus dolorem quae est, excepturi dolor? Possimus
-					asperiores nisi dolore ad cumque!
-				</p>
+				<div class="formCss">
+					<input type="number" placeholder="Hauteur en m " name="hauteur"  />
+				</div>
+
+				<input type="Ajouter" id="button" value="Ajouter">
+
+			</form>
+			<div class="searchCss" > 
+				<input type="text" placeholder="recherche" name="search"  />
+				<i class="fas fa-search"></i>
 			</div>
-			<div class="card">
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry. Lorem Ipsum has been the industry's standard dummy text
-					ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not
-					only five centuries, but also the leap into electronic typesetting,
-					remaining essentially unchanged.
-				</p>
-			</div>
-			<div class="card">
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry. Lorem Ipsum has been the industry's standard dummy text
-					ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not
-					only five centuries, but also the leap into electronic typesetting,
-					remaining essentially unchanged.
-				</p>
-			</div>
-		</div>
-		<!--main container end-->
+			
+
+
+
+	<!--main container end-->
 	</div>
 	<!--wrapper end-->
 	<script src="../js/sidebar.js"></script>

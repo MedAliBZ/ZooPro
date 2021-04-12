@@ -1,0 +1,143 @@
+.formCss {
+    border: solid 1px #e8e8e9;
+    width: fit-content;
+    background-color: transparent;
+    margin: 10px 0;
+    height: 40px;
+    border-radius: 40px;
+    padding: 0 0.2rem;
+    display: grid;
+    grid-template-columns: 100%;
+    position: relative;
+    &:hover 
+    {
+        border-color: rgb(1, 129, 113);
+    }    
+}
+
+.formCss input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--tc);
+  }
+
+  .formCss select {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--tc);
+  }
+
+  .card
+  {
+     
+    color: var(--tc);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: solid 2px #e8e8e9;
+    padding: 40px;
+    width: fit-content;
+    margin-left:5px;
+    margin-right: 5px;
+    
+
+  }
+
+  #button {
+    width: 99px;
+    background-color: var(--accent);
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    margin: 10px 0;
+    font-weight: 410;
+    font-size: 1.2rem;
+    cursor: pointer;
+    //-webkit-transition: 0.5s;
+    //transition: 0.5s;
+    
+  }
+
+.main-container
+{
+  display:flex;
+  flex-wrap: wrap;  
+}
+.firstRow
+{
+  border: solid 1px rgb(1, 129, 113) ;
+  border-radius: 20px;
+  border-width:thick;
+  color:rgb(1, 129, 113) ;
+  text-align: center;
+  padding: 20px;
+
+
+}
+
+
+
+.styled-table
+{
+
+   border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.searchCss 
+{
+  border: solid 1px  rgb(1, 129, 113);;
+  width: 130px;
+  background-color: transparent;
+  margin: 10px 0;
+  height: 50px;
+  border-radius: 40px;
+  padding: 0 0.7rem;
+  display: grid;
+  grid-template-columns:  80% 20%;
+  position: relative; 
+  margin-left: 50%;
+
+}
+.searchCss input
+{
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--tc);
+
+}
+.searchCss i{
+text-align: center;
+line-height: 55px;
+color: #acacac;
+transition: 0.5s;
+font-size: 1.1rem;
+}

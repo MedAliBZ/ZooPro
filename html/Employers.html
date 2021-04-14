@@ -89,30 +89,36 @@
 		<!--sidebar end-->
 		<!--main container start-->
 		<div class="main-container">
-			<form class="card employ">
-				<div class="input-field a">
-					<i class="fas fa-id-card"></i>
-					<input type="text" placeholder="CIN" name="CIN" />
-				</div>
-				<div class="input-field b">
-					<i class="fas fa-signature"></i>
-					<input type="text" placeholder="nom" name="nom" />
-				</div>
-				<div class="input-field c">
-					<i class="fas fa-signature"></i>
-					<input type="text" placeholder="prenom" name="prenom" />
-				</div>
-				<div class="input-field d">
-					<i class="fas fa-calendar-day"></i>
-					<input type="date" placeholder="Date de naissance" name="birthday" />
-				</div>
-				<div class="input-field e">
-					<i class="fas fa-dollar-sign"></i>
-					<input type="text" placeholder="Salaire" name="salaire" />
-				</div>
-				<input type="submit" class="btn f" value="Ajouter" />
-			</form>
+			<div class="popup">
+				<form class="card employ">
+					<div class="input-field a">
+						<i class="fas fa-id-card"></i>
+						<input type="text" placeholder="CIN" name="CIN" />
+					</div>
+					<div class="input-field b">
+						<i class="fas fa-signature"></i>
+						<input type="text" placeholder="nom" name="nom" />
+					</div>
+					<div class="input-field c">
+						<i class="fas fa-signature"></i>
+						<input type="text" placeholder="prenom" name="prenom" />
+					</div>
+					<div class="input-field d">
+						<i class="fas fa-calendar-day"></i>
+						<input type="date" placeholder="Date de naissance" name="birthday" />
+					</div>
+					<div class="input-field e">
+						<i class="fas fa-dollar-sign"></i>
+						<input type="text" placeholder="Salaire" name="salaire" />
+					</div>
+					<div class="f">
+						<input type="submit" class="btn ann" value="Annuler" />
+						<input type="submit" class="btn" value="Ajouter" />
+					</div>
+				</form>
+			</div>
 			<div class="container">
+				<input type="submit" class="btn ajouter-m" value="Ajouter" />
 				<ul class="responsive-table">
 					<li class="table-header">
 						<div class="col col-1">CIN</div>
@@ -123,15 +129,12 @@
 						</div>
 					</li>
 					<li class="table-row">
-						<div class="col col-1" data-label="CIN">42235</div> <!--<input type="text" value='42235'>-->
-						
-						<div class="col col-2" data-label="Nom et prenom">John Doe</div> <!-- <input type="text" value='John Doe'> -->
-						
-						<div class="col col-3" data-label="Date de naissance">2018-07-22</div> <!-- <input type="date" value='2018-07-22'> -->
-						
-						<div class="col col-4" data-label="Salaire">$350</div> <!-- <input type="text" value='$350'> -->
+						<div class="col col-1" data-label="CIN">42235</div>
+						<div class="col col-2" data-label="Nom et prenom">John Doe</div>
+						<div class="col col-3" data-label="Date de naissance">2018-07-22</div>
+						<div class="col col-4" data-label="Salaire">$350</div>
 						<div class="col col-5">
-							<div class="col-buttons" >
+							<div class="col-buttons">
 								<i data-feather="edit"></i>
 								<i data-feather="trash"></i>
 							</div>
@@ -172,7 +175,7 @@
 								<i data-feather="trash"></i>
 							</div>
 						</div>
-					</li>	
+					</li>
 				</ul>
 			</div>
 
@@ -182,6 +185,7 @@
 	<!--wrapper end-->
 	<script src="../js/sidebar.js"></script>
 	<script src="../js/theme.js"></script>
+	<script src="../js/employers.js"></script>
 </body>
 
 </html>

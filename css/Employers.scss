@@ -104,6 +104,7 @@ h2 {
 }
 
 .employ {
+    background-color: var(--mainContainerColor)!important;
     margin: 0 auto;
     width: fit-content;
     display: grid;
@@ -153,5 +154,24 @@ h2 {
         .f{
             grid-area: 6;
         }
+    }
+}
+
+.popup{
+    background-color: rgba(51, 51, 51, 0.534);
+    width: calc(100% - 65px);
+    height: 100%;
+    position: absolute;
+    left: 65px;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -100%;
+    transition: top;
+    overflow: hidden;
+    @media all and (max-width: 1050px){
+        left: 0;
+        width: 100%;
     }
 }

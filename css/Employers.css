@@ -118,6 +118,7 @@ h2 small {
 }
 
 .employ {
+  background-color: var(--mainContainerColor) !important;
   margin: 0 auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -202,6 +203,35 @@ h2 small {
   .employ .f {
     -ms-grid-row: 6;
     grid-area: 6;
+  }
+}
+
+.popup {
+  background-color: rgba(51, 51, 51, 0.534);
+  width: calc(100% - 65px);
+  height: 100%;
+  position: absolute;
+  left: 65px;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: -100%;
+  -webkit-transition: top;
+  transition: top;
+  overflow: hidden;
+}
+
+@media all and (max-width: 1050px) {
+  .popup {
+    left: 0;
+    width: 100%;
   }
 }
 /*# sourceMappingURL=Employers.css.map */

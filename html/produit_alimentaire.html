@@ -97,72 +97,69 @@
 		</div>
 		<!--sidebar end-->
 		<!--main container start-->
-		<div class="main-container">
+		<div class="main-container" >
 
-			<form action="" class="card">
-
-				<h2> Ajouter un produit alimentaire</h2>
-				<br>
-
-				<div class="formCss">
-					<input type="text" placeholder="Nom Norriture" name="nomNorriture" />
-				</div>
-				<div class="formCss">
-					<input placeholder="date d'achat" type="text" onfocus="(this.type = 'date')" id="dateAchat">
-				</div>
-				<div class="formCss">
-					<input placeholder="date d'expiration" type="text" onfocus="(this.type = 'date')"
-						id="dateExpiration">
-				</div>
-
-				<div class="formCss">
-					<input type="number" placeholder="quantité en kg" name="quantité"  />
-				</div>
-
-				<div class="formCss">
-					<select name="regimeAlimentaire" id="regimeAlimentaire">
-						<option value="0">choisir un régime</option>
-						<option value="herbivore">herbivore </option>
-						<option value="granivore">granivore </option>
-						<option value="frugivore">frugivore </option>
-						<option value="omnivore">omnivore </option>
-						<option value="carnivore">carnivore </option>
-					</select>
-				</div>
-
-				<input type="submit" id="button" value="Submit">
-
-			</form>
-			<div class="searchCss" > 
+			
+			<div class="searchCss" id="search"> 
 				<input type="text" placeholder="recherche" name="search"  />
 				<i class="fas fa-search"></i>
 			</div>
 			<div class="card">
 				
-				<div class="firstRow"> <h3>La liste des produits alimentaires </h3> </div> 
-				<br>
-			   
+				<div class="firstRow" id="firstRow"> <h3>La liste des régimes alimentaires </h3> </div> 
+				
+				<button class="buttonStyle" id="addButtonToList" onclick="openForm()" >Ajouter un régime</button>
+				<div class="form-popup" id="myForm">
+					<form action="" class="form-container">
+
+						<h2> Ajouter un produit alimentaire</h2>
+						<br>
+		
+						<div class="formCss">
+							<select name="regimeAlimentaire" id="regimeAlimentaire">
+								<option value="0">choisir un régime</option>
+								<option value="herbivore">herbivore </option>
+								<option value="granivore">granivore </option>
+								<option value="frugivore">frugivore </option>
+								<option value="omnivore">omnivore </option>
+								<option value="carnivore">carnivore </option>
+							</select>
+						</div>
+						<div class="formCss">
+							<input placeholder="type Nourriture" type="text" id="typeNourriture">
+						</div>
+						<div class="formCss">
+							<input placeholder="quantité par repas(kg)" type="float" id="quantiteParRepas">
+						</div>
+		
+						<div class="formCss">
+							<input type="number" placeholder="nombre de repas(jour)" name="nombreRepas"  />
+						</div>
+		
+						<input type="submit" class="buttonStyle" value="Submit">
+						<button type="button" class="buttonStyle" onclick="closeForm()">Close</button>
+		
+					</form>
+				</div>
 				<!-- start table -->
-				<table class="styled-table">
+				<table class="styled-table" id="tableRegime">
 					<thead>
 			   <tr>
 				     <th>id</th>
-					 <th>Nom </th>
-					 <th>date d'achat</th>
-					 <th>date d'expiration</th>
-					 <th>quantité</th>
-					 <th>régime alimentaire </th>
+					 <th>Nom régime </th>
+					 <th>type nourriture</th>
+					 <th>quantité par repas(kg)</th>
+					 <th>nombre de repas(jour)</th>
 					 <th></th>
 					 <th></th>
 			   </tr>
 			</thead>
 			   <tr>
-				<td>00</td>
-				<td>viande</td>
-				<td>23/2/2021</td>
-				<td>23/5/2021</td>
-				<td>7</td>
-				<td>carnivore </td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td> <i class="fas fa-pencil-alt"></i></td>
 				<td><i class="fas fa-trash"></i>
 				</td>
@@ -180,6 +177,7 @@
 	<!--wrapper end-->
 	<script src="../js/sidebar.js"></script>
 	<script src="../js/theme.js"></script>
+	<script src="../js/popup.js"></script>
 </body>
 
 </html>

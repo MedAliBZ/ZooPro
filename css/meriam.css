@@ -1,8 +1,6 @@
 .formCss {
   border: solid 1px #e8e8e9;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   background-color: transparent;
   margin: 10px 0;
   height: 40px;
@@ -45,19 +43,17 @@
   border-radius: 5px;
   border: solid 2px #e8e8e9;
   padding: 40px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   margin-left: 5px;
   margin-right: 5px;
 }
 
-#button {
-  width: 150px;
+.buttonStyle {
+  width: 20%;
   background-color: var(--accent);
-  border: none;
   outline: none;
   height: 49px;
+  border-color: transparent;
   border-radius: 49px;
   color: #fff;
   margin: 10px 0;
@@ -66,6 +62,10 @@
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+.buttonStyle:hover {
+  border-color: white;
 }
 
 .main-container {
@@ -87,10 +87,10 @@
 
 .styled-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 3px 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
+  width: 100%;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -119,7 +119,7 @@
   -ms-grid-columns: 80% 20%;
       grid-template-columns: 80% 20%;
   position: relative;
-  margin-left: 50%;
+  margin-left: 89%;
 }
 
 .searchCss input {
@@ -139,5 +139,36 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   font-size: 1.1rem;
+}
+
+#addButtonToList {
+  margin-left: 80%;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  z-index: 9;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 60%;
+  padding: 50px;
+  background-color: white;
+  border-radius: 0.5em;
+  border: white;
+  -webkit-box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+          box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }
 /*# sourceMappingURL=meriam.css.map */

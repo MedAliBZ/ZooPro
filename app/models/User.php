@@ -91,13 +91,14 @@ class User
         }
     }
 
-    public function findUserByEmailUpdate($email)
+    public function findUserByEmailUpdate($email,$id)
     {
         //Prepared statement
-        $this->db->query('SELECT * FROM users WHERE email = :email AND id != "'.$_SESSION['id'].'";');
+        $this->db->query('SELECT * FROM users WHERE email = :email AND id != :id;');
 
         //Email param will be binded with the email variable
         $this->db->bind(':email', $email);
+        $this->db->bind(':id', $id);
         $this->db->execute();
 
         //Check if email is already registered
@@ -107,13 +108,14 @@ class User
             return false;
         }
     }
-    public function findUserByUsernameUpdate($username)
+    public function findUserByUsernameUpdate($username,$id)
     {
         //Prepared statement
-        $this->db->query('SELECT * FROM users WHERE username = :username AND id != "'.$_SESSION['id'].'";');
+        $this->db->query('SELECT * FROM users WHERE username = :username AND id != :id;');
 
         //username param will be binded with the username variable
         $this->db->bind(':username', $username);
+        $this->db->bind(':id', $id);
         $this->db->execute();
 
         //Check if username is already registered

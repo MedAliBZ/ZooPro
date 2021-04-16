@@ -2,13 +2,18 @@
 if (!isset($_SESSION['id']))
 	header('location: ' . URLROOT . '/index');
 if(!isset($data['tab'])){
-	if(!isset($data['error']))
-		header('location: ' . URLROOT . '/users/afficherList');	
-	else{
+	
+	if(isset($data['error']) && !empty($data['error'])){
 		$errorTab = explode(" ",$data['error']);
-        $data['error']=implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/err-'.$data["error"]);
+        $err=implode("-", $errorTab);
+		header('location: ' . URLROOT . '/users/afficherList/err-'.$err);
+	}elseif(isset($data['errorUpdate']) || !empty($data['errorUpdate'])){
+		$errorTab = explode(" ",$data['errorUpdate']);
+        $err=implode("-", $errorTab);
+		header('location: ' . URLROOT . '/users/afficherList/errUp-'.$err);
 	}
+	else
+		header('location: ' . URLROOT . '/users/afficherList');	
 }
 ?>
 
@@ -128,6 +133,7 @@ if(!isset($data['tab'])){
 			</form>
 
 			<div class="container">
+				<div class="error-table"><?php if(isset($data['errorUpdate'])){ echo $data['errorUpdate'];} ?></div>
 				<ul class="responsive-table">
 					<li class="table-header">
 						<div class="col col-1">ID</div>

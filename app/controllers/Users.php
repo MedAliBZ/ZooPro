@@ -37,7 +37,7 @@ class Users extends Controller
                 $data['errorSignUp'] = 'Please enter username.';
             } elseif (!preg_match($nameValidation, $data['username'])) {
                 $data['errorSignUp'] = 'Name can only contain letters and numbers.';
-            }else{
+            } else {
                 if ($this->userModel->findUserByUsername($data['username'])) {
                     $data['errorSignUp'] = 'Username is already taken.';
                 }
@@ -193,8 +193,8 @@ class Users extends Controller
                     $data['error'] = 'Please enter username.';
                 } elseif (!preg_match($nameValidation, $data['username'])) {
                     $data['error'] = 'Name can only contain letters and numbers.';
-                }else{
-                    if ($this->userModel->findUserByUsernameUpdate($data['username'])) {
+                } else {
+                    if ($this->userModel->findUserByUsernameUpdate($data['username'],$_SESSION['id'])) {
                         $data['error'] = 'Username is already taken.';
                     }
                 }
@@ -204,8 +204,8 @@ class Users extends Controller
                     $data['error'] = 'Please enter email address.';
                 } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['error'] = 'Please enter the correct format.';
-                }else{
-                    if ($this->userModel->findUserByEmailUpdate($data['email'])) {
+                } else {
+                    if ($this->userModel->findUserByEmailUpdate($data['email'],$_SESSION['id'])) {
                         $data['error'] = 'Email is already taken.';
                     }
                 }
@@ -226,13 +226,13 @@ class Users extends Controller
                         $data['error'] = 'Passwords do not match, please try again.';
                     }
                 }
-                
+
 
                 // Make sure that errors are empty
                 if (empty($data['error'])) {
                     // Hash password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    
+
                     //update user from model function
                     if ($this->userModel->update($data)) {
                         $_SESSION['username'] = $data['username'];
@@ -248,25 +248,31 @@ class Users extends Controller
         }
     }
 
-    public function afficherList($error ='')
+    public function afficherList($error = '')
     {
         $tab = $this->userModel->afficher();
         $data = [
             'tab' => '',
-            'error' => ''
+            'error' => '',
+            'errorUpdate' => ''
         ];
-        if(isset($error)){
-            $errorTab = explode("-",$error);
-            if($errorTab[0]=='err'){
+        if (isset($error)) {
+            $errorTab = explode("-", $error);
+            if ($errorTab[0] == 'err') {
                 array_shift($errorTab);
-                $data['error']=implode(" ", $errorTab);
+                $data['error'] = implode(" ", $errorTab);
+            } else if ($errorTab[0] == 'errUp') {
+                array_shift($errorTab);
+                $data['errorUpdate'] = implode(" ", $errorTab);
+            } else {
+                $data['error'] = '';
+                $data['errorUpdate'] = '';
             }
-            else
-                $data['error']='';
         }
 
+
         foreach ($tab as $key => $value) {
-           $data['tab'].= '<li class="table-row">
+            $data['tab'] .= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>
                     <div class="col col-2" data-label="Username">' . $value[1] . '</div>
                     <div class="col col-3" data-label="Email">' . $value[2] . '</div>
@@ -293,7 +299,8 @@ class Users extends Controller
                 'id',
                 'username' => '',
                 'email' => '',
-                'admin' => ''
+                'admin' => '',
+                'errorUpdate' => ''
             ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -305,22 +312,49 @@ class Users extends Controller
                     'id' => trim($_POST['id']),
                     'username' => trim($_POST['username']),
                     'email' => trim($_POST['email']),
-                    'admin' => trim($_POST['admin'])
+                    'admin' => trim($_POST['admin']),
+                    'errorUpdate' => ''
                 ];
-                //update user from model function
-                if ($this->userModel->updateP($data)) {
-                    if ($_POST['id'] == $_SESSION['id']) {
-                        $_SESSION['username'] = $data['username'];
-                        $_SESSION['email'] = $data['email'];
-                        if ($_POST['admin'] == 0)
-                            $this->logout();
-                    }
-                    //Redirect to the same page
-                    header('location: ' . URLROOT . '/pages/usersV');
+
+                $nameValidation = "/^[a-zA-Z0-9]*$/";
+
+                if (empty($data['username'])) {
+                    $data['errorUpdate'] = 'Please enter username.';
+                } elseif (!preg_match($nameValidation, $data['username'])) {
+                    $data['errorUpdate'] = 'Name can only contain letters and numbers.';
                 } else {
-                    die('Something went wrong.');
+                    if ($this->userModel->findUserByUsernameUpdate($data['username'],$data['id'])) {
+                        $data['errorUpdate'] = 'Username is already taken.';
+                    }
+                }
+
+                //Validate email
+                if (empty($data['email'])) {
+                    $data['errorUpdate'] = 'Please enter email address.';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['errorUpdate'] = 'Please enter the correct format.';
+                } else {
+                    if ($this->userModel->findUserByEmailUpdate($data['email'],$data['id'])) {
+                        $data['errorUpdate'] = 'Email is already taken.';
+                    }
+                }
+                if (empty($data['errorUpdate'])) {
+                    //update user from model function
+                    if ($this->userModel->updateP($data)) {
+                        if ($_POST['id'] == $_SESSION['id']) {
+                            $_SESSION['username'] = $data['username'];
+                            $_SESSION['email'] = $data['email'];
+                            if ($_POST['admin'] == 0)
+                                $this->logout();
+                        }
+                        //Redirect to the same page
+                        header('location: ' . URLROOT . '/pages/usersV');
+                    } else {
+                        die('Something went wrong.');
+                    }
                 }
             }
+            $this->view('usersV', $data);
         }
     }
 }

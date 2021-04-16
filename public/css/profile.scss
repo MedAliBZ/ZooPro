@@ -102,6 +102,11 @@ $mobile: 1050px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 10px;
+  margin-top: 3%;
+  .error-table{
+    text-align: center;
+    color: red;
+  }
 }
 
 
@@ -128,7 +133,7 @@ $mobile: 1050px;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    margin-top: 5%;
+    margin-top: 2%;
   }
 
   .table-row {

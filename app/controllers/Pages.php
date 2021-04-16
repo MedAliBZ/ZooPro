@@ -12,7 +12,7 @@ class Pages extends Controller {
         $this->view('about');
     }
 
-    public function users(){
-        $this->view('users');
+    public function usersV(){
+        $this->view('usersV');
     }
 }

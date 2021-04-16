@@ -99,20 +99,21 @@ $us = new Users();
 				<p class="sectionTitle">Mon profile</p>
 				<div class="input-field one">
 					<i class="fas fa-user"></i>
-					<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' />
+					<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required/>
 				</div>
 				<div class="input-field two">
 					<i class="fas fa-envelope"></i>
-					<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" />
+					<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required/>
 				</div>
 				<div class="input-field three">
 					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" name="password" />
+					<input type="password" placeholder="Password" name="password" required/>
 				</div>
 				<div class="input-field four">
 					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Confirm password" name="confirmPassword" />
+					<input type="password" placeholder="Confirm password" name="confirmPassword" required/>
 				</div>
+				<p id="error-msg">test</p>
 				<div class="btn-div">
 					<input name="update" type="submit" class="btn" value="Sauvegrader" style="margin-right:2%" />
 					<input name="delete" type="submit" class="btn" value="Supprimer" />
@@ -146,9 +147,22 @@ $us = new Users();
 								<i class="fas fa-envelope"></i>
 								<input type="text" placeholder="Email" name="email" class="email-popup" />
 							</div>
-							<div class="input-field two">
+							<!-- <div class="input-field two">
 								<i class="fas fa-user-shield"></i>
 								<input type="text" placeholder="Admin" name="admin" class="admin-popup" />
+							</div> -->
+							<div class="radio-field">
+								<label>
+									<input type="radio" name="admin" value='1' class="admin-popup"/>
+									<span class="design"></span>
+									<span class="text">Admin</span>
+								</label>
+
+								<label>
+									<input type="radio" name="admin" value='0' class="user-popup"/>
+									<span class="design"></span>
+									<span class="text">Utilisateur</span>
+								</label>
 							</div>
 							<div class="buttonsP">
 								<input name="update" type="submit" class="btn" value="Sauvegrader" />

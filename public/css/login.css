@@ -241,9 +241,9 @@ form.sign-in-form {
   pointer-events: all;
 }
 
-#error-msg {
+#error-msg,#error-msg-signup {
   color: red;
-  display: none;
+  display: block;
 }
 
 @media (max-width: 870px) {

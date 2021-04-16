@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['id']))
-  header('location: ' . URLROOT . '/pages/users');
+  header('location: ' . URLROOT . '/pages/usersV');
 ?>
 
 <html lang="en">
@@ -16,7 +16,7 @@ if (isset($_SESSION['id']))
 </head>
 
 <body>
-  <div class="container">
+  <div class="container <?php if(isset($data['errorSignUp'])){echo "sign-up-mode";} ?>" >
     <div class="forms-container">
       <div class="signin-signup">
 
@@ -25,14 +25,14 @@ if (isset($_SESSION['id']))
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" name="username" id="login-username" />
+            <input type="text" placeholder="Username" name="username" id="login-username" required/>
           </div>
 
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" name="password" id="login-password" />
+            <input type="password" placeholder="Password" name="password" id="login-password" required/>
           </div>
-          <p id="error-msg">Invalid details</p>
+          <p id="error-msg"><?php if(isset($data['error'])){echo $data['error'];} ?></p>
           <input type="submit" id="login" value="Login" class="btn solid" />
         </form>
 
@@ -42,24 +42,24 @@ if (isset($_SESSION['id']))
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" name="username" />
+            <input type="text" placeholder="Username" name="username" required/>
           </div>
 
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Email" name="email" />
+            <input type="email" placeholder="Email" name="email" required/>
           </div>
 
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" name="password" />
+            <input type="password" placeholder="Password" name="password" required/>
           </div>
 
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Confirm Password" name="confirmPassword" />
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" required/>
           </div>
-
+          <p id="error-msg-signup"><?php if(isset($data['errorSignUp'])){echo $data['errorSignUp'];} ?></p>
           <input type="submit" class="btn" value="Sign up" />
         </form>
 

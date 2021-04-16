@@ -13,10 +13,17 @@ openP.map(el => el.addEventListener('click', () => {
     let id = el.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
     // that doesn't represent me!!
 
-    document.querySelector('.id-popup').setAttribute('value',id);
-    document.querySelector('.email-popup').setAttribute('value',email);
-    document.querySelector('.username-popup').setAttribute('value',username);
-    document.querySelector('.admin-popup').setAttribute('value',admin);
+    document.querySelector('.id-popup').setAttribute('value', id);
+    document.querySelector('.email-popup').setAttribute('value', email);
+    document.querySelector('.username-popup').setAttribute('value', username);
+    if (admin != 0) {
+        document.querySelector('.user-popup').removeAttribute('checked');
+        document.querySelector('.admin-popup').setAttribute('checked', 'checked');
+    }
+    else {
+        document.querySelector('.admin-popup').removeAttribute('checked');
+        document.querySelector('.user-popup').setAttribute('checked', 'checked');
+    }
 }))
 
 closeP.addEventListener('click', () => {

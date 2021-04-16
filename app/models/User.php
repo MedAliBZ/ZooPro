@@ -37,7 +37,7 @@ class User
 
     public function login($username, $password)
     {
-        $this->db->query('SELECT * FROM users WHERE username = :username AND admin = 1');
+        $this->db->query('SELECT * FROM users WHERE username = :username AND admin != 0');
 
         //Bind value
         $this->db->bind(':username', $username);
@@ -65,8 +65,25 @@ class User
 
         //Email param will be binded with the email variable
         $this->db->bind(':email', $email);
+        $this->db->execute();
 
         //Check if email is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function findUserByUsername($username)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM users WHERE username = :username');
+
+        //username param will be binded with the username variable
+        $this->db->bind(':username', $username);
+        $this->db->execute();
+
+        //Check if username is already registered
         if ($this->db->rowCount() > 0) {
             return true;
         } else {

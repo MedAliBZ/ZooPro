@@ -91,6 +91,39 @@ class User
         }
     }
 
+    public function findUserByEmailUpdate($email)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM users WHERE email = :email AND id != "'.$_SESSION['id'].'";');
+
+        //Email param will be binded with the email variable
+        $this->db->bind(':email', $email);
+        $this->db->execute();
+
+        //Check if email is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function findUserByUsernameUpdate($username)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM users WHERE username = :username AND id != "'.$_SESSION['id'].'";');
+
+        //username param will be binded with the username variable
+        $this->db->bind(':username', $username);
+        $this->db->execute();
+
+        //Check if username is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteAccount($id){
         $this->db->query('DELETE FROM users WHERE id = :id');
         $this->db->bind(':id', $id);

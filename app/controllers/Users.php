@@ -164,7 +164,6 @@ class Users extends Controller
             $this->userModel->deleteAccount($_SESSION['id']);
             $this->logout();
         } elseif (isset($_POST['update'])) {
-            echo "here";
             $data = [
                 'username' => '',
                 'email' => '',
@@ -183,7 +182,6 @@ class Users extends Controller
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'confirmPassword' => trim($_POST['confirmPassword']),
-                    'usernameError' => '',
                     'error' => ''
                 ];
 
@@ -192,9 +190,13 @@ class Users extends Controller
 
                 //Validate username on letters/numbers
                 if (empty($data['username'])) {
-                    $data['usernameError'] = 'Please enter username.';
+                    $data['error'] = 'Please enter username.';
                 } elseif (!preg_match($nameValidation, $data['username'])) {
-                    $data['usernameError'] = 'Name can only contain letters and numbers.';
+                    $data['error'] = 'Name can only contain letters and numbers.';
+                }else{
+                    if ($this->userModel->findUserByUsernameUpdate($data['username'])) {
+                        $data['error'] = 'Username is already taken.';
+                    }
                 }
 
                 //Validate email
@@ -202,6 +204,10 @@ class Users extends Controller
                     $data['error'] = 'Please enter email address.';
                 } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['error'] = 'Please enter the correct format.';
+                }else{
+                    if ($this->userModel->findUserByEmailUpdate($data['email'])) {
+                        $data['error'] = 'Email is already taken.';
+                    }
                 }
                 // Validate password on length, numeric values,
                 if (empty($data['password'])) {
@@ -224,7 +230,6 @@ class Users extends Controller
 
                 // Make sure that errors are empty
                 if (empty($data['error'])) {
-                    echo "now here";
                     // Hash password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     
@@ -243,12 +248,25 @@ class Users extends Controller
         }
     }
 
-    public function afficherList()
+    public function afficherList($error ='')
     {
         $tab = $this->userModel->afficher();
+        $data = [
+            'tab' => '',
+            'error' => ''
+        ];
+        if(isset($error)){
+            $errorTab = explode("-",$error);
+            if($errorTab[0]=='err'){
+                array_shift($errorTab);
+                $data['error']=implode(" ", $errorTab);
+            }
+            else
+                $data['error']='';
+        }
 
         foreach ($tab as $key => $value) {
-            echo ('<li class="table-row">
+           $data['tab'].= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>
                     <div class="col col-2" data-label="Username">' . $value[1] . '</div>
                     <div class="col col-3" data-label="Email">' . $value[2] . '</div>
@@ -258,8 +276,9 @@ class Users extends Controller
                             <button class="tab-btn"><i data-feather="edit"></i></button>
                         </div>
                     </div>
-                </li>');
+                </li>';
         }
+        $this->view('usersV', $data);
     }
 
     public function deleteUpdateTab()

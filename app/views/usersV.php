@@ -1,8 +1,15 @@
 <?php
 if (!isset($_SESSION['id']))
 	header('location: ' . URLROOT . '/index');
-require APPROOT . '/controllers/users.php';
-$us = new Users();
+if(!isset($data['tab'])){
+	if(!isset($data['error']))
+		header('location: ' . URLROOT . '/users/afficherList');	
+	else{
+		$errorTab = explode(" ",$data['error']);
+        $data['error']=implode("-", $errorTab);
+		header('location: ' . URLROOT . '/users/afficherList/err-'.$data["error"]);
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +120,7 @@ $us = new Users();
 					<i class="fas fa-lock"></i>
 					<input type="password" placeholder="Confirm password" name="confirmPassword" required/>
 				</div>
-				<p id="error-msg">test</p>
+				<p id="error-msg"><?php if(isset($data['error'])){ echo $data['error'];}?></p>
 				<div class="btn-div">
 					<input name="update" type="submit" class="btn" value="Sauvegrader" style="margin-right:2%" />
 					<input name="delete" type="submit" class="btn" value="Supprimer" />
@@ -130,7 +137,7 @@ $us = new Users();
 						<div class="col col-5">
 						</div>
 					</li>
-					<?php $us->afficherList() ?>
+					<?php echo $data['tab']; ?>
 
 				</ul>
 				<div class="overlay">

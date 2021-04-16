@@ -1,20 +1,6 @@
 <?php
 if (!isset($_SESSION['id']))
 	header('location: ' . URLROOT . '/index');
-if(!isset($data['tab'])){
-	
-	if(isset($data['error']) && !empty($data['error'])){
-		$errorTab = explode(" ",$data['error']);
-        $err=implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/err-'.$err);
-	}elseif(isset($data['errorUpdate']) || !empty($data['errorUpdate'])){
-		$errorTab = explode(" ",$data['errorUpdate']);
-        $err=implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/errUp-'.$err);
-	}
-	else
-		header('location: ' . URLROOT . '/users/afficherList');	
-}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +13,6 @@ if(!isset($data['tab'])){
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 	<script src="https://unpkg.com/feather-icons"></script>
 	<link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css" />
-	<link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/profile.css" />
 	<link rel="shortcut icon" href="<?php echo URLROOT ?>/public/img/logo.png" type="image/x-icon">
 </head>
 
@@ -59,12 +44,12 @@ if(!isset($data['tab'])){
 				<li class="logo">
 					<img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
 				</li>
-				<li class="item active">
+				<li class="item">
 					<a href="<?php echo URLROOT ?>/pages/usersV" class="menu-btn">
 						<i class="fas fa-user-circle"></i><span> Profile</span>
 					</a>
 				</li>
-				<li class="item">
+				<li class="item active">
 					<a href="<?php echo URLROOT ?>/pages/employes" class="menu-btn">
 						<i class="fas fa-user-friends"></i><span>Employés</span>
 					</a>
@@ -116,91 +101,11 @@ if(!isset($data['tab'])){
 		<!--sidebar end-->
 		<!--main container start-->
 		<div class="main-container">
-			<form class="card profile" method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdate">
-				<p class="sectionTitle">Mon profile</p>
-				<div class="input-field one">
-					<i class="fas fa-user"></i>
-					<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required/>
-				</div>
-				<div class="input-field two">
-					<i class="fas fa-envelope"></i>
-					<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required/>
-				</div>
-				<div class="input-field three">
-					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" name="password" required/>
-				</div>
-				<div class="input-field four">
-					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Confirm password" name="confirmPassword" required/>
-				</div>
-				<p id="error-msg"><?php if(isset($data['error'])){ echo $data['error'];}?></p>
-				<div class="btn-div">
-					<input name="update" type="submit" class="btn" value="Sauvegrader" style="margin-right:2%" />
-					<input name="delete" type="submit" class="btn" value="Supprimer" />
-				</div>
-			</form>
-
-			<div class="container">
-				<div class="error-table"><?php if(isset($data['errorUpdate'])){ echo $data['errorUpdate'];} ?></div>
-				<ul class="responsive-table">
-					<li class="table-header">
-						<div class="col col-1">ID</div>
-						<div class="col col-2">Username</div>
-						<div class="col col-3">Email</div>
-						<div class="col col-4">Admin</div>
-						<div class="col col-5">
-						</div>
-					</li>
-					<?php echo $data['tab']; ?>
-
-				</ul>
-				<div class="overlay">
-					<div class="popup">
-						<a class="close" href="#">&times;</a>
-						<form class="content" action="<?php echo URLROOT; ?>/users/deleteUpdateTab" method="POST">
-							<h2>Modifier ce profile</h2>
-							<input type="text" placeholder="id" name="id" style="display: none;" class="id-popup" />
-							<div class="input-field one">
-								<i class="fas fa-user"></i>
-								<input type="text" placeholder="Username" name="username" class="username-popup" />
-							</div>
-							<div class="input-field two">
-								<i class="fas fa-envelope"></i>
-								<input type="text" placeholder="Email" name="email" class="email-popup" />
-							</div>
-							<!-- <div class="input-field two">
-								<i class="fas fa-user-shield"></i>
-								<input type="text" placeholder="Admin" name="admin" class="admin-popup" />
-							</div> -->
-							<div class="radio-field">
-								<label>
-									<input type="radio" name="admin" value='1' class="admin-popup"/>
-									<span class="design"></span>
-									<span class="text">Admin</span>
-								</label>
-
-								<label>
-									<input type="radio" name="admin" value='0' class="user-popup"/>
-									<span class="design"></span>
-									<span class="text">Utilisateur</span>
-								</label>
-							</div>
-							<div class="buttonsP">
-								<input name="update" type="submit" class="btn" value="Sauvegrader" />
-								<input name="delete" type="submit" class="btn" value="Supprimer" />
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		<!--main container end-->
 	</div>
 	<!--wrapper end-->
 	<script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
 	<script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
-	<script src="<?php echo URLROOT ?>/public/js/profile.js"></script>
 </body>
-
-</html>

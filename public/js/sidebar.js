@@ -27,6 +27,7 @@ document.querySelector(".sidebar-btn").addEventListener("click",()=>{
 let profileState = false;
 let messagesState = false;
 let settingState = false;
+let eventState = false;
 
 
 document.querySelector("#profile").addEventListener("click", () => {
@@ -44,6 +45,10 @@ document.querySelector("#settings").addEventListener("click", () => {
     settingState ? document.querySelector(".sub-menu-settings").style.maxHeight = "500px" : document.querySelector(".sub-menu-settings").style.maxHeight = "0";
 })
 
+document.querySelector("#event").addEventListener("click", () => {
+    eventState = !eventState;
+    eventState ? document.querySelector(".sub-menu-events").style.maxHeight = "500px" : document.querySelector(".sub-menu-events").style.maxHeight = "0";
+})
 
 
 

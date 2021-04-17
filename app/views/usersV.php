@@ -1,19 +1,18 @@
 <?php
 if (!isset($_SESSION['id']))
 	header('location: ' . URLROOT . '/index');
-if(!isset($data['tab'])){
-	
-	if(isset($data['error']) && !empty($data['error'])){
-		$errorTab = explode(" ",$data['error']);
-        $err=implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/err-'.$err);
-	}elseif(isset($data['errorUpdate']) || !empty($data['errorUpdate'])){
-		$errorTab = explode(" ",$data['errorUpdate']);
-        $err=implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/errUp-'.$err);
-	}
-	else
-		header('location: ' . URLROOT . '/users/afficherList');	
+if (!isset($data['tab'])) {
+
+	if (isset($data['error']) && !empty($data['error'])) {
+		$errorTab = explode(" ", $data['error']);
+		$err = implode("-", $errorTab);
+		header('location: ' . URLROOT . '/users/afficherList/err-' . $err);
+	} elseif (isset($data['errorUpdate']) && !empty($data['errorUpdate'])) {
+		$errorTab = explode(" ", $data['errorUpdate']);
+		$err = implode("-", $errorTab);
+		header('location: ' . URLROOT . '/users/afficherList/errUp-' . $err);
+	} else
+		header('location: ' . URLROOT . '/users/afficherList');
 }
 ?>
 
@@ -78,7 +77,7 @@ if(!isset($data['tab'])){
 						<a href="<?php echo URLROOT ?>/pages/regime"><i class="fas fa-bone"></i><span>Régime alimentaire</span></a>
 					</div>
 				</li>
-				
+
 				<li class="item" id="messages">
 					<a href="#" class="menu-btn">
 						<i class="fas fa-leaf"></i><span>Végetation<i class="fas fa-chevron-down drop-down"></i></span>
@@ -120,21 +119,23 @@ if(!isset($data['tab'])){
 				<p class="sectionTitle">Mon profile</p>
 				<div class="input-field one">
 					<i class="fas fa-user"></i>
-					<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required/>
+					<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required />
 				</div>
 				<div class="input-field two">
 					<i class="fas fa-envelope"></i>
-					<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required/>
+					<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required />
 				</div>
 				<div class="input-field three">
 					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" name="password" required/>
+					<input type="password" placeholder="Password" name="password" required />
 				</div>
 				<div class="input-field four">
 					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Confirm password" name="confirmPassword" required/>
+					<input type="password" placeholder="Confirm password" name="confirmPassword" required />
 				</div>
-				<p id="error-msg"><?php if(isset($data['error'])){ echo $data['error'];}?></p>
+				<p id="error-msg"><?php if (isset($data['error'])) {
+										echo $data['error'];
+									} ?></p>
 				<div class="btn-div">
 					<input name="update" type="submit" class="btn" value="Sauvegrader" style="margin-right:2%" />
 					<input name="delete" type="submit" class="btn" value="Supprimer" />
@@ -142,7 +143,9 @@ if(!isset($data['tab'])){
 			</form>
 
 			<div class="container">
-				<div class="error-table"><?php if(isset($data['errorUpdate'])){ echo $data['errorUpdate'];} ?></div>
+				<div class="error-table"><?php if (isset($data['errorUpdate'])) {
+												echo $data['errorUpdate'];
+											} ?></div>
 				<ul class="responsive-table">
 					<li class="table-header">
 						<div class="col col-1">ID</div>
@@ -175,13 +178,13 @@ if(!isset($data['tab'])){
 							</div> -->
 							<div class="radio-field">
 								<label>
-									<input type="radio" name="admin" value='1' class="admin-popup"/>
+									<input type="radio" name="admin" value='1' class="admin-popup" />
 									<span class="design"></span>
 									<span class="text">Admin</span>
 								</label>
 
 								<label>
-									<input type="radio" name="admin" value='0' class="user-popup"/>
+									<input type="radio" name="admin" value='0' class="user-popup" />
 									<span class="design"></span>
 									<span class="text">Utilisateur</span>
 								</label>

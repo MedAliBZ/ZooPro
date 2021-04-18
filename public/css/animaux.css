@@ -58,9 +58,11 @@
   font-weight: 400;
   font-size: 1.1rem;
   color: var(--tc);
+  padding-left: 2%;
 }
 
 .formCss select {
+  padding-left: 2%;
   background: none;
   outline: none;
   border: none;
@@ -99,6 +101,14 @@
 
 .buttonStyle:hover {
   border-color: white;
+}
+
+.buttonStyle[value="Supprimer"] {
+  background-color: #d12323 !important;
+}
+
+.buttonStyle[value="annuler"] {
+  background-color: #d12323 !important;
 }
 
 .main-container {
@@ -203,5 +213,28 @@
   border: white;
   -webkit-box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
           box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+#closeButton {
+  top: 10px;
+  right: 30px;
+  margin-left: 100%;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.updateButton {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.updateButton:hover {
+  color: #018171;
 }
 /*# sourceMappingURL=animaux.css.map */

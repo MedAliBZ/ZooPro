@@ -40,9 +40,11 @@
     font-weight: 400;
     font-size: 1.1rem;
     color: var(--tc);
+    padding-left: 2%;
   }
 
   .formCss select {
+    padding-left: 2%;
     background: none;
     outline: none;
     border: none;
@@ -87,6 +89,13 @@
       } 
     
   }
+  .buttonStyle[value="Supprimer"] {
+    background-color: rgb(209, 35, 35) !important;
+  }
+  .buttonStyle[value="annuler"] {
+    background-color: rgb(209, 35, 35) !important;
+  }
+
 
 .main-container
 {
@@ -182,7 +191,7 @@ font-size: 1.1rem;
   justify-content: center;
 
 }
-
+ 
 /* Add styles to the form container */
 .form-container {
   width:60%;
@@ -193,10 +202,27 @@ font-size: 1.1rem;
   box-shadow: 0 10px 20px rgba(white, 0.2);
 }
 
+#closeButton
+{
+  top: 10px;
+  right: 30px;
+  margin-left: 100%;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--accent);
+  cursor: pointer;
+}
 
-
-
-
-
-
+.updateButton
+{
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  &:hover 
+  {
+    color: rgb(1, 129, 113);
+  } 
+}
 

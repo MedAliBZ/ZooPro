@@ -12,9 +12,22 @@ function openFormAjouter() {
     document.getElementById("firstRow").style.opacity = 0.5;
     document.getElementById("addButtonToList").style.opacity = 0.5;
     document.getElementById("search").style.opacity = 0.5;
-  // let var = $data['tab'][$value[0]] ;
-    document.querySelector('#idRegime').value=0;
+
+    $( ".tblRows" ).click(function() {
+      var row_data = $(this).attr("data");
+      console.log(row_data);
+    
+      var str = row_data.split("-");
+      document.querySelector('#id').value=str[0];
+      document.querySelector('#regimeAlimentaire1').value=str[1];
+      document.querySelector('#typeNourriture1').value=str[2];
+      document.querySelector('#quantiteParRepas1').value=str[3];
+      document.querySelector('#nombre_de_repas1').value=str[4];
+     
+  });
+
   }
+
   
   function closeForm() {
 

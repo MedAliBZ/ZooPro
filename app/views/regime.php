@@ -3,19 +3,20 @@ if (!isset($_SESSION['id']))
     header('location: ' . URLROOT . '/index');
 
 
-    if (!isset($data['tab'])) {
-        if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
-            $errorTab = explode(" ", $data['errorAdd']);
-            $err = implode("-", $errorTab);
-            header('location: ' . URLROOT . '/regimeC/afficherList/err-' . $err);}
-        //  elseif (isset($data['errorUpdate']) || !empty($data['errorUpdate'])) {
-        //     $errorTab = explode(" ", $data['errorUpdate']);
-        //     $err = implode("-", $errorTab);
-        //     header('location: ' . URLROOT . '/employes/afficherList/errUp-' . $err);
-        // } 
-        else
-            header('location: ' . URLROOT . '/regimeC/afficherList');
+if (!isset($data['tab'])) {
+    if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
+        $errorTab = explode(" ", $data['errorAdd']);
+        $err = implode("-", $errorTab);
+        header('location: ' . URLROOT . '/regimeC/afficherList/err-' . $err);
     }
+    //  elseif (isset($data['errorUpdate']) || !empty($data['errorUpdate'])) {
+    //     $errorTab = explode(" ", $data['errorUpdate']);
+    //     $err = implode("-", $errorTab);
+    //     header('location: ' . URLROOT . '/employes/afficherList/errUp-' . $err);
+    // } 
+    else
+        header('location: ' . URLROOT . '/regimeC/afficherList');
+}
 
 ?>
 
@@ -37,7 +38,7 @@ if (!isset($_SESSION['id']))
     <div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px"></div>
     <!--wrapper start-->
     <div class="wrapper collapse">
-        <!--header menu start-->
+        <!--header menu start--> 
         <header>
             <div id="stars"></div>
             <div id="stars2"></div>
@@ -123,11 +124,11 @@ if (!isset($_SESSION['id']))
                 <input type="text" placeholder="recherche" name="search" />
                 <i class="fas fa-search"></i>
             </div>
-            
+
             <div class="card">
-            <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
-                                            echo $data["errorAdd"];
-                                        } ?></div> -->
+                <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
+                                                    echo $data["errorAdd"];
+                                                } ?></div> -->
 
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">La liste des régimes alimentaires </h3>
@@ -135,13 +136,13 @@ if (!isset($_SESSION['id']))
 
                 <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un régime</button>
                 <div class="form-popup" id="myForm">
-                    <form action="<?php echo URLROOT; ?>/regimeC/deleteUpdateTabRegime" class="form-container" method="POST">
+                    <form action="<?php echo URLROOT; ?>/regimeC/addRegimeC" class="form-container" method="POST">
 
-                        <h2> Ajouter un produit alimentaire</h2>
+                        <h2> Ajouter un régime alimentaire</h2>
                         <br>
 
                         <div class="formCss">
-                            <select name="nom_regime" id="regimeAlimentaire" >
+                            <select name="nom_regime" id="regimeAlimentaire">
                                 <option value="0">choisir un régime</option>
                                 <option value="herbivore">herbivore </option>
                                 <option value="granivore">granivore </option>
@@ -158,11 +159,11 @@ if (!isset($_SESSION['id']))
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas"/>
+                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas" />
                         </div>
 
-                        <input type="submit" class="buttonStyle" value="Modifier">
-                        <button type="button" class="buttonStyle" onclick="closeForm()">Close</button>
+                        <input type="submit" class="buttonStyle" value="Ajouter">
+                        <button type="button" class="buttonStyle" onclick="closeForm()" value="annuler">Close</button>
 
                     </form>
 
@@ -178,55 +179,55 @@ if (!isset($_SESSION['id']))
                             <th>quantité par repas(kg)</th>
                             <th>nombre de repas(jour)</th>
                             <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <?php if (isset($data['tab'])) {
                         echo $data['tab'];
-                        
                     } ?>
 
-                  
+
                 </table>
+                <!-- MODIFIER HEREEEEEEE -->
                 <div class="form-popup" id="myForm1">
-            <form action="" class="form-container" method="POST" >
+                    <form action="<?php echo URLROOT; ?>/regimeC/deleteUpdateTabRegime" class="form-container" method="POST">
 
-                <h2> modifier un produit alimentaire</h2>
-                <br>
-                  
 
-                <div class="formCss">
-                    <input placeholder="idRegime" type="text" id="idRegime" name="idRegime">
+                        <i class="fas fa-times" id="closeButton" onclick="closeFormModifier()"></i>
+                        <h2> modifier un régime alimentaire</h2>
+
+                        <br>
+                        <div class="formCss">
+                            <input  type="text" id="id" name="id" readonly>
+                        </div>
+
+
+                        <div class="formCss">
+                            <select name="nom_regime" id="regimeAlimentaire1">
+                                <option value="0">choisir un régime</option>
+                                <option value="herbivore">herbivore </option>
+                                <option value="granivore">granivore </option>
+                                <option value="frugivore">frugivore </option>
+                                <option value="omnivore">omnivore </option>
+                                <option value="carnivore">carnivore </option>
+                            </select>
+                        </div>
+                        <div class="formCss">
+                            <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture">
+                        </div>
+                        <div class="formCss">
+                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas">
+                        </div>
+
+                        <div class="formCss">
+                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas1" />
+                        </div>
+
+                        <input name="update" type="submit" class="buttonStyle" value="modifier">
+                        <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
+
+                    </form>
+
                 </div>
-
-
-                <div class="formCss">
-                    <select name="nom_regime" id="regimeAlimentaire1" >
-                        <option value="0">choisir un régime</option>
-                        <option value="herbivore">herbivore </option>
-                        <option value="granivore">granivore </option>
-                        <option value="frugivore">frugivore </option>
-                        <option value="omnivore">omnivore </option>
-                        <option value="carnivore">carnivore </option>
-                    </select>
-                </div>
-                <div class="formCss">
-                    <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture1">
-                </div>
-                <div class="formCss">
-                    <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas1">
-                </div>
-
-                <div class="formCss">
-                    <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas1" id="nombre_de_repas1" />
-                </div>
-
-                <input type="submit" class="buttonStyle" value="Submit">
-                <button type="button" class="buttonStyle" onclick="closeFormModifier()">Close</button>
-
-            </form>
-
-        </div>
 
                 <!--try pop up show-->
 

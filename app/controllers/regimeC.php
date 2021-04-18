@@ -92,17 +92,13 @@ class regimeC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr>
-            <td>'. $value[0] .'</td>
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
+            <td >'. $value[0] .'</td>
             <td>'. $value[1] .'</td>
             <td>'. $value[2] .'</td>
             <td>'. $value[3] .'</td>
             <td>'. $value[4] .'</td>
-            <td> <i class="fas fa-pencil-alt" onclick="openFormModifier()">
-        
-            </td>
-            <td><i class="fas fa-trash"></i>
-            </td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
         }
 

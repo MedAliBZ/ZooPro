@@ -1,3 +1,36 @@
+#titreTab {
+  -webkit-animation-duration: 8s;
+          animation-duration: 8s;
+  -webkit-animation-name: slidein;
+          animation-name: slidein;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
 .formCss {
   border: solid 1px #e8e8e9;
   width: 100%;
@@ -171,4 +204,4 @@
   -webkit-box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
           box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }
-/*# sourceMappingURL=meriam.css.map */
+/*# sourceMappingURL=animaux.css.map */

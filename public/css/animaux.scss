@@ -1,3 +1,20 @@
+#titreTab {
+  animation-duration: 8s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
 .formCss {
     border: solid 1px #e8e8e9;
     width: 100%;
@@ -75,6 +92,7 @@
 {
   display:flex;
   flex-wrap: wrap;  
+
 }
 .firstRow
 {
@@ -174,6 +192,9 @@ font-size: 1.1rem;
   border: white;
   box-shadow: 0 10px 20px rgba(white, 0.2);
 }
+
+
+
 
 
 

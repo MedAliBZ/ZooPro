@@ -20,7 +20,7 @@ class User
 
     public function register($data)
     {
-        $this->db->query('INSERT INTO users (username, email, password,admin) VALUES(:username, :email, :password,0)');
+        $this->db->query('INSERT INTO users (username, email, password,role_id) VALUES(:username, :email, :password,0)');
 
         //Bind values
         $this->db->bind(':username', $data['username']);
@@ -157,11 +157,6 @@ class User
         } else {
             return false;
         }
-    }
-
-    public function afficher(){
-        $this->db->query('SELECT id,username,email,admin FROM users');
-        return $this->db->resultSet();
     }
 
 }

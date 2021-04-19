@@ -160,60 +160,65 @@ class Users extends Controller
 
     public function update()
     {
-        $data = [
-            'username' => '',
-            'email' => '',
-            'password' => '',
-            'error' => ''
-        ];
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Process form
-            // Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+        if (isset($_POST['delete'])) {
+            $this->userModel->deleteAccount($_SESSION['id']);
+            $this->logout();
+        } else {
             $data = [
-                'username' => trim($_POST['username']),
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
+                'username' => '',
+                'email' => '',
+                'password' => '',
                 'error' => ''
             ];
 
-            $nameValidation = "/^[a-zA-Z0-9]*$/";
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            if ($this->userModel->login($_SESSION['username'], $data['password'])) {
-                if (empty($data['username'])) {
-                    $data['error'] = 'Please enter username.';
-                } elseif (!preg_match($nameValidation, $data['username'])) {
-                    $data['error'] = 'Name can only contain letters and numbers.';
-                } elseif ($this->userModel->findUserByUsernameUpdate($data['username'], $_SESSION['id'])) {
-                    $data['error'] = 'Username is already taken.';
-                }
+                $data = [
+                    'username' => trim($_POST['username']),
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password']),
+                    'error' => ''
+                ];
 
-                if (empty($data['email'])) {
-                    $data['error'] = 'Please enter email address.';
-                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['error'] = 'Please enter the correct format.';
-                } else {
-                    if ($this->userModel->findUserByEmailUpdate($data['email'], $_SESSION['id'])) {
-                        $data['error'] = 'Email is already taken.';
+                $nameValidation = "/^[a-zA-Z0-9]*$/";
+
+                if ($this->userModel->login($_SESSION['username'], $data['password'])) {
+                    if (empty($data['username'])) {
+                        $data['error'] = 'Please enter username.';
+                    } elseif (!preg_match($nameValidation, $data['username'])) {
+                        $data['error'] = 'Name can only contain letters and numbers.';
+                    } elseif ($this->userModel->findUserByUsernameUpdate($data['username'], $_SESSION['id'])) {
+                        $data['error'] = 'Username is already taken.';
                     }
-                }
-                if (empty($data['error'])) {
-                    if ($this->userModel->update($data)) {
-                        $_SESSION['username'] = $data['username'];
-                        $_SESSION['email'] = $data['email'];
-                        //Redirect to the same page
-                        header('location: ' . URLROOT . '/pages/profile');
+
+                    if (empty($data['email'])) {
+                        $data['error'] = 'Please enter email address.';
+                    } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                        $data['error'] = 'Please enter the correct format.';
                     } else {
-                        die('Something went wrong.');
+                        if ($this->userModel->findUserByEmailUpdate($data['email'], $_SESSION['id'])) {
+                            $data['error'] = 'Email is already taken.';
+                        }
                     }
+                    if (empty($data['error'])) {
+                        if ($this->userModel->update($data)) {
+                            $_SESSION['username'] = $data['username'];
+                            $_SESSION['email'] = $data['email'];
+                            //Redirect to the same page
+                            header('location: ' . URLROOT . '/pages/profile');
+                        } else {
+                            die('Something went wrong.');
+                        }
+                    }
+                } else {
+                    $data['error'] = "Password does not match";
                 }
-            } else {
-                $data['error'] = "Password does not match";
             }
+            $this->view('profile', $data);
         }
-        $this->view('profile', $data);
     }
 
 
@@ -257,7 +262,7 @@ class Users extends Controller
                         $data['errorPass'] = 'Passwords do not match, please try again.';
                     }
                 }
-                
+
                 if (empty($data['errorPass'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     if ($this->userModel->updatePass($data)) {
@@ -273,5 +278,4 @@ class Users extends Controller
         }
         $this->view('profile', $data);
     }
-
 }

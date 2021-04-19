@@ -28,6 +28,17 @@ if (!isset($_SESSION['id']))
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/slick.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/nice-select.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/style.css">
+    <style>
+    input[value="Supprimer"]{
+        color: red !important;
+        border-color: red;
+    }
+    input[value="Supprimer"]:hover{
+        background-color: red;
+        color: white;
+        border-color: red;
+    }
+    </style>
 </head>
 <!--? Preloader Start -->
 <div id="preloader-active">
@@ -98,6 +109,7 @@ require APPROOT . '/views/includes/navigation.php';
 
                         <div class="form-group mt-3">
                             <input type="submit" class="button button-contactForm boxed-btn" value="Sauvegarder"/>
+                            <input type="submit" class="button boxed-btn" name="delete" value="Supprimer"/>
                         </div>
                     </form>
                 </div>

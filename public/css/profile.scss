@@ -35,14 +35,11 @@ $mobile: 1050px;
     }
 
     .three {
-      grid-area: 3 / 1 / 5 / 3;
+      grid-area: 3 / 1 / 5 / 5;
     }
 
-    .four {
-      grid-area: 3 / 3 / 5 / 5;
-      margin-left: 2%;
-    }
-    #error-msg{
+
+    #error-msg {
       grid-area: 5 / 1 / 6 / 5;
       text-align: center;
       color: red;
@@ -82,17 +79,12 @@ $mobile: 1050px;
         grid-area: 4;
       }
 
-      .four {
+      #error-msg {
         grid-area: 5;
-        margin-left: 0;
-      }
-
-      #error-msg{
-        grid-area: 6;
       }
 
       .btn-div {
-        grid-area: 7;
+        grid-area: 6;
       }
     }
   }
@@ -103,7 +95,8 @@ $mobile: 1050px;
   margin: 0 auto;
   padding: 0 10px;
   margin-top: 3%;
-  .error-table{
+
+  .error-table {
     text-align: center;
     color: red;
   }
@@ -276,6 +269,7 @@ $mobile: 1050px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
   label {
     display: flex;
     justify-content: flex-start;
@@ -349,10 +343,10 @@ $mobile: 1050px;
     opacity: 1;
     width: 11px;
     height: 11px;
-    transform: translate(-50%,-50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.7);
     left: 50%;
     top: 50%;
-    
+
   }
 
 
@@ -376,4 +370,45 @@ $mobile: 1050px;
     opacity: .1;
     transform: scale(2.6);
   }
+}
+
+
+
+.updatePass {
+  display: flex;
+  justify-content: space-evenly;
+
+  .card.profile {
+    width: 60%;
+  }
+
+  .card.pass {
+    width: 35%;
+  }
+
+  .sectionTitle {
+    font-weight: 600;
+    font-size: 25px;
+    margin: 0 2% 2% 2%;
+    color: var(--accent);
+  }
+
+  #error-msgPass {
+    text-align: center;
+    color: red;
+  }
+  .btn-div{
+    margin-left: calc(100% - 150px);
+  }
+  @media all and (max-width: $mobile){
+    flex-direction: column;
+    padding: 0 10px;
+    .card.profile {
+      width: 100%;
+    }
+    .card.pass {
+      width: 100%;
+    }
+  }
+
 }

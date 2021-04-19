@@ -11,6 +11,10 @@ if (!isset($data['tab'])) {
 		$errorTab = explode(" ", $data['errorUpdate']);
 		$err = implode("-", $errorTab);
 		header('location: ' . URLROOT . '/users/afficherList/errUp-' . $err);
+	} elseif (isset($data['errorPass']) && !empty($data['errorPass'])) {
+		$errorTab = explode(" ", $data['errorPass']);
+		$err = implode("-", $errorTab);
+		header('location: ' . URLROOT . '/users/afficherList/errPs-' . $err);
 	} else
 		header('location: ' . URLROOT . '/users/afficherList');
 }
@@ -115,32 +119,52 @@ if (!isset($data['tab'])) {
 		<!--sidebar end-->
 		<!--main container start-->
 		<div class="main-container">
-			<form class="card profile" method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdate">
-				<p class="sectionTitle">Mon profile</p>
-				<div class="input-field one">
-					<i class="fas fa-user"></i>
-					<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required />
-				</div>
-				<div class="input-field two">
-					<i class="fas fa-envelope"></i>
-					<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required />
-				</div>
-				<div class="input-field three">
-					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" name="password" required />
-				</div>
-				<div class="input-field four">
-					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Confirm password" name="confirmPassword" required />
-				</div>
-				<p id="error-msg"><?php if (isset($data['error'])) {
-										echo $data['error'];
-									} ?></p>
-				<div class="btn-div">
-					<input name="update" type="submit" class="btn" value="Sauvegrader" style="margin-right:2%" />
-					<input name="delete" type="submit" class="btn" value="Supprimer" />
-				</div>
-			</form>
+			<div class="updatePass">
+				<form class="card profile" method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdate">
+					<p class="sectionTitle">Mon profile</p>
+					<div class="input-field one">
+						<i class="fas fa-user"></i>
+						<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required />
+					</div>
+					<div class="input-field three">
+						<i class="fas fa-envelope"></i>
+						<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required />
+					</div>
+					<div class="input-field two">
+						<i class="fas fa-lock"></i>
+						<input type="password" placeholder="Old Password" name="password" required />
+					</div>
+					
+					<p id="error-msg"><?php if (isset($data['error'])) {
+											echo $data['error'];
+										} ?></p>
+					<div class="btn-div">
+						<input name="update" type="submit" class="btn" value="Sauvegrader" style="margin-right:2%" />
+						<input name="delete" type="submit" class="btn" value="Supprimer" />
+					</div>
+				</form>
+				<form class="card pass" method="POST" action="<?php echo URLROOT; ?>/users/updatePass">
+					<p class="sectionTitle">Mot de passe</p>
+					<div class="input-field">
+						<i class="fas fa-lock"></i>
+						<input type="password" placeholder="Password" name="password" required />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-lock"></i>
+						<input type="password" placeholder="Confirm Password" name="confirmPassword" required />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-lock"></i>
+						<input type="password" placeholder="Old Password" name="oldPassword" required />
+					</div>
+					<p id="error-msgPass"><?php if (isset($data['errorPass'])) {
+											echo $data['errorPass'];
+										} ?></p>
+					<div class="btn-div">
+						<input name="update" type="submit" class="btn" value="Changer" />
+					</div>
+				</form>
+			</div>
 
 			<div class="container">
 				<div class="error-table"><?php if (isset($data['errorUpdate'])) {
@@ -172,10 +196,6 @@ if (!isset($data['tab'])) {
 								<i class="fas fa-envelope"></i>
 								<input type="text" placeholder="Email" name="email" class="email-popup" />
 							</div>
-							<!-- <div class="input-field two">
-								<i class="fas fa-user-shield"></i>
-								<input type="text" placeholder="Admin" name="admin" class="admin-popup" />
-							</div> -->
 							<div class="radio-field">
 								<label>
 									<input type="radio" name="admin" value='1' class="admin-popup" />

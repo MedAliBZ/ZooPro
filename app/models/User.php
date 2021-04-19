@@ -132,12 +132,12 @@ class User
         $this->db->execute();
     }
 
+    
     public function update($data){
-        $this->db->query('UPDATE users SET username = :username , email = :email ,password = :password WHERE id = "'.$_SESSION["id"].'" ');
+        $this->db->query('UPDATE users SET username = :username , email = :email WHERE id = "'.$_SESSION["id"].'" ');
         //Bind values
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
-        $this->db->bind(':password', $data['password']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -166,6 +166,19 @@ class User
     public function afficher(){
         $this->db->query('SELECT id,username,email,admin FROM users');
         return $this->db->resultSet();
+    }
+
+    public function updatePass($data){
+        $this->db->query('UPDATE users SET password = :password WHERE id = "'.$_SESSION["id"].'" ');
+        //Bind values
+        $this->db->bind(':password', $data['password']);
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

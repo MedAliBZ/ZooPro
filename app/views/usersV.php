@@ -175,7 +175,7 @@ if (!isset($data['tab'])) {
 						<div class="col col-1">ID</div>
 						<div class="col col-2">Username</div>
 						<div class="col col-3">Email</div>
-						<div class="col col-4">Admin</div>
+						<div class="col col-4">Role</div>
 						<div class="col col-5">
 						</div>
 					</li>

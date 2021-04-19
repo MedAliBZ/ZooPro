@@ -20,7 +20,7 @@ class User
 
     public function register($data)
     {
-        $this->db->query('INSERT INTO users (username, email, password,admin) VALUES(:username, :email, :password,1)');
+        $this->db->query('INSERT INTO users (username, email, password,role_id) VALUES(:username, :email, :password,1)');
 
         //Bind values
         $this->db->bind(':username', $data['username']);
@@ -37,7 +37,7 @@ class User
 
     public function login($username, $password)
     {
-        $this->db->query('SELECT * FROM users WHERE username = :username AND admin != 0');
+        $this->db->query('SELECT * FROM users WHERE username = :username AND role_id != 0');
 
         //Bind value
         $this->db->bind(':username', $username);
@@ -148,7 +148,7 @@ class User
     }
 
     public function updateP($data){
-        $this->db->query('UPDATE users SET username = :username , email = :email, admin = :admin WHERE id = :id ');
+        $this->db->query('UPDATE users SET username = :username , email = :email, role_id = :admin WHERE id = :id ');
         //Bind values
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
@@ -164,7 +164,8 @@ class User
     }
 
     public function afficher(){
-        $this->db->query('SELECT id,username,email,admin FROM users');
+        $this->db->query('SELECT u.id,u.username,u.email,role.nom FROM users u INNER JOIN role ON u.role_id = role.id');
+       
         return $this->db->resultSet();
     }
 

@@ -254,7 +254,7 @@ class Users extends Controller
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>
                     <div class="col col-2" data-label="Username">' . $value[1] . '</div>
                     <div class="col col-3" data-label="Email">' . $value[2] . '</div>
-                    <div class="col col-4" data-label="Admin">' . $value[3] . '</div>
+                    <div class="col col-4" data-label="Role">' . $value[3] . '</div>
                     <div class="col col-5">
                         <div class="col-buttons">
                             <button class="tab-btn"><i data-feather="edit"></i></button>

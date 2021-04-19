@@ -16,7 +16,7 @@ openP.map(el => el.addEventListener('click', () => {
     document.querySelector('.id-popup').value=id;
     document.querySelector('.email-popup').value=email;
     document.querySelector('.username-popup').value=username;
-    if (admin != 0) {
+    if (admin !== 'utilisateur') {
         document.querySelector('.user-popup').removeAttribute('checked');
         document.querySelector('.admin-popup').setAttribute('checked', 'checked');
     }

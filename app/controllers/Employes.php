@@ -31,6 +31,7 @@ class Employes extends Controller
                 'errorAdd' => ''
             ];
 
+            $nameValidation = "/^[a-z ,.'-]+$/i";
 
 
             //Validate cin on numbers
@@ -47,13 +48,13 @@ class Employes extends Controller
             //Validate nom
             if (empty($data['nom'])) { //check if name is empty or not
                 $data['errorAdd'] = 'Please enter your name.';
-            } elseif (!ctype_alpha($data['nom'])) { //check name regex
+            } elseif (!preg_match($nameValidation, $data['nom'])) { //check name regex
                 $data['errorAdd'] = 'Please enter your real name.';
             }
 
             if (empty($data['prenom'])) {
                 $data['errorAdd'] = 'Please enter your surname.';
-            } elseif (!ctype_alpha($data['prenom'])) {
+            } elseif (!preg_match($nameValidation, $data['prenom'])) {
                 $data['errorAdd'] = 'Please enter your real surname.';
             }
 
@@ -81,7 +82,8 @@ class Employes extends Controller
         $tab = $this->employeModel->afficher();
         $data = [
             'tab' => '',
-            'errorAdd' => ''
+            'errorAdd' => '',
+            'errorUpdate' => ''
         ];
         if (isset($error)) {
             $errorTab = explode("-", $error);

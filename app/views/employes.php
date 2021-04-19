@@ -7,7 +7,7 @@ if (!isset($data['tab'])) {
         $errorTab = explode(" ", $data['errorAdd']);
         $err = implode("-", $errorTab);
         header('location: ' . URLROOT . '/employes/afficherList/err-' . $err);
-    } elseif (isset($data['errorUpdate']) || !empty($data['errorUpdate'])) {
+    } elseif (isset($data['errorUpdate']) && !empty($data['errorUpdate'])) {
         $errorTab = explode(" ", $data['errorUpdate']);
         $err = implode("-", $errorTab);
         header('location: ' . URLROOT . '/employes/afficherList/errUp-' . $err);

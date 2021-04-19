@@ -26,14 +26,25 @@ openP.map(el => el.addEventListener('click', () => {
     }
 }))
 
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+document.getElementById('sauvegarderB').addEventListener('click', (e) =>{
+    if(!validateEmail(document.querySelector('.email-popup').value)){
+        document.getElementById('errorPop').innerHTML="Forme email invalide!";
+        document.querySelector('.email-popup').parentElement.style.border = "1px solid red";
+        e.preventDefault();
+    }
+
+})
+
 closeP.addEventListener('click', () => {
     popup.style.visibility = 'hidden';
     popup.style.opacity = 0;
 })
 
-function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+
 
 function validatePassword(password) {
     if (password.match(/[a-z]/g) && password.match(/[A-Z]/g) && password.match(/[0-9]/g) && password.match(/[^a-zA-Z\d]/g) && password.length >= 8)
@@ -45,11 +56,9 @@ function validatePassword(password) {
 let saveButton = document.querySelector("form[class='card profile'] input[value='Sauvegrader']");
 let email = document.querySelector("form[class='card profile'] input[name='email']");
 let password = document.querySelector("form[class='card profile'] input[name='password']");
-let confirmPassword = document.querySelector("form[class='card profile'] input[name='confirmPassword']");
 let errorProfile = document.querySelector("#error-msg");
 saveButton.addEventListener("click", (e) => {
     if (!validateEmail(email.value)) {
-        confirmPassword.parentElement.style.border = "solid 1px #e8e8e9";
         password.parentElement.style.border = "solid 1px #e8e8e9";
         email.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'email invalide';
@@ -58,18 +67,26 @@ saveButton.addEventListener("click", (e) => {
     }
     else if (!validatePassword(password.value)) {
         email.parentElement.style.border = "solid 1px #e8e8e9";
-        confirmPassword.parentElement.style.border = "solid 1px #e8e8e9";
         password.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'Mot de passe invalide!';
         errorProfile.style.display = "block";
         e.preventDefault();
     }
-    else if (confirmPassword.value !== password.value) {
-        email.parentElement.style.border = "solid 1px #e8e8e9";
-        password.parentElement.style.border = "solid 1px #e8e8e9";
-        confirmPassword.parentElement.style.border = "1px solid red";
-        errorProfile.innerHTML = 'les mots de passe ne correspondent pas!';
-        errorProfile.style.display = "block";
+});
+
+
+
+let cardNewPass = document.getElementById('card-newPass');
+let cardConfirmPass = document.getElementById('card-confirmPass');
+let cardButton = document.getElementById('card-changerPass');
+let cardError = document.getElementById('error-msgPass');
+
+
+cardButton.addEventListener("click",(e)=>{
+    if(cardNewPass.value != cardConfirmPass.value){
+        cardConfirmPass.parentElement.style.border = "1px solid red";
+        cardNewPass.parentElement.style.border = "1px solid red";
+        cardError.innerHTML = "Les mots de passes ne sont pas compatibles!";
         e.preventDefault();
     }
-});
+})

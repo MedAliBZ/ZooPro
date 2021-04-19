@@ -147,11 +147,11 @@ if (!isset($data['tab'])) {
 					<p class="sectionTitle">Mot de passe</p>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Password" name="password" required />
+						<input id="card-newPass" type="password" placeholder="Password" name="password" required />
 					</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Confirm Password" name="confirmPassword" required />
+						<input id="card-confirmPass" type="password" placeholder="Confirm Password" name="confirmPassword" required />
 					</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
@@ -161,7 +161,7 @@ if (!isset($data['tab'])) {
 											echo $data['errorPass'];
 										} ?></p>
 					<div class="btn-div">
-						<input name="update" type="submit" class="btn" value="Changer" />
+						<input name="update" type="submit" class="btn" value="Changer" id="card-changerPass"/>
 					</div>
 				</form>
 			</div>
@@ -189,12 +189,12 @@ if (!isset($data['tab'])) {
 							<h2>Modifier ce profile</h2>
 							<input type="text" placeholder="id" name="id" style="display: none;" class="id-popup" />
 							<div class="input-field one">
-								<i class="fas fa-user"></i>
-								<input type="text" placeholder="Username" name="username" class="username-popup" />
+								<i class="fas fa-user"></i> 
+								<input type="text" placeholder="Username" name="username" class="username-popup" required />
 							</div>
 							<div class="input-field two">
 								<i class="fas fa-envelope"></i>
-								<input type="text" placeholder="Email" name="email" class="email-popup" />
+								<input type="text" placeholder="Email" name="email" class="email-popup" required />
 							</div>
 							<div class="radio-field">
 								<label>
@@ -209,8 +209,9 @@ if (!isset($data['tab'])) {
 									<span class="text">Utilisateur</span>
 								</label>
 							</div>
+							<div id="errorPop"></div>
 							<div class="buttonsP">
-								<input name="update" type="submit" class="btn" value="Sauvegrader" />
+								<input id="sauvegarderB" name="update" type="submit" class="btn" value="Sauvegrader" />
 								<input name="delete" type="submit" class="btn" value="Supprimer" />
 							</div>
 						</form>

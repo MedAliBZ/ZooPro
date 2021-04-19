@@ -1,0 +1,277 @@
+<?php
+class Users extends Controller
+{
+    public function __construct()
+    {
+        $this->userModel = $this->model('User');
+    }
+
+    public function register()
+    {
+        $data = [
+            'username' => '',
+            'email' => '',
+            'password' => '',
+            'confirmPassword' => '',
+            'errorSignUp' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
+                'errorSignUp' => ''
+            ];
+
+            $nameValidation = "/^[a-zA-Z0-9]*$/";
+            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+
+            //Validate username on letters/numbers
+            if (empty($data['username'])) {
+                $data['errorSignUp'] = 'Please enter username.';
+            } elseif (!preg_match($nameValidation, $data['username'])) {
+                $data['errorSignUp'] = 'Name can only contain letters and numbers.';
+            } else {
+                if ($this->userModel->findUserByUsername($data['username'])) {
+                    $data['errorSignUp'] = 'Username is already taken.';
+                }
+            }
+
+            //Validate email
+            if (empty($data['email'])) {
+                $data['errorSignUp'] = 'Please enter email address.';
+            } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $data['errorSignUp'] = 'Please enter the correct format.';
+            } else {
+                //Check if email exists.
+                if ($this->userModel->findUserByEmail($data['email'])) {
+                    $data['errorSignUp'] = 'Email is already taken.';
+                }
+            }
+
+            // Validate password on length, numeric values,
+            if (empty($data['password'])) {
+                $data['errorSignUp'] = 'Please enter password.';
+            } elseif (strlen($data['password']) < 6) {
+                $data['errorSignUp'] = 'Password must be at least 8 characters';
+            } elseif (preg_match($passwordValidation, $data['password'])) {
+                $data['errorSignUp'] = 'Password must be have at least one numeric value.';
+            }
+
+            //Validate confirm password
+            if (empty($data['confirmPassword'])) {
+                $data['errorSignUp'] = 'Please enter password.';
+            } else {
+                if ($data['password'] != $data['confirmPassword']) {
+                    $data['errorSignUp'] = 'Passwords do not match, please try again.';
+                }
+            }
+
+            // Make sure that errors are empty
+            if (empty($data['errorSignUp'])) {
+
+                // Hash password
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                //Register user from model function
+                if ($this->userModel->register($data)) {
+                    //Redirect to the login page
+                    header('location: ' . URLROOT . '/users/login');
+                } else {
+                    die('Something went wrong.');
+                }
+            }
+        }
+        $this->view('users/register', $data);
+    }
+
+    public function login()
+    {
+        $data = [
+            'title' => 'Login page',
+            'username' => '',
+            'password' => '',
+            'error' => ''
+        ];
+
+        //Check for post
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'password' => trim($_POST['password']),
+                'error' => ''
+            ];
+            //Validate username
+            if (empty($data['username'])) {
+                $data['error'] = 'Please enter a username.';
+            }
+
+            //Validate password
+            if (empty($data['password'])) {
+                $data['error'] = 'Please enter a password.';
+            }
+
+            //Check if all errors are empty
+            if (empty($data['error'])) {
+                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+
+                if ($loggedInUser) {
+                    $this->createUserSession($loggedInUser);
+                } else {
+                    $data['error'] = 'Mot de passe ou nom d\'utilisateur est incorrect. Veuillez réessayer.';
+
+                    $this->view('users/login', $data);
+                }
+            }
+        } else {
+            $data = [
+                'username' => '',
+                'password' => '',
+                'error' => ''
+            ];
+        }
+        $this->view('users/login', $data);
+    }
+
+    public function createUserSession($user)
+    {
+        $_SESSION['id'] = $user->id;
+        $_SESSION['username'] = $user->username;
+        $_SESSION['email'] = $user->email;
+        header('location:' . URLROOT . '/index');
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['id']);
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        header('location:' . URLROOT . '/users/login');
+    }
+
+    public function update()
+    {
+        $data = [
+            'username' => '',
+            'email' => '',
+            'password' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'error' => ''
+            ];
+
+            $nameValidation = "/^[a-zA-Z0-9]*$/";
+
+            if ($this->userModel->login($_SESSION['username'], $data['password'])) {
+                if (empty($data['username'])) {
+                    $data['error'] = 'Please enter username.';
+                } elseif (!preg_match($nameValidation, $data['username'])) {
+                    $data['error'] = 'Name can only contain letters and numbers.';
+                } elseif ($this->userModel->findUserByUsernameUpdate($data['username'], $_SESSION['id'])) {
+                    $data['error'] = 'Username is already taken.';
+                }
+
+                if (empty($data['email'])) {
+                    $data['error'] = 'Please enter email address.';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['error'] = 'Please enter the correct format.';
+                } else {
+                    if ($this->userModel->findUserByEmailUpdate($data['email'], $_SESSION['id'])) {
+                        $data['error'] = 'Email is already taken.';
+                    }
+                }
+                if (empty($data['error'])) {
+                    if ($this->userModel->update($data)) {
+                        $_SESSION['username'] = $data['username'];
+                        $_SESSION['email'] = $data['email'];
+                        //Redirect to the same page
+                        header('location: ' . URLROOT . '/pages/profile');
+                    } else {
+                        die('Something went wrong.');
+                    }
+                }
+            } else {
+                $data['error'] = "Password does not match";
+            }
+        }
+        $this->view('profile', $data);
+    }
+
+
+    public function updatePass()
+    {
+        $data = [
+            'password' => '',
+            'confirmPassword' => '',
+            'oldPassword' => '',
+            'errorPass' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
+                'oldPassword' => trim($_POST['oldPassword']),
+                'errorPass' => ''
+            ];
+
+            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+
+            if ($this->userModel->login($_SESSION['username'], $data['oldPassword'])) {
+                if (empty($data['password'])) {
+                    $data['errorPass'] = 'Please enter password.';
+                } elseif (strlen($data['password']) < 6) {
+                    $data['errorPass'] = 'Password must be at least 8 characters';
+                } elseif (preg_match($passwordValidation, $data['password'])) {
+                    $data['errorPass'] = 'Password must be have at least one numeric value.';
+                }
+
+                //Validate confirm password
+                if (empty($data['confirmPassword'])) {
+                    $data['errorPass'] = 'Please enter password.';
+                } else {
+                    if ($data['password'] != $data['confirmPassword']) {
+                        $data['errorPass'] = 'Passwords do not match, please try again.';
+                    }
+                }
+                
+                if (empty($data['errorPass'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    if ($this->userModel->updatePass($data)) {
+                        //Redirect to the same page
+                        header('location: ' . URLROOT . '/pages/profile');
+                    } else {
+                        die('Something went wrong.');
+                    }
+                }
+            } else {
+                $data['errorPass'] = "Password does not match old pass";
+            }
+        }
+        $this->view('profile', $data);
+    }
+
+}

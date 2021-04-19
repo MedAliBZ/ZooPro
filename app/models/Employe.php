@@ -1,0 +1,125 @@
+<?php
+class Employe
+{
+    private $db;
+    private $cin;
+    private $nom;
+    private $prenom;
+    private $dateNaissance;
+    private $salaire;
+
+
+    public function __construct()
+    {
+        $this->db = new Database;
+    }
+
+    public function getCin(){
+        echo $this->cin;
+    }
+
+    public function getNom(){
+        echo $this->nom;
+    }
+
+    public function getPrenom(){
+        echo $this->prenom;
+    }
+
+    public function getDateNaissance(){
+        echo $this->dateNaissance;
+    }
+
+    public function getSalaire(){
+        echo $this->salaire;
+    }
+
+    public function addEmployes($data)
+    {
+        $this->db->query('INSERT INTO personel (cin, nom, prenom,date_de_naissance,salaire) VALUES(:cin, :nom, :prenom,:dateNaissance,:salaire)');
+
+        //Bind values
+        $this->db->bind(':cin', $data['cin']);
+        $this->db->bind(':nom', $data['nom']);
+        $this->db->bind(':prenom', $data['prenom']);
+        $this->db->bind(':dateNaissance', $data['dateNaissance']);
+        $this->db->bind(':salaire', $data['salaire']);
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Find user by cin. Cin is passed in by the Controller.
+    public function findUserByCin($cin)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM personel WHERE cin = :cin');
+
+        //cin param will be binded with the cin variable
+        $this->db->bind(':cin', $cin);
+        $this->db->execute();
+
+        //Check if email is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function afficher(){
+        $this->db->query('SELECT * FROM personel');
+        return $this->db->resultSet();
+    }
+
+
+    public function deleteEmploye($id){
+        $this->db->query('DELETE FROM personel WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+    }
+    
+    public function findUserByCinUpdate($cin,$id)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM personel WHERE cin = :cin AND id != :id;');
+
+        //cin param will be binded with the cin variable
+        $this->db->bind(':cin', $cin);
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+
+        //Check if cin is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function updateP($data){
+        $this->db->query('UPDATE personel SET cin = :cin , nom = :nom, prenom = :prenom, date_de_naissance = :dateNaissance, salaire = :salaire WHERE id = :id ');
+        //Bind values
+        $this->db->bind(':cin', $data['cin']);
+        $this->db->bind(':nom', $data['nom']);
+        $this->db->bind(':prenom', $data['prenom']);
+        $this->db->bind(':dateNaissance', $data['dateNaissance']);
+        $this->db->bind(':salaire', $data['salaire']);
+        $this->db->bind(':id', $data['id']);
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
+
+}

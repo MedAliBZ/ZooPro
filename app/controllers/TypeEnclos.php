@@ -30,11 +30,13 @@ class TypeEnclos extends Controller
                 $idValidation = "/^[a-zA-Z0-9]*$/";
 
                 //Validate id on letters/numbers
-                if (empty($data['id'])) {
+                 if (empty($data['id'])) {
                     $data['errorAdd'] = 'Please enter id.';
                 } elseif (!preg_match($idValidation, $data['id'])) {
                     $data['errorAdd'] = 'id can only contain letters and numbers.';
-                }  
+                }   else {if ($this->typeModel->findTypeByID($data['id'])) {
+                    $data['errorAdd'] = 'ID is already taken.';
+                } }  
 
                 //Validate label
                 if (empty($data['label'])) { //check if label is empty or not
@@ -113,16 +115,13 @@ class TypeEnclos extends Controller
     public function deleteUpdateTab()
     {
         if (isset($_POST['delete'])) {
-            $this->encloModel->deleteEnclo($_POST['id']);
-            header('location:' . URLROOT . '/pages/enclos');
+            $this->typeModel->deleteType($_POST['id']);
+            header('location:' . URLROOT . '/pages/types');
         } elseif (isset($_POST['update'])) {
             $data = [
                 'id',
-                'appellation' => '',
-                'localisation' => '',
-                'taille' => '',
-                'dateConstruction' => '',
-                'capaciteMaximale' => '',
+                'label' => '',
+                'structure' => '',
                 'errorUpdate' => ''
             ];
 
@@ -133,41 +132,32 @@ class TypeEnclos extends Controller
 
                 $data = [
                     'id' => trim($_POST['id']),
-                    'appellation' => trim($_POST['appellation']),
-                    'localisation' => trim($_POST['localisation']),
-                    'taille' => trim($_POST['taille']),
-                    'dateConstruction' => trim($_POST['dateConstruction']),
-                    'capaciteMaximale' => trim($_POST['capaciteMaximale']),
+                    'label' => trim($_POST['label']),
+                    'structure' => trim($_POST['structure']),
                     'errorUpdate' => ''
                 ];
                 
-            $nameValidation = "/^[a-zA-Z0-9]*$/";
-            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+                 $idValidation = "/^[a-zA-Z0-9]*$/";
 
-             //Validate appellation
-                if (empty($data['appellation'])) { //check if name is empty or not
-                    $data['errorUpdate'] = 'Please enter the name.';
-                } elseif (!ctype_alpha($data['appellation'])) { //check name regex
-                    $data['errorUpdate'] = 'Please enter the real name.';
+                //Validate id on letters/numbers
+                if (empty($data['id'])) {
+                    $data['errorUpdate'] = 'Please enter id.';
+                } elseif (!preg_match($idValidation, $data['id'])) {
+                    $data['errorUpdate'] = 'id can only contain letters and numbers.';
+                }   
+
+                //Validate label
+                if (empty($data['label'])) { //check if label is empty or not
+                    $data['errorUpdate'] = 'Please enter the label.';
+                } elseif (!ctype_alpha($data['label'])) { //check label regex
+                    $data['errorUpdate'] = 'Please enter the real label.';
                 }
 
-             //Validate localisation
-                if (empty($data['localisation'])) { //check if location is empty or not
-                    $data['errorUpdate'] = 'Please enter the location.';
-                } elseif (!ctype_alpha($data['localisation'])) { //check location regex
-                    $data['errorUpdate'] = 'Please enter the real location.';
-                }
-              //Validate taille
-                 if (empty($data['taille'])) {
-                    $data['errorUpdate'] = 'Please enter the size.';
-                } elseif (!is_numeric($data['taille'])) {
-                    $data['errorUpdate'] = 'size can only contain numbers.';
-                }
-              //Validate capacite
-                 if (empty($data['capaciteMaximale'])) {
-                    $data['errorUpdate'] = 'Please enter the capacity.';
-                } elseif (!is_numeric($data['capaciteMaximale'])) {
-                    $data['errorUpdate'] = 'capacity can only contain numbers.';
+                //Validate structure
+                if (empty($data['structure'])) { //check if structure is empty or not
+                    $data['errorUpdate'] = 'Please enter the structure.';
+                } elseif (!ctype_alpha($data['structure'])) { //check structure regex
+                    $data['errorUpdate'] = 'Please enter the real structure.';
                 }
 
 
@@ -176,8 +166,8 @@ class TypeEnclos extends Controller
             if (empty($data['errorUpdate'])) {
 
                 //Register user from model function
-                if ($this->encloModel->updateE($data)) {
-                 $this->view('enclos', $data);
+                if ($this->typeModel->updateT($data)) {
+                 $this->view('typeEnclos', $data);
                 } 
                 else
                 {
@@ -186,7 +176,7 @@ class TypeEnclos extends Controller
             }
         }
                 
-            $this->view('enclos', $data);
+            $this->view('typeEnclos', $data);
         }
     }
 

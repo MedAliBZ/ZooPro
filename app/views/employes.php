@@ -202,7 +202,7 @@ if (!isset($data['tab'])) {
                                 <input type="number" placeholder="Salaire" name="salaire" id="salaire-popupA" />
                             </div>
                             <div class="buttonsP">
-                                <input name="ajouter" type="submit" class="btn" value="Ajouter" />
+                                <input name="ajouter" type="submit" class="btn" value="Ajouter"/>
                             </div>
                         </form>
                     </div>

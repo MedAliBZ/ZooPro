@@ -237,3 +237,8 @@
   -webkit-transform: scale(2.6);
   transform: scale(2.6);
 }
+#errorAj,
+#errorMd {
+  color: red;
+  text-align: center;
+}

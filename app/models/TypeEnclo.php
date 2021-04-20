@@ -46,10 +46,38 @@ class TypeEnclo
         return $this->db->resultSet();
     }
 
-     public function deleteEnclo($id){
-        $this->db->query('DELETE FROM enclos WHERE id = :id');
+    public function deleteType($id){
+        $this->db->query('DELETE FROM typeenclos WHERE id = :id');
         $this->db->bind(':id', $id);
         $this->db->execute();
+    }
+
+     public function findTypeByID($id)
+    {
+        $this->db->query('SELECT * FROM typeenclos WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+     public function updateT($data){
+        $this->db->query('UPDATE typeenclos SET id = :id , label = :label, structure = :structure WHERE id = :id ');
+        //Bind values
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':label', $data['label']);
+        $this->db->bind(':structure', $data['structure']);
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 
@@ -143,32 +171,4 @@ class TypeEnclo
             return false;
         }
     }
-
-    public function deleteAccount($id){
-        $this->db->query('DELETE FROM users WHERE id = :id');
-        $this->db->bind(':id', $id);
-        $this->db->execute();
-    }
-
-
-    public function updateE($data){
-        $this->db->query('UPDATE enclos SET appellation = :appellation , localisation = :localisation,taille = :taille , dateConstruction = :dateConstruction , capaciteMaximale = :capaciteMaximale WHERE id = :id ');
-        //Bind values
-        $this->db->bind(':appellation', $data['appellation']);
-        $this->db->bind(':localisation', $data['localisation']);
-        $this->db->bind(':taille', $data['taille']);
-        $this->db->bind(':dateConstruction', $data['dateConstruction']);
-        $this->db->bind(':capaciteMaximale', $data['capaciteMaximale']);
-        $this->db->bind(':id', $data['id']);
-
-        //Execute function
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    
-
 }

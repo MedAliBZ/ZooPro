@@ -141,23 +141,24 @@ if (!isset($data['tab'])) {
                 <div class="overlay">
                     <div class="popup">
                         <a class="close" href="#">&times;</a>
-                        <form class="content" action="" method="POST">
+                        <form class="content" action="<?php echo URLROOT; ?>/typeEnclos/deleteUpdateTab" method="POST">
                             <h2>Modifier un type</h2>
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Id" name="id" class="id-popup" />
+                                <input type="text" placeholder="Id" name="id" class="id-popup"
+                                required/>
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Label" name="label" class="label-popup" />
+                                <input type="text" placeholder="Label" name="label" class="label-popup" required/>
                             </div>
                             <div class="input-field three">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Structure" name="structure" class="structure-popup" />
+                                <input type="text" placeholder="Structure" name="structure" class="structure-popup" required/>
                             </div>
-                            
+                            <div id="errorMd"></div>
                             <div class="buttonsPUpdate">
-                                <input name="update" type="submit" class="btn" value="Modifier" />
+                                <input name="update" type="submit" class="btn" value="Modifier" id="modifierPopupM"/>
                                 <input name="delete" type="submit" class="btn" value="Supprimer" />
                             </div>
                         </form>
@@ -171,18 +172,19 @@ if (!isset($data['tab'])) {
                             <h2>Ajouter un type</h2>
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="ID" name="id" id="id-popupA" />
+                                <input type="text" placeholder="ID" name="id" id="id-popupA" required/>
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Label" name="label" id="label-popupA" />
+                                <input type="text" placeholder="Label" name="label" id="label-popupA" required/>
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Structure" name="structure" id="structure-popupA" />
+                                <input type="text" placeholder="Structure" name="structure" id="structure-popupA" required/>
                             </div>
+                            <div id="errorAj">error</div>
                             <div class="buttonsP">
-                                <input name="ajouter" type="submit" class="btn" value="Ajouter" />
+                                <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup"/>
                             </div>
                         </form>
                     </div>

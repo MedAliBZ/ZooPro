@@ -164,8 +164,9 @@ if (!isset($_SESSION['id']))
                                 <i class="fas fa-signature"></i>
                                 <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" class="capaciteMaximale-popup" />
                             </div>
+                             <div id="errorMd"></div>
                             <div class="buttonsPUpdate">
-                                <input name="update" type="submit" class="btn" value="Modifier" />
+                                <input name="update" type="submit" class="btn" value="Modifier" id="modifierPopupM" />
                                 <input name="delete" type="submit" class="btn" value="Supprimer" />
                             </div>
                         </form>
@@ -179,26 +180,27 @@ if (!isset($_SESSION['id']))
                             <h2>Ajouter un enclos</h2>
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Appellation" name="appellation" id="appellation-popupA" />
+                                <input type="text" placeholder="Appellation" name="appellation" id="appellation-popupA" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Localisation" name="localisation" id="localisation-popupA" />
+                                <input type="text" placeholder="Localisation" name="localisation" id="localisation-popupA" required/>
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="number" placeholder="Taille" name="taille" id="taille-popupA" />
+                                <input type="number" placeholder="Taille" name="taille" id="taille-popupA" required/>
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateConstruction" id="CD-popupA" />
+                                <input type="Date" name="dateConstruction" id="CD-popupA" required/>
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" id="capaciteMaximale-popupA" />
+                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" id="capaciteMaximale-popupA" required/>
                             </div>
+                            <div id="errorAj"></div>
                             <div class="buttonsP">
-                                <input name="ajouter" type="submit" class="btn" value="Ajouter" />
+                                <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup" required/>
                             </div>
                         </form>
                     </div>

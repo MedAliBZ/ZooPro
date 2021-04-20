@@ -37,13 +37,13 @@
   border: solid 2px #e8e8e9;
 }
 .responsive-table .col-1 {
-  flex-basis: 5%;
+  flex-basis: 10%;
 }
 .responsive-table .col-2 {
-  flex-basis: 25%;
+  flex-basis: 17%;
 }
 .responsive-table .col-3 {
-  flex-basis: 15%;
+  flex-basis: 18%;
 }
 .responsive-table .col-4 {
   flex-basis: 15%;
@@ -52,10 +52,10 @@
   flex-basis: 25%;
 }
 .responsive-table .col-6 {
-  flex-basis: 10%;
+  flex-basis: 15%;
 }
 .responsive-table .col-7 {
-  flex-basis: 10%;
+  flex-basis: 5%;
 }
 .responsive-table input {
   box-sizing: border-box;
@@ -236,4 +236,10 @@
   opacity: 0.1;
   -webkit-transform: scale(2.6);
   transform: scale(2.6);
+}
+
+#errorAj,
+#errorMd {
+  color: red;
+  text-align: center;
 }

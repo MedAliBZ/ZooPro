@@ -25,7 +25,7 @@ if(!isset($data['username']))
             <div class="signin-signup">
 
                 <form class="sign-in-form" action="<?php echo URLROOT; ?>/users/useKey" method="POST">
-                    <h2 class="title" style="text-align: center;margin-bottom:2%;">Retrouvez votre mot de passe</h2>
+                    <h2 class="title" style="text-align: center;margin-bottom:2%;">Ecrire le code reçu sur email</h2>
                     <input name="username" value="<?php echo $data['username'];  ?>" style="display: none;"/>
                     <div class="input-field">
                         <i class="fas fa-shield-alt"></i>

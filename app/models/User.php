@@ -274,4 +274,14 @@ class User
             return false;
         }
     }
+
+    public function findUsernameByEmail($email)
+    {
+        $this->db->query('SELECT username FROM users WHERE email = :email');
+
+        //username param will be binded with the username variable
+        $this->db->bind(':email', $email);
+        $row = $this->db->resultSet();
+        return $row[0];
+    }
 }

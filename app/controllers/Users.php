@@ -511,4 +511,37 @@ class Users extends Controller
         }
         $this->view('changePass', $data);
     }
+
+
+    public function chercherUsername()
+    {
+        $data = [
+            'username' => '',
+            'email' => '',
+            'errorEmail' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => '',
+                'email' =>  trim($_POST['email']),
+                'errorEmail' => ''
+            ];
+
+            if ($this->userModel->findUserByEmail($data['email'])) {
+                $data['username'] = $this->userModel->findUsernameByEmail($data['email']);
+                //envoie mail
+                mail($data['email'], 'Password Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
+                //redirection
+                header('location: ' . URLROOT . '/index');
+            }else {
+                $data['errorEmail'] = "email invalide!";
+                $this->view('resetPass', $data);
+            }
+        }
+    }
 }

@@ -16,7 +16,7 @@ if (isset($_SESSION['id']))
 </head>
 
 <body>
-    <div class="container">
+    <div class="container <?php if(isset($data['errorEmail'])){echo "sign-up-mode";} ?>">
         <div class="forms-container">
             <div class="signin-signup">
 
@@ -34,14 +34,14 @@ if (isset($_SESSION['id']))
                 </form>
 
 
-                <form class="sign-up-form" action="<?php echo URLROOT; ?>/users/register" method="POST">
+                <form class="sign-up-form" action="<?php echo URLROOT; ?>/users/chercherUsername" method="POST">
                     <h2 class="title" style="text-align: center;margin-bottom:2%;">Retrouvez votre nom d'utilisateur</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         <input type="text" placeholder="Email" name="email" id="login-username" required />
                     </div>
-                    <p id="error-msg-signup"><?php if (isset($data['errorSignUp'])) {
-                                                    echo $data['errorSignUp'];
+                    <p id="error-msg-signup"><?php if (isset($data['errorEmail'])) {
+                                                    echo $data['errorEmail'];
                                                 } ?></p>
                     
                         <input style="margin-right: 2%;" type="submit" id="login" value="Chercher" name="chercher" class="btn solid" />

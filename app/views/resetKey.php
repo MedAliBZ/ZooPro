@@ -1,3 +1,8 @@
+<?php 
+if(!isset($data['username']))
+header('location: ' . URLROOT . '/Pages/resetPass');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,24 +48,23 @@
 
         <div class="right-div">
             <h4>Welcome Back</h4>
-            <form action="<?php echo URLROOT; ?>/users/login" method="POST" class="right-form">
-
+            <form action="<?php echo URLROOT; ?>/users/useKey" method="POST" class="right-form">
+                <input name="username" value="<?php echo $data['username'];  ?>" style="display: none;"/>
                 <ul>
                     <li>
-                        <h3>Login Your Account</h3>
+                        <h3>Ecrire le code reçu sur email</h3>
                     </li>
-                    <li><i class="fas fa-user"></i> <input type="text" placeholder="Username" name="username" required></li>
-                    <li><i class="fas fa-lock"></i> <input type="password" placeholder="Password" name="password" required></li>
+
+                    <li><i class="fas fa-shield-alt"></i> <input type="text" placeholder="Code" name="key" required></li>
                     <li style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></li>
-                    <li><input type="submit" value="Login"></li>
+                    <li><input type="submit" value="Valider"></li>
                 </ul>
 
             </form>
 
             <div class="footer">
                 <ul>
-                    <li><a href="<?php echo URLROOT; ?>/users/register">Create account</a></li>
-                    <li><a href="<?php echo URLROOT; ?>/pages/resetPass">mot de passe oublié</a></li>
+                    <li><a href="<?php echo URLROOT; ?>/users/login">Annuler</a></li>
                 </ul>
             </div>
             <div class="vr-line"></div>

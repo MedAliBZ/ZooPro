@@ -278,4 +278,156 @@ class Users extends Controller
         }
         $this->view('profile', $data);
     }
+
+    public function chercherEmail()
+    {
+        $data = [
+            'username' => '',
+            'email' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'email' => '',
+                'error' => ''
+            ];
+
+            if ($this->userModel->findUserByUsername($data['username'])) {
+                $data['email'] = $this->userModel->findEmailByUsername($data['username']);
+                //creation code
+                $key = $this->userModel->createPassKey($data['username']);
+                if ($key) {
+                    //envoie mail
+                    mail($data['email'][0], 'Password Reset', 'Your code is: ' . $key, 'From: zooproresetpass@gmail.com');
+                    //redirection
+                    $this->view('resetKey', $data);
+                } else {
+                    $data['error'] = "erreur inconnue!";
+                    $this->view('resetPass', $data);
+                }
+            } else {
+                $data['error'] = "username invalide!";
+                $this->view('resetPass', $data);
+            }
+        }
+    }
+
+    public function useKey()
+    {
+        $data = [
+            'username' => '',
+            'key' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'key' => trim($_POST['key']),
+                'error' => ''
+            ];
+            if ($this->userModel->checkKey($data)) {
+                $this->view('changePass', $data);
+            } else {
+                $data['key'] = '';
+                $data['error'] = 'invalid key!';
+                $this->view('resetKey', $data);
+            }
+        }
+    }
+
+    public function changePassbyKey()
+    {
+        $data = [
+            'username' => '',
+            'key' => '',
+            'errorKey' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'key' => trim($_POST['key']),
+                'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
+                'errorKey' => ''
+            ];
+
+            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+
+            if (empty($data['password'])) {
+                $data['errorKey'] = 'Please enter password.';
+            } elseif (strlen($data['password']) < 6) {
+                $data['errorKey'] = 'Password must be at least 8 characters';
+            } elseif (preg_match($passwordValidation, $data['password'])) {
+                $data['errorKey'] = 'Password must be have at least one numeric value.';
+            }
+
+            if ($data['password'] != $data['confirmPassword'])
+                $data['errorKey'] = 'Passwords does not match!';
+
+            if (empty($data['errorKey']) || !isset($data['errorKey'])) {
+                if ($this->userModel->checkKey($data)) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    if ($this->userModel->changePassWithKey($data)) {
+                        header('location: ' . URLROOT . '/users/login');
+                    } else
+                        $data['errorKey'] = 'unexpected error';
+                    $this->view('changePass', $data);
+                } else {
+                    $data['errorKey'] = 'invalid key!';
+                    $this->view('changePass', $data);
+                }
+            } else {
+                $this->view('changePass', $data);
+            }
+        }
+    }
+
+
+    public function chercherUsername()
+    {
+        $data = [
+            'username' => '',
+            'email' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => '',
+                'email' =>  trim($_POST['email']),
+                'error' => ''
+            ];
+
+            if ($this->userModel->findUserByEmail($data['email'])) {
+                $data['username'] = $this->userModel->findUsernameByEmail($data['email']);
+                //envoie mail
+                mail($data['email'], 'Password Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
+                //redirection
+                header('location: ' . URLROOT . '/users/login');
+            }else {
+                $data['error'] = "email invalide!";
+                $this->view('getUsername', $data);
+            }
+        }
+    }
 }

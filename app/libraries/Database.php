@@ -10,7 +10,7 @@
         private $error;
 
         public function __construct() {
-            $conn = 'mysql:host=' . $this->dbHost . ';port=3307;dbname=' . $this->dbName;
+            $conn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -54,7 +54,7 @@
         //Return an array
         public function resultSet() {
             $this->execute();
-            return $this->statement->fetchAll(PDO::FETCH_OBJ);
+            return $this->statement->fetchAll();
         }
 
         //Return a specific row as an object

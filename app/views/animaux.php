@@ -1,3 +1,18 @@
+<?php
+if (!isset($_SESSION['id']))
+    header('location: ' . URLROOT . '/index');
+
+
+if (!isset($data['tab'])) {
+    if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
+        $errorTab = explode(" ", $data['errorAdd']);
+        $err = implode("-", $errorTab);
+        header('location: ' . URLROOT . '/animauxC/afficherList/err-' . $err);
+    } else
+        header('location: ' . URLROOT . '/animauxC/afficherList');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,28 +125,28 @@
 
                 <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
                 <div class="form-popup" id="myForm">
-                    <form action="<?php echo URLROOT; ?>/regimeC/addRegimeC" class="form-container" method="POST">
+                    <form action="<?php echo URLROOT; ?>/animauxC/addAnimauxC" class="form-container" method="POST">
 
                         <h2> Ajouter un animal</h2>
                         <br>
 
                         <div class="formCss">
-                            <input placeholder="nom animal" type="text" id="nomAnimaux" name="nomAnimaux" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
+                            <input placeholder="nom animal" type="text" id="nomAnimal" name="nomAnimal" required >
                         </div>
                         <div class="formCss">
-                            <input placeholder="Race" type="text" id="Race" name="Race" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
+                            <input placeholder="Race" type="text" id="Race" name="race" required>
                         </div>
                         <div class="formCss">
-                            <input placeholder="age" type="number" id="age" name="age" required pattern="[1-10]" maxlength="2">
+                            <input placeholder="age" type="number" id="age" name="age" required>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="pays de naissance" type="text" id="pays" name="pays" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
+                            <input placeholder="pays de naissance" type="text" id="pays" name="pays" required >
                         </div>
 
                         <div class="radio-field">
 								<label>
-									<input type="radio" name="genre" value='male' class="admin-popup" />
+									<input type="radio" name="genre" value='male'checked class="admin-popup" />
 									<span class="design"></span>
 									<span class="text">Male</span>
 								</label>
@@ -144,11 +159,11 @@
 							</div>
                           <br>
 
-                        <div class="error-table">
+                        <!-- <div class="error-table">
                             <p>error : <?php if (isset($data['errorAdd'])) {
                                             echo $data["errorAdd"];
                                         } ?></p>
-                        </div>
+                        </div> -->
 
                         <input type="submit" class="buttonStyle" value="Ajouter">
                         <button type="button" class="buttonStyle" onclick="closeForm()" value="annuler">Close</button>
@@ -158,14 +173,15 @@
                 </div>
                 <!-- start table -->
 
-                <table class="styled-table" id="tableRegime">
+                <table class="styled-table" id="tableAnimaux">
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>Nom régime </th>
-                            <th>type nourriture</th>
-                            <th>quantité par repas(kg)</th>
-                            <th>nombre de repas(jour)</th>
+                            <th>Nom animaux </th>
+                            <th>race</th>
+                            <th>age</th>
+                            <th>pays</th>
+                            <th>genre</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -177,44 +193,49 @@
                 </table>
                 <!-- MODIFIER HEREEEEEEE -->
                 <div class="form-popup" id="myForm1">
-                    <form action="<?php echo URLROOT; ?>/regimeC/deleteUpdateTabRegime" class="form-container" method="POST">
+                    <form action="<?php echo URLROOT; ?>/animauxC/deleteUpdateTabAnimal" class="form-container" method="POST">
 
 
                         <i class="fas fa-times" id="closeButton" onclick="closeFormModifier()"></i>
-                        <h2> modifier un régime alimentaire</h2>
+                        <h2> modifier un animal</h2>
 
                         <br>
                         <div class="formCss">
-                            <input type="text" id="id" name="id" readonly>
-                        </div>
-
-
-                        <div class="formCss">
-                            <select name="nom_regime" id="regimeAlimentaire1">
-                                <option value="0">choisir un régime</option>
-                                <option value="herbivore">herbivore </option>
-                                <option value="granivore">granivore </option>
-                                <option value="frugivore">frugivore </option>
-                                <option value="omnivore">omnivore </option>
-                                <option value="carnivore">carnivore </option>
-                            </select>
+                            <input type="text" id="id" name="id" readonly >
                         </div>
                         <div class="formCss">
-                            <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
+                            <input placeholder="nom animal" type="text" id="nomAnimal1" name="nomAnimal" required >
                         </div>
                         <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas" required maxlength="3">
+                            <input placeholder="Race" type="text" id="Race1" name="race" required>
+                        </div>
+                        <div class="formCss">
+                            <input placeholder="age" type="number" id="age1" name="age" required>
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas1" required maxlength="2" />
+                            <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required >
                         </div>
 
-                        <div class="error-table">
+                        <div class="radio-field">
+								<label>
+									<input type="radio" name="genre" value='male'checked class="admin-popup" id="genre1" />
+									<span class="design"></span>
+									<span class="text">Male</span>
+								</label>
+
+								<label>
+									<input type="radio" name="genre" value='female' class="user-popup" id="genre1" />
+									<span class="design"></span>
+									<span class="text">Femelle</span>
+								</label>
+							</div>
+
+                      <!-- <div class="error-table">
                             <p>error : <?php if (isset($data['errorUpdate'])) {
                                             echo $data["errorUpdate"];
                                         } ?></p>
-                        </div>
+                        </div>  -->
 
                         <input name="update" type="submit" class="buttonStyle" value="modifier">
                         <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
@@ -234,5 +255,5 @@
     <!--wrapper end-->
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
-    <script src="<?php echo URLROOT ?>/public/js/regime.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/animaux.js"></script>
 </body>

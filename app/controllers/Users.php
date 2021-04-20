@@ -419,7 +419,7 @@ class Users extends Controller
                 $key = $this->userModel->createPassKey($data['username']);
                 if ($key) {
                     //envoie mail
-                    
+                    mail($data['email'][0],'Password Reset','You code is: '.$key,'From: zooproresetpass@gmail.com');
                     //redirection
                     $this->view('changePass', $data);
                 } else {

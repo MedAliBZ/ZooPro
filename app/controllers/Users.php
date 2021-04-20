@@ -170,21 +170,21 @@ class Users extends Controller
                 'password' => '',
                 'error' => ''
             ];
-    
+
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Process form
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-    
+
                 $data = [
                     'username' => trim($_POST['username']),
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'error' => ''
                 ];
-    
+
                 $nameValidation = "/^[a-zA-Z0-9]*$/";
-    
+
                 if ($this->userModel->login($_SESSION['username'], $data['password'])) {
                     if (empty($data['username'])) {
                         $data['error'] = 'Please enter username.';
@@ -193,7 +193,7 @@ class Users extends Controller
                     } elseif ($this->userModel->findUserByUsernameUpdate($data['username'], $_SESSION['id'])) {
                         $data['error'] = 'Username is already taken.';
                     }
-    
+
                     if (empty($data['email'])) {
                         $data['error'] = 'Please enter email address.';
                     } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
@@ -301,7 +301,7 @@ class Users extends Controller
                 } elseif (!preg_match($nameValidation, $data['username'])) {
                     $data['errorUpdate'] = 'Name can only contain letters and numbers.';
                 } else {
-                    if ($this->userModel->findUserByUsernameUpdate($data['username'],$data['id'])) {
+                    if ($this->userModel->findUserByUsernameUpdate($data['username'], $data['id'])) {
                         $data['errorUpdate'] = 'Username is already taken.';
                     }
                 }
@@ -312,7 +312,7 @@ class Users extends Controller
                 } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['errorUpdate'] = 'Please enter the correct format.';
                 } else {
-                    if ($this->userModel->findUserByEmailUpdate($data['email'],$data['id'])) {
+                    if ($this->userModel->findUserByEmailUpdate($data['email'], $data['id'])) {
                         $data['errorUpdate'] = 'Email is already taken.';
                     }
                 }
@@ -376,7 +376,7 @@ class Users extends Controller
                         $data['errorPass'] = 'Passwords do not match, please try again.';
                     }
                 }
-                
+
                 if (empty($data['errorPass'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     if ($this->userModel->updatePass($data)) {
@@ -394,6 +394,121 @@ class Users extends Controller
     }
 
 
+    public function chercherEmail()
+    {
+        $data = [
+            'username' => '',
+            'email' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'email' => '',
+                'error' => ''
+            ];
+
+            if ($this->userModel->findUserByUsername($data['username'])) {
+                $data['email'] = $this->userModel->findEmailByUsername($data['username']);
+                //creation code
+                $key = $this->userModel->createPassKey($data['username']);
+                if ($key) {
+                    //envoie mail
+                    
+                    //redirection
+                    $this->view('changePass', $data);
+                } else {
+                    $data['error'] = "erreur inconnue!";
+                    $this->view('resetPass', $data);
+                }
+            } else {
+                $data['error'] = "username invalide!";
+                $this->view('resetPass', $data);
+            }
+            
+        }
+        
+    }
+
+    public function useKey()
+    {
+        $data = [
+            'username' => '',
+            'key' => '',
+            'error' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'key' => trim($_POST['key']),
+                'error' => ''
+            ];
+            if ($this->userModel->checkKey($data)) {
+                $this->view('changePass', $data);
+            } else {
+                $data['key'] = '';
+                $data['error'] = 'invalid key!';
+            }
+        }
+        $this->view('changePass', $data);
+    }
+
+    public function changePassbyKey()
+    {
+        $data = [
+            'username' => '',
+            'key' => '',
+            'errorKey' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'key' => trim($_POST['key']),
+                'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
+                'errorKey' => ''
+            ];
+
+            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+
+            if (empty($data['password'])) {
+                $data['errorKey'] = 'Please enter password.';
+            } elseif (strlen($data['password']) < 6) {
+                $data['errorKey'] = 'Password must be at least 8 characters';
+            } elseif (preg_match($passwordValidation, $data['password'])) {
+                $data['errorKey'] = 'Password must be have at least one numeric value.';
+            }
+
+            if ($data['password'] != $data['confirmPassword'])
+                $data['errorKey'] = 'Passwords does not match!';
+
+            if (empty($data['errorKey'])) {
+                if ($this->userModel->checkKey($data)) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    if ($this->userModel->changePassWithKey($data)) {
+                        $this->view('index');
+                    } else
+                        $data['errorKey'] = 'unexpected error';
+                } else {
+                    $data['errorKey'] = 'invalid key!';
+                }
+            }
+        }
+        $this->view('changePass', $data);
+    }
 }
-
-

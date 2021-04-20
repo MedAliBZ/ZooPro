@@ -52,4 +52,12 @@ class Pages extends Controller
     {
         $this->view('sponsor');
     }
+    public function resetPass()
+    {
+        $this->view('resetPass');
+    }
+    public function changePass()
+    {
+        $this->view('changePass');
+    }
 }

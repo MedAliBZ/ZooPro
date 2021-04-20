@@ -120,6 +120,7 @@ form.sign-in-form {
 .btn:hover {
   background-color: #07aa94;
 }
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -183,7 +184,7 @@ form.sign-in-form {
 
 .panel p {
   font-size: 0.95rem;
-  padding: 0.7rem 0;
+  padding: 0.7rem 5rem;
 }
 
 .btn.transparent {
@@ -241,7 +242,8 @@ form.sign-in-form {
   pointer-events: all;
 }
 
-#error-msg,#error-msg-signup {
+#error-msg,
+#error-msg-signup {
   color: red;
   display: block;
 }
@@ -251,6 +253,7 @@ form.sign-in-form {
     min-height: 800px;
     height: 100vh;
   }
+
   .signin-signup {
     width: 100%;
     top: 95%;
@@ -357,9 +360,11 @@ form.sign-in-form {
   .image {
     display: none;
   }
+
   .panel .content {
     padding: 0.5rem 1rem;
   }
+
   .container {
     padding: 1.5rem;
   }
@@ -373,4 +378,15 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+
+
+#mdpOub {
+  text-decoration: none;
+  color: #06b199;
+}
+
+
+#mdpOub:hover {
+  text-decoration: underline;
 }

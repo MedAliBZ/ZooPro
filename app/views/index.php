@@ -25,7 +25,7 @@ if (isset($_SESSION['id']))
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" name="username" id="login-username" required/>
+            <input type="text" placeholder="Username" name="username" required/>
           </div>
 
           <div class="input-field">
@@ -34,6 +34,7 @@ if (isset($_SESSION['id']))
           </div>
           <p id="error-msg"><?php if(isset($data['error'])){echo $data['error'];} ?></p>
           <input type="submit" id="login" value="Login" class="btn solid" />
+          <a id="mdpOub" href="<?php echo URLROOT; ?>/Pages/resetPass">Mot de passe oublié ?</a>
         </form>
 
 

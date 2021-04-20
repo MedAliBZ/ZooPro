@@ -237,4 +237,9 @@
 .updateButton:hover {
   color: #018171;
 }
+
+.errormsg {
+  text-align: center;
+  color: red;
+}
 /*# sourceMappingURL=animaux.css.map */

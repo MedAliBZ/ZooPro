@@ -11,7 +11,7 @@ if (isset($_SESSION['id']))
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login.css" />
   <title>
-    <? echo SITENAME ?>
+    <?php  echo SITENAME ?>
   </title>
 </head>
 
@@ -78,7 +78,7 @@ if (isset($_SESSION['id']))
             Sign up
           </button>
         </div>
-        <img src="<? echo URLROOT ?>/public/img/log.svg" class="image" alt="" />
+        <img src="<?php echo URLROOT ?>/public/img/log.svg" class="image" alt="" />
       </div>
       <div class="panel right-panel">
         <div class="content">
@@ -91,7 +91,7 @@ if (isset($_SESSION['id']))
             Sign in
           </button>
         </div>
-        <img src="<? echo URLROOT ?>/public/img/register.svg" class="image" alt="" />
+        <img src="<?php echo URLROOT ?>/public/img/register.svg" class="image" alt="" />
       </div>
     </div>
   </div>

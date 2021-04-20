@@ -1,19 +1,3 @@
-<?php
-if (!isset($_SESSION['id']))
-    header('location: ' . URLROOT . '/index');
-
-
-if (!isset($data['tab'])) {
-    if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
-        $errorTab = explode(" ", $data['errorAdd']);
-        $err = implode("-", $errorTab);
-        header('location: ' . URLROOT . '/regimeC/afficherList/err-' . $err);
-    } else
-        header('location: ' . URLROOT . '/regimeC/afficherList');
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,53 +105,52 @@ if (!isset($data['tab'])) {
 
             <div class="card">
                 <div class="firstRow" id="firstRow">
-                    <h3 id="titreTab">La liste des régimes alimentaires </h3>
+                    <h3 id="titreTab">La liste des animaux </h3>
                 </div>
 
-                <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un régime</button>
+                <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
                 <div class="form-popup" id="myForm">
                     <form action="<?php echo URLROOT; ?>/regimeC/addRegimeC" class="form-container" method="POST">
 
-                        <h2> Ajouter un régime alimentaire</h2>
+                        <h2> Ajouter un animal</h2>
                         <br>
 
                         <div class="formCss">
-                            <select name="nom_regime" id="regimeAlimentaire">
-                                <option value="0">choisir un régime</option>
-                                <option value="herbivore">herbivore </option>
-                                <option value="granivore">granivore </option>
-                                <option value="frugivore">frugivore </option>
-                                <option value="omnivore"> omnivore </option>
-                                <option value="carnivore">carnivore </option>
-                            </select>
+                            <input placeholder="nom animal" type="text" id="nomAnimaux" name="nomAnimaux" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
                         </div>
-                        <!--erreur-->
-                        <div class="errormsg" id="errorRegimeAlimentaire"></div>
+                        <div class="formCss">
+                            <input placeholder="Race" type="text" id="Race" name="Race" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
+                        </div>
+                        <div class="formCss">
+                            <input placeholder="age" type="number" id="age" name="age" required pattern="[1-10]" maxlength="2">
+                        </div>
 
                         <div class="formCss">
-                            <input placeholder="type Nourriture" type="text" id="typeNourriture" name="type_nourriture" required>
-                        </div>
-                        <!--erreur-->
-                        <div class="errormsg" id="errorTypeNourriture"></div>
-
-                        <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas" name="quantite_par_repas" required>
-                        </div>
-                        <!--erreur-->
-                        <div class="errormsg" id="errorQuantiteParRepas"></div>
-
-                        <div class="formCss">
-                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas" required />
+                            <input placeholder="pays de naissance" type="text" id="pays" name="pays" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
                         </div>
 
-                        <!--erreur-->
-                        <div class="errormsg" id="errorNombreDeRepas"></div>
+                        <div class="radio-field">
+								<label>
+									<input type="radio" name="genre" value='male' class="admin-popup" />
+									<span class="design"></span>
+									<span class="text">Male</span>
+								</label>
 
-                        <!-- <div class="error-table"><p>error : <?php /* if (isset($data['errorAdd'])) {
-                                                                        echo $data["errorAdd"];
-                                                                    }*/ ?></p></div> -->
+								<label>
+									<input type="radio" name="genre" value='female' class="user-popup" />
+									<span class="design"></span>
+									<span class="text">Femelle</span>
+								</label>
+							</div>
+                          <br>
 
-                        <input type="submit" class="buttonStyle" value="Ajouter" id="ajouterRegime">
+                        <div class="error-table">
+                            <p>error : <?php if (isset($data['errorAdd'])) {
+                                            echo $data["errorAdd"];
+                                        } ?></p>
+                        </div>
+
+                        <input type="submit" class="buttonStyle" value="Ajouter">
                         <button type="button" class="buttonStyle" onclick="closeForm()" value="annuler">Close</button>
 
                     </form>
@@ -216,35 +199,24 @@ if (!isset($data['tab'])) {
                                 <option value="carnivore">carnivore </option>
                             </select>
                         </div>
-                        <!--erreur-->
-                        <div class="errormsg" id="errorRegimeAlimentaire1"></div>
-
                         <div class="formCss">
-                            <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture" required >
+                            <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture" required maxlength="30" minlength="3" pattern="[A-Za-z]+" title="des lettres alphabétiques">
                         </div>
-                        <!--erreur-->
-                        <div class="errormsg" id="errorTypeNourriture1"></div>
                         <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas" required >
-                        </div>
-                        <!--erreur-->
-                        <div class="errormsg" id="errorQuantiteParRepas1"></div>
-
-                        <div class="formCss">
-                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas1" required />
+                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas" required maxlength="3">
                         </div>
 
+                        <div class="formCss">
+                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas1" required maxlength="2" />
+                        </div>
 
-                        <!--erreur-->
-                        <div class="errormsg" id="errorNombreDeRepas1"></div>
-
-                        <!-- <div class="error-table">
+                        <div class="error-table">
                             <p>error : <?php if (isset($data['errorUpdate'])) {
                                             echo $data["errorUpdate"];
                                         } ?></p>
-                        </div> -->
+                        </div>
 
-                        <input name="update" type="submit" class="buttonStyle" value="modifier" id="modifierRegime">
+                        <input name="update" type="submit" class="buttonStyle" value="modifier">
                         <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
 
                     </form>

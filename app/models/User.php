@@ -137,6 +137,10 @@ class User
     }
 
     public function update($data){
+        $this->db->query('DELETE FROM password_reset WHERE password_reset.username = (SELECT username FROM users WHERE id = :id)');
+        $this->db->bind(':id', $_SESSION["id"]);
+        $this->db->execute();
+
         $this->db->query('UPDATE users SET username = :username , email = :email WHERE id = "'.$_SESSION["id"].'" ');
         //Bind values
         $this->db->bind(':username', $data['username']);

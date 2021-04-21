@@ -1,6 +1,10 @@
-<?php 
-if(!isset($data['username']))
-header('location: ' . URLROOT . '/Pages/resetPass');
+<?php
+if (isset($_SESSION['id']))
+    header('location: ' . URLROOT . '/pages/profile');
+
+
+if (!isset($data['username']))
+    header('location: ' . URLROOT . '/Pages/resetPass');
 ?>
 
 <!DOCTYPE html>
@@ -49,14 +53,16 @@ header('location: ' . URLROOT . '/Pages/resetPass');
         <div class="right-div">
             <h4>Welcome Back</h4>
             <form action="<?php echo URLROOT; ?>/users/useKey" method="POST" class="right-form">
-                <input name="username" value="<?php echo $data['username'];  ?>" style="display: none;"/>
+                <input name="username" value="<?php echo $data['username'];  ?>" style="display: none;" />
                 <ul>
                     <li>
                         <h3>Ecrire le code reçu sur email</h3>
                     </li>
 
                     <li><i class="fas fa-shield-alt"></i> <input type="text" placeholder="Code" name="key" required></li>
-                    <li style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></li>
+                    <li style="color: red;"><?php if (isset($data['error'])) {
+                                                echo $data['error'];
+                                            } ?></li>
                     <li><input type="submit" value="Valider"></li>
                 </ul>
 

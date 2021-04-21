@@ -315,6 +315,8 @@ class Users extends Controller
                 $data['error'] = "username invalide!";
                 $this->view('resetPass', $data);
             }
+        } else {
+            header('location: ' . URLROOT . '/Pages/resetPass');
         }
     }
 
@@ -343,6 +345,8 @@ class Users extends Controller
                 $data['error'] = 'invalid key!';
                 $this->view('resetKey', $data);
             }
+        } else {
+            header('location: ' . URLROOT . '/Pages/resetPass');
         }
     }
 
@@ -395,7 +399,8 @@ class Users extends Controller
             } else {
                 $this->view('changePass', $data);
             }
-        }
+        } else
+            header('location: ' . URLROOT . '/Pages/changePass');
     }
 
 
@@ -424,10 +429,11 @@ class Users extends Controller
                 mail($data['email'], 'Password Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
                 //redirection
                 header('location: ' . URLROOT . '/users/login');
-            }else {
+            } else {
                 $data['error'] = "email invalide!";
                 $this->view('getUsername', $data);
             }
-        }
+        } else
+            header('location: ' . URLROOT . '/Pages/getUsername');
     }
 }

@@ -1,4 +1,9 @@
 <?php
+if (isset($_SESSION['id']))
+    header('location: ' . URLROOT . '/pages/profile');
+
+
+
 if (!isset($data['username']))
     header('location: ' . URLROOT . '/Pages/resetPass');
 if (!isset($data['key']))

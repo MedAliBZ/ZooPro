@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['id']))
+    header('location: ' . URLROOT . '/pages/profile');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +56,9 @@
                         <h3>Retrouvez votre nom d'utilisateur</h3>
                     </li>
                     <li><i class="fas fa-user"></i> <input type="text" placeholder="Email" name="email" required></li>
-                    <li style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></li>
+                    <li style="color: red;"><?php if (isset($data['error'])) {
+                                                echo $data['error'];
+                                            } ?></li>
                     <li><input type="submit" value="Chercher"></li>
                 </ul>
 

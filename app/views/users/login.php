@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['id']))
+    header('location: ' . URLROOT . '/pages/profile');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

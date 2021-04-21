@@ -62,14 +62,12 @@ saveButton.addEventListener("click", (e) => {
         password.parentElement.style.border = "solid 1px #e8e8e9";
         email.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'email invalide';
-        errorProfile.style.display = "block";
         e.preventDefault();
     }
     else if (!validatePassword(password.value)) {
         email.parentElement.style.border = "solid 1px #e8e8e9";
         password.parentElement.style.border = "1px solid red";
-        errorProfile.innerHTML = 'Mot de passe invalide!';
-        errorProfile.style.display = "block";
+        errorProfile.innerHTML = 'Mot de passe doit contenir au moins 1 lettre majuscule, 1 lettre miniscule, 1 nombre et sa taille est supérieure a 8!';
         e.preventDefault();
     }
 });

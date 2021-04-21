@@ -430,8 +430,9 @@ class Users extends Controller
                 $data['error'] = "username invalide!";
                 $this->view('resetPass', $data);
             }
-            
         }
+        else
+            header('location: ' . URLROOT . '/Pages/resetPass');
         
     }
 
@@ -543,5 +544,7 @@ class Users extends Controller
                 $this->view('resetPass', $data);
             }
         }
+        else
+            header('location: ' . URLROOT . '/pages/resetPass');
     }
 }

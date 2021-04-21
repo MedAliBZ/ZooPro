@@ -9,7 +9,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
 
     //URLROOT (Dynamic links)
-    define('URLROOT', 'http://localhost/projet-web');
+    define('URLROOT', 'http://localhost/dashboard-admin');
 
     //Sitename
     define('SITENAME', 'ZooPro');

@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['id']))
     header('location: ' . URLROOT . '/pages/usersV');
-if(!isset($data['username']))
+if(!isset($data['username']) || empty($data['username']))
     header('location: ' . URLROOT . '/Pages/resetPass');
 ?>
 
@@ -15,6 +15,7 @@ if(!isset($data['username']))
     <title>
         <?php echo SITENAME ?>
     </title>
+    <link rel="shortcut icon" href="<?php echo URLROOT ?>/public/img/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -37,6 +38,7 @@ if(!isset($data['username']))
                     <div style="display: flex;">
                         <input style="margin-right: 2%;" type="submit" id="login" value="Valider" class="btn solid" />
                     </div>
+                    <a id="mdpOub" style="text-align: center;" href="<?php echo URLROOT; ?>/Pages/index">Annuler</a>
                 </form>
 
 
@@ -52,12 +54,13 @@ if(!isset($data['username']))
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Confirmer le mot de passe" name="confirmPassword" required />
                     </div>
-                    <p id="error-msg-signup"><?php if (isset($data['errorKey'])) {
+                    <p id="error-msg-signup" style="text-align: center;"><?php if (isset($data['errorKey'])) {
                                                     echo $data['errorKey'];
                                                 } ?></p>
                     <div style="display: flex;">
                         <input style="margin-right: 2%;" type="submit" id="login" value="Changer" class="btn solid" />
                     </div>
+                    <a id="mdpOub" style="text-align: center;" href="<?php echo URLROOT; ?>/Pages/index">Annuler</a>
                 </form>
 
             </div>
@@ -85,7 +88,7 @@ if(!isset($data['username']))
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?php echo URLROOT ?>/public/js/login.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/changePass.js"></script>
 </body>
 
 </html>

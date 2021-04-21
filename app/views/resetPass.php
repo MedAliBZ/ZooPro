@@ -13,6 +13,7 @@ if (isset($_SESSION['id']))
     <title>
         <?php echo SITENAME ?>
     </title>
+    <link rel="shortcut icon" href="<?php echo URLROOT ?>/public/img/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -24,7 +25,7 @@ if (isset($_SESSION['id']))
                     <h2 class="title" style="text-align: center;margin-bottom:2%;">Retrouvez votre mot de passe</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nom d'utilisateur" name="username" id="login-username" required />
+                        <input type="text" placeholder="Nom d'utilisateur" name="username" required />
                     </div>
                     <p id="error-msg"><?php if (isset($data['error'])) {
                                             echo $data['error'];
@@ -38,7 +39,7 @@ if (isset($_SESSION['id']))
                     <h2 class="title" style="text-align: center;margin-bottom:2%;">Retrouvez votre nom d'utilisateur</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Email" name="email" id="login-username" required />
+                        <input type="text" placeholder="Email" name="email" required />
                     </div>
                     <p id="error-msg-signup"><?php if (isset($data['errorEmail'])) {
                                                     echo $data['errorEmail'];
@@ -79,7 +80,7 @@ if (isset($_SESSION['id']))
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?php echo URLROOT ?>/public/js/login.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/resetPass.js"></script>
 </body>
 
 </html>

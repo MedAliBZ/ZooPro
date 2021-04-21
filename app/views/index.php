@@ -17,7 +17,9 @@ if (isset($_SESSION['id']))
 </head>
 
 <body>
-  <div class="container <?php if(isset($data['errorSignUp'])){echo "sign-up-mode";} ?>" >
+  <div class="container <?php if (isset($data['errorSignUp'])) {
+                          echo "sign-up-mode";
+                        } ?>">
     <div class="forms-container">
       <div class="signin-signup">
 
@@ -26,14 +28,20 @@ if (isset($_SESSION['id']))
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Nom d'utilisateur" name="username" required/>
+            <input type="text" placeholder="Nom d'utilisateur" name="username" required />
           </div>
 
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Mot de passe" name="password" id="login-password" required/>
+            <input type="password" placeholder="Mot de passe" name="password" id="login-password" required />
           </div>
-          <p id="error-msg"><?php if(isset($data['error'])){echo $data['error'];} ?></p>
+          <div>
+            <input type="checkbox" name="rememberMe" />
+            <label for="rememberMe">Se souvenir de moi</label>
+          </div>
+          <p id="error-msg"><?php if (isset($data['error'])) {
+                              echo $data['error'];
+                            } ?></p>
           <input type="submit" id="login" value="Connexion" class="btn solid" />
           <a id="mdpOub" href="<?php echo URLROOT; ?>/Pages/resetPass">Mot de passe oublié ?</a>
         </form>
@@ -44,24 +52,26 @@ if (isset($_SESSION['id']))
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Nom d'utilisateur" name="username" required/>
+            <input type="text" placeholder="Nom d'utilisateur" name="username" required />
           </div>
 
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Email" name="email" required/>
+            <input type="email" placeholder="Email" name="email" required />
           </div>
 
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Mot de passe" name="password" required/>
+            <input type="password" placeholder="Mot de passe" name="password" required />
           </div>
 
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Confirmer le mot de passe" name="confirmPassword" required/>
+            <input type="password" placeholder="Confirmer le mot de passe" name="confirmPassword" required />
           </div>
-          <p id="error-msg-signup" style="text-align: center;"><?php if(isset($data['errorSignUp'])){echo $data['errorSignUp'];} ?></p>
+          <p id="error-msg-signup" style="text-align: center;"><?php if (isset($data['errorSignUp'])) {
+                                                                  echo $data['errorSignUp'];
+                                                                } ?></p>
           <input type="submit" class="btn" value="S'inscrire" name="sign-up" />
         </form>
 

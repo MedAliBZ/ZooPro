@@ -57,6 +57,7 @@ if (isset($_SESSION['id']))
                     </li>
                     <li><i class="fas fa-user"></i> <input type="text" placeholder="Username" name="username" required></li>
                     <li><i class="fas fa-lock"></i> <input type="password" placeholder="Password" name="password" required></li>
+                    <li><input style="width:fit-content;margin-right:5px;" type="checkbox" name="rememberMe"><label for="rememberMe">Se souvenir de moi</label></li>
                     <li style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></li>
                     <li><input type="submit" value="Login"></li>
                 </ul>

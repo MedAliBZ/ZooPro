@@ -125,6 +125,20 @@ class Users extends Controller
                 $loggedInUser = $this->userModel->login($data['username'], $data['password']);
 
                 if ($loggedInUser) {
+                    if (isset($_POST['rememberMe'])){
+                        session_destroy();
+                        ini_set('session.cookie_lifetime', 60 * 60 * 24 * 365);
+                        ini_set('session.gc-maxlifetime', 60 * 60 * 24 * 365);
+                        session_name('public');
+                        session_start();
+                        session_regenerate_id(true);
+                    }
+                    else{
+                        session_destroy();
+                        session_name('public');
+                        session_start();
+                        session_regenerate_id(true);
+                    }
                     $this->createUserSession($loggedInUser);
                 } else {
                     $data['error'] = 'Mot de passe ou nom d\'utilisateur est incorrect. Veuillez réessayer.';

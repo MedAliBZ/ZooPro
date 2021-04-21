@@ -20,10 +20,11 @@ function openFormAjouter() {
       var str = row_data.split("-");
       document.querySelector('#id').value=str[0];
       document.querySelector('#nomAnimal1').value=str[1];
-      document.querySelector('#Race1').value=str[2];
+      document.querySelector('#type1').value=str[2];
       document.querySelector('#age1').value=str[3];
       document.querySelector('#pays1').value=str[4];
-      document.querySelector('#genre1').value=str[5];
+      document.querySelector('#status1').value=str[5];
+      document.querySelector('#regimeAlimentaire1').value=str[6];
      
   });
 
@@ -33,9 +34,10 @@ function openFormAjouter() {
   function closeForm() {
 
       document.querySelector('#nomAnimal').value='';
-      document.querySelector('#Race').value='';
+      document.querySelector('#type').value='';
       document.querySelector('#age').value='';
       document.querySelector('#pays').value='';
+      document.querySelector('#status').value='';
  
 
     document.getElementById("myForm").style.display = "none";
@@ -49,7 +51,7 @@ function openFormAjouter() {
   function closeFormModifier() {
 
     document.querySelector('#nomAnimal1').value='0';
-    document.querySelector('#Race1').value='';
+    document.querySelector('#type1').value='';
     document.querySelector('#age1').value='';
     document.querySelector('#pays1').value='';
 

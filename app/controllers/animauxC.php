@@ -10,10 +10,12 @@ class animauxC extends Controller
     {
         $data = [
             'nomAnimal' => '',
-            'race' => '',
+            'type' => '',
             'age' => '',
             'pays' => '',
-            'genre' => '',
+            'status' => '',
+            'regimeAlimentaire' => '',
+            'image' => '',
             'errorAdd' => ''
         ];
 
@@ -24,10 +26,12 @@ class animauxC extends Controller
 
             $data = [
                 'nomAnimal' => trim($_POST['nomAnimal']),
-                'race' => trim($_POST['race']),
+                'type' => trim($_POST['type']),
                 'age' => trim($_POST['age']),
                 'pays' => trim($_POST['pays']),
-                'genre' => trim($_POST['genre']),
+                'status' => trim($_POST['status']),
+                'regimeAlimentaire' => trim($_POST['regimeAlimentaire']),
+                'image' => trim($_POST['image']),
                 'errorAdd' => ''
             ];
 
@@ -38,10 +42,10 @@ class animauxC extends Controller
                 $data['errorAdd'] = 'Please enter just letters for the name.';
             }
 
-            if (empty($data['race'])) {
-                $data['errorAdd'] = 'Please enter the race.';
-            } elseif (!ctype_alpha($data['race'])) {
-                $data['errorAdd'] = 'Please enter the correct race';
+            if (empty($data['type'])) {
+                $data['errorAdd'] = 'Please enter the type.';
+            } elseif (!ctype_alpha($data['type'])) {
+                $data['errorAdd'] = 'Please enter the correct type';
             }
 
             if (empty($data['pays'])) {
@@ -55,20 +59,28 @@ class animauxC extends Controller
             } elseif (!is_numeric($data['age'])) {
                 $data['errorAdd'] = 'age can only contain numbers.';
             }
-            if (empty($data['genre'])) {
-                $data['errorAdd'] = 'Please enter the gender.';
-            } elseif (!ctype_alpha($data['genre'])) {
-                $data['errorAdd'] = 'the gender can only contain letters.';
+            if (empty($data['status'])) {
+                $data['errorAdd'] = 'Please enter the status.';
+            } elseif (!ctype_alpha($data['status'])) {
+                $data['errorAdd'] = 'the status can only contain letters.';
+            }
+
+            if (empty($data['regimeAlimentaire'])) {
+                $data['errorAdd'] = 'Please enter the right food.';
+            }
+
+            if (empty($data['image'])) {
+                $data['errorAdd'] = 'Please enter the right pic.';
             }
 
             // Make sure that errors are empty
             if (empty($data['errorAdd'])) {
 
                 //add animal from model function
-                 if (!$this->animauxModel->addanimauxM($data)) {
-                     die('Something went wrong.');
+                if (!$this->animauxModel->addanimauxM($data)) {
+                    die('Something went wrong.');
                 }
-           }
+            }
         }
         $this->view('animaux', $data);
     }
@@ -86,12 +98,10 @@ class animauxC extends Controller
             if ($errorTab[0] == 'err') {
                 array_shift($errorTab);
                 $data['errorAdd'] = implode(" ", $errorTab);
-            }
-            else if ($errorTab[0] == 'errUp') {
+            } else if ($errorTab[0] == 'errUp') {
                 array_shift($errorTab);
                 $data['errorUpdate'] = implode(" ", $errorTab);
-            } 
-            else {
+            } else {
                 $data['errorAdd'] = '';
                 $data['errorUpdate'] = '';
             }
@@ -99,16 +109,19 @@ class animauxC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4]."-".$value[5].'>
-            <td >'. $value[0] .'</td>
-            <td>'. $value[1] .'</td>
-            <td>'. $value[2] .'</td>
-            <td>'. $value[3] .'</td>
-            <td>'. $value[4] .'</td>
-            <td>'. $value[5] .'</td>
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
+            <td >' . $value[0] . '</td>
+            <td>' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
+            <td>' . $value[5] . '</td>
+            <td>' . $value[6] . '</td>
+            <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
         }
+
 
         $this->view('animaux', $data);
     }
@@ -118,65 +131,76 @@ class animauxC extends Controller
         if (isset($_POST['delete'])) {
             $this->animauxModel->deleteAnimal($_POST['id']);
             header('location:' . URLROOT . '/pages/animaux');
-
         } elseif (isset($_POST['update'])) {
             $data = [
                 'id',
                 'nomAnimal' => '',
-                'race' => '',
+                'type' => '',
                 'age' => '',
                 'pays' => '',
-                'genre' => '',
-                'errorAdd' => ''
+                'status' => '',
+                'regimeAlimentaire' => '',
+                'image' => '',
+                'errorUpdate' => ''
             ];
-    
+
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Process form
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-    
+
                 $data = [
+                    'id' => trim($_POST['id']),
                     'nomAnimal' => trim($_POST['nomAnimal']),
-                    'race' => trim($_POST['race']),
+                    'type' => trim($_POST['type']),
                     'age' => trim($_POST['age']),
                     'pays' => trim($_POST['pays']),
-                    'genre' => trim($_POST['genre']),
-                    'errorAdd' => ''
+                    'status' => trim($_POST['status']),
+                    'regimeAlimentaire' => trim($_POST['regimeAlimentaire']),
+                    'image' => trim($_POST['image']),
+                    'errorUpdate' => ''
                 ];
-    
-            //Validate nomAnimal
-            if (empty($data['nomAnimal'])) { //check if name is empty or not
-                $data['errorAdd'] = 'Please enter name.';
-            } elseif (!ctype_alpha($data['nomAnimal'])) { //check name regex
-                $data['errorAdd'] = 'Please enter just letters for the name.';
-            }
 
-            if (empty($data['race'])) {
-                $data['errorAdd'] = 'Please enter the race.';
-            } elseif (!ctype_alpha($data['race'])) {
-                $data['errorAdd'] = 'Please enter the correct race';
-            }
+                //Validate nomAnimal
+                if (empty($data['nomAnimal'])) { //check if name is empty or not
+                    $data['errorAdd'] = 'Please enter name.';
+                } elseif (!ctype_alpha($data['nomAnimal'])) { //check name regex
+                    $data['errorAdd'] = 'Please enter just letters for the name.';
+                }
 
-            if (empty($data['pays'])) {
-                $data['errorAdd'] = 'Please enter the country name.';
-            } elseif (!ctype_alpha($data['pays'])) {
-                $data['errorAdd'] = 'country name can only contain letters.';
-            }
+                if (empty($data['type'])) {
+                    $data['errorAdd'] = 'Please enter the type.';
+                } elseif (!ctype_alpha($data['type'])) {
+                    $data['errorAdd'] = 'Please enter the correct type';
+                }
 
-            if (empty($data['age'])) {
-                $data['errorAdd'] = 'Please enter age.';
-            } elseif (!is_numeric($data['age'])) {
-                $data['errorAdd'] = 'age can only contain numbers.';
-            }
-            if (empty($data['genre'])) {
-                $data['errorAdd'] = 'Please enter the gender.';
-            } elseif (!ctype_alpha($data['genre'])) {
-                $data['errorAdd'] = 'the gender can only contain letters.';
-            }
-    
+                if (empty($data['pays'])) {
+                    $data['errorAdd'] = 'Please enter the country name.';
+                } elseif (!ctype_alpha($data['pays'])) {
+                    $data['errorAdd'] = 'country name can only contain letters.';
+                }
+
+                if (empty($data['age'])) {
+                    $data['errorAdd'] = 'Please enter age.';
+                } elseif (!is_numeric($data['age'])) {
+                    $data['errorAdd'] = 'age can only contain numbers.';
+                }
+                if (empty($data['status'])) {
+                    $data['errorAdd'] = 'Please enter the status.';
+                } elseif (!ctype_alpha($data['status'])) {
+                    $data['errorAdd'] = 'the status can only contain letters.';
+                }
+                if (empty($data['regimeAlimentaire'])) {
+                    $data['errorAdd'] = 'Please enter the food.';
+                }
+
+                if (empty($data['image'])) {
+                    $data['errorAdd'] = 'Please enter the image.';
+                }
+
                 // Make sure that errors are empty
                 if (empty($data['errorUpdate'])) {
-    
+
                     //add employe from model function
                     if (!$this->animauxModel->updateAnimal($data)) {
                         die('Something went wrong.');
@@ -186,15 +210,4 @@ class animauxC extends Controller
             $this->view('animaux', $data);
         }
     }
-
-
 }
-
-
-
-
-
-
-
-
-

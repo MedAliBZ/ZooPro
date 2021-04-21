@@ -3,10 +3,12 @@ class animauxM
 {
     private $db;
     private $nomAnimal;
-    private $race;
+    private $type;
     private $age;
     private $pays;
-    private $genre;
+    private $status;
+    private $regimeAlimentaire;
+    private $image;
 
     public function __construct()
     {
@@ -16,8 +18,8 @@ class animauxM
         echo $this->nomAnimal;
     }
 
-    public function getrace(){
-        echo $this->race;
+    public function getType(){
+        echo $this->type;
     }
 
     public function getage(){
@@ -28,21 +30,31 @@ class animauxM
         echo $this->pays;
     }
 
-    public function getGenre(){
-        echo $this->genre;
+    public function getstatus(){
+        echo $this->status;
+    }
+
+    public function getRegimeAlimentaire(){
+        echo $this->regimeAlimentaire;
+    }
+
+    public function getImage(){
+        echo $this->regimeAlimentaire;
     }
 
 
     public function addanimauxM($data)
     {
-        $this->db->query('INSERT INTO animaux (nomAnimal,race,age,pays,genre) VALUES(:nomAnimal,:race,:age,:pays,:genre)');
+        $this->db->query('INSERT INTO animaux (nomAnimal,type,age,pays,status,regimeAlimentaire,image) VALUES(:nomAnimal,:type,:age,:pays,:status,:regimeAlimentaire,:image)');
 
         //Bind values
         $this->db->bind(':nomAnimal', $data['nomAnimal']);
-        $this->db->bind(':race', $data['race']);
+        $this->db->bind(':type', $data['type']);
         $this->db->bind(':age', $data['age']);
         $this->db->bind(':pays', $data['pays']);
-        $this->db->bind(':genre', $data['genre']);
+        $this->db->bind(':status', $data['status']);
+        $this->db->bind(':regimeAlimentaire', $data['regimeAlimentaire']);
+        $this->db->bind(':image', $data['image']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -67,7 +79,7 @@ class animauxM
     public function findUserByIDUpdate($id)
     {
         //Prepared statement
-        $this->db->query('SELECT * FROM animaux WHERE id != :id;');
+        $this->db->query('SELECT * FROM animaux WHERE id != :id');
 
         $this->db->bind(':id', $id);
         $this->db->execute();
@@ -75,13 +87,15 @@ class animauxM
 
 
     public function updateAnimal($data){
-        $this->db->query('UPDATE animaux SET nomAnimal=:nomAnimal,race=:race,age=:age,pays=:pays,genre=:genre WHERE id=:id ');
+        $this->db->query('UPDATE animaux SET nomAnimal=:nomAnimal,type=:type,age=:age,pays=:pays,status=:status,regimeAlimentaire=:regimeAlimentaire,image=:image WHERE id=:id');
         //Bind values
         $this->db->bind(':nomAnimal',$data['nomAnimal']);
-        $this->db->bind(':race', $data['race']);
+        $this->db->bind(':type', $data['type']);
         $this->db->bind(':age', $data['age']);
         $this->db->bind(':pays',$data['pays']);
-        $this->db->bind(':genre',$data['genre']);
+        $this->db->bind(':status',$data['status']);
+        $this->db->bind(':regimeAlimentaire', $data['regimeAlimentaire']);
+        $this->db->bind(':image', $data['image']);
         $this->db->bind(':id', $data['id']);
         //Execute function
         if ($this->db->execute()) {

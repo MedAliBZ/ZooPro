@@ -134,7 +134,7 @@ if (!isset($data['tab'])) {
                             <input placeholder="nom animal" type="text" id="nomAnimal" name="nomAnimal" required >
                         </div>
                         <div class="formCss">
-                            <input placeholder="Race" type="text" id="Race" name="race" required>
+                            <input placeholder="type" type="text" id="type" name="type" required>
                         </div>
                         <div class="formCss">
                             <input placeholder="age" type="number" id="age" name="age" required>
@@ -144,20 +144,18 @@ if (!isset($data['tab'])) {
                             <input placeholder="pays de naissance" type="text" id="pays" name="pays" required >
                         </div>
 
-                        <div class="radio-field">
-								<label>
-									<input type="radio" name="genre" value='male'checked class="admin-popup" />
-									<span class="design"></span>
-									<span class="text">Male</span>
-								</label>
+                        <div class="formCss">
+                            <input placeholder="status" type="text" id="status" name="status" required >
+                        </div>
 
-								<label>
-									<input type="radio" name="genre" value='female' class="user-popup" />
-									<span class="design"></span>
-									<span class="text">Femelle</span>
-								</label>
-							</div>
-                          <br>
+                        <div class="formCss">
+                            <input placeholder="regime Alimentaire" type="text" id="regimeAlimentaire" name="regimeAlimentaire" required >
+                        </div>
+                        
+                        <div class="formCss">
+                        <input type = "file" name = "image" id=image required >
+                        </div>
+
 
                         <!-- <div class="error-table">
                             <p>error : <?php if (isset($data['errorAdd'])) {
@@ -178,10 +176,12 @@ if (!isset($data['tab'])) {
                         <tr>
                             <th>id</th>
                             <th>Nom animaux </th>
-                            <th>race</th>
+                            <th>type</th>
                             <th>age</th>
                             <th>pays</th>
-                            <th>genre</th>
+                            <th>status</th>
+                            <th>regime Alimentaire</th>
+                            <th>image</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -207,7 +207,7 @@ if (!isset($data['tab'])) {
                             <input placeholder="nom animal" type="text" id="nomAnimal1" name="nomAnimal" required >
                         </div>
                         <div class="formCss">
-                            <input placeholder="Race" type="text" id="Race1" name="race" required>
+                            <input placeholder="Type" type="text" id="type1" name="type" required>
                         </div>
                         <div class="formCss">
                             <input placeholder="age" type="number" id="age1" name="age" required>
@@ -217,19 +217,15 @@ if (!isset($data['tab'])) {
                             <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required >
                         </div>
 
-                        <div class="radio-field">
-								<label>
-									<input type="radio" name="genre" value='male'checked class="admin-popup" id="genre1" />
-									<span class="design"></span>
-									<span class="text">Male</span>
-								</label>
+                        <div class="formCss">
+                            <input placeholder="status" type="text" id="status1" name="status" required >
+                        </div>
 
-								<label>
-									<input type="radio" name="genre" value='female' class="user-popup" id="genre1" />
-									<span class="design"></span>
-									<span class="text">Femelle</span>
-								</label>
-							</div>
+                        <div class="formCss">
+                            <input placeholder="regime alimentaire" type="text" id="regimeAlimentaire1" name="regimeAlimentaire" required >
+                        </div>
+
+
 
                       <!-- <div class="error-table">
                             <p>error : <?php if (isset($data['errorUpdate'])) {

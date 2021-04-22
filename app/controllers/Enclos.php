@@ -14,6 +14,8 @@ class Enclos extends Controller
             'taille' => '',
             'dateConstruction' => '',
             'capaciteMaximale' => '',
+            'photo' => '',
+            'typeEnclos' => '',
             'errorAdd' => ''
         ];
 
@@ -28,9 +30,10 @@ class Enclos extends Controller
                 'taille' => trim($_POST['taille']),
                 'dateConstruction' => trim($_POST['dateConstruction']),
                 'capaciteMaximale' => trim($_POST['capaciteMaximale']),
+                'photo' => trim($_POST['photo']),
+                'typeEnclos' => trim($_POST['typeEnclos']),
                 'errorAdd' => ''
             ];
-
             $nameValidation = "/^[a-zA-Z0-9]*$/";
             $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
@@ -60,7 +63,18 @@ class Enclos extends Controller
                     $data['errorAdd'] = 'capacity can only contain numbers.';
                 }
 
+              //Validate photo
+                 if (empty($data['photo'])) {
+                    $data['errorAdd'] = 'Please enter the picture.';
+                } 
 
+             //Validate typeEnclos
+                  if (empty($data['typeEnclos'])) {
+                    $data['errorUpdate'] = 'Please enter type.';
+                } elseif (!preg_match($nameValidation, $data['typeEnclos'])) {
+                    $data['errorUpdate'] = 'type can only contain letters and numbers.';
+                } 
+                
 
             // Make sure that errors are empty
             if (empty($data['errorAdd'])) {
@@ -111,8 +125,6 @@ class Enclos extends Controller
                     <div class="col col-4" data-label="Taille">' . $value[3] . '</div>
                     <div class="col col-5" data-label="Date de construction">' . $value[4] . '</div>
                     <div class="col col-6" data-label="Capacite maximale">' . $value[5] . '</div>
-
-
                     <div class="col col-7">
                         <div class="col-buttons">
                             <button class="tab-btn"><i data-feather="edit"></i></button>
@@ -178,13 +190,6 @@ class Enclos extends Controller
                 } elseif (!is_numeric($data['taille'])) {
                     $data['errorUpdate'] = 'size can only contain numbers.';
                 }
-              //Validate capacite
-                 if (empty($data['capaciteMaximale'])) {
-                    $data['errorUpdate'] = 'Please enter the capacity.';
-                } elseif (!is_numeric($data['capaciteMaximale'])) {
-                    $data['errorUpdate'] = 'capacity can only contain numbers.';
-                }
-
 
 
             // Make sure that errors are empty
@@ -204,164 +209,4 @@ class Enclos extends Controller
             $this->view('enclos', $data);
         }
     }
-
-    
-
-    public function login()
-    {
-        $data = [
-            'title' => 'Login page',
-            'username' => '',
-            'password' => '',
-            'error' => ''
-        ];
-
-        //Check for post
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //Sanitize post data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $data = [
-                'username' => trim($_POST['username']),
-                'password' => trim($_POST['password']),
-                'error' => ''
-            ];
-            //Validate username
-            if (empty($data['username'])) {
-                $data['error'] = 'Please enter a username.';
-            }
-
-            //Validate password
-            if (empty($data['password'])) {
-                $data['error'] = 'Please enter a password.';
-            }
-
-            //Check if all errors are empty
-            if (empty($data['error'])) {
-                $loggedInUser = $this->encloModel->login($data['username'], $data['password']);
-
-                if ($loggedInUser) {
-                    $this->createUserSession($loggedInUser);
-                } else {
-                    $data['error'] = 'Mot de passe ou nom d\'utilisateur est incorrect. Veuillez réessayer.';
-
-                    $this->view('index', $data);
-                }
-            }
-        } else {
-            $data = [
-                'username' => '',
-                'password' => '',
-                'error' => ''
-            ];
-        }
-        $this->view('index', $data);
-    }
-
-    public function createUserSession($user)
-    {
-        $_SESSION['id'] = $user->id;
-        $_SESSION['username'] = $user->username;
-        $_SESSION['email'] = $user->email;
-        header('location:' . URLROOT . '/pages/usersV');
-    }
-
-    public function logout()
-    {
-        unset($_SESSION['id']);
-        unset($_SESSION['username']);
-        unset($_SESSION['email']);
-        header('location:' . URLROOT . '/users/login');
-    }
-
-    public function deleteUpdate()
-    {
-        if (isset($_POST['delete'])) {
-            $this->encloModel->deleteAccount($_SESSION['id']);
-            $this->logout();
-        } elseif (isset($_POST['update'])) {
-            $data = [
-                'username' => '',
-                'email' => '',
-                'password' => '',
-                'confirmPassword' => '',
-                'error' => ''
-            ];
-
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Process form
-                // Sanitize POST data
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                $data = [
-                    'username' => trim($_POST['username']),
-                    'email' => trim($_POST['email']),
-                    'password' => trim($_POST['password']),
-                    'confirmPassword' => trim($_POST['confirmPassword']),
-                    'error' => ''
-                ];
-
-                $nameValidation = "/^[a-zA-Z0-9]*$/";
-                $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
-
-                //Validate username on letters/numbers
-                if (empty($data['username'])) {
-                    $data['error'] = 'Please enter username.';
-                } elseif (!preg_match($nameValidation, $data['username'])) {
-                    $data['error'] = 'Name can only contain letters and numbers.';
-                } else {
-                    if ($this->encloModel->findUserByUsernameUpdate($data['username'],$_SESSION['id'])) {
-                        $data['error'] = 'Username is already taken.';
-                    }
-                }
-
-                //Validate email
-                if (empty($data['email'])) {
-                    $data['error'] = 'Please enter email address.';
-                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['error'] = 'Please enter the correct format.';
-                } else {
-                    if ($this->encloModel->findUserByEmailUpdate($data['email'],$_SESSION['id'])) {
-                        $data['error'] = 'Email is already taken.';
-                    }
-                }
-                // Validate password on length, numeric values,
-                if (empty($data['password'])) {
-                    $data['error'] = 'Please enter password.';
-                } elseif (strlen($data['password']) < 6) {
-                    $data['error'] = 'Password must be at least 8 characters';
-                } elseif (preg_match($passwordValidation, $data['password'])) {
-                    $data['error'] = 'Password must be have at least one numeric value.';
-                }
-
-                //Validate confirm password
-                if (empty($data['confirmPassword'])) {
-                    $data['error'] = 'Please enter password.';
-                } else {
-                    if ($data['password'] != $data['confirmPassword']) {
-                        $data['error'] = 'Passwords do not match, please try again.';
-                    }
-                }
-
-
-                // Make sure that errors are empty
-                if (empty($data['error'])) {
-                    // Hash password
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-                    //update user from model function
-                    if ($this->encloModel->update($data)) {
-                        $_SESSION['username'] = $data['username'];
-                        $_SESSION['email'] = $data['email'];
-                        //Redirect to the same page
-                        header('location: ' . URLROOT . '/pages/usersV');
-                    } else {
-                        die('Something went wrong.');
-                    }
-                }
-            }
-            $this->view('usersV', $data);
-        }
-    }
-
 }

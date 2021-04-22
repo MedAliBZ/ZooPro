@@ -121,6 +121,7 @@ if (!isset($_SESSION['id']))
                 <div class="error-table"><?php if (isset($data['errorAdd'])){echo $data['errorAdd'];}?></div>
                 <div class="error-table"><?php if (isset($data['errorUpdate'])){echo $data['errorUpdate'];}?></div>
                 <button class="btn" id="ajouterEnc">Ajouter</button>
+
                <ul class="responsive-table">
                     <li class="table-header">
                         <div class="col col-1">ID</div>
@@ -132,13 +133,13 @@ if (!isset($_SESSION['id']))
                         <div class="col col-7">
                         </div>
                     </li>
-
+                    
                     <?php if (isset($data['tab'])) {
                         echo $data['tab'];
                     } ?>
 
                 </ul>
-                <div class="overlay">
+                <div class="overlay" style="opacity: 1;overflow: auto;">
                     <div class="popup">
                         <a class="close" href="#">&times;</a>
                         <form class="content" action="<?php echo URLROOT; ?>/enclos/deleteUpdateTab" method="POST">
@@ -146,23 +147,23 @@ if (!isset($_SESSION['id']))
                             <input type="text" placeholder="id" name="id" style="display: none;" class="id-popup" />
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Appellation" name="appellation" class="appellation-popup" />
+                                <input type="text" placeholder="Appellation" name="appellation" class="appellation-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Localisation" name="localisation" class="localisation-popup" />
+                                <input type="text" placeholder="Localisation" name="localisation" class="localisation-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Taille" name="taille" class="taille-popup" />
+                                <input type="text" placeholder="Taille" name="taille" class="taille-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateConstruction" class="CD-popup" />
+                                <input type="Date" name="dateConstruction" class="CD-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" class="capaciteMaximale-popup" />
+                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" class="capaciteMaximale-popup" required />
                             </div>
                              <div id="errorMd"></div>
                             <div class="buttonsPUpdate">
@@ -173,7 +174,7 @@ if (!isset($_SESSION['id']))
                     </div>
                 </div>
 
-                <div class="overlay overlayAjouter">
+                <div class="overlay overlayAjouter" style="opacity: 1;overflow: auto;">
                     <div class="popup">
                         <a class="close closeAjouter" href="#">&times;</a>
                         <form class="content" action="<?php echo URLROOT; ?>/Enclos/addEnclos" method="POST">
@@ -197,6 +198,14 @@ if (!isset($_SESSION['id']))
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
                                 <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" id="capaciteMaximale-popupA" required/>
+                            </div>
+                            <div class="input-field two">
+                                <i class="fas fa-warehouse"></i>
+                                <input type="text" placeholder="Type enclos" name="typeEnclos" class="typeEnclos-popupA" required />
+                            </div>
+                            <div class="input-field two">
+                                <i class="fas fa-images"></i>
+                                 <input type="file" placeholder="Photo" name="photo" id="photo-popupA" required>
                             </div>
                             <div id="errorAj"></div>
                             <div class="buttonsP">

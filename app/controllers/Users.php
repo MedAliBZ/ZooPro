@@ -440,7 +440,7 @@ class Users extends Controller
             if ($this->userModel->findUserByEmail($data['email'])) {
                 $data['username'] = $this->userModel->findUsernameByEmail($data['email']);
                 //envoie mail
-                mail($data['email'], 'Password Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
+                mail($data['email'], 'Username Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
                 //redirection
                 header('location: ' . URLROOT . '/users/login');
             } else {

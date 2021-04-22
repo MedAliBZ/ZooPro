@@ -58,15 +58,15 @@ if (!isset($data['key']))
             <form action="<?php echo URLROOT; ?>/users/changePassbyKey" method="POST" class="right-form">
                 <input name="username" value="<?php echo $data['username'];  ?>" style="display: none;" />
                 <input name="key" value="<?php echo $data['key'];  ?>" style="display: none;" />
-                <ul>
+                <ul class="sign-up-form">
                     <li>
                         <h3>Changer votre mot de passe</h3>
                     </li>
                     <li><i class="fas fa-lock"></i> <input type="password" placeholder="Mot de passe" name="password" required></li>
                     <li><i class="fas fa-lock"></i> <input type="password" placeholder="Confirmer le mot de passe" name="confirmPassword" required></li>
-                    <li style="color: red;"><?php if (isset($data['errorKey'])) {
-                                                echo $data['errorKey'];
-                                            } ?></li>
+                    <li style="color: red;" id="error-msg-signup"><?php if (isset($data['errorKey'])) {
+                                                                        echo $data['errorKey'];
+                                                                    } ?></li>
                     <li><input type="submit" value="Changer"></li>
                 </ul>
 
@@ -81,6 +81,7 @@ if (!isset($data['key']))
         </div>
 
     </div>
+    <script src="<?php echo URLROOT ?>/public/js/changePass.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/jquery-1.12.4.min.js"></script>

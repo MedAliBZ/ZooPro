@@ -90,18 +90,18 @@ require APPROOT . '/views/includes/navigation.php';
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="username" type="text" placeholder="Username" value="<?php echo $_SESSION['username']; ?>">
+                                    <input class="form-control valid" name="username" type="text" placeholder="Username" value="<?php echo $_SESSION['username']; ?>" required>
                                 </div>
                             </div>
                             <div class="col-7">
                                 <div class="form-group">
-                                    <input class="form-control" name="email" id="subject" type="text" placeholder="Email" value="<?php echo $_SESSION['email']; ?>">
+                                    <input class="form-control" name="email" id="subject" type="text" placeholder="Email" value="<?php echo $_SESSION['email']; ?>" required>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="password" type="password" placeholder="Password">
+                                    <input class="form-control valid" name="password" type="password" placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="col-sm-8" style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></div>
@@ -121,26 +121,26 @@ require APPROOT . '/views/includes/navigation.php';
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="password" type="password" placeholder="New Password">
+                                    <input class="form-control" name="password" type="password" placeholder="New Password" id="card-newPass" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password">
+                                    <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password" id="card-confirmPass" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="oldPassword" type="password" placeholder="Old Password">
+                                    <input class="form-control" name="oldPassword" type="password" placeholder="Old Password" required>
                                 </div>
                             </div>
-                            <div class="col-12" style="color: red;">
+                            <div class="col-12" style="color: red;" id='error-msgPass'>
                                 <?php if(isset($data['errorPass'])){echo $data['errorPass'];} ?>
                             </div>
                         </div>
                         
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Changer</button>
+                            <button type="submit" class="button button-contactForm boxed-btn" id="card-changerPass">Changer</button>
                         </div>
                     </form>
                 </div>
@@ -246,7 +246,7 @@ require APPROOT . '/views/includes/navigation.php';
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
     <!-- JS here -->
-
+    <script src="<?php echo URLROOT ?>/public/js/profile.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/jquery-1.12.4.min.js"></script>

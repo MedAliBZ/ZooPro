@@ -22,6 +22,7 @@ function resetErrorsPopUp(){
 }
 
 ajouterButton.addEventListener('click', () => {
+    document.querySelector('html').style.overflow = "hidden";
     cinPopA.value='';
     nomPopA.value='';
     prenomPopA.value='';
@@ -89,11 +90,13 @@ document.querySelector('#modifierPopupM').addEventListener('click',(e)=>{
 })
 
 closePA.addEventListener('click', () => {
+    document.querySelector('html').style.overflow = "auto";
     popupAjouter.style.visibility = 'hidden';
     popupAjouter.style.opacity = 0;
 })
 
 openP.map(el => el.addEventListener('click', () => {
+    document.querySelector('html').style.overflow = "hidden";
     popup.style.visibility = 'visible';
     popup.style.opacity = 1;
 
@@ -115,6 +118,7 @@ openP.map(el => el.addEventListener('click', () => {
 }))
 
 closeP.addEventListener('click', () => {
+    document.querySelector('html').style.overflow = "auto"
     popup.style.visibility = 'hidden';
     popup.style.opacity = 0;
 })

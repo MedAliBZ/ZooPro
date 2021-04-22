@@ -3,6 +3,7 @@ let popup = document.querySelector('.overlay');
 let closeP = document.querySelector('.close');
 
 openP.map(el => el.addEventListener('click', () => {
+    document.querySelector('html').style.overflow = "hidden";
     popup.style.visibility = 'visible';
     popup.style.opacity = 1;
 
@@ -40,6 +41,7 @@ document.getElementById('sauvegarderB').addEventListener('click', (e) =>{
 })
 
 closeP.addEventListener('click', () => {
+    document.querySelector('html').style.overflow = "auto";
     popup.style.visibility = 'hidden';
     popup.style.opacity = 0;
 })

@@ -91,7 +91,9 @@ class animauxC extends Controller
         $tab = $this->animauxModel->afficherAnimaux();
         $data = [
             'tab' => '',
-            'errorAffiche' => ''
+            'errorAffiche' => '',
+            'idRegime' => ''
+
         ];
         if (isset($error)) {
             $errorTab = explode("-", $error);
@@ -106,7 +108,7 @@ class animauxC extends Controller
                 $data['errorUpdate'] = '';
             }
         }
-
+        
 
         foreach ($tab as $key => $value) {
             $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
@@ -120,6 +122,12 @@ class animauxC extends Controller
             <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
+        }
+
+        $idRegime = $this->animauxModel->listRegimeID();
+        foreach ($idRegime as $key => $value)
+        {
+            $data['idRegime'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';
         }
 
 
@@ -196,6 +204,7 @@ class animauxC extends Controller
 
                 if (empty($data['image'])) {
                     $data['errorAdd'] = 'Please enter the image.';
+
                 }
 
                 // Make sure that errors are empty
@@ -209,5 +218,22 @@ class animauxC extends Controller
             }
             $this->view('animaux', $data);
         }
+    }
+
+    //afficher foreign key 
+    public function afficherListRegimeID()
+    {
+        $list = $this->animauxModel->listRegimeID();
+        $data = ['list'=> ''];
+        $countID = count($data);
+        for($i=0; $i < $countID; $i++)
+        {' <select id="regimeAlimentaire" name="regimeAlimentaire" >
+            <option value="0">choisir id regime</option>
+            <option value ="'. $data[$i]. '"> '. $data[$i]. ' </option>
+        
+        </select>'
+          ;
+        }
+        
     }
 }

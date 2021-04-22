@@ -39,7 +39,7 @@ class animauxM
     }
 
     public function getImage(){
-        echo $this->regimeAlimentaire;
+        echo $this->image;
     }
 
 
@@ -104,7 +104,12 @@ class animauxM
             return false;
         }
     }
-
-    
+      
+    public function listRegimeID()
+    {
+        $this->db->query('SELECT id FROM `regimealimentaire`');
+        return $this->db->resultSet();
+    }
+   
 
 }

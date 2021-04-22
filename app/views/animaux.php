@@ -131,29 +131,49 @@ if (!isset($data['tab'])) {
                         <br>
 
                         <div class="formCss">
-                            <input placeholder="nom animal" type="text" id="nomAnimal" name="nomAnimal" required >
+                            <input placeholder="nom animal" type="text" id="nomAnimal" name="nomAnimal" required>
                         </div>
                         <div class="formCss">
-                            <input placeholder="type" type="text" id="type" name="type" required>
+                        <select name="type" id="type" required>
+                                <option value="0">choisir un type</option>
+                                <option value="amphibiens">amphibiens </option>
+                                <option value="oiseaux">oiseaux </option>
+                                <option value="mammifere">mammifère </option>
+                                <option value="reptiles"> reptiles </option>
+                            </select>
                         </div>
+
                         <div class="formCss">
                             <input placeholder="age" type="number" id="age" name="age" required>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="pays de naissance" type="text" id="pays" name="pays" required >
+                            <input placeholder="pays de naissance" type="text" id="pays" name="pays" required>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="status" type="text" id="status" name="status" required >
+                            <select name="status" id="status" required>
+                                <option value="0">choisir Le statut de conservation</option>
+                                <option value="stable">stable </option>
+                                <option value="Menacé">Menacé </option>
+                                <option value="endanger">en danger </option>
+                            </select>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="regime Alimentaire" type="text" id="regimeAlimentaire" name="regimeAlimentaire" required >
+
+                            <select id="regimeAlimentaire" name="regimeAlimentaire">
+                                <option value="0">choisir id regime</option>
+                                <?php if (isset($data['idRegime'])) {
+                                    echo $data["idRegime"];
+                                } ?>
+
+                            </select>
+
                         </div>
-                        
+
                         <div class="formCss">
-                        <input type = "file" name = "image" id=image required >
+                            <input type="file" name="image" id="image" required>
                         </div>
 
 
@@ -201,33 +221,57 @@ if (!isset($data['tab'])) {
 
                         <br>
                         <div class="formCss">
-                            <input type="text" id="id" name="id" readonly >
+                            <input type="text" id="id" name="id" readonly>
                         </div>
                         <div class="formCss">
-                            <input placeholder="nom animal" type="text" id="nomAnimal1" name="nomAnimal" required >
+                            <input placeholder="nom animal" type="text" id="nomAnimal1" name="nomAnimal" required>
                         </div>
                         <div class="formCss">
-                            <input placeholder="Type" type="text" id="type1" name="type" required>
+                        <select name="type" id="type1" required>
+                                <option value="0">choisir un type</option>
+                                <option value="amphibiens">amphibiens </option>
+                                <option value="oiseaux">oiseaux </option>
+                                <option value="mammifere">mammifère </option>
+                                <option value="reptiles"> reptiles </option>
+                            </select>
                         </div>
                         <div class="formCss">
                             <input placeholder="age" type="number" id="age1" name="age" required>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required >
+                            <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="status" type="text" id="status1" name="status" required >
+                        <select name="status" id="status1" required>
+                                <option value="0">choisir Le statut de conservation</option>
+                                <option value="stable">stable </option>
+                                <option value="Menacé">Menacé </option>
+                                <option value="endanger">en danger </option>
+                            </select>
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="regime alimentaire" type="text" id="regimeAlimentaire1" name="regimeAlimentaire" required >
+
+                            <select id="regimeAlimentaire1" name="regimeAlimentaire">
+                                <option value="0">choisir id regime</option>
+                                <?php if (isset($data['idRegime'])) {
+                                    echo $data["idRegime"];
+                                } ?>
+
+                            </select>
+
+                        </div>
+
+                        <div class="formCss">
+                            <input type="file" name="image" id="image1" >
                         </div>
 
 
 
-                      <!-- <div class="error-table">
+
+                        <!-- <div class="error-table">
                             <p>error : <?php if (isset($data['errorUpdate'])) {
                                             echo $data["errorUpdate"];
                                         } ?></p>

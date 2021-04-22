@@ -70,10 +70,15 @@ class Employes extends Controller
                 //add employe from model function
                 if (!$this->employeModel->addEmployes($data)) {
                     die('Something went wrong.');
-                }
+                } else
+                    $this->view('employes');
+            } else {
+                $errorTab = explode(" ", $data['errorAdd']);
+                $err = implode("-", $errorTab);
+                $this->afficherList("err-" . $err);
             }
-        }
-        $this->view('employes', $data);
+        } else
+            $this->view('employes');
     }
 
 
@@ -90,12 +95,10 @@ class Employes extends Controller
             if ($errorTab[0] == 'err') {
                 array_shift($errorTab);
                 $data['errorAdd'] = implode(" ", $errorTab);
-            }
-            else if ($errorTab[0] == 'errUp') {
+            } else if ($errorTab[0] == 'errUp') {
                 array_shift($errorTab);
                 $data['errorUpdate'] = implode(" ", $errorTab);
-            } 
-            else {
+            } else {
                 $data['errorAdd'] = '';
                 $data['errorUpdate'] = '';
             }
@@ -126,7 +129,6 @@ class Employes extends Controller
         if (isset($_POST['delete'])) {
             $this->employeModel->deleteEmploye($_POST['id']);
             header('location:' . URLROOT . '/pages/employes');
-
         } elseif (isset($_POST['update'])) {
             $data = [
                 'id',
@@ -158,41 +160,46 @@ class Employes extends Controller
                 } elseif (!is_numeric($data['cin'])) {
                     $data['errorUpdate'] = 'Cin can only contain numbers.';
                 } else {
-                    if ($this->employeModel->findUserByCinUpdate($data['cin'],$data['id'])) {
+                    if ($this->employeModel->findUserByCinUpdate($data['cin'], $data['id'])) {
                         $data['errorUpdate'] = 'Cin is already taken.';
                     }
                 }
-    
+
                 //Validate nom
                 if (empty($data['nom'])) { //check if name is empty or not
                     $data['errorUpdate'] = 'Please enter your name.';
                 } elseif (!ctype_alpha($data['nom'])) { //check name regex
                     $data['errorUpdate'] = 'Please enter your real name.';
                 }
-    
+
                 if (empty($data['prenom'])) {
                     $data['errorUpdate'] = 'Please enter your surname.';
                 } elseif (!ctype_alpha($data['prenom'])) {
                     $data['errorUpdate'] = 'Please enter your real surname.';
                 }
-    
+
                 if (empty($data['salaire'])) {
                     $data['errorUpdate'] = 'Please enter a salary.';
                 } elseif (!is_numeric($data['salaire'])) {
                     $data['errorUpdate'] = 'salary can only contain numbers.';
                 }
-    
+
                 // Make sure that errors are empty
                 if (empty($data['errorUpdate'])) {
-    
+
                     //add employe from model function
                     if (!$this->employeModel->updateP($data)) {
                         die('Something went wrong.');
-                    }
+                    } else
+                        $this->view('employes');
+                } else {
+                    $errorTab = explode(" ", $data['errorUpdate']);
+                    $err = implode("-", $errorTab);
+                    $this->afficherList("errUp-" . $err);
                 }
-            }
-            $this->view('employes', $data);
-        }
+            } else
+                $this->view('employes');
+        } else
+            $this->view('employes');
     }
-
 }

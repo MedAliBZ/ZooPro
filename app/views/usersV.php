@@ -1,23 +1,8 @@
 <?php
 if (!isset($_SESSION['id']))
 	header('location: ' . URLROOT . '/index');
-if (!isset($data['tab'])) {
-
-	if (isset($data['error']) && !empty($data['error'])) {
-		$errorTab = explode(" ", $data['error']);
-		$err = implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/err-' . $err);
-	} elseif (isset($data['errorUpdate']) && !empty($data['errorUpdate'])) {
-		$errorTab = explode(" ", $data['errorUpdate']);
-		$err = implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/errUp-' . $err);
-	} elseif (isset($data['errorPass']) && !empty($data['errorPass'])) {
-		$errorTab = explode(" ", $data['errorPass']);
-		$err = implode("-", $errorTab);
-		header('location: ' . URLROOT . '/users/afficherList/errPs-' . $err);
-	} else
-		header('location: ' . URLROOT . '/users/afficherList');
-}
+if (!isset($data['tab'])) 
+	header('location: ' . URLROOT . '/users/afficherList');
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +119,7 @@ if (!isset($data['tab'])) {
 						<i class="fas fa-lock"></i>
 						<input type="password" placeholder="Old Password" name="password" required />
 					</div>
-					
+
 					<p id="error-msg"><?php if (isset($data['error'])) {
 											echo $data['error'];
 										} ?></p>
@@ -158,10 +143,10 @@ if (!isset($data['tab'])) {
 						<input type="password" placeholder="Old Password" name="oldPassword" required />
 					</div>
 					<p id="error-msgPass"><?php if (isset($data['errorPass'])) {
-											echo $data['errorPass'];
-										} ?></p>
+												echo $data['errorPass'];
+											} ?></p>
 					<div class="btn-div">
-						<input name="update" type="submit" class="btn" value="Changer" id="card-changerPass"/>
+						<input name="update" type="submit" class="btn" value="Changer" id="card-changerPass" />
 					</div>
 				</form>
 			</div>
@@ -189,7 +174,7 @@ if (!isset($data['tab'])) {
 							<h2>Modifier ce profile</h2>
 							<input type="text" placeholder="id" name="id" style="display: none;" class="id-popup" />
 							<div class="input-field one">
-								<i class="fas fa-user"></i> 
+								<i class="fas fa-user"></i>
 								<input type="text" placeholder="Username" name="username" class="username-popup" required />
 							</div>
 							<div class="input-field two">

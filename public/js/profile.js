@@ -64,12 +64,6 @@ saveButton.addEventListener("click", (e) => {
         errorProfile.innerHTML = 'email invalide';
         e.preventDefault();
     }
-    else if (!validatePassword(password.value)) {
-        email.parentElement.style.border = "solid 1px #e8e8e9";
-        password.parentElement.style.border = "1px solid red";
-        errorProfile.innerHTML = 'Mot de passe doit contenir au moins 1 lettre majuscule, 1 lettre miniscule, 1 nombre et sa taille est supérieure a 8!';
-        e.preventDefault();
-    }
 });
 
 
@@ -81,7 +75,13 @@ let cardError = document.getElementById('error-msgPass');
 
 
 cardButton.addEventListener("click",(e)=>{
-    if(cardNewPass.value != cardConfirmPass.value){
+    if (!validatePassword(cardNewPass.value)) {
+        cardConfirmPass.parentElement.style.border = "solid 1px #e8e8e9";
+        cardNewPass.parentElement.style.border = "1px solid red";
+        cardError.innerHTML = 'Mot de passe doit contenir au moins 1 lettre majuscule, 1 lettre miniscule, 1 nombre et sa taille est supérieure a 8!';
+        e.preventDefault();
+    }
+    else if(cardNewPass.value != cardConfirmPass.value){
         cardConfirmPass.parentElement.style.border = "1px solid red";
         cardNewPass.parentElement.style.border = "1px solid red";
         cardError.innerHTML = "Les mots de passes ne sont pas compatibles!";

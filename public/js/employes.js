@@ -34,7 +34,7 @@ ajouterButton.addEventListener('click', () => {
 
 document.querySelector('#ajouterPopup').addEventListener('click',(e)=>{
     resetErrorsPopUp();
-    if(cinPopA.value.length != 9){
+    if(trim(cinPopA.value).length != 9){
         document.getElementById('errorAj').innerHTML='La longeur du cin doit ere egale à 9';
         cinPopA.parentElement.style.border='1px solid red';
         e.preventDefault();

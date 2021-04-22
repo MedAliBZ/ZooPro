@@ -125,15 +125,14 @@ class Users extends Controller
                 $loggedInUser = $this->userModel->login($data['username'], $data['password']);
 
                 if ($loggedInUser) {
-                    if (isset($_POST['rememberMe'])){
+                    if (isset($_POST['rememberMe'])) {
                         session_destroy();
                         ini_set('session.cookie_lifetime', 60 * 60 * 24 * 365);
                         ini_set('session.gc-maxlifetime', 60 * 60 * 24 * 365);
                         session_name('dashboard');
                         session_start();
                         session_regenerate_id(true);
-                    }
-                    else{
+                    } else {
                         session_destroy();
                         session_name('dashboard');
                         session_start();
@@ -226,13 +225,21 @@ class Users extends Controller
                         } else {
                             die('Something went wrong.');
                         }
+                    } else {
+                        $errorTab = explode(" ", $data['error']);
+                        $err = implode("-", $errorTab);
+                        $this->afficherList("err-" . $err);
                     }
                 } else {
                     $data['error'] = "Password does not match";
+                    $errorTab = explode(" ", $data['error']);
+                    $err = implode("-", $errorTab);
+                    $this->afficherList("err-" . $err);
                 }
-            }
-            $this->view('usersV', $data);
-        }
+            } else
+                $this->view('usersV');
+        } else
+            $this->view('usersV');
     }
 
     public function afficherList($error = '')
@@ -344,10 +351,16 @@ class Users extends Controller
                     } else {
                         die('Something went wrong.');
                     }
+                } else {
+                    $errorTab = explode(" ", $data['errorUpdate']);
+                    $err = implode("-", $errorTab);
+                    $this->afficherList("errUp-" . $err);
                 }
+            } else {
+                $this->view('usersV', $data);
             }
-            $this->view('usersV', $data);
-        }
+        } else
+            $this->view('usersV');
     }
 
     public function updatePass()
@@ -399,12 +412,19 @@ class Users extends Controller
                     } else {
                         die('Something went wrong.');
                     }
+                } else {
+                    $errorTab = explode(" ", $data['errorPass']);
+                    $err = implode("-", $errorTab);
+                    $this->afficherList("errPs-" . $err);
                 }
             } else {
                 $data['errorPass'] = "Password does not match old pass";
+                $errorTab = explode(" ", $data['errorPass']);
+                $err = implode("-", $errorTab);
+                $this->afficherList("errPs-" . $err);
             }
-        }
-        $this->view('usersV', $data);
+        } else
+            $this->view('usersV');
     }
 
 
@@ -433,7 +453,7 @@ class Users extends Controller
                 $key = $this->userModel->createPassKey($data['username']);
                 if ($key) {
                     //envoie mail
-                    mail($data['email'][0],'Password Reset','You code is: '.$key,'From: zooproresetpass@gmail.com');
+                    mail($data['email'][0], 'Password Reset', 'You code is: ' . $key, 'From: zooproresetpass@gmail.com');
                     //redirection
                     $this->view('changePass', $data);
                 } else {
@@ -444,10 +464,8 @@ class Users extends Controller
                 $data['error'] = "username invalide!";
                 $this->view('resetPass', $data);
             }
-        }
-        else
+        } else
             header('location: ' . URLROOT . '/Pages/resetPass');
-        
     }
 
     public function useKey()
@@ -550,15 +568,14 @@ class Users extends Controller
             if ($this->userModel->findUserByEmail($data['email'])) {
                 $data['username'] = $this->userModel->findUsernameByEmail($data['email']);
                 //envoie mail
-                mail($data['email'], 'Password Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
+                mail($data['email'], 'Username Reset', 'Your username is: ' . $data['username'][0], 'From: zooproresetpass@gmail.com');
                 //redirection
                 header('location: ' . URLROOT . '/index');
-            }else {
+            } else {
                 $data['errorEmail'] = "email invalide!";
                 $this->view('resetPass', $data);
             }
-        }
-        else
+        } else
             header('location: ' . URLROOT . '/pages/resetPass');
     }
 }

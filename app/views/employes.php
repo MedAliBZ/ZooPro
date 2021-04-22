@@ -3,17 +3,7 @@ if (!isset($_SESSION['id']))
     header('location: ' . URLROOT . '/index');
 
 if (!isset($data['tab'])) {
-    if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
-        $errorTab = explode(" ", $data['errorAdd']);
-        $err = implode("-", $errorTab);
-        header('location: ' . URLROOT . '/employes/afficherList/err-' . $err);
-    } elseif (isset($data['errorUpdate']) && !empty($data['errorUpdate'])) {
-        $errorTab = explode(" ", $data['errorUpdate']);
-        $err = implode("-", $errorTab);
-        header('location: ' . URLROOT . '/employes/afficherList/errUp-' . $err);
-    } 
-    else
-        header('location: ' . URLROOT . '/employes/afficherList');
+    header('location: ' . URLROOT . '/employes/afficherList');
 }
 
 ?>
@@ -150,23 +140,23 @@ if (!isset($data['tab'])) {
                             <input type="text" placeholder="id" name="id" style="display: none;" class="id-popup" />
                             <div class="input-field one">
                                 <i class="fas fa-id-card"></i>
-                                <input type="text" placeholder="Cin" name="cin" class="cin-popup" required/>
+                                <input type="text" placeholder="Cin" name="cin" class="cin-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Nom" name="nom" class="nom-popup" required/>
+                                <input type="text" placeholder="Nom" name="nom" class="nom-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Prenom" name="prenom" class="prenom-popup" required/>
+                                <input type="text" placeholder="Prenom" name="prenom" class="prenom-popup" required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateNaissance" class="BD-popup" max='2002-01-01' min='1950-01-01' required/>
+                                <input type="Date" name="dateNaissance" class="BD-popup" max='2002-01-01' min='1950-01-01' required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-dollar-sign"></i>
-                                <input type="number" step='0.01' placeholder="Salaire" name="salaire" class="salaire-popup" required/>
+                                <input type="number" step='0.01' placeholder="Salaire" name="salaire" class="salaire-popup" required />
                             </div>
                             <div id="errorMd"></div>
                             <div class="buttonsPUpdate">
@@ -184,29 +174,29 @@ if (!isset($data['tab'])) {
                             <h2>Ajouter un employé</h2>
                             <div class="input-field">
                                 <i class="fas fa-id-card"></i>
-                                <input type="text" placeholder="Cin" name="cin" id="cin-popupA" required/>
+                                <input type="text" placeholder="Cin" name="cin" id="cin-popupA" required />
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Nom" name="nom" id="nom-popupA" required/>
+                                <input type="text" placeholder="Nom" name="nom" id="nom-popupA" required />
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Prenom" name="prenom" id="prenom-popupA" required/>
+                                <input type="text" placeholder="Prenom" name="prenom" id="prenom-popupA" required />
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateNaissance" id="BD-popupA" max='2002-01-01' min='1950-01-01' required/>
+                                <input type="Date" name="dateNaissance" id="BD-popupA" max='2002-01-01' min='1950-01-01' required />
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-dollar-sign"></i>
-                                <input type="number" step='0.01' placeholder="Salaire" name="salaire" id="salaire-popupA" required/>
+                                <input type="number" step='0.01' placeholder="Salaire" name="salaire" id="salaire-popupA" required />
                             </div>
                             <div>
-                            <div id="errorAj"></div>
-                            <div class="buttonsP">
-                                <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup"/>
-                            </div>
+                                <div id="errorAj"></div>
+                                <div class="buttonsP">
+                                    <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup" />
+                                </div>
                         </form>
                     </div>
                 </div>

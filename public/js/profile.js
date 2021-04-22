@@ -12,15 +12,28 @@ function validatePassword(password) {
 
 cardButton.addEventListener("click",(e)=>{
     if (!validatePassword(cardNewPass.value)) {
-        cardConfirmPass.parentNode.style.borderColor = "1px solid #e5e6e9";
-        cardNewPass.parentNode.style.borderColor = "red";
+        cardConfirmPass.style.borderColor = "1px solid #e5e6e9";
+        cardNewPass.style.borderColor = "red";
         cardError.innerHTML = 'Mot de passe doit contenir au moins 1 lettre majuscule, 1 lettre miniscule, 1 nombre et sa taille est supérieure a 8!';
         e.preventDefault();
     }
     else if(cardNewPass.value != cardConfirmPass.value){
-        cardConfirmPass.parentNode.style.borderColor = "red";
-        cardNewPass.parentNode.style.borderColor = "red";
+        cardConfirmPass.style.borderColor = "red";
+        cardNewPass.style.borderColor = "1px solid #e5e6e9";
         cardError.innerHTML = "Les mots de passes ne sont pas compatibles!";
         e.preventDefault();
     }
+})
+
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+document.getElementById('sauvegarderB').addEventListener('click', (e) =>{
+    if(!validateEmail(document.querySelector('.email-popup').value)){
+        document.getElementById('errorPop').innerHTML="Forme email invalide!";
+        document.querySelector('.email-popup').parentElement.style.border = "1px solid red";
+        e.preventDefault();
+    }
+
 })

@@ -95,7 +95,7 @@ require APPROOT . '/views/includes/navigation.php';
                             </div>
                             <div class="col-7">
                                 <div class="form-group">
-                                    <input class="form-control" name="email" id="subject" type="text" placeholder="Email" value="<?php echo $_SESSION['email']; ?>" required>
+                                    <input class="form-control email-popup" name="email" id="subject" type="text" placeholder="Email" value="<?php echo $_SESSION['email']; ?>" required>
                                 </div>
                             </div>
 
@@ -104,11 +104,11 @@ require APPROOT . '/views/includes/navigation.php';
                                     <input class="form-control valid" name="password" type="password" placeholder="Password" required>
                                 </div>
                             </div>
-                            <div class="col-sm-8" style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></div>
+                            <div class="col-sm-8" style="color: red;" id="errorPop"><?php if(isset($data['error'])){echo $data['error'];} ?></div>
                         </div>
 
                         <div class="form-group mt-3">
-                            <input type="submit" class="button button-contactForm boxed-btn" value="Sauvegarder"/>
+                            <input type="submit" class="button button-contactForm boxed-btn" id="sauvegarderB" value="Sauvegarder"/>
                             <input type="submit" class="button boxed-btn" name="delete" value="Supprimer"/>
                         </div>
                     </form>

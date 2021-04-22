@@ -130,6 +130,10 @@ class User
 
     public function deleteAccount($id)
     {
+        // $this->db->query('UPDATE personel SET updated_by = NULL WHERE updated_by = :id ');
+        // $this->db->bind(':id', $id);
+        // $this->db->execute();
+
         $this->db->query('DELETE FROM password_reset WHERE password_reset.username = (SELECT username FROM users WHERE id = :id)');
         $this->db->bind(':id', $id);
         $this->db->execute();

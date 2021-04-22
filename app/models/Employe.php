@@ -36,7 +36,7 @@ class Employe
 
     public function addEmployes($data)
     {
-        $this->db->query('INSERT INTO personel (cin, nom, prenom,date_de_naissance,salaire) VALUES(:cin, :nom, :prenom,:dateNaissance,:salaire)');
+        $this->db->query('INSERT INTO personel (cin, nom, prenom,date_de_naissance,salaire,updated_by) VALUES(:cin, :nom, :prenom,:dateNaissance,:salaire,:updated_by)');
 
         //Bind values
         $this->db->bind(':cin', $data['cin']);
@@ -44,7 +44,7 @@ class Employe
         $this->db->bind(':prenom', $data['prenom']);
         $this->db->bind(':dateNaissance', $data['dateNaissance']);
         $this->db->bind(':salaire', $data['salaire']);
-
+        $this->db->bind(':updated_by', $_SESSION['id']);
         //Execute function
         if ($this->db->execute()) {
             return true;
@@ -103,7 +103,7 @@ class Employe
 
 
     public function updateP($data){
-        $this->db->query('UPDATE personel SET cin = :cin , nom = :nom, prenom = :prenom, date_de_naissance = :dateNaissance, salaire = :salaire WHERE id = :id ');
+        $this->db->query('UPDATE personel SET cin = :cin , nom = :nom, prenom = :prenom, date_de_naissance = :dateNaissance, salaire = :salaire, updated_by = :updated_by WHERE id = :id ');
         //Bind values
         $this->db->bind(':cin', $data['cin']);
         $this->db->bind(':nom', $data['nom']);
@@ -111,6 +111,7 @@ class Employe
         $this->db->bind(':dateNaissance', $data['dateNaissance']);
         $this->db->bind(':salaire', $data['salaire']);
         $this->db->bind(':id', $data['id']);
+        $this->db->bind(':updated_by', $_SESSION['id']);
 
         //Execute function
         if ($this->db->execute()) {

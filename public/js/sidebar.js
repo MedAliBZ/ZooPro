@@ -8,12 +8,12 @@ window.addEventListener("resize",()=>{
 });
 
 document.querySelector(".sidebar").addEventListener("mouseenter",()=>{
-    if ($(window).width() > 768){
+    if ($(window).width() > 1050){
         $(".wrapper").toggleClass("collapse");
     }
 });
 document.querySelector(".sidebar").addEventListener("mouseleave",()=>{
-    if ($(window).width() > 768){
+    if ($(window).width() > 1050){
         $(".wrapper").toggleClass("collapse");
     }
 });

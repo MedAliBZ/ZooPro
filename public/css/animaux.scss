@@ -1,0 +1,60 @@
+.affichagePics
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+   
+}
+
+
+.card
+{
+   
+  color: var(--tc);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: solid 2px #e8e8e9;
+  width: fit-content;
+  margin-left:5px;
+  margin-right: 5px;
+  max-width: 100%;
+  height: auto;
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.picStyle
+{
+	border-radius: 20px;
+    width: 350px;
+    height: 300px;
+    
+}
+
+.textStyle
+{
+ 
+    padding: 3%;
+    font-size: 20px ;
+    border: solid 1px white;
+    border-radius: 20px;
+    margin: 2%;
+    cursor: pointer;
+    color: rgb(1, 129, 113) ;
+    font: bold;
+    &:hover 
+    {
+      border-color: rgb(1, 129, 113);
+      color: rgb(1, 129, 113) ;
+      
+    } 
+    
+    
+}

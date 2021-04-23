@@ -1,0 +1,68 @@
+.affichagePics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2%;
+}
+
+.card {
+  color: var(--tc);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: solid 2px #e8e8e9;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 5px;
+  margin-right: 5px;
+  max-width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.picStyle {
+  border-radius: 20px;
+  width: 350px;
+  height: 300px;
+}
+
+.textStyle {
+  padding: 3%;
+  font-size: 20px;
+  border: solid 1px white;
+  border-radius: 20px;
+  margin: 2%;
+  cursor: pointer;
+  color: #018171;
+  font: bold;
+}
+
+.textStyle:hover {
+  border-color: #018171;
+  color: #018171;
+}
+/*# sourceMappingURL=animaux.css.map */

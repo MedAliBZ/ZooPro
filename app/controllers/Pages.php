@@ -16,5 +16,13 @@ class Pages extends Controller {
         $this->view('profile');
     }
 
+    public function regime() {
+        $this->view('regime');
+    }
+
+    public function animaux() {
+        $this->view('animaux');
+    }
+
 
 }

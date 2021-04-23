@@ -161,7 +161,7 @@ if (!isset($data['tab']))
 				</button>
 				<div class="input-field" style="margin-left: 10%;position: relative;width:100%;">
 						<i class="fas fa-search"></i>
-						<input id="rechercher" type="text" placeholder="Rechercher par nom d'utilisateur" name="Rechercher" />
+						<input style="overflow: hidden;" id="rechercher" type="text" placeholder="Rechercher par nom d'utilisateur" name="Rechercher" />
 					</div>
 				</div>
 				<div class="triAndFilter">

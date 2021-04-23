@@ -52,7 +52,7 @@ $mobile: 1051px;
   }
 }
 
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: 1200px) {
   .wrapper .main-container {
     .card.profile {
       display: grid;

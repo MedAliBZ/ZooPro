@@ -40,6 +40,7 @@ $mobile: 1050px;
   --accent: #059481;
   --bg: #666769;
   --tc: #d8dee9;
+  --tca: #c6c6c6;
 }
 
 * {
@@ -49,6 +50,11 @@ $mobile: 1050px;
   text-decoration: none;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+input:placeholder-shown {
+  text-overflow: ellipsis;
+  padding-right: 20px;
 }
 
 body {

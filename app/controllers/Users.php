@@ -244,6 +244,9 @@ class Users extends Controller
 
     public function afficherList($error = '')
     {
+        if(!$this->userModel->findUserByUsername($_SESSION['username']))
+            $this->logout();
+
         $tab = $this->userModel->afficher();
         $data = [
             'tab' => '',
@@ -581,6 +584,9 @@ class Users extends Controller
 
     public function trier($case='')
     {
+        if(!$this->userModel->findUserByUsername($_SESSION['username']))
+            $this->logout();
+
         $column = array("a" => "ID", "b" => "USERNAME", "c" => "EMAIL", "d" => "ROLE_ID");
         if (array_search($case, $column)) {
             $tab = $this->userModel->tri($case);
@@ -606,6 +612,9 @@ class Users extends Controller
 
     public function filtrer($role='')
     {
+        if(!$this->userModel->findUserByUsername($_SESSION['username']))
+            $this->logout();
+
         $column = array("a" => "admin", "b" => "utilisateur");
         if (array_search($role, $column)) {
             $tab = $this->userModel->filter($role);

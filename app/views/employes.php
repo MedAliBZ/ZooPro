@@ -152,7 +152,7 @@ if (!isset($data['tab'])) {
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateNaissance" class="BD-popup" max='2002-01-01' min='1950-01-01' required />
+                                <input type="date" name="dateNaissance" class="BD-popup" max='2002-01-01' min='1950-01-01' required />
                             </div>
                             <div class="input-field two">
                                 <i class="fas fa-dollar-sign"></i>

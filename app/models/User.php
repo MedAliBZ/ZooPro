@@ -191,6 +191,21 @@ class User
         return $this->db->resultSet();
     }
 
+    public function tri($case)
+    {
+        $this->db->query('SELECT u.id,u.username,u.email,role.nom FROM users u INNER JOIN role ON u.role_id = role.id ORDER BY '.$case);
+        
+        return $this->db->resultSet();
+    }
+
+    public function filter($role)
+    {
+        $this->db->query('SELECT u.id,u.username,u.email,role.nom FROM users u INNER JOIN role ON u.role_id = role.id WHERE role.nom = :role');
+        $this->db->bind(':role', $role);
+        
+        return $this->db->resultSet();
+    }
+
     public function updatePass($data)
     {
         $this->db->query('UPDATE users SET password = :password WHERE id = "' . $_SESSION["id"] . '" ');

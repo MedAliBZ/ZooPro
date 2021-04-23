@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['id']))
 	header('location: ' . URLROOT . '/index');
-if (!isset($data['tab'])) 
+if (!isset($data['tab']))
 	header('location: ' . URLROOT . '/users/afficherList');
 ?>
 
@@ -155,6 +155,34 @@ if (!isset($data['tab']))
 				<div class="error-table"><?php if (isset($data['errorUpdate'])) {
 												echo $data['errorUpdate'];
 											} ?></div>
+				<div style="display: flex;">
+				<button class="triButton"><i class="fas fa-align-left"></i>
+					<p>Filtres</p>
+				</button>
+				<div class="input-field" style="margin-left: 10%;position: relative;width:100%;">
+						<i class="fas fa-search"></i>
+						<input id="rechercher" type="text" placeholder="Rechercher par nom d'utilisateur" name="Rechercher" />
+					</div>
+				</div>
+				<div class="triAndFilter">
+					<div class="card" style="position: relative;display:flex;justify-content: space-evenly;">
+						<div class="tri">
+							<h3>Tri</h3>
+							<a href="<?php echo URLROOT; ?>/users/trier/ID">ID</a>
+							<a href="<?php echo URLROOT; ?>/users/trier/USERNAME">USERNAME</a>
+							<a href="<?php echo URLROOT; ?>/users/trier/EMAIL">EMAIL</a>
+							<a href="<?php echo URLROOT; ?>/users/trier/ROLE_ID">ROLE</a>
+						</div>
+						<div class="filter">
+							<h3>Filtre</h3>
+							<a href="<?php echo URLROOT; ?>/users/filtrer/admin">ADMIN</a>
+							<a href="<?php echo URLROOT; ?>/users/filtrer/utilisateur">UTILISATEUR</a>
+						</div>
+						<div class="removeFT">
+							<a style="font-weight: 800;" href="<?php echo URLROOT; ?>/users/filtrer/afficherList">Supprimer les filtres</a>
+						</div>
+					</div>
+				</div>
 				<ul class="responsive-table">
 					<li class="table-header">
 						<div class="col col-1">ID</div>

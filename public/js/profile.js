@@ -14,9 +14,9 @@ openP.map(el => el.addEventListener('click', () => {
     let id = el.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
     // that doesn't represent me!!
 
-    document.querySelector('.id-popup').value=id;
-    document.querySelector('.email-popup').value=email;
-    document.querySelector('.username-popup').value=username;
+    document.querySelector('.id-popup').value = id;
+    document.querySelector('.email-popup').value = email;
+    document.querySelector('.username-popup').value = username;
     if (admin !== 'utilisateur') {
         document.querySelector('.user-popup').removeAttribute('checked');
         document.querySelector('.admin-popup').setAttribute('checked', 'checked');
@@ -31,9 +31,9 @@ function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-document.getElementById('sauvegarderB').addEventListener('click', (e) =>{
-    if(!validateEmail(document.querySelector('.email-popup').value)){
-        document.getElementById('errorPop').innerHTML="Forme email invalide!";
+document.getElementById('sauvegarderB').addEventListener('click', (e) => {
+    if (!validateEmail(document.querySelector('.email-popup').value)) {
+        document.getElementById('errorPop').innerHTML = "Forme email invalide!";
         document.querySelector('.email-popup').parentElement.style.border = "1px solid red";
         e.preventDefault();
     }
@@ -76,17 +76,52 @@ let cardButton = document.getElementById('card-changerPass');
 let cardError = document.getElementById('error-msgPass');
 
 
-cardButton.addEventListener("click",(e)=>{
+cardButton.addEventListener("click", (e) => {
     if (!validatePassword(cardNewPass.value)) {
         cardConfirmPass.parentElement.style.border = "solid 1px #e8e8e9";
         cardNewPass.parentElement.style.border = "1px solid red";
         cardError.innerHTML = 'Mot de passe doit contenir au moins 1 lettre majuscule, 1 lettre miniscule, 1 nombre et sa taille est supérieure a 8!';
         e.preventDefault();
     }
-    else if(cardNewPass.value != cardConfirmPass.value){
+    else if (cardNewPass.value != cardConfirmPass.value) {
         cardConfirmPass.parentElement.style.border = "1px solid red";
         cardNewPass.parentElement.style.border = "1px solid red";
         cardError.innerHTML = "Les mots de passes ne sont pas compatibles!";
         e.preventDefault();
     }
 })
+
+
+
+document.querySelector('.triButton').addEventListener('click', () => {
+    document.querySelector('.triAndFilter').classList.toggle('open');
+})
+
+
+let usernames = Array.from(document.querySelectorAll("div[data-label='Username']"));
+
+
+document.getElementById('rechercher').addEventListener('keyup', (e) => {
+    usernames.map(el => {
+        if (el.innerHTML.toLowerCase().search(e.target.value.toLowerCase()) == -1) {
+            el.parentElement.style.display = 'none';
+        }
+        else {
+            if (window.innerWidth > 1050)
+                el.parentElement.style.display = 'flex';
+            else
+                el.parentElement.style.display = 'block';
+        }
+    })
+})
+
+window.addEventListener('resize', () => {
+    document.getElementById('rechercher').value = '';
+    usernames.map(el => {
+        if (window.innerWidth > 1050)
+            el.parentElement.style.display = 'flex';
+        else
+            el.parentElement.style.display = 'block';
+    });
+
+});

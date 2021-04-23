@@ -27,6 +27,7 @@ $mobile: 1050px;
   --accent: #07aa94;
   --bg: #f5f5f5;
   --tc: #3a3a3a;
+  --tca: #5d5d5d;
 }
 
 .darktheme {
@@ -368,8 +369,6 @@ header {
 
 .input-field {
   border: solid 1px #e8e8e9;
-  max-width: 380px;
-  min-width: 100%;
   background-color: transparent;
   margin: 10px 0;
   height: 55px;

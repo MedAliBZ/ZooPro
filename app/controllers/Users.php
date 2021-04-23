@@ -578,4 +578,54 @@ class Users extends Controller
         } else
             header('location: ' . URLROOT . '/pages/resetPass');
     }
+
+    public function trier($case='')
+    {
+        $column = array("a" => "ID", "b" => "USERNAME", "c" => "EMAIL", "d" => "ROLE_ID");
+        if (array_search($case, $column)) {
+            $tab = $this->userModel->tri($case);
+            $data = [
+                'tab' => ''
+            ];
+            foreach ($tab as $key => $value) {
+                $data['tab'] .= '<li class="table-row">
+                    <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                    <div class="col col-2" data-label="Username">' . $value[1] . '</div>
+                    <div class="col col-3" data-label="Email">' . $value[2] . '</div>
+                    <div class="col col-4" data-label="Role">' . $value[3] . '</div>
+                    <div class="col col-5">
+                        <div class="col-buttons">
+                            <button class="tab-btn"><i data-feather="edit"></i></button>
+                        </div>
+                    </div>
+                </li>';
+            }
+        }
+        $this->view('usersV', $data);
+    }
+
+    public function filtrer($role='')
+    {
+        $column = array("a" => "admin", "b" => "utilisateur");
+        if (array_search($role, $column)) {
+            $tab = $this->userModel->filter($role);
+            $data = [
+                'tab' => ''
+            ];
+            foreach ($tab as $key => $value) {
+                $data['tab'] .= '<li class="table-row">
+                    <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                    <div class="col col-2" data-label="Username">' . $value[1] . '</div>
+                    <div class="col col-3" data-label="Email">' . $value[2] . '</div>
+                    <div class="col col-4" data-label="Role">' . $value[3] . '</div>
+                    <div class="col col-5">
+                        <div class="col-buttons">
+                            <button class="tab-btn"><i data-feather="edit"></i></button>
+                        </div>
+                    </div>
+                </li>';
+            }
+        }
+        $this->view('usersV', $data);
+    }
 }

@@ -89,12 +89,17 @@ class Enclos extends Controller
                 }
             }
         }
+         
+      
+
+
         $this->view('enclos', $data);
     }
 
     
     public function afficherList($error = '')
     {
+
         $tab = $this->encloModel->afficher();
         $data = [
             'tab' => '',
@@ -116,7 +121,7 @@ class Enclos extends Controller
                     </div>
                 </li>';
         }
-
+        
         $this->view('enclos', $data);
     }
 
@@ -224,5 +229,34 @@ class Enclos extends Controller
 
         $this->view('enclos', $data);
     }
+
+     public function sortEnclos($error = '')
+    {
+        $tab = $this->encloModel->sortEnclosByTaille();
+        $data = [
+            'tab' => '',
+            'errorAdd' => ''
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= ' <li class="table-row">
+                    <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                    <div class="col col-2" data-label="Appellation">' . $value[1] . '</div>
+                    <div class="col col-3" data-label="Localisation">' . $value[2] . '</div>
+                    <div class="col col-4" data-label="Taille">' . $value[3] . '</div>
+                    <div class="col col-5" data-label="Date de construction">' . $value[4] . '</div>
+                    <div class="col col-6" data-label="Capacite maximale">' . $value[5] . '</div>
+                    <div class="col col-7">
+                        <div class="col-buttons">
+                            <button class="tab-btn"><i data-feather="edit"></i></button>
+                        </div>
+                    </div>
+                </li>';
+        }
+
+        $this->view('enclos', $data);
+    }
+
+    
 }
 

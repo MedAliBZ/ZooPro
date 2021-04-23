@@ -102,6 +102,12 @@ class Enclo
         $this->db->bind(':id', $id);
         return $this->db->resultSet();
     }
+
+    public function sortEnclosByTaille()
+    {
+        $this->db->query('SELECT * FROM enclos ORDER BY taille DESC');
+        return $this->db->resultSet();
+    }
    
 
 }

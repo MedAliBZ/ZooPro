@@ -259,3 +259,18 @@
   text-transform: uppercase;
   text-align: center;
 }
+
+.btn {
+  width: 150px;
+  background-color: var(--accent);
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  margin: 10px 10px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.5s;
+}

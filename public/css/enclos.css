@@ -243,3 +243,19 @@
   color: red;
   text-align: center;
 }
+.input-fieldSearch {
+  border: solid 1px #e8e8e9;
+  max-width: 50px;
+  min-width: 15%;
+  background-color: transparent;
+  margin: 10px 0;
+  height: 50px;
+  border-radius: 25px;
+  display: grid;
+  grid-template-columns: 25px 89%;
+  padding: 0 0.4rem;
+  position: relative;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}

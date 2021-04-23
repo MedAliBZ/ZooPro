@@ -120,7 +120,18 @@ if (!isset($_SESSION['id']))
             <div class="container">
                 <div class="error-table"><?php if (isset($data['errorAdd'])){echo $data['errorAdd'];}?></div>
                 <div class="error-table"><?php if (isset($data['errorUpdate'])){echo $data['errorUpdate'];}?></div>
+                
+                 <form class="content" action="<?php echo URLROOT; ?>/enclos/getEnclos" method="POST">
+                 <div class="row">                  
+                 <div class="input-wrap">
+                 <input type="text" placeholder="Enter id" name="id" autocomplete="off" style="float: right;" class="input-fieldSearch" />
+                 </div>                                      
+                 </div></br> 
+                 <br></br>
+                 <input class="btn" type="submit" value="Search" name="search_enclos" style="float: right;" />
+                 </form>
                 <button class="btn" id="ajouterEnc">Ajouter</button>
+                
 
                <ul class="responsive-table">
                     <li class="table-header">

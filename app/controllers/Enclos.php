@@ -100,22 +100,6 @@ class Enclos extends Controller
             'tab' => '',
             'errorAdd' => ''
         ];
-        if (isset($error)) {
-            $errorTab = explode("-", $error);
-            if ($errorTab[0] == 'err') {
-                array_shift($errorTab);
-                $data['errorAdd'] = implode(" ", $errorTab);
-            }
-             else if ($errorTab[0] == 'errUp') {
-                 array_shift($errorTab);
-                 $data['errorUpdate'] = implode(" ", $errorTab);
-            } 
-            else {
-                $data['errorAdd'] = '';
-                 $data['errorUpdate'] = '';
-            }
-        }
-
 
         foreach ($tab as $key => $value) {
             $data['tab'] .= ' <li class="table-row">
@@ -135,6 +119,8 @@ class Enclos extends Controller
 
         $this->view('enclos', $data);
     }
+
+    
 
     
     public function deleteUpdateTab()
@@ -209,4 +195,34 @@ class Enclos extends Controller
             $this->view('enclos', $data);
         }
     }
+
+    public function getEnclos()
+    {       
+    if(isset($_POST['search_enclos'])) {
+        $tab = $this->encloModel->getEnclosByID($_POST['id']);
+    }
+      $data = [
+            'tab' => '',
+            'errorAdd' => ''
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= ' <li class="table-row">
+                    <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                    <div class="col col-2" data-label="Appellation">' . $value[1] . '</div>
+                    <div class="col col-3" data-label="Localisation">' . $value[2] . '</div>
+                    <div class="col col-4" data-label="Taille">' . $value[3] . '</div>
+                    <div class="col col-5" data-label="Date de construction">' . $value[4] . '</div>
+                    <div class="col col-6" data-label="Capacite maximale">' . $value[5] . '</div>
+                    <div class="col col-7">
+                        <div class="col-buttons">
+                            <button class="tab-btn"><i data-feather="edit"></i></button>
+                        </div>
+                    </div>
+                </li>';
+        }
+
+        $this->view('enclos', $data);
+    }
 }
+

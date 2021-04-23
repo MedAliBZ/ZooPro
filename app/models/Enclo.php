@@ -96,6 +96,12 @@ class Enclo
         }
     }
 
-    
+    public function getEnclosByID($id)
+    {
+        $this->db->query('SELECT * FROM enclos WHERE id = :id');
+        $this->db->bind(':id', $id);
+        return $this->db->resultSet();
+    }
+   
 
 }

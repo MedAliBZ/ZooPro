@@ -108,7 +108,7 @@ require APPROOT . '/views/includes/navigation.php';
                         </div>
 
                         <div class="form-group mt-3">
-                            <input type="submit" class="button button-contactForm boxed-btn" id="sauvegarderB" value="Sauvegarder"/>
+                            <input style='margin-bottom:50px;margin-right:15px;' type="submit" class="button button-contactForm boxed-btn" id="sauvegarderB" value="Sauvegarder"/>
                             <input type="submit" class="button boxed-btn" name="delete" value="Supprimer"/>
                         </div>
                     </form>

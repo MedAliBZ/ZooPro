@@ -147,18 +147,19 @@ if (!isset($_SESSION['id']))
                         <br>
 
                         <div class="formCss">
+                        
                             <input placeholder="Nom" type="text" id="nomP" name="nomP">
                         </div>
                     
                         <div class="formCss">
-                            <input placeholder="Longévité(ans)" type="text" id="longevite" name="longevite">
+                            <input placeholder="Longévité(ans)" type="number" id="longevite" name="longevite">
                         </div>
                         <div class="formCss">
                             <input placeholder="Origine géographique" type="text" id="origine" name="origine">
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="Taille(m)" name="taille" id="taille"/>
+                            <input type="number" placeholder="Taille(m)" name="taille" id="taille"/>
                         </div>
 
                         <div class="formCss">
@@ -213,14 +214,14 @@ if (!isset($_SESSION['id']))
                   
 
                         <div class="formCss">
-                            <input placeholder="longévité" type="text" id="longevite1" name="longevite">
+                            <input placeholder="longévité" type="number" id="longevite1" name="longevite">
                         </div>
                         <div class="formCss">
                             <input placeholder="origine géographique" type="text" id="origine1" name="origine">
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="taille" name="taille" id="taille1" />
+                            <input type="number" placeholder="taille" name="taille" id="taille1" />
                         </div>
 
                         <div class="formCss">

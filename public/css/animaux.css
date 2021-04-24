@@ -118,4 +118,32 @@
   font: bold;
   text-align: center;
 }
+
+.regimeContainer {
+  color: var(--tc);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: solid 2px #e8e8e9;
+  width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5%;
+}
 /*# sourceMappingURL=animaux.css.map */

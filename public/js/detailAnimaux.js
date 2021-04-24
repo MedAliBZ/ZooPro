@@ -31,7 +31,9 @@ document.querySelector("#typeAnimal").innerHTML = data[2];
 document.querySelector("#ageAnimal").innerHTML = data[3];
 //set pays
 document.querySelector("#paysAnimal").innerHTML = data[4];
+//set pays
+document.querySelector("#idRegime").value = data[6];
 
 //set QR code pic
-
-document.getElementById('QRCodePic').src="http://api.qrserver.com/v1/create-qr-code/?data="+data;
+dataQR="id animal : "+data[0]+", Nom animal : "+data[1] + " , type animal : "+data[2]+" , Age animal : "+data[3] +" , Pays animal : "+data[4]+" , statut de conservation de l'animal : "+data[5]+" , id regime alimentaire : "+data[6]+", Nom image : "+data[7];
+document.getElementById('QRCodePic').src="http://api.qrserver.com/v1/create-qr-code/?data="+dataQR;

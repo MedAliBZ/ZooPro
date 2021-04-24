@@ -66,11 +66,11 @@
         <!-- Hero End -->
 
         <!--? About Area Start -->
-        <section class="support-company-area fix pb-padding">
+        <section class="support-company-area fix pb-padding card">
             <div class="support-wrapper align-items-center">
                 <div class="left-content">
                     <!-- section tittle -->
-                    <div class="section-tittle section-tittle2 mb-30">
+                    <div class="section-tittle section-tittle2 mb-30" style="margin: 10px;">
                         <span>Quelque détails sur l'animal :</span>
                     </div>
 
@@ -105,25 +105,15 @@
             </div>
         </section>
         <!-- table start -->
-        <section class="fix pb-padding">
-            <div class="espace section-top-border">
-                <h3 class="change_color">le régime alimentaire :</h3>
-                <div class="progress-table-wrap">
-                    <div class="progress-table">
-                        <div class="table-head">
-                            <div class="serial">id</div>
-                            <div class="country">Nom régime</div>
-                            <div class="visit">type nourriture</div>
-                            <div class="visit">quantité par repas(kg)</div>
-                            <div class="visit">nombre de repas(jour)</div>
-
-                        </div>
+        <section class="regimeContainer">
+            <form action="<?php echo URLROOT; ?>/regimeC/afficherList" method="post" class="afficherRegime">
+               <input type="text" id="idRegime" name="id" style="display: none;">
+               <input class="genric-btn primary-border e-large" type="submit" value="Afficher régime " />  
+            </form>
+            <div class="espace section-top-border">   
                         <?php if (isset($data['tab'])) {
                             echo $data['tab'];
                         } ?>
-
-                    </div>
-                </div>
             </div>
         </section>
 

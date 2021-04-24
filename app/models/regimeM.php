@@ -37,13 +37,14 @@ class regimeM
         return $this->db->resultSet();
     }
     
-    public function findUserByID($id)
+    public function findRegimeByID($id)
     {
         //Prepared statement
-        $this->db->query('SELECT * FROM regimealimentaire WHERE id != :id;');
+        $this->db->query('SELECT * FROM regimealimentaire WHERE id = :id;');
+        $this->db->bind(':id',$id);
 
-        $this->db->bind(':id', $id);
-        $this->db->execute();
+        return $this->db->resultSet();
+       
     }
 
     

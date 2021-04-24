@@ -113,3 +113,23 @@
     text-align: center;
 
 }
+
+.regimeContainer
+{
+    color: var(--tc);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: solid 2px #e8e8e9;
+    width: 100%;
+    margin-left:5px;
+    margin-right: 5px;
+    height: auto;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+
+}

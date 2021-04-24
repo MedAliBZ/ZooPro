@@ -31,3 +31,7 @@ document.querySelector("#typeAnimal").innerHTML = data[2];
 document.querySelector("#ageAnimal").innerHTML = data[3];
 //set pays
 document.querySelector("#paysAnimal").innerHTML = data[4];
+
+//set QR code pic
+
+document.getElementById('QRCodePic').src="http://api.qrserver.com/v1/create-qr-code/?data="+data;

@@ -83,7 +83,10 @@
                                 <li> Pays de l'animal : <span id="paysAnimal"></span></li>
                             </ul>
                     </div>
-
+                    <div class="QRCodeContainer">
+                     <i class="fas fa-qrcode iconQR"> Scan me :</i>
+                    <img src="" id="QRCodePic" class="">
+                    </div>
                 </div>
                 <div class="right-content">
                     <!-- img -->

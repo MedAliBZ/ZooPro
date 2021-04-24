@@ -32,6 +32,7 @@ class Employes extends Controller
             ];
 
             $nameValidation = "/^[a-z ,.'-]+$/i";
+            $cinValidation = "/^[0-9]{9}$/";
 
 
             //Validate cin on numbers
@@ -39,6 +40,8 @@ class Employes extends Controller
                 $data['errorAdd'] = 'Please enter cin.';
             } elseif (!is_numeric($data['cin'])) {
                 $data['errorAdd'] = 'Cin can only contain numbers.';
+            } elseif (!preg_match($cinValidation, $data['cin'])) {
+                $data['errorAdd'] = 'CIN should be composed of 9 numbers.';
             } else {
                 if ($this->employeModel->findUserByCin($data['cin'])) {
                     $data['errorAdd'] = 'Cin is already taken.';
@@ -154,11 +157,15 @@ class Employes extends Controller
                     'salaire' => trim($_POST['salaire']),
                     'errorUpdate' => ''
                 ];
+                
+                $cinValidation = "/^[0-9]{8}$/";
 
                 if (empty($data['cin'])) {
                     $data['errorUpdate'] = 'Please enter cin.';
                 } elseif (!is_numeric($data['cin'])) {
                     $data['errorUpdate'] = 'Cin can only contain numbers.';
+                } elseif (!preg_match($cinValidation, $data['cin'])) {
+                    $data['errorAdd'] = 'CIN should be composed of 9 numbers.';
                 } else {
                     if ($this->employeModel->findUserByCinUpdate($data['cin'], $data['id'])) {
                         $data['errorUpdate'] = 'Cin is already taken.';
@@ -201,5 +208,59 @@ class Employes extends Controller
                 $this->view('employes');
         } else
             $this->view('employes');
+    }
+
+    public function trier($case = '')
+    {
+        $column = array("a" => "ID", "b" => "CIN", "c" => "NOM", "d" => "PRENOM", "e" => "DATE_DE_NAISSANCE", "f" => "SALAIRE");
+        if (array_search($case, $column)) {
+            $tab = $this->employeModel->tri($case);
+            $data = [
+                'tab' => ''
+            ];
+            foreach ($tab as $key => $value) {
+                $data['tab'] .= '<li class="table-row">
+                <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                <div class="col col-2" data-label="CIN">' . $value[1] . '</div>
+                <div class="col col-3" data-label="Nom">' . $value[2] . '</div>
+                <div class="col col-4" data-label="Prenom">' . $value[3] . '</div>
+                <div class="col col-5" data-label="Date de naissance">' . $value[4] . '</div>
+                <div class="col col-6" data-label="Salaire">' . $value[5] . '</div>
+                <div class="col col-7">
+                    <div class="col-buttons">
+                        <button class="tab-btn"><i data-feather="edit"></i></button>
+                    </div>
+                </div>
+            </li>';
+            }
+        }
+        $this->view('employes', $data);
+    }
+
+    public function filtrer($role = '')
+    {
+        $column = array("a" => "sup", "b" => "inf");
+        if (array_search($role, $column)) {
+            $tab = $this->employeModel->filter($role);
+            $data = [
+                'tab' => ''
+            ];
+            foreach ($tab as $key => $value) {
+                $data['tab'] .= '<li class="table-row">
+                <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                <div class="col col-2" data-label="CIN">' . $value[1] . '</div>
+                <div class="col col-3" data-label="Nom">' . $value[2] . '</div>
+                <div class="col col-4" data-label="Prenom">' . $value[3] . '</div>
+                <div class="col col-5" data-label="Date de naissance">' . $value[4] . '</div>
+                <div class="col col-6" data-label="Salaire">' . $value[5] . '</div>
+                <div class="col col-7">
+                    <div class="col-buttons">
+                        <button class="tab-btn"><i data-feather="edit"></i></button>
+                    </div>
+                </div>
+            </li>';
+            }
+        }
+        $this->view('employes', $data);
     }
 }

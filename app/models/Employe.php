@@ -14,23 +14,28 @@ class Employe
         $this->db = new Database;
     }
 
-    public function getCin(){
+    public function getCin()
+    {
         echo $this->cin;
     }
 
-    public function getNom(){
+    public function getNom()
+    {
         echo $this->nom;
     }
 
-    public function getPrenom(){
+    public function getPrenom()
+    {
         echo $this->prenom;
     }
 
-    public function getDateNaissance(){
+    public function getDateNaissance()
+    {
         echo $this->dateNaissance;
     }
 
-    public function getSalaire(){
+    public function getSalaire()
+    {
         echo $this->salaire;
     }
 
@@ -71,19 +76,38 @@ class Employe
         }
     }
 
-    public function afficher(){
+    public function afficher()
+    {
         $this->db->query('SELECT * FROM personel');
         return $this->db->resultSet();
     }
 
+    public function tri($case)
+    {
+        $this->db->query('SELECT * FROM personel ORDER BY ' . $case);
 
-    public function deleteEmploye($id){
+        return $this->db->resultSet();
+    }
+
+    public function filter($role)
+    {
+        if ($role == 'sup')
+            $this->db->query('SELECT * FROM personel WHERE salaire >= 1500 ORDER BY salaire');
+        else if ($role == 'inf')
+            $this->db->query('SELECT * FROM personel WHERE salaire < 1500 ORDER BY salaire');
+
+        return $this->db->resultSet();
+    }
+
+
+    public function deleteEmploye($id)
+    {
         $this->db->query('DELETE FROM personel WHERE id = :id');
         $this->db->bind(':id', $id);
         $this->db->execute();
     }
-    
-    public function findUserByCinUpdate($cin,$id)
+
+    public function findUserByCinUpdate($cin, $id)
     {
         //Prepared statement
         $this->db->query('SELECT * FROM personel WHERE cin = :cin AND id != :id;');
@@ -102,7 +126,8 @@ class Employe
     }
 
 
-    public function updateP($data){
+    public function updateP($data)
+    {
         $this->db->query('UPDATE personel SET cin = :cin , nom = :nom, prenom = :prenom, date_de_naissance = :dateNaissance, salaire = :salaire, updated_by = :updated_by WHERE id = :id ');
         //Bind values
         $this->db->bind(':cin', $data['cin']);
@@ -120,7 +145,4 @@ class Employe
             return false;
         }
     }
-
-    
-
 }

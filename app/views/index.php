@@ -81,26 +81,24 @@ if (isset($_SESSION['id']))
     <div class="panels-container">
       <div class="panel left-panel">
         <div class="content">
-          <h3>New here ?</h3>
+          <h3>Nouveau ici ?</h3>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-            ex ratione. Aliquid!
+            Veuillez crée un compte pour se connecter
           </p>
           <button class="btn transparent" id="sign-up-btn">
-            Sign up
+            S'inscrire
           </button>
         </div>
         <img src="<?php echo URLROOT ?>/public/img/log.svg" class="image" alt="" />
       </div>
       <div class="panel right-panel">
         <div class="content">
-          <h3>One of us ?</h3>
+          <h3>Un de nous ?</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            laboriosam ad deleniti.
+            Vous avez déja un compte ? Veuillez cliquer sur le boutton pour se connecter
           </p>
           <button class="btn transparent" id="sign-in-btn">
-            Sign in
+            Se connecter
           </button>
         </div>
         <img src="<?php echo URLROOT ?>/public/img/register.svg" class="image" alt="" />

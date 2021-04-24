@@ -114,7 +114,38 @@ if (!isset($data['tab'])) {
                 <div class="error-table"><?php if (isset($data['errorUpdate'])) {
                                                 echo $data["errorUpdate"];
                                             } ?></div>
-                <button class="btn" id="ajouterEmp">Ajouter</button>
+                <div style="display: flex;justify-content: space-between;">
+                    <button class="triButton"><i class="fas fa-align-left"></i>
+                        <p>Filtres</p>
+                    </button>
+                    <div class="input-field" style="position: relative;width:60%;">
+                        <i class="fas fa-search"></i>
+                        <input style="overflow: hidden;" id="rechercher" type="text" placeholder="Rechercher par nom" name="Rechercher" />
+                    </div>
+                    <button class="btn" id="ajouterEmp">Ajouter</button>
+                </div>
+                <div class="triAndFilter">
+                    <div class="card" style="position: relative;display:flex;justify-content: space-evenly;">
+                        <div class="tri">
+                            <h3>Tri</h3>
+                            <a href="<?php echo URLROOT; ?>/employes/trier/ID">ID</a>
+                            <a href="<?php echo URLROOT; ?>/employes/trier/CIN">CIN</a>
+                            <a href="<?php echo URLROOT; ?>/employes/trier/NOM">NOM</a>
+                            <a href="<?php echo URLROOT; ?>/employes/trier/PRENOM">PRENOM</a>
+                            <a href="<?php echo URLROOT; ?>/employes/trier/DATE_DE_NAISSANCE">DATE DE NAISSANCE</a>
+                            <a href="<?php echo URLROOT; ?>/employes/trier/SALAIRE">SALAIRE</a>
+                        </div>
+                        <div class="filter">
+                            <h3>Filtre</h3>
+                            <a href="<?php echo URLROOT; ?>/employes/filtrer/sup">Salaire ≥ 1500</a>
+                            <a href="<?php echo URLROOT; ?>/employes/filtrer/inf">Salaire < 1500</a>
+                        </div>
+                        <div class="removeFT">
+                            <a style="font-weight: 800;" href="<?php echo URLROOT; ?>/employes/filtrer/afficherList">Supprimer les filtres</a>
+                        </div>
+                    </div>
+                </div>
+
                 <ul class="responsive-table">
                     <li class="table-header">
                         <div class="col col-1">ID</div>

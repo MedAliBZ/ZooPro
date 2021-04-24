@@ -219,6 +219,9 @@
     <script src="<?php echo URLROOT ?>/public/assets/js/plugins.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/main.js"></script>
 
+    <!-- animaux js -->
+    <script src="<?php echo URLROOT ?>/public/js/animaux.js"></script>
+
 </body>
 
 </html>

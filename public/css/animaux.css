@@ -19,6 +19,7 @@
   color: var(--tc);
   margin-bottom: 10px;
   border-radius: 5px;
+  margin-top: 10px;
   border: solid 2px #e8e8e9;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -64,5 +65,27 @@
 .textStyle:hover {
   border-color: #018171;
   color: #018171;
+}
+
+#animalImage {
+  margin: 10%;
+}
+
+#status {
+  font-size: 20px;
+  font: bold;
+}
+
+.listInfo {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding: 5%;
+  font-size: 20px;
+  font: bold;
+  color: white;
+  border: solid 1px white;
+  border-radius: 20px;
+  background-color: #70D76A;
 }
 /*# sourceMappingURL=animaux.css.map */

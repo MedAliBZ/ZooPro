@@ -18,12 +18,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="<?php echo URLROOT ?>/Pages/index">Home</a></li>
-                                            <li><a href="<?php echo URLROOT ?>/Pages/animaux">animaux</a>
-                                                <ul class="submenu">
-                                                    <li><a href="<?php echo URLROOT ?>/animauxC/afficherList">animaux</a></li>
-                                                    <li><a href="<?php echo URLROOT ?>/regimeC/afficherList">régime alimentaire</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="<?php echo URLROOT ?>/animauxC/afficherList">animaux</a></li>
 
                                             <li><a href="#">What we Do</a></li>
                                             <li><a href="#">Projects</a></li>

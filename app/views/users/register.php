@@ -1,9 +1,3 @@
-<?php
-if (isset($_SESSION['id']))
-    header('location: ' . URLROOT . '/pages/profile');
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,14 +45,14 @@ if (isset($_SESSION['id']))
             <h4>Welcome</h4>
             <form action="<?php echo URLROOT; ?>/users/register" method="POST" class="right-form createNew-form">
 
-                <ul class='sign-up-form'>
+                <ul>
                     <li><h3>Create Your Account</h3></li>
                     <li><i class="fas fa-user"></i> <input type="text" placeholder="Username" name="username" required></li>
                     <li><i class="fas fa-envelope"></i> <input type="text" placeholder="Email" name="email" required></li>
                     <li><i class="fas fa-lock"></i><input type="password" placeholder="Password" name="password" required></li> 
-                    <li><i class="fas fa-lock"></i><input type="password" placeholder="Confirm Password" name="confirmPassword" required></li> 
-                    <li id="error-msg-signup" style="color: red;"><?php if(isset($data['errorSignUp'])){echo $data['errorSignUp'];} ?></li>
-                    <li><input type="submit" value="Create" name="sign-up"></li>                 
+                    <li><i class="fas fa-lock"></i><input type="password" placeholder="Confirm Password" name="confirmPassword"></li> 
+                    <li style="color: red;"><?php if(isset($data['errorSignUp'])){echo $data['errorSignUp'];} ?></li>
+                    <li><input type="submit" value="Create"></li>                 
                 </ul>
 
             </form>
@@ -73,7 +67,6 @@ if (isset($_SESSION['id']))
         </div>
 
     </div>
-    <script src="<?php echo URLROOT ?>/public/js/register.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/jquery-1.12.4.min.js"></script>

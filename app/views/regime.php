@@ -1,9 +1,3 @@
-<?php
-if (!isset($_SESSION['id']))
-    header('location: ' . URLROOT . '/users/login');
-
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -19,125 +13,158 @@ if (!isset($_SESSION['id']))
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/slicknav.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/flaticon.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/gijgo.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/animate.min.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/hamburgers.min.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/animated-headline.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/magnific-popup.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/themify-icons.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/themify-icons.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/slick.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/nice-select.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/style.css">
 </head>
-<!--? Preloader Start -->
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="<?php echo URLROOT ?>/public/assets/img/logo/loder.png" alt="">
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="<?php echo URLROOT ?>/public/assets/img/logo/loder.png" alt="">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Preloader Start -->
-<?php
-require APPROOT . '/views/includes/navigation.php';
-?>
-<main>
-    <!--? Hero Start -->
+    <!-- Preloader Start -->
+    <?php
+    require APPROOT . '/views/includes/navigation.php';
+    ?>
+    <main>
     <div class="slider-area2">
-        <div class="slider-height2 d-flex align-items-center">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70">
+                                <h2>Régime alimentaire</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">les régimes alimentaires des animaux</a></li> 
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? Services Area Start -->
+        <div class="service-area section-padding30">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="hero-cap hero-cap2 pt-70">
-                            <h2>Mon profile</h2>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="<?php echo URLROOT ?>/index">Acceuil</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Profile</a></li>
-                                </ol>
-                            </nav>
+                    <div class="col-lg-4 col-md-6 col-sm-11">
+                        <div class="single-cat text-center mb-30">
+                            <div class="cat-icon">
+                                <img src="<?php echo URLROOT ?>/public/assets/img/gallery/carnivores.jpg" alt="">
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a href="#">carnivores</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-11">
+                        <div class="single-cat active text-center mb-30">
+                            <div class="cat-icon">
+                                <img src="<?php echo URLROOT ?>/public/assets/img/gallery/herbivores.png" alt="">
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a href="#">herbivores</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-11">
+                        <div class="single-cat text-center mb-30">
+                            <div class="cat-icon">
+                                <img src="<?php echo URLROOT ?>/public/assets/img/gallery/omnivores.jpg" alt="">
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a href="#">omnivores</a></h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Hero End -->
-    <!--?  Contact Area start  -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-9">
-                    <h2 class="contact-title">Mes informations</h2>
-                </div>
-
-                <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="<?php echo URLROOT ?>/users/update" method="post">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <input class="form-control valid" name="username" type="text" placeholder="Username" value="<?php echo $_SESSION['username']; ?>">
-                                </div>
-                            </div>
-                            <div class="col-7">
-                                <div class="form-group">
-                                    <input class="form-control" name="email" id="subject" type="text" placeholder="Email" value="<?php echo $_SESSION['email']; ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control valid" name="password" type="password" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="col-sm-8" style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></div>
-                        </div>
-
-                        <div class="form-group mt-3">
-                            <input type="submit" class="button button-contactForm boxed-btn" value="Sauvegarder"/>
-                        </div>
-                    </form>
-                </div>
-                <div style="margin-top: -50px;" class="col-lg-3 offset-lg-1">
-                    <div>
-                        <h2 class="contact-title">Mot de passe</h2>
+        <!-- Services Area End -->
+        <!--? About Area Start -->
+        <section class="support-company-area fix pb-padding">
+            <div class="support-wrapper align-items-center">
+                <div class="left-content">
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-30">
+                        <span>pourquoi la nourritures des animaux est importante</span>
+                        <h2></h2>
                     </div>
-                    <form class="form-contact contact_form" action="<?php echo URLROOT ?>/users/updatePass" method="post">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="password" type="password" placeholder="New Password">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="oldPassword" type="password" placeholder="Old Password">
-                                </div>
-                            </div>
-                            <div class="col-12" style="color: red;">
-                                <?php if(isset($data['errorPass'])){echo $data['errorPass'];} ?>
-                            </div>
-                        </div>
+                    <div class="support-caption">
+                        <p class="pera-top">Les animaux se nourrissent toujours de matièresminérales(eau et sels minéraux) et
+                             de matière provenant d'autres êtres vivants, les animaux et les végétaux. Le régime alimentaire 
+                             d'une espèce peut donc être constitué d'animaux ou de végétaux, exclusivement, ou encore du mélange
+                              des deux. C'est sur la base de cette différence d'origine des aliments que l'on a établi 
+                              une classification des régimes alimentaires.</p>
                         
-                        <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Changer</button>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="<?php echo URLROOT ?>/public/assets/img/gallery/services3.png" alt="">
+                    </div>
+                    <!-- <div class="support-img-cap text-center d-flex">
+                        <div class="single-one">
+                            <span>950</span>
+                            <p>Poaching cases</p>
                         </div>
-                    </form>
+                        <div class="single-two">
+                            <span>230</span>
+                            <p>Volunteers worldwide</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- table start -->
+        <section class="fix pb-padding">
+        <div class="espace section-top-border">
+            <h3 class="change_color" >Nos régimes alimentaires</h3>
+            <p>voici les details de nos régimes alimentaires pour prouver que le bien-être des animaux est notre priorité</p>
+            <div class="progress-table-wrap">
+                <div class="progress-table">
+                    <div class="table-head">
+                        <div class="serial">id</div>
+                        <div class="country">Nom régime</div>
+                        <div class="visit">type nourriture</div>
+                        <div class="visit">quantité par repas(kg)</div>
+                        <div class="visit">nombre de repas(jour)</div>
+                        
+                    </div>
+                    <?php if (isset($data['tab'])) {
+                        echo $data['tab'];
+                    } ?>
+                    
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contact Area End -->
+
+
+    </main>
     <footer>
-        <div class="footer-wrapper">
+    <div class="footer-wrapper">
             <!-- Footer Start-->
             <div class="footer-area footer-padding">
                 <div class="container ">
@@ -147,7 +174,7 @@ require APPROOT . '/views/includes/navigation.php';
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
                                     <div class="footer-logo mb-35">
-                                        <a href="index.html"><img src="<?php echo URLROOT ?>/public/assets/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="<?php echo URLROOT ?>/Pages/index"><img src="<?php echo URLROOT ?>/public/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                     <div class="footer-tittle">
                                         <div class="footer-pera">
@@ -157,7 +184,7 @@ require APPROOT . '/views/includes/navigation.php';
                                     <!-- social -->
                                     <div class="footer-social">
                                         <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                                         <a href="#"><i class="fab fa-pinterest-p"></i></a>
                                     </div>
                                 </div>
@@ -228,11 +255,13 @@ require APPROOT . '/views/includes/navigation.php';
             </div>
             <!-- Footer End-->
         </div>
+  
     </footer>
     <!-- Scroll Up -->
     <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
+
     <!-- JS here -->
 
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -256,6 +285,8 @@ require APPROOT . '/views/includes/navigation.php';
     <!-- Nice-select, sticky -->
     <script src="<?php echo URLROOT ?>/public/assets/js/jquery.nice-select.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="<?php echo URLROOT ?>/public/assets/js/jquery.barfiller.js"></script>
 
     <!-- counter , waypoint,Hover Direction -->
     <script src="<?php echo URLROOT ?>/public/assets/js/jquery.counterup.min.js"></script>
@@ -274,6 +305,6 @@ require APPROOT . '/views/includes/navigation.php';
     <script src="<?php echo URLROOT ?>/public/assets/js/plugins.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/main.js"></script>
 
-    </body>
+</body>
 
 </html>

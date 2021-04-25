@@ -1,9 +1,3 @@
-<?php
-if (!isset($_SESSION['id']))
-    header('location: ' . URLROOT . '/users/login');
-
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -19,123 +13,85 @@ if (!isset($_SESSION['id']))
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/slicknav.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/flaticon.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/gijgo.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/animate.min.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/hamburgers.min.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/animated-headline.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/magnific-popup.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/themify-icons.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/themify-icons.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/slick.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/nice-select.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/enclos.css">
 </head>
-<!--? Preloader Start -->
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="<?php echo URLROOT ?>/public/assets/img/logo/loder.png" alt="">
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="<?php echo URLROOT ?>/public/assets/img/logo/loder.png" alt="">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Preloader Start -->
-<?php
-require APPROOT . '/views/includes/navigation.php';
-?>
-<main>
-    <!--? Hero Start -->
-    <div class="slider-area2">
-        <div class="slider-height2 d-flex align-items-center">
+    <!-- Preloader Start -->
+    <?php
+    require APPROOT . '/views/includes/navigation.php';
+    ?>
+    <main>
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70">
+                                <h2>enclos</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">les enclos</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+     
+        <div class="our-cases-area section-padding30">
             <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-10 ">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-80">
+                            <h2>Aménagements et enclos</h2>
+                            <p class="pl-20 pr-20">Le bien-être des animaux est la priorité absolue du Zoo. Nous veillons donc à ce que les enclos et autres aménagements soient parfaitement adaptés aux besoins des animaux, sur la base des connaissances les plus récentes en matière d’élevage. Le zoo a également pour ambition d’accueillir dans leur habitat naturel les espèces animales et végétales locales et de fournir aux visiteurs un cadre propice à la détente afin qu’ils puissent profiter du zoo loin du stress quotidien.</p>
+                        </div>
+                    </div>
+                </div>
+                 
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="hero-cap hero-cap2 pt-70">
-                            <h2>Mon profile</h2>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="<?php echo URLROOT ?>/index">Acceuil</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Profile</a></li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
+                <?php if (isset($data['tab'])) {
+                echo $data['tab'];} ?>
                 </div>
+
+                 
+                
             </div>
         </div>
-    </div>
-    <!-- Hero End -->
-    <!--?  Contact Area start  -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-9">
-                    <h2 class="contact-title">Mes informations</h2>
-                </div>
 
-                <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="<?php echo URLROOT ?>/users/update" method="post">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <input class="form-control valid" name="username" type="text" placeholder="Username" value="<?php echo $_SESSION['username']; ?>">
-                                </div>
-                            </div>
-                            <div class="col-7">
-                                <div class="form-group">
-                                    <input class="form-control" name="email" id="subject" type="text" placeholder="Email" value="<?php echo $_SESSION['email']; ?>">
-                                </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control valid" name="password" type="password" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="col-sm-8" style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></div>
-                        </div>
 
-                        <div class="form-group mt-3">
-                            <input type="submit" class="button button-contactForm boxed-btn" value="Sauvegarder"/>
-                        </div>
-                    </form>
-                </div>
-                <div style="margin-top: -50px;" class="col-lg-3 offset-lg-1">
-                    <div>
-                        <h2 class="contact-title">Mot de passe</h2>
-                    </div>
-                    <form class="form-contact contact_form" action="<?php echo URLROOT ?>/users/updatePass" method="post">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="password" type="password" placeholder="New Password">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="oldPassword" type="password" placeholder="Old Password">
-                                </div>
-                            </div>
-                            <div class="col-12" style="color: red;">
-                                <?php if(isset($data['errorPass'])){echo $data['errorPass'];} ?>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Changer</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Area End -->
+
+
+    </main>
     <footer>
         <div class="footer-wrapper">
             <!-- Footer Start-->
@@ -147,7 +103,7 @@ require APPROOT . '/views/includes/navigation.php';
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
                                     <div class="footer-logo mb-35">
-                                        <a href="index.html"><img src="<?php echo URLROOT ?>/public/assets/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="<?php echo URLROOT ?>/Pages/index"><img src="<?php echo URLROOT ?>/public/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                     <div class="footer-tittle">
                                         <div class="footer-pera">
@@ -157,7 +113,7 @@ require APPROOT . '/views/includes/navigation.php';
                                     <!-- social -->
                                     <div class="footer-social">
                                         <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                                         <a href="#"><i class="fab fa-pinterest-p"></i></a>
                                     </div>
                                 </div>
@@ -228,11 +184,13 @@ require APPROOT . '/views/includes/navigation.php';
             </div>
             <!-- Footer End-->
         </div>
+
     </footer>
     <!-- Scroll Up -->
     <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
+
     <!-- JS here -->
 
     <script src="<?php echo URLROOT ?>/public/assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -256,6 +214,8 @@ require APPROOT . '/views/includes/navigation.php';
     <!-- Nice-select, sticky -->
     <script src="<?php echo URLROOT ?>/public/assets/js/jquery.nice-select.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="<?php echo URLROOT ?>/public/assets/js/jquery.barfiller.js"></script>
 
     <!-- counter , waypoint,Hover Direction -->
     <script src="<?php echo URLROOT ?>/public/assets/js/jquery.counterup.min.js"></script>
@@ -274,6 +234,6 @@ require APPROOT . '/views/includes/navigation.php';
     <script src="<?php echo URLROOT ?>/public/assets/js/plugins.js"></script>
     <script src="<?php echo URLROOT ?>/public/assets/js/main.js"></script>
 
-    </body>
+</body>
 
 </html>

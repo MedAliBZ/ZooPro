@@ -1,9 +1,3 @@
-<?php
-if (isset($_SESSION['id']))
-    header('location: ' . URLROOT . '/pages/profile');
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +51,6 @@ if (isset($_SESSION['id']))
                     </li>
                     <li><i class="fas fa-user"></i> <input type="text" placeholder="Username" name="username" required></li>
                     <li><i class="fas fa-lock"></i> <input type="password" placeholder="Password" name="password" required></li>
-                    <li><input style="width:fit-content;margin-right:5px;" type="checkbox" name="rememberMe"><label for="rememberMe">Se souvenir de moi</label></li>
                     <li style="color: red;"><?php if(isset($data['error'])){echo $data['error'];} ?></li>
                     <li><input type="submit" value="Login"></li>
                 </ul>
@@ -67,7 +60,6 @@ if (isset($_SESSION['id']))
             <div class="footer">
                 <ul>
                     <li><a href="<?php echo URLROOT; ?>/users/register">Create account</a></li>
-                    <li><a href="<?php echo URLROOT; ?>/pages/resetPass">mot de passe oublié</a></li>
                 </ul>
             </div>
             <div class="vr-line"></div>

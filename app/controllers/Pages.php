@@ -16,16 +16,12 @@ class Pages extends Controller {
         $this->view('profile');
     }
 
-    public function resetPass(){
-        $this->view('resetPass');
+    public function detailEnclo() {
+        $this->view('detailEnclo');
     }
 
-    public function resetKey(){
-        $this->view('resetKey');
-    }
-
-    public function getUsername(){
-        $this->view('getUsername');
+    public function enclos() {
+        $this->view('enclos');
     }
 
 

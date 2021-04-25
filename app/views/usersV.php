@@ -111,11 +111,11 @@ if (!isset($data['tab']))
 						<i class="fas fa-user"></i>
 						<input type="text" placeholder="Username" name="username" value='<?php echo $_SESSION['username']; ?>' required />
 					</div>
-					<div class="input-field three">
+					<div class="input-field two">
 						<i class="fas fa-envelope"></i>
 						<input type="text" placeholder="Email" name="email" value="<?php echo $_SESSION['email']; ?>" required />
 					</div>
-					<div class="input-field two">
+					<div class="input-field three">
 						<i class="fas fa-lock"></i>
 						<input type="password" placeholder="Old Password" name="password" required />
 					</div>
@@ -130,15 +130,15 @@ if (!isset($data['tab']))
 				</form>
 				<form class="card pass" method="POST" action="<?php echo URLROOT; ?>/users/updatePass">
 					<p class="sectionTitle">Mot de passe</p>
-					<div class="input-field">
+					<div class="input-field one">
 						<i class="fas fa-lock"></i>
 						<input id="card-newPass" type="password" placeholder="Password" name="password" required />
 					</div>
-					<div class="input-field">
+					<div class="input-field two">
 						<i class="fas fa-lock"></i>
 						<input id="card-confirmPass" type="password" placeholder="Confirm Password" name="confirmPassword" required />
 					</div>
-					<div class="input-field">
+					<div class="input-field three">
 						<i class="fas fa-lock"></i>
 						<input type="password" placeholder="Old Password" name="oldPassword" required />
 					</div>

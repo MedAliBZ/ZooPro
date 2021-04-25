@@ -9,6 +9,7 @@ class planteM
     private $origine;
     private $taille;
     private $famille;
+    private $image;
 
     public function __construct()
     {
@@ -38,10 +39,14 @@ class planteM
         echo $this->famille;
     }
 
+    public function getimage(){
+        echo $this->image;
+    }
+
 
     public function addplanteC($data)
     {
-        $this->db->query('INSERT INTO plante (nomP,longevite,origine,taille,famille) VALUES(:nomP,:longevite,:origine,:taille,:famille)');
+        $this->db->query('INSERT INTO plante (nomP,longevite,origine,taille,famille,image) VALUES(:nomP,:longevite,:origine,:taille,:famille,:image)');
 
         //Bind values
         $this->db->bind(':nomP', $data['nomP']);
@@ -49,6 +54,7 @@ class planteM
         $this->db->bind(':origine', $data['origine']);
         $this->db->bind(':taille', $data['taille']);
         $this->db->bind(':famille', $data['famille']);
+        $this->db->bind(':image', $data['image']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -83,13 +89,14 @@ class planteM
 
 
     public function updateplante($data){
-        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille,famille=:famille WHERE idP = :idP ');
+        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image WHERE idP = :idP ');
         //Bind values
         $this->db->bind(':nomP', $data['nomP']);
         $this->db->bind(':origine', $data['origine']);
         $this->db->bind(':longevite', $data['longevite']);
         $this->db->bind(':taille', $data['taille']);
         $this->db->bind(':famille', $data['famille']);
+        $this->db->bind(':image', $data['image']);
         $this->db->bind(':idP', $data['idP']);
 
         //Execute function
@@ -101,5 +108,12 @@ class planteM
     }
 
     
+
+    public function listespeceID()
+    {
+        $this->db->query('SELECT idE FROM `espece`');
+        return $this->db->resultSet();
+    }
+
 
 }

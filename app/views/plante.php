@@ -148,23 +148,40 @@ if (!isset($_SESSION['id']))
 
                         <div class="formCss">
                         
-                            <input placeholder="Nom" type="text" id="nomP" name="nomP">
+                            <input placeholder="Nom" type="text" id="nomP" name="nomP" required>
                         </div>
                     
                         <div class="formCss">
-                            <input placeholder="Longévité(ans)" type="number" id="longevite" name="longevite">
+                            <input placeholder="Longévité(ans)" type="number" id="longevite" name="longevite" required>
                         </div>
                         <div class="formCss">
-                            <input placeholder="Origine géographique" type="text" id="origine" name="origine">
+                            <input placeholder="Origine géographique" type="text" id="origine" name="origine" required>
                         </div>
 
                         <div class="formCss">
-                            <input type="number" placeholder="Taille(m)" name="taille" id="taille"/>
+                            <input type="number" placeholder="Taille(m)" name="taille" id="taille" required/>
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="Famille" name="famille" id="famille"/>
+                            <input type="text" placeholder="Famille" name="famille" id="famille" required/>
                         </div>
+
+                        
+                        <div class="formCss">
+                            <input type="file" name="image" id="image" required>
+                        </div>
+
+                            <div class="formCss">
+
+                            <select id="espece" name="espece">
+                                <option value="0">choisir id espece</option>
+                                <?php if (isset($data['idespece'])) {
+                                    echo $data["idespece"];
+                                } ?>
+
+                            </select>
+                        
+                            </div>
 
                         <input type="submit" class="buttonStyle" value="Ajouter">
                         <button type="button" class="buttonStyle" onclick="closeForm()">fermer</button>
@@ -183,6 +200,7 @@ if (!isset($_SESSION['id']))
                             <th>Origine géographique</th>
                             <th>Taille</th>
                             <th>Famille</th>
+                            <th>image</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -209,24 +227,42 @@ if (!isset($_SESSION['id']))
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="Nom" type="text" id="nomP1" name="nomP">
+                            <input placeholder="Nom" type="text" id="nomP1" name="nomP" required>
                         </div>
                   
 
                         <div class="formCss">
-                            <input placeholder="longévité" type="number" id="longevite1" name="longevite">
+                            <input placeholder="longévité" type="number" id="longevite1" name="longevite" required>
                         </div>
                         <div class="formCss">
-                            <input placeholder="origine géographique" type="text" id="origine1" name="origine">
+                            <input placeholder="origine géographique" type="text" id="origine1" name="origine" required>
                         </div>
 
                         <div class="formCss">
-                            <input type="number" placeholder="taille" name="taille" id="taille1" />
+                            <input type="number" placeholder="taille" name="taille" id="taille1" required />
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="famille" name="famille" id="famille1" />
+                            <input type="text" placeholder="famille" name="famille" id="famille1" required/>
                         </div>
+
+                        <div class="formCss">
+                            <input type="file" name="image" id="image1" required >
+                        </div>
+
+                        
+                        <div class="formCss">
+
+                            <select id="espece1" name="espece">
+                                <option value="0">choisir id espece</option>
+                                <?php if (isset($data['idespece'])) {
+                                    echo $data["idespece"];
+                                } ?>
+
+                            </select>
+
+                        </div>
+                    
 
                         <input name="update" type="submit" class="buttonStyle" value="Modifier">
                         <input name="delete" type="submit" class="buttonStyle" value="Supprimer">

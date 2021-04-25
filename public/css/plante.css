@@ -1,12 +1,4 @@
-#titreTab {
-    -webkit-animation-duration: 8s;
-            animation-duration: 8s;
-    -webkit-animation-name: slidein;
-            animation-name: slidein;
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
-  }
-  
+
   @-webkit-keyframes slidein {
     0% {
       margin-left: 0%;
@@ -254,4 +246,9 @@
   .updateButton:hover {
     color: #018171;
   }
-  /*# sourceMappingURL=animaux.css.map */
+
+  .errormsg {
+    text-align: center;
+    color: red;
+  }
+

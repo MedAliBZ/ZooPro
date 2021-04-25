@@ -12,10 +12,10 @@ class especeM
     }
 
     public function getIdE(){
-        echo $this->idP;
+        echo $this->idE;
     }
     public function getNomE(){
-        echo $this->nomP;
+        echo $this->nomE;
     }
 
     public function getHauteur(){
@@ -66,7 +66,7 @@ class especeM
     }
 
 
-    public function updateplante($data){
+    public function updateespece($data){
         $this->db->query('UPDATE espece SET nomE =:nomE,hauteur =:hauteur WHERE idE = :idE ');
         //Bind values
         $this->db->bind(':nomE', $data['nomE']);
@@ -82,5 +82,7 @@ class especeM
     }
 
     
+   
+
 
 }

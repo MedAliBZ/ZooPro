@@ -56,6 +56,8 @@ if (!isset($_SESSION['id']))
                 </a>
             </div>
         </header>
+
+
         <!--header menu end-->
         <!--sidebar start-->
 
@@ -118,6 +120,8 @@ if (!isset($_SESSION['id']))
                 </li>
             </div>
         </div>
+
+
         <!--sidebar end-->
         <!--main container start-->
         <div class="main-container">
@@ -143,16 +147,16 @@ if (!isset($_SESSION['id']))
                             text-align:center;
                         }
                         </style>
-                        <h2 style="color:#04907E" > Ajouter une plante : </h2>
+                        <h2 style="color:#04907E" > Ajouter une éspéce végétale : </h2>
                         <br>
 
                         <div class="formCss">
                         
-                            <input placeholder="Nom" type="text" id="nomE" name="nomE">
+                            <input placeholder="Nom" type="text" id="nomE" name="nomE" required>
                         </div>
                     
                         <div class="formCss">
-                            <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur">
+                            <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur" required>
                         </div>
                        
 
@@ -188,7 +192,7 @@ if (!isset($_SESSION['id']))
 
 
                         <i class="fas fa-times" id="closeButton" onclick="closeFormModifier()"></i>
-                        <h2 style="color:#04907E"> modifier une éspéce végétale</h2>
+                        <h2 style="color:#04907E"> Modifier une éspéce végétale : </h2>
 
                         <br>
                         <div class="formCss">
@@ -196,12 +200,12 @@ if (!isset($_SESSION['id']))
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="Nom" type="text" id="nomE1" name="nomP">
+                            <input placeholder="Nom" type="text" id="nomE1" name="nomE" required>
                         </div>
                   
 
                         <div class="formCss">
-                            <input placeholder="Hauteur potentiel" type="number" id="hauteur1" name="hauteur">
+                            <input placeholder="Hauteur potentiel" type="number" id="hauteur1" name="hauteur" required>
                         </div>
                         
                         

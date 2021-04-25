@@ -24,6 +24,8 @@ function openFormAjouter() {
       document.querySelector('#origine1').value=str[3];
       document.querySelector('#taille1').value=str[4];
       document.querySelector('#famille1').value=str[5];
+      document.querySelector('#image1').value=str[6];
+      document.querySelector('#espece1').value=str[7];
      
   });
 
@@ -37,6 +39,7 @@ function openFormAjouter() {
       document.querySelector('#origine').value='';
       document.querySelector('#taille').value='';
       document.querySelector('#famille').value='';
+      document.querySelector('#image').value='';
  
 
     document.getElementById("myForm").style.display = "none";
@@ -53,6 +56,7 @@ function openFormAjouter() {
     document.querySelector('#origine1').value='';
     document.querySelector('#taille1').value='';
     document.querySelector('#famille1').value='';
+    document.querySelector('#image1').value='';
 
     document.getElementById("myForm1").style.display = "none";
     document.getElementById("tableplante").style.opacity = 1;

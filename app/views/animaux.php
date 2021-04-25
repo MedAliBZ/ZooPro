@@ -63,9 +63,12 @@
                 </div>
             </div>
         </div>
+        <div class="rechercheStyle">
+        <input type="text" id="rechercher" class="button button-contactForm boxed-btn " placeholder="Recherche ici ">
+        </div>
         <!-- Hero End -->
         <div class="card">
-
+           
 
             <?php if (isset($data['tab'])) {
                 echo $data['tab'];

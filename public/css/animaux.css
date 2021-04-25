@@ -146,4 +146,20 @@
           align-items: center;
   padding: 5%;
 }
+
+.rechercheStyle {
+  margin: 10px;
+  border-radius: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#rechercher {
+  border-radius: 20px;
+  cursor: text !important;
+}
 /*# sourceMappingURL=animaux.css.map */

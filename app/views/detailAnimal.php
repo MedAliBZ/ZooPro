@@ -66,7 +66,7 @@
         <!-- Hero End -->
 
         <!--? About Area Start -->
-        <section class="support-company-area fix pb-padding card">
+        <section class="support-company-area fix pb-padding ">
             <div class="support-wrapper align-items-center">
                 <div class="left-content">
                     <!-- section tittle -->

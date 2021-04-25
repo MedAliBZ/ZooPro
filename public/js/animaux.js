@@ -13,7 +13,7 @@ function openFormModifier() {
   document.getElementById("addButtonToList").style.opacity = 0.5;
   document.getElementById("search").style.opacity = 0.5;
 
-  $(".tblRows").click(function () {
+  $(".tblRows").click(function () { 
     var row_data = $(this).attr("data");
     console.log(row_data);
 
@@ -242,6 +242,28 @@ document.getElementById('modifierAnimal').addEventListener('click', (e1) => {
     document.getElementById("pays1").parentElement.style.border = "1px solid red";
     e1.preventDefault();
   }
+})
+
+
+//recherche function
+// let nomAnimal = Array.from(document.querySelectorAll("td[data-label='Nom']"));
+
+// document.getElementById('rechercher').addEventListener('keyup', (e) => {
+//   nomAnimal.map(el => {
+//       if (el.innerHTML.toLowerCase().search(e.target.value.toLowerCase()) == -1) {
+//           el.parentElement.style.display = 'none';
+//       }
+//       else {
+//         el.parentElement.style.display = 'flex';     
+//     }
+//   })
+// })
+
+
+document.getElementById('triButton').addEventListener('click', (e1) => {
+
+  document.getElementById('triElements').style.display='flex';
+
 })
 
 

@@ -124,6 +124,7 @@
     font-family: sans-serif;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    display:inline-table;
 }
 
 .styled-table thead tr {
@@ -232,3 +233,71 @@ font-size: 1.1rem;
   color: red;
 }
 
+.containerTriAjout
+{ display: block ruby;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+}
+
+.containerTri
+{
+display: flex;
+flex-direction: column;
+}
+
+#addButtonToList
+{
+margin-left: 68%;
+
+}
+
+#triButton
+{
+ width: max-content;
+ padding-right: 80%;
+ padding-left: 80%;
+  
+}
+
+.triElements
+{
+  display: none;
+  flex-direction: column;
+
+}
+
+#triName
+{
+  color: #009879;
+  &:hover 
+  {
+      border: solid 1px #009879 ;
+      padding: auto;
+      border-radius:10%;
+  } 
+  
+  
+}
+
+#triAge
+{
+  color: #009879;
+  &:hover 
+  {
+      border: solid 1px #009879 ;
+      border-radius:10%;
+  } 
+}
+
+#triId
+{
+  color: #009879;
+  &:hover 
+  {
+      border: solid 1px #009879 ;
+      padding: auto;
+      border-radius:10%;
+  } 
+}

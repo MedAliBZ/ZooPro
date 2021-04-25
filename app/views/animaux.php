@@ -114,7 +114,7 @@ if (!isset($data['tab'])) {
         <!--main container start-->
         <div class="main-container">
             <div class="searchCss" id="search">
-                <input type="text" placeholder="recherche" name="search" />
+                <input type="text" placeholder="recherche" name="rechercher" id="rechercher" />
                 <i class="fas fa-search"></i>
             </div>
 
@@ -122,8 +122,18 @@ if (!isset($data['tab'])) {
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">La liste des animaux </h3>
                 </div>
-
+                <div class="containerTriAjout">
+                
+                <div class="containerTri">
+                <button class="buttonStyle" id="triButton" >Trier</button>
+                <div class="triElements" id="triElements">
+                <a href="<?php echo URLROOT; ?>/animauxC/trierParID" id ="triId">Par ID</a>
+                <a href="<?php echo URLROOT; ?>/animauxC/trierParAge" id ="triAge">Par Age</a>
+                <a href="<?php echo URLROOT; ?>/animauxC/trierParNomAnimal" id ="triName">Par Nom Animal</a>
+                </div>
+                </div>
                 <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
+                </div>
                 <div class="form-popup" id="myForm">
                     <form action="<?php echo URLROOT; ?>/animauxC/addAnimauxC" class="form-container" method="POST">
 
@@ -210,7 +220,7 @@ if (!isset($data['tab'])) {
 
                 <table class="styled-table" id="tableAnimaux">
                     <thead>
-                        <tr>
+                        <tr> 
                             <th>id</th>  
                             <th>Nom animaux </th>
                             <th>type</th>

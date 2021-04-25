@@ -103,13 +103,13 @@ class animauxC extends Controller
                 $data['errorAdd'] = '';
                 $data['errorUpdate'] = '';
             }
-        }
+        } 
         
 
         foreach ($tab as $key => $value) {
             $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
-            <td >' . $value[0] . '</td>
-            <td>' . $value[1] . '</td>
+            <td>' . $value[0] . '</td>
+            <td data-label="Nom">' . $value[1] . '</td>
             <td>' . $value[2] . '</td>
             <td>' . $value[3] . '</td>
             <td>' . $value[4] . '</td>
@@ -213,20 +213,82 @@ class animauxC extends Controller
         }
     }
 
-    //afficher foreign key 
-    public function afficherListRegimeID()
+    public function trierParID()
     {
-        $list = $this->animauxModel->listRegimeID();
-        $data = ['list'=> ''];
-        $countID = count($data);
-        for($i=0; $i < $countID; $i++)
-        {' <select id="regimeAlimentaire" name="regimeAlimentaire" >
-            <option value="0">choisir id regime</option>
-            <option value ="'. $data[$i]. '"> '. $data[$i]. ' </option>
-        
-        </select>'
-          ;
+        $tab = $this->animauxModel->triID();
+        $data = [
+            'tab' => '',  
+
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
+            <td>' . $value[0] . '</td>
+            <td data-label="Nom">' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
+            <td>' . $value[5] . '</td>
+            <td>' . $value[6] . '</td>
+            <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
+        </tr>'  ;
         }
-        
+
+
+        $this->view('animaux', $data);
     }
+
+    public function trierParAge()
+    {
+        $tab = $this->animauxModel->triAge();
+        $data = [
+            'tab' => '',  
+
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
+            <td>' . $value[0] . '</td>
+            <td data-label="Nom">' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
+            <td>' . $value[5] . '</td>
+            <td>' . $value[6] . '</td>
+            <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
+        </tr>'  ;
+        }
+
+
+        $this->view('animaux', $data);
+    }
+
+    public function trierParNomAnimal()
+    {
+        $tab = $this->animauxModel->triNomAnimal();
+        $data = [
+            'tab' => '',  
+
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
+            <td>' . $value[0] . '</td>
+            <td data-label="Nom">' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
+            <td>' . $value[5] . '</td>
+            <td>' . $value[6] . '</td>
+            <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
+        </tr>'  ;
+        }
+
+
+        $this->view('animaux', $data);
+    }
+
 }

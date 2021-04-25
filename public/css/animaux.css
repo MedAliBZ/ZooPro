@@ -136,6 +136,7 @@
   width: 100%;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  display: inline-table;
 }
 
 .styled-table thead tr {
@@ -241,5 +242,75 @@
 .errormsg {
   text-align: center;
   color: red;
+}
+
+.containerTriAjout {
+  display: block ruby;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+}
+
+.containerTri {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#addButtonToList {
+  margin-left: 68%;
+}
+
+#triButton {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding-right: 80%;
+  padding-left: 80%;
+}
+
+.triElements {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#triName {
+  color: #009879;
+}
+
+#triName:hover {
+  border: solid 1px #009879;
+  padding: auto;
+  border-radius: 10%;
+}
+
+#triAge {
+  color: #009879;
+}
+
+#triAge:hover {
+  border: solid 1px #009879;
+  border-radius: 10%;
+}
+
+#triId {
+  color: #009879;
+}
+
+#triId:hover {
+  border: solid 1px #009879;
+  padding: auto;
+  border-radius: 10%;
 }
 /*# sourceMappingURL=animaux.css.map */

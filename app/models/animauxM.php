@@ -111,6 +111,24 @@ class animauxM
         $this->db->query('SELECT id FROM `regimealimentaire`');
         return $this->db->resultSet();
     }
+
+    public function triID()
+    {
+        $this->db->query('SELECT * FROM `animaux` ORDER BY id DESC ');
+        return $this->db->resultSet();
+    }
+
+    public function triNomAnimal()
+    {
+        $this->db->query('SELECT * FROM `animaux` ORDER BY nomAnimal ');
+        return $this->db->resultSet();
+    }
+
+    public function triAge()
+    {
+        $this->db->query('SELECT * FROM `animaux` ORDER BY age ');
+        return $this->db->resultSet();
+    }
    
 
 }

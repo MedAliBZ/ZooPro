@@ -44,8 +44,6 @@ class animauxC extends Controller
 
             if (empty($data['type'])) {
                 $data['errorAdd'] = 'Please enter the type.';
-            } elseif (!ctype_alpha($data['type'])) {
-                $data['errorAdd'] = 'Please enter the correct type';
             }
 
             if (empty($data['pays'])) {
@@ -61,8 +59,6 @@ class animauxC extends Controller
             }
             if (empty($data['status'])) {
                 $data['errorAdd'] = 'Please enter the status.';
-            } elseif (!ctype_alpha($data['status'])) {
-                $data['errorAdd'] = 'the status can only contain letters.';
             }
 
             if (empty($data['regimeAlimentaire'])) {
@@ -178,8 +174,6 @@ class animauxC extends Controller
 
                 if (empty($data['type'])) {
                     $data['errorAdd'] = 'Please enter the type.';
-                } elseif (!ctype_alpha($data['type'])) {
-                    $data['errorAdd'] = 'Please enter the correct type';
                 }
 
                 if (empty($data['pays'])) {

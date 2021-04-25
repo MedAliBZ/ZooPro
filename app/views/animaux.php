@@ -11,7 +11,7 @@ if (!isset($data['tab'])) {
     } else
         header('location: ' . URLROOT . '/animauxC/afficherList');
 }
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +133,9 @@ if (!isset($data['tab'])) {
                         <div class="formCss">
                             <input placeholder="nom animal" type="text" id="nomAnimal" name="nomAnimal" required>
                         </div>
+                        <!--erreur-->
+                        <div class="errormsg" id="errorNomAnimal"></div>
+
                         <div class="formCss">
                         <select name="type" id="type" required>
                                 <option value="0">choisir un type</option>
@@ -143,6 +146,9 @@ if (!isset($data['tab'])) {
                             </select>
                         </div>
 
+                        <!--erreur-->
+                        <div class="errormsg" id="errorType"></div>
+
                         <div class="formCss">
                             <input placeholder="age" type="number" id="age" name="age" required>
                         </div>
@@ -150,6 +156,9 @@ if (!isset($data['tab'])) {
                         <div class="formCss">
                             <input placeholder="pays de naissance" type="text" id="pays" name="pays" required>
                         </div>
+
+                        <!--erreur-->
+                        <div class="errormsg" id="errorPays"></div>
 
                         <div class="formCss">
                             <select name="status" id="status" required>
@@ -159,6 +168,9 @@ if (!isset($data['tab'])) {
                                 <option value="endanger">en danger </option>
                             </select>
                         </div>
+
+                        <!--erreur-->
+                        <div class="errormsg" id="errorStatus"></div>
 
                         <div class="formCss">
 
@@ -172,9 +184,14 @@ if (!isset($data['tab'])) {
 
                         </div>
 
+                        <!--erreur-->
+                        <div class="errormsg" id="errorRegimeAlimentaire"></div>
+
                         <div class="formCss">
                             <input type="file" name="image" id="image" required>
                         </div>
+
+                       
 
 
                         <!-- <div class="error-table">
@@ -183,7 +200,7 @@ if (!isset($data['tab'])) {
                                         } ?></p>
                         </div> -->
 
-                        <input type="submit" class="buttonStyle" value="Ajouter">
+                        <input type="submit" class="buttonStyle" value="Ajouter" id="ajouterAnimal">
                         <button type="button" class="buttonStyle" onclick="closeForm()" value="annuler">Close</button>
 
                     </form>
@@ -226,6 +243,9 @@ if (!isset($data['tab'])) {
                         <div class="formCss">
                             <input placeholder="nom animal" type="text" id="nomAnimal1" name="nomAnimal" required>
                         </div>
+                        <!--erreur-->
+                        <div class="errormsg" id="errorNomAnimal1"></div>
+
                         <div class="formCss">
                         <select name="type" id="type1" required>
                                 <option value="0">choisir un type</option>
@@ -235,6 +255,9 @@ if (!isset($data['tab'])) {
                                 <option value="reptiles"> reptiles </option>
                             </select>
                         </div>
+                        <!--erreur-->
+                        <div class="errormsg" id="errorType1"></div>
+
                         <div class="formCss">
                             <input placeholder="age" type="number" id="age1" name="age" required>
                         </div>
@@ -242,6 +265,9 @@ if (!isset($data['tab'])) {
                         <div class="formCss">
                             <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required>
                         </div>
+
+                         <!--erreur-->
+                         <div class="errormsg" id="errorPays1"></div>
 
                         <div class="formCss">
                         <select name="status" id="status1" required>
@@ -251,6 +277,9 @@ if (!isset($data['tab'])) {
                                 <option value="endanger">en danger </option>
                             </select>
                         </div>
+
+                        <!--erreur-->
+                        <div class="errormsg" id="errorStatus1"></div>
 
                         <div class="formCss">
 
@@ -264,12 +293,12 @@ if (!isset($data['tab'])) {
 
                         </div>
 
+                         <!--erreur-->
+                         <div class="errormsg" id="errorRegimeAlimentaire1"></div>
+
                         <div class="formCss">
-                            <input type="file" name="image" id="image1" >
+                            <input type="file" name="image" id="image1" required >
                         </div>
-
-
-
 
                         <!-- <div class="error-table">
                             <p>error : <?php if (isset($data['errorUpdate'])) {
@@ -277,7 +306,7 @@ if (!isset($data['tab'])) {
                                         } ?></p>
                         </div>  -->
 
-                        <input name="update" type="submit" class="buttonStyle" value="modifier">
+                        <input name="update" type="submit" class="buttonStyle" value="modifier" id="modifierAnimal">
                         <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
 
                     </form>

@@ -173,7 +173,7 @@ if (!isset($_SESSION['id']))
 
                             <div class="formCss">
 
-                            <select id="espece" name="espece">
+                            <select id="espece" name="idespece">
                                 <option value="0">choisir id espece</option>
                                 <?php if (isset($data['idespece'])) {
                                     echo $data["idespece"];
@@ -181,7 +181,7 @@ if (!isset($_SESSION['id']))
 
                             </select>
                         
-                            </div>
+                        </div>
 
                         <input type="submit" class="buttonStyle" value="Ajouter">
                         <button type="button" class="buttonStyle" onclick="closeForm()">fermer</button>
@@ -201,6 +201,7 @@ if (!isset($_SESSION['id']))
                             <th>Taille</th>
                             <th>Famille</th>
                             <th>image</th>
+                            <th>id espece</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -253,7 +254,7 @@ if (!isset($_SESSION['id']))
                         
                         <div class="formCss">
 
-                            <select id="espece1" name="espece">
+                            <select id="espece1" name="idespece">
                                 <option value="0">choisir id espece</option>
                                 <?php if (isset($data['idespece'])) {
                                     echo $data["idespece"];

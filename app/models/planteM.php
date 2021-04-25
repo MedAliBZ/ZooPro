@@ -10,6 +10,7 @@ class planteM
     private $taille;
     private $famille;
     private $image;
+    private $idespece;
 
     public function __construct()
     {
@@ -43,10 +44,14 @@ class planteM
         echo $this->image;
     }
 
+    public function getespece(){
+        echo $this->espece;
+    }
+
 
     public function addplanteC($data)
     {
-        $this->db->query('INSERT INTO plante (nomP,longevite,origine,taille,famille,image) VALUES(:nomP,:longevite,:origine,:taille,:famille,:image)');
+        $this->db->query('INSERT INTO plante (nomP,longevite,origine,taille,famille,image,idespece) VALUES(:nomP,:longevite,:origine,:taille,:famille,:image,:idespece)');
 
         //Bind values
         $this->db->bind(':nomP', $data['nomP']);
@@ -55,6 +60,7 @@ class planteM
         $this->db->bind(':taille', $data['taille']);
         $this->db->bind(':famille', $data['famille']);
         $this->db->bind(':image', $data['image']);
+        $this->db->bind(':idespece', $data['idespece']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -89,7 +95,7 @@ class planteM
 
 
     public function updateplante($data){
-        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image WHERE idP = :idP ');
+        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image,idespece=:idespece WHERE idP = :idP ');
         //Bind values
         $this->db->bind(':nomP', $data['nomP']);
         $this->db->bind(':origine', $data['origine']);
@@ -97,6 +103,7 @@ class planteM
         $this->db->bind(':taille', $data['taille']);
         $this->db->bind(':famille', $data['famille']);
         $this->db->bind(':image', $data['image']);
+        $this->db->bind(':idespece', $data['idespece']);
         $this->db->bind(':idP', $data['idP']);
 
         //Execute function

@@ -16,6 +16,7 @@ class planteC extends Controller
             'taille ' => '',
             'famille ' => '',
             'image ' => '',
+            'idespece ' => '',
             'errorAdd' => ''
         ];
 
@@ -31,44 +32,35 @@ class planteC extends Controller
                 'taille' => trim($_POST['taille']),
                 'famille' => trim($_POST['famille']),
                 'image' => trim($_POST['image']),
+                'idespece' => trim($_POST['idespece']),
                 'errorAdd' => ''
             ];
 
             //Validate nom_plante
             if (empty($data['nomP'])) { //check if name is empty or not
                 $data['errorAdd'] = 'Please enter name.';
-            } elseif (!ctype_alpha($data['nomP'])) { //check name regex
-                $data['errorAdd'] = 'entrer un nom.';
             }
 
             if (empty($data['longevite'])) {
                 $data['errorAdd'] = 'entrer la longevite du plante.';
-            } elseif (!is_numeric($data['longevite'])) {
-                $data['errorAdd'] = 'la longevite doit etre un numero.';
-            }
+            } 
 
             if (empty($data['origine'])) {
                 $data['errorAdd'] = 'entrer l origine du plante.';
-            } elseif (!is_numeric($data['origine'])) {
-                $data['errorAdd'] = 'l origine doit etre un numero.';
-            }
+            } 
 
             if (empty($data['taille'])) {
                 $data['errorAdd'] = 'entrer une taille.';
-            } elseif (!is_numeric($data['taille'])) {
-                $data['errorAdd'] = 'la taille doit etre un numero.';
-            }
+            } 
 
             if (empty($data['famille'])) { //check if name is empty or not
                 $data['errorAdd'] = 'entrer la famille de la plante.';
-            } elseif (!ctype_alpha($data['famille'])) { //check name regex
-                $data['errorAdd'] = 'entrer une famille .';
-            }
+            } 
 
-            if (empty($data['image'])) { //check if name is empty or not
-                $data['errorAdd'] = 'entrer l image de la plante.';
-            } elseif (!ctype_alpha($data['image'])) { //check name regex
-                $data['errorAdd'] = 'entrer une image .';
+            
+
+            if (empty($data['idespece'])) { //check if name is empty or not
+                $data['errorAdd'] = 'entrer l id de lespece de la plante.';
             }
 
             // Make sure that errors are empty
@@ -89,6 +81,7 @@ class planteC extends Controller
         $tab = $this->planteModel->afficherplante();
         $data = [
             'tab' => '',
+            'idespece' => '',
             'errorAffiche' => ''
         ];
         if (isset($error)) {
@@ -109,7 +102,7 @@ class planteC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4]."-".$value[5]."-".$value[6].'>
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4]."-".$value[5]."-".$value[6]."-".$value[7].'>
             <td >'. $value[0] .'</td>
             <td>'. $value[1] .'</td>
             <td>'. $value[2] .'</td>
@@ -117,6 +110,7 @@ class planteC extends Controller
             <td>'. $value[4] .'</td>
             <td>'. $value[5] .'</td>
             <td>'. $value[6] .'</td>
+            <td>'. $value[7] .'</td>
             <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()">
         </tr>';
         }
@@ -146,6 +140,7 @@ class planteC extends Controller
                 'taille' => '',
                 'famille' => '',
                 'image' => '',
+                'idespece' => '',
                 'errorUpdate' => ''
             ];
 
@@ -162,45 +157,35 @@ class planteC extends Controller
                     'taille' => trim($_POST['taille']),
                     'famille' => trim($_POST['famille']),
                     'image' => trim($_POST['image']),
+                    'idespece' => trim($_POST['idespece']),
+                   
                     'errorUpdate' => ''
                 ];
 
                 //Validate nom_regime
             if (empty($data['nomP'])) { //check if name is empty or not
                 $data['errorAdd'] = 'Please enter name.';
-            } elseif (!ctype_alpha($data['nomP'])) { //check name regex
-                $data['errorAdd'] = 'Please enter the real name.';
-            }
+            } 
 
             if (empty($data['longevite'])) {
                 $data['errorAdd'] = 'enter la longevite.';
-            } elseif (!is_numeric($data['longevite '])) {
-                $data['errorAdd'] = 'entrer la longevite.';
             }
 
             if (empty($data['origine'])) {
                 $data['errorAdd'] = 'entrer l origine geographique.';
-            } elseif (!ctype_alpha($data['origine'])) {
-                $data['errorAdd'] = 'entrer l origine.';
-            }
+            } 
 
             if (empty($data['taille'])) {
                 $data['errorAdd'] = ' entrer la taille du plante.';
-            } elseif (!is_numeric($data['taille'])) {
-                $data['errorAdd'] = 'entrer une taille.';
-            }
+            } 
 
             if (empty($data['famille'])) {
                 $data['errorAdd'] = ' entrer la famille de la plante.';
-            } elseif (!ctype_alpha($data['famille'])) {
-                $data['errorAdd'] = 'entrer la famille.';
-            }
+            } 
 
             if (empty($data['image'])) {
                 $data['errorAdd'] = ' entrer l image de la plante.';
-            } elseif (!ctype_alpha($data['image'])) {
-                $data['errorAdd'] = 'entrer l image.';
-            }
+            } 
     
                 // Make sure that errors are empty
                 if (empty($data['errorUpdate'])) {

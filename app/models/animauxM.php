@@ -57,6 +57,15 @@ class animauxM
         $this->db->bind(':id', $id);
         $this->db->execute();
     }
+    
+    public function findEmailByID()
+    {
+        //Prepared statement
+        $this->db->query('SELECT email FROM `users` WHERE id = :id;');
+        $this->db->bind(':id',$_SESSION['id'] );
 
+        return $this->db->resultSet();
+       
+    }
 
 }

@@ -1,9 +1,16 @@
 
-$( ".tblRows" ).focus(function() {
-    var row_data = $(this).attr("data");
+$( ".tblRows" ).click(function() {
+    var row_data1 = $(this).attr("data");
+    console.log(row_data1);
+    //here
+    let emailString= document.getElementById("email").textContent;
+    console.log(emailString);
+    var row_data = row_data1 +"-"+emailString ;
     console.log(row_data);
+
     localStorage.setItem("vOneLocalStorage",row_data);  
 })
+
 
 //recherche function
 let nomAnimal = Array.from(document.querySelectorAll("a[data-label='Nom']"));

@@ -1,3 +1,6 @@
+<?php if (!isset($_SESSION['id']))
+    header('location: ' . URLROOT . '/index');
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -89,6 +92,13 @@
                     </div>
                 </div>
                 <div class="right-content">
+
+                   <form action="<?php echo URLROOT; ?>/animauxC/SendEmail" id="formEmail" method="POST"> 
+                   <input type="email" id="email" name="email" style="display: none;" readonly>
+                   <input type="submit" class="btn header-btn" id="donationButton" value="Donate for this animal">
+
+                   </form>
+                   
                     <!-- img -->
                     <div class="right-img">
                         <img id="animalImage" src="<?php echo URLROOT ?>" alt="">

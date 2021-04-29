@@ -64,11 +64,11 @@
             </div>
         </div>
         <div class="rechercheStyle">
-        <input type="text" id="rechercher" class="button button-contactForm boxed-btn " placeholder="Recherche ici ">
+            <input type="text" id="rechercher" class="button button-contactForm boxed-btn " placeholder="Recherche ici ">
         </div>
         <!-- Hero End -->
         <div class="card">
-           
+
 
             <?php if (isset($data['tab'])) {
                 echo $data['tab'];
@@ -77,6 +77,11 @@
 
         </div>
 
+        <div style="display: none;">
+        <?php if (isset($data['email'])) {
+                echo $data['email'];
+            } ?>
+        </div>
 
 
     </main>

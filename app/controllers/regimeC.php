@@ -8,9 +8,10 @@ class regimeC extends Controller
 
     public function afficherList()
     {
-        $tab = $this->regimeModel->findRegimeByID($_POST['id'] );
+        $tab = $this->regimeModel->findRegimeByID($_POST['id']);
            $data = [
-            'tab' => ''
+            'tab' => '',
+            'email'=>''
         ];
 
 
@@ -42,10 +43,8 @@ class regimeC extends Controller
         $this->view('detailAnimal',$data);
     }
 
+
 }
-
-
-
 
 
 

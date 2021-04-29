@@ -13,6 +13,7 @@ class animauxC extends Controller
         $tab = $this->animauxModel->afficherAnimaux();
         $data = [
             'tab' => '',
+            'email'=> ''
         ];
 
         foreach ($tab as $key => $value) {
@@ -29,8 +30,25 @@ class animauxC extends Controller
 
         }
 
-
-
+        $email = $this->animauxModel->findEmailByID();
+        foreach ($email as $key => $value) {
+            $data['email'] .= '
+            <h3  id="email"> '. $value[0] .'</h3>
+            ';
+        }
         $this->view('animaux', $data);
+    }
+
+    public function SendEmail()
+    {
+        $data = ['email'=>''];
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $data = [
+            'email' =>  trim($_POST['email'])
+        ];
+        mail($data['email'],"donation","your donation is confirmed thank you","From: mhedhbi.meriamepb@gmail.com");
+
+        
+        $this->view('detailAnimal',$data);
     }
 }

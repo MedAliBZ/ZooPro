@@ -45,8 +45,6 @@ class regimeM
 
         return $this->db->resultSet();
        
-    }
-
-    
+    }  
 
 }

@@ -52,6 +52,11 @@ document.querySelector('#ajouterPopup').addEventListener('click',(e)=>{
         prenomPopA.parentElement.style.border='1px solid red';
         e.preventDefault();
     }
+    else if(salairePopA.value*1 < 0){
+        document.getElementById('errorAj').innerHTML='Le salaire doit etre supérieur ou egale à 0!';
+        salairePopA.parentElement.style.border='1px solid red';
+        e.preventDefault();
+    }
 })
 
 function resetErrorsPopUpM(){
@@ -67,6 +72,7 @@ function resetErrorsPopUpM(){
 let prenomPopM=document.querySelector('.prenom-popup');
 let nomPopM=document.querySelector('.nom-popup');
 let cinPopM=document.querySelector('.cin-popup');
+let salairePopM=document.querySelector('.salaire-popup');
 
 document.querySelector('#modifierPopupM').addEventListener('click',(e)=>{
     resetErrorsPopUpM();
@@ -85,6 +91,11 @@ document.querySelector('#modifierPopupM').addEventListener('click',(e)=>{
     } else if(/\d/.test(prenomPopM.value)){ 
         document.getElementById('errorMd').innerHTML='Le prenom ne doit pas contenir de nombres!';
         prenomPopM.parentElement.style.border='1px solid red';
+        e.preventDefault();
+    }
+    else if(salairePopM.value*1 < 0){ 
+        document.getElementById('errorMd').innerHTML='Le salaire doit etre supérieur ou egale à 0!';
+        salairePopM.parentElement.style.border='1px solid red';
         e.preventDefault();
     }
 })

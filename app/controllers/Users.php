@@ -244,16 +244,24 @@ class Users extends Controller
 
     public function afficherList($error = '')
     {
-        if(!$this->userModel->findUserByUsername($_SESSION['username']))
+        if (!$this->userModel->findUserByUsername($_SESSION['username']))
             $this->logout();
 
         $tab = $this->userModel->afficher();
         $data = [
             'tab' => '',
+            'users' => '',
+            'admins' => '',
             'error' => '',
             'errorUpdate' => '',
             'errorPass' => ''
         ];
+        $users = $this->userModel->getUsers();
+        $data['users'] = $users[0][0];
+
+        $admins = $this->userModel->getAdmins();
+        $data['admins'] = $admins[0][0];
+
         if (isset($error)) {
             $errorTab = explode("-", $error);
             if ($errorTab[0] == 'err') {
@@ -582,17 +590,26 @@ class Users extends Controller
             header('location: ' . URLROOT . '/pages/resetPass');
     }
 
-    public function trier($case='')
+    public function trier($case = '')
     {
-        if(!$this->userModel->findUserByUsername($_SESSION['username']))
+        if (!$this->userModel->findUserByUsername($_SESSION['username']))
             $this->logout();
 
         $column = array("a" => "ID", "b" => "USERNAME", "c" => "EMAIL", "d" => "ROLE_ID");
         if (array_search($case, $column)) {
             $tab = $this->userModel->tri($case);
             $data = [
-                'tab' => ''
+                'tab' => '',
+                'admins' => '',
+                'users' => ''
             ];
+
+            $users = $this->userModel->getUsers();
+            $data['users'] = $users[0][0];
+
+            $admins = $this->userModel->getAdmins();
+            $data['admins'] = $admins[0][0];
+            
             foreach ($tab as $key => $value) {
                 $data['tab'] .= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>
@@ -610,17 +627,26 @@ class Users extends Controller
         $this->view('usersV', $data);
     }
 
-    public function filtrer($role='')
+    public function filtrer($role = '')
     {
-        if(!$this->userModel->findUserByUsername($_SESSION['username']))
+        if (!$this->userModel->findUserByUsername($_SESSION['username']))
             $this->logout();
 
         $column = array("a" => "admin", "b" => "utilisateur");
         if (array_search($role, $column)) {
             $tab = $this->userModel->filter($role);
             $data = [
-                'tab' => ''
+                'tab' => '',
+                'admins' => '',
+                'users' => ''
             ];
+
+            $users = $this->userModel->getUsers();
+            $data['users'] = $users[0][0];
+
+            $admins = $this->userModel->getAdmins();
+            $data['admins'] = $admins[0][0];
+
             foreach ($tab as $key => $value) {
                 $data['tab'] .= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>

@@ -22,6 +22,7 @@ $mobile: 1051px;
       margin: 0 2% 2% 2%;
       color: var(--accent);
     }
+
     .one {
       grid-area: 2;
     }
@@ -34,7 +35,7 @@ $mobile: 1051px;
     .three {
       grid-area: 4;
     }
-  
+
     #error-msg {
       text-align: center;
       color: red;
@@ -47,7 +48,8 @@ $mobile: 1051px;
       grid-area: 5;
     }
   }
-  .card.pass{
+
+  .card.pass {
     width: 100%;
     margin-left: 1%;
   }
@@ -342,13 +344,15 @@ $mobile: 1051px;
   display: flex;
   justify-content: space-evenly;
 
-  
+
 
   .card.pass {
     display: grid;
-    .sectionTitle{
+
+    .sectionTitle {
       grid-area: 1;
     }
+
     .one {
       grid-area: 2;
     }
@@ -423,13 +427,15 @@ $mobile: 1051px;
   transition: height 0.5s;
   height: 0px;
   overflow: hidden;
+
   &.open {
     height: 250px !important;
   }
 }
 
 .tri,
-.filter,.removeFT {
+.filter,
+.removeFT {
   display: flex;
   flex-direction: column;
 
@@ -449,5 +455,32 @@ $mobile: 1051px;
     border-bottom: 2px solid var(--accent);
     margin-bottom: 12px;
     color: var(--accent);
+  }
+}
+
+#piechart {
+  color: var(--tc);
+
+  rect {
+    fill: transparent;
+  }
+
+  text {
+    font-family: "Poppins", sans-serif;
+    
+    fill: var(--tc);
+  }
+
+  g:nth-child(1) {
+    text{
+      fill: black;
+    }
+  }
+
+  g:nth-child(5),
+  g:nth-child(6) {
+    text {
+      fill: whitesmoke;
+    }
   }
 }

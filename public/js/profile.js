@@ -125,3 +125,29 @@ window.addEventListener('resize', () => {
     });
 
 });
+
+
+//chart
+
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    
+
+    var data = google.visualization.arrayToDataTable([
+        ['Role', 'Nombre'],
+        ['Admines', document.getElementById('piechart').getAttribute('admins')*1],
+        ['Utilisateurs', document.getElementById('piechart').getAttribute('users')*1]
+    ]);
+
+    var options = {
+        title: 'Role par utilisateurs',
+        width: '50%',
+        height: 300
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+}

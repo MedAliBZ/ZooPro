@@ -20,7 +20,8 @@ if (!isset($data['tab']))
 </head>
 
 <body>
-	<div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px"></div>
+	<div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px">
+	</div>
 	<!--wrapper start-->
 	<div class="wrapper collapse">
 		<!--header menu start-->
@@ -63,7 +64,8 @@ if (!isset($data['tab']))
 					</a>
 					<div class="sub-menu-profile">
 						<a href="<?php echo URLROOT ?>/pages/animaux"><i class="fas fa-hippo"></i><span>Animaux</span></a>
-						<a href="<?php echo URLROOT ?>/pages/regime"><i class="fas fa-bone"></i><span>Régime alimentaire</span></a>
+						<a href="<?php echo URLROOT ?>/pages/regime"><i class="fas fa-bone"></i><span>Régime
+								alimentaire</span></a>
 					</div>
 				</li>
 
@@ -73,7 +75,8 @@ if (!isset($data['tab']))
 					</a>
 					<div class="sub-menu-messages">
 						<a href="<?php echo URLROOT ?>/pages/plante"><i class="fas fa-seedling"></i><span>Plantes</span></a>
-						<a href="<?php echo URLROOT ?>/pages/espece"><i class="fas fa-tree"></i><span>Espéce vegetale</span></a>
+						<a href="<?php echo URLROOT ?>/pages/espece"><i class="fas fa-tree"></i><span>Espéce
+								vegetale</span></a>
 					</div>
 				</li>
 				<li class="item" id="settings">
@@ -152,14 +155,17 @@ if (!isset($data['tab']))
 			</div>
 
 			<div class="container">
-				<div class="error-table"><?php if (isset($data['errorUpdate'])) {
-												echo $data['errorUpdate'];
-											} ?></div>
+				<div class="error-table">
+					<?php if (isset($data['errorUpdate'])) {
+						echo $data['errorUpdate'];
+					} ?>
+				</div>
+				<div id="piechart" class="card" admins='<?php echo $data['admins']; ?>' users="<?php echo $data['users']; ?>" style="height: fit-content;width: fit-content;padding: 0;"></div>
 				<div style="display: flex;">
-				<button class="triButton"><i class="fas fa-align-left"></i>
-					<p>Filtres</p>
-				</button>
-				<div class="input-field" style="margin-left: 10%;position: relative;width:100%;">
+					<button class="triButton"><i class="fas fa-align-left"></i>
+						<p>Filtres</p>
+					</button>
+					<div class="input-field" style="margin-left: 10%;position: relative;width:100%;">
 						<i class="fas fa-search"></i>
 						<input style="overflow: hidden;" id="rechercher" type="text" placeholder="Rechercher par nom d'utilisateur" name="Rechercher" />
 					</div>
@@ -235,9 +241,11 @@ if (!isset($data['tab']))
 		<!--main container end-->
 	</div>
 	<!--wrapper end-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
 	<script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
 	<script src="<?php echo URLROOT ?>/public/js/profile.js"></script>
+	
 </body>
 
 </html>

@@ -15,14 +15,20 @@ class User
         echo $this->email;
     }
 
-    public function getUsername()
+    public function getUsers()
     {
-        echo $this->username;
+        $this->db->query('select count(*) FROM users WHERE role_id = 0');
+        return $this->db->resultSet();
+    }
+    public function getAdmins()
+    {
+        $this->db->query('select count(*) FROM users WHERE role_id = 1');
+        return $this->db->resultSet();
     }
 
     public function register($data)
     {
-        $this->db->query('INSERT INTO users (username, email, password,role_id) VALUES(:username, :email, :password,1)');
+        
 
         //Bind values
         $this->db->bind(':username', $data['username']);

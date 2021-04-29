@@ -103,6 +103,7 @@ class Enclos extends Controller
         $tab = $this->encloModel->afficher();
         $data = [
             'tab' => '',
+            'idenclos' => '',
             'errorAdd' => ''
         ];
 
@@ -120,6 +121,11 @@ class Enclos extends Controller
                         </div>
                     </div>
                 </li>';
+        }
+         $typeEnclos = $this->encloModel->listeTypeID();
+        foreach ($typeEnclos as $key => $value)
+        {
+            $data['typeEnclos'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';
         }
         
         $this->view('enclos', $data);
@@ -257,6 +263,35 @@ class Enclos extends Controller
         $this->view('enclos', $data);
     }
 
+    //  public function pagination($page, $perPage)
+    //     {
+    //         $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+    //         $sql = "SELECT * FROM enclos LIMIT {$start},{$perPage}";
+    //         try {
+    //             $liste = $db->prepare($sql);
+    //             $liste->execute();
+    //             $liste = $liste->fetchAll(PDO::FETCH_ASSOC);
+    //             return $liste;
+    //         } catch (Exception $e) {
+    //             die('Erreur: ' . $e->getMessage());
+    //         }
+    //     }
     
+    
+        // public function calcTotalRows($perPage)
+        // {
+        //     $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM enclos";
+        //     try {
+    
+        //         $liste = $db->query($sql);
+        //         $total = $db->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+        //         $pages = ceil($total / $perPage);
+        //         return $pages;
+        //     } catch (Exception $e) {
+        //         die('Erreur: ' . $e->getMessage());
+        //     }
+        // }
+
+       
 }
 

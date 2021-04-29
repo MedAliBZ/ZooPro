@@ -148,15 +148,17 @@ if (!isset($data['tab'])) {
                                 <input type="text" placeholder="Id" name="id" class="id-popup"
                                 required/>
                             </div>
+                            <div id="errorMdID"></div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Label" name="label" class="label-popup" required/>
                             </div>
+                            <div id="errorMdLabel"></div>
                             <div class="input-field three">
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Structure" name="structure" class="structure-popup" required/>
                             </div>
-                            <div id="errorMd"></div>
+                            <div id="errorMdStructure"></div>
                             <div class="buttonsPUpdate">
                                 <input name="update" type="submit" class="btn" value="Modifier" id="modifierPopupM"/>
                                 <input name="delete" type="submit" class="btn" value="Supprimer" />
@@ -174,15 +176,17 @@ if (!isset($data['tab'])) {
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="ID" name="id" id="id-popupA" required/>
                             </div>
+                             <div id="errorAjID"></div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Label" name="label" id="label-popupA" required/>
                             </div>
+                             <div id="errorAjLabel"></div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Structure" name="structure" id="structure-popupA" required/>
                             </div>
-                            <div id="errorAj">error</div>
+                            <div id="errorAjStructure"></div>
                             <div class="buttonsP">
                                 <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup"/>
                             </div>

@@ -17,6 +17,30 @@ if (!isset($_SESSION['id']))
 }
     
 ?>
+<?php
+
+if (
+
+isset($_POST["nom"]) &&
+isset($_POST["email"]) &&
+isset($_POST["sujet"]) &&
+isset($_POST["message"]) 
+
+) {
+if (
+    !empty($_POST["nom"]) &&
+    !empty($_POST["email"]) &&
+    !empty($_POST["sujet"]) &&
+    !empty($_POST["message"]) 
+) {
+    $email = $_POST["email"];
+    $subject = $_POST["sujet"];
+    mail("$email" , "$email ($subject)" , $_POST["message"] , "From: $email");    
+} else
+    echo "Missing information";
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,18 +140,20 @@ if (!isset($_SESSION['id']))
         </div>
         <!--sidebar end-->
         <!--main container start-->
+         
         <div class="main-container">
             <div class="container">
                 <div class="error-table"><?php if (isset($data['errorAdd'])){echo $data['errorAdd'];}?></div>
                 <div class="error-table"><?php if (isset($data['errorUpdate'])){echo $data['errorUpdate'];}?></div>
+                
 
                 <form class="content" action="<?php echo URLROOT; ?>/enclos/afficherList" method="POST">
                  <input class="btn" type="submit" value="Reset" name="reset_enclos" style="float: right;" />
                  </form>
                 
-                 <form class="content" action="<?php echo URLROOT; ?>/enclos/getEnclos" method="POST">
+                 <form class="content" action="<?php echo URLROOT; ?>/enclos/afficherID" method="POST">
                  <input class="btn" type="submit" value="Search" name="search_enclos" style="float: right;" />
-                  <input type="text" placeholder="Enter id" name="id" autocomplete="off" style="float: right;" class="input-fieldSearch" />
+                 <input type="text" placeholder="Enter id" name="id" autocomplete="off" style="float: right;" class="input-fieldSearch" />
                  </form>
 
                  <form class="content" action="<?php echo URLROOT; ?>/enclos/sortEnclos" method="POST">
@@ -136,6 +162,7 @@ if (!isset($_SESSION['id']))
 
 
                 <button class="btn" id="ajouterEnc">Ajouter</button>
+                <button class="btn" id="sendemail">Envoyer un email</button>
                 
 
                <ul class="responsive-table">
@@ -155,6 +182,8 @@ if (!isset($_SESSION['id']))
                     } ?>
 
                 </ul>
+           
+                        
                 <div class="overlay" style="opacity: 1;overflow: auto;">
                     <div class="popup">
                         <a class="close" href="#">&times;</a>
@@ -165,23 +194,27 @@ if (!isset($_SESSION['id']))
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Appellation" name="appellation" class="appellation-popup" required />
                             </div>
+                            <div id="errorMdAppellation"></div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Localisation" name="localisation" class="localisation-popup" required />
                             </div>
+                            <div id="errorMdLocalisation"></div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Taille" name="taille" class="taille-popup" required />
+                                <input type="number" placeholder="Taille" min="0" name="taille" class="taille-popup" required />
                             </div>
+                            <div id="errorMdTaille"></div>
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
                                 <input type="Date" name="dateConstruction" class="CD-popup" required />
                             </div>
+                            <div id="errorMdCD"></div>
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" class="capaciteMaximale-popup" required />
+                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" min="0" class="capaciteMaximale-popup" required />
                             </div>
-                             <div id="errorMd"></div>
+                            <div id="errorMdCM"></div>
                             <div class="buttonsPUpdate">
                                 <input name="update" type="submit" class="btn" value="Modifier" id="modifierPopupM" />
                                 <input name="delete" type="submit" class="btn" value="Supprimer" />
@@ -199,31 +232,49 @@ if (!isset($_SESSION['id']))
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Appellation" name="appellation" id="appellation-popupA" required />
                             </div>
+                            <div id="errorAjAppellation"></div>
+
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Localisation" name="localisation" id="localisation-popupA" required/>
                             </div>
+                            <div id="errorAjLocalisation"></div>
+
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="number" placeholder="Taille" name="taille" id="taille-popupA" required/>
+                                <input type="number" placeholder="Taille" min="0" name="taille" id="taille-popupA" required/>
                             </div>
+                            <div id="errorAjTaille"></div>
+
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateConstruction" id="CD-popupA" required/>
+                                <input type="Date" name="dateConstruction" id="CD-popupA" max="03-05-2021" required/>
                             </div>
+                            <div id="errorAjCD"></div>
+
+                            <div class="input-field date">
+                                <i class="fas fa-signature"></i>
+                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" min="0" id="capaciteMaximale-popupA" required/>
+                            </div>
+                            <div id="errorAjCM"></div>
+                            
                             <div class="input-field two">
                                 <i class="fas fa-signature"></i>
-                                <input type="number" placeholder="Capacite maximale" name="capaciteMaximale" id="capaciteMaximale-popupA" required/>
+                                <select id="typeEnclos-popupA" name="typeEnclos">
+                                <option value="0">choisir id du type de l'enclos</option>
+                                <?php if (isset($data['typeEnclos'])) {
+                                    echo $data["typeEnclos"];
+                                } ?>
+                                </select>         
                             </div>
-                            <div class="input-field two">
-                                <i class="fas fa-warehouse"></i>
-                                <input type="text" placeholder="Type enclos" name="typeEnclos" class="typeEnclos-popupA" required />
-                            </div>
+                            <div id="errorAjTypeEnclos"></div>
+
                             <div class="input-field two">
                                 <i class="fas fa-images"></i>
                                  <input type="file" placeholder="Photo" name="photo" id="photo-popupA" required>
                             </div>
-                            <div id="errorAj"></div>
+
+                            <div id="errorAjPhoto"></div>
                             <div class="buttonsP">
                                 <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup" required/>
                             </div>
@@ -231,6 +282,36 @@ if (!isset($_SESSION['id']))
                     </div>
                 </div>
             </div>
+            <div class="overlay overlaysend">
+                    <div class="popup">
+                        <a class="close closesend" href="#">&times;</a>
+                        <form class="content"  method="POST">
+                            <h2>envoyer un email </h2>
+
+                            <div class="input-field one">
+                                <i class="fas fa-building"></i>
+                                <input type="text" placeholder="entrer un nom" name="nom" id="nom-popups" />
+                            </div>
+                            <div class="input-field two">
+                                <i class="fas fa-inbox"></i>
+                                <input type="text" placeholder="entrer l email" name="email" id="email-popups" />
+                            </div>
+
+                            <div class="input-field two">
+                                <i class="fas fa-pen"></i>
+                                <input type="text" placeholder="entrer le sujet" name="sujet" id="sujet-popups" />
+                            </div>
+
+                            <div class="input-field two">
+                                <i class="fas fa-envelope-square"></i>
+                                <textarea rows="5" placeholder="type message" name="message" id="message-popups" ></textarea>
+                            </div>
+                            
+                            <button type="submit" value="send an email">submit</button>
+                            
+                        </form>
+                    </div>
+                </div>
         </div>
         <!--main container end-->
     </div>

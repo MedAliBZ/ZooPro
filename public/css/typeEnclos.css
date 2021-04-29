@@ -237,8 +237,13 @@
   -webkit-transform: scale(2.6);
   transform: scale(2.6);
 }
-#errorAj,
-#errorMd {
+#errorAjID,
+#errorAjLabel,
+#errorAjStructure,
+#errorMdID,
+#errorMdLabel,
+#errorMdStructure{
   color: red;
   text-align: center;
 }
+

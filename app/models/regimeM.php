@@ -107,6 +107,24 @@ class regimeM
         }
     }
 
+    public function triID()
+    {
+        $this->db->query('SELECT * FROM `regimealimentaire` ORDER BY id DESC ');
+        return $this->db->resultSet();
+    }
+
+    public function triNomregime()
+    {
+        $this->db->query('SELECT * FROM `regimealimentaire` ORDER BY nom_regime ');
+        return $this->db->resultSet();
+    }
+
+    public function triNombreRepas()
+    {
+        $this->db->query('SELECT * FROM `regimealimentaire` ORDER BY nombre_de_repas ');
+        return $this->db->resultSet();
+    }
+
     
 
 }

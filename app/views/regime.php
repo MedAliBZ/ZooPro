@@ -114,17 +114,30 @@ if (!isset($data['tab'])) {
         <!--sidebar end-->
         <!--main container start-->
         <div class="main-container">
-            <div class="searchCss" id="search">
+            <!-- <div class="searchCss" id="search">
                 <input type="text" placeholder="recherche" name="search" />
                 <i class="fas fa-search"></i>
-            </div>
+            </div> -->
 
             <div class="card">
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">La liste des régimes alimentaires </h3>
                 </div>
 
-                <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un régime</button>
+
+                <div class="containerTriAjout">
+
+                    <div class="containerTri">
+                        <button class="buttonStyle" id="triButton">Trier</button>
+                        <div class="triElements" id="triElements">
+                            <a href="<?php echo URLROOT; ?>/regimeC/trierParID" id="triId">Par ID</a>
+                            <a href="<?php echo URLROOT; ?>/regimeC/trierParNombreRepas" id="triNombreRepas">Par nombre de repas </a>
+                            <a href="<?php echo URLROOT; ?>/regimeC/trierParNomRegime" id="triName">Par Nom Régime</a>
+                        </div>
+                    </div>
+                    <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un régime</button>
+
+                </div>
                 <div class="form-popup" id="myForm">
                     <form action="<?php echo URLROOT; ?>/regimeC/addRegimeC" class="form-container" method="POST">
 
@@ -134,7 +147,7 @@ if (!isset($data['tab'])) {
                         <div class="formCss">
                             <select name="nom_regime" id="regimeAlimentaire">
                                 <option value="0">choisir un régime</option>
-                                <option value="herbivore">herbivore </option>   
+                                <option value="herbivore">herbivore </option>
                                 <option value="granivore">granivore </option>
                                 <option value="frugivore">frugivore </option>
                                 <option value="omnivore"> omnivore </option>
@@ -151,13 +164,13 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorTypeNourriture"></div>
 
                         <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas" name="quantite_par_repas" required>
+                            <input placeholder="quantité par repas(kg)" type="number" id="quantiteParRepas" name="quantite_par_repas" min="0" required>
                         </div>
                         <!--erreur-->
                         <div class="errormsg" id="errorQuantiteParRepas"></div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas" required />
+                            <input type="number" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas" min="0" required />
                         </div>
 
                         <!--erreur-->
@@ -220,12 +233,12 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorRegimeAlimentaire1"></div>
 
                         <div class="formCss">
-                            <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture" required >
+                            <input placeholder="type Nourriture" type="text" id="typeNourriture1" name="type_nourriture" required>
                         </div>
                         <!--erreur-->
                         <div class="errormsg" id="errorTypeNourriture1"></div>
                         <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas" required >
+                            <input placeholder="quantité par repas(kg)" type="text" id="quantiteParRepas1" name="quantite_par_repas" required>
                         </div>
                         <!--erreur-->
                         <div class="errormsg" id="errorQuantiteParRepas1"></div>

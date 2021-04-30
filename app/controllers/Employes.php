@@ -93,7 +93,7 @@ class Employes extends Controller
             'errorAdd' => '',
             'errorUpdate' => '',
             'sup' => '',
-            'inf' => ''
+            'inf' => '' 
         ];
 
         $sup = $this->employeModel->getSalaireSup();

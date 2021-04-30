@@ -234,10 +234,8 @@ font-size: 1.1rem;
 }
 
 .containerTriAjout
-{ display: block ruby;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
+{ display: flex;
+  flex-direction: row;
 
 }
 
@@ -249,15 +247,13 @@ flex-direction: column;
 
 #addButtonToList
 {
-margin-left: 68%;
+margin-left: 80%;
 
 }
 
 #triButton
 {
- width: max-content;
- padding-right: 80%;
- padding-left: 80%;
+ width:fit-content;
   
 }
 
@@ -300,4 +296,43 @@ margin-left: 68%;
       padding: auto;
       border-radius:10%;
   } 
+}
+
+#triNombreRepas
+{
+  color: #009879;
+  &:hover 
+  {
+      border: solid 1px #009879 ;
+      border-radius:10%;
+  } 
+}
+
+
+#animalchart {
+  color: var(--tc);
+
+  rect {
+    fill: transparent;
+  }
+
+  text {
+    font-family: "Poppins", sans-serif;
+    
+    fill: var(--tc);
+  }
+
+  g:nth-child(1) {
+    text{
+      fill: black;
+    }
+  }
+
+  g:nth-child(5),
+  g:nth-child(6),
+  g:nth-child(7) {
+    text {
+      fill: whitesmoke;
+    }
+  }
 }

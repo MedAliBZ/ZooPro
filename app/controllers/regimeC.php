@@ -173,6 +173,72 @@ class regimeC extends Controller
         }
     }
 
+    public function trierParID()
+    {
+        $tab = $this->regimeModel->triID();
+        $data = [
+            'tab' => ''
+        ];
+
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
+            <td >'. $value[0] .'</td>
+            <td>'. $value[1] .'</td>
+            <td>'. $value[2] .'</td>
+            <td>'. $value[3] .'</td>
+            <td>'. $value[4] .'</td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
+        </tr>';
+        }
+
+        $this->view('regime', $data);
+    }
+
+    public function trierParNombreRepas()
+    {
+        $tab = $this->regimeModel->triNombreRepas();
+        $data = [
+            'tab' => ''
+        ];
+
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
+            <td >'. $value[0] .'</td>
+            <td>'. $value[1] .'</td>
+            <td>'. $value[2] .'</td>
+            <td>'. $value[3] .'</td>
+            <td>'. $value[4] .'</td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
+        </tr>';
+        }
+
+        $this->view('regime', $data);
+    }
+
+    public function trierParNomRegime()
+    {
+        $tab = $this->regimeModel->triNomregime();
+        $data = [
+            'tab' => ''
+        ];
+
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
+            <td >'. $value[0] .'</td>
+            <td>'. $value[1] .'</td>
+            <td>'. $value[2] .'</td>
+            <td>'. $value[3] .'</td>
+            <td>'. $value[4] .'</td>
+            <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
+        </tr>';
+        }
+
+        $this->view('regime', $data);
+    }
+
 
 }
 

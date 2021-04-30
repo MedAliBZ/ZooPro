@@ -129,6 +129,21 @@ class animauxM
         $this->db->query('SELECT * FROM `animaux` ORDER BY age ');
         return $this->db->resultSet();
     }
+    public function getStable()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `animaux` WHERE status="stable"');
+        return $this->db->resultSet();
+    }
+    public function getMenace()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `animaux` WHERE status="menacé"');
+        return $this->db->resultSet();
+    }
+    public function getEndanger()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `animaux` WHERE status="endanger"');
+        return $this->db->resultSet();
+    }
    
 
 }

@@ -234,7 +234,7 @@ window.addEventListener('resize', () => {
             el.parentElement.style.display = 'block';
     });
 
-});
+}); 
 
 
 google.charts.load("current", { packages: ["corechart"] });

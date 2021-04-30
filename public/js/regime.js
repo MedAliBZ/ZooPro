@@ -3,7 +3,7 @@ function openFormAjouter() {
     document.getElementById("tableRegime").style.opacity = 0.5;
     document.getElementById("firstRow").style.opacity = 0.5;
     document.getElementById("addButtonToList").style.opacity = 0.5;
-    document.getElementById("search").style.opacity = 0.5;
+    //document.getElementById("search").style.opacity = 0.5;
   }
   function openFormModifier() {
 
@@ -11,7 +11,7 @@ function openFormAjouter() {
     document.getElementById("tableRegime").style.opacity = 0.5;
     document.getElementById("firstRow").style.opacity = 0.5;
     document.getElementById("addButtonToList").style.opacity = 0.5;
-    document.getElementById("search").style.opacity = 0.5;
+    //document.getElementById("search").style.opacity = 0.5;
 
     $( ".tblRows" ).click(function() {
       var row_data = $(this).attr("data");
@@ -41,7 +41,7 @@ function openFormAjouter() {
     document.getElementById("tableRegime").style.opacity = 1;
     document.getElementById("firstRow").style.opacity = 1;
     document.getElementById("addButtonToList").style.opacity = 1;
-    document.getElementById("search").style.opacity = 1;
+    //document.getElementById("search").style.opacity = 1;
 
     reset();
 
@@ -57,7 +57,7 @@ function openFormAjouter() {
     document.getElementById("tableRegime").style.opacity = 1;
     document.getElementById("firstRow").style.opacity = 1;
     document.getElementById("addButtonToList").style.opacity = 1;
-    document.getElementById("search").style.opacity = 1;
+    //document.getElementById("search").style.opacity = 1;
     reset1();
   }
 
@@ -226,8 +226,12 @@ if (isNaN(nombre_de_repas1) || nombre_de_repas1.length==0)
 
 
 
+//tri button
+document.getElementById('triButton').addEventListener('click', (e1) => {
 
+  document.getElementById('triElements').style.display='flex';
 
+})
 
 
 

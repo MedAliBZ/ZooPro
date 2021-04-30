@@ -88,9 +88,24 @@ class animauxC extends Controller
         $data = [
             'tab' => '',
             'errorAffiche' => '',
-            'idRegime' => ''
+            'idRegime' => '',
+            'stable' => '',
+            'menace' => '',
+            'endanger' => ''
 
         ];
+        //stat elements
+
+        $stable = $this->animauxModel->getStable();
+        $data['stable'] = $stable[0][0];
+
+        $menace = $this->animauxModel->getMenace();
+        $data['menace'] = $menace[0][0];
+
+        $endanger = $this->animauxModel->getEndanger();
+        $data['endanger'] = $endanger[0][0];
+
+        //
         if (isset($error)) {
             $errorTab = explode("-", $error);
             if ($errorTab[0] == 'err') {
@@ -103,8 +118,8 @@ class animauxC extends Controller
                 $data['errorAdd'] = '';
                 $data['errorUpdate'] = '';
             }
-        } 
-        
+        }
+
 
         foreach ($tab as $key => $value) {
             $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
@@ -117,13 +132,12 @@ class animauxC extends Controller
             <td>' . $value[6] . '</td>
             <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
-        </tr>'  ;
+        </tr>';
         }
 
         $idRegime = $this->animauxModel->listRegimeID();
-        foreach ($idRegime as $key => $value)
-        {
-            $data['idRegime'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';
+        foreach ($idRegime as $key => $value) {
+            $data['idRegime'] .= '<option value="' . $value[0] . '">' . $value[0] . '</option>';
         }
 
 
@@ -197,7 +211,6 @@ class animauxC extends Controller
 
                 if (empty($data['image'])) {
                     $data['errorAdd'] = 'Please enter the image.';
-
                 }
 
                 // Make sure that errors are empty
@@ -217,7 +230,7 @@ class animauxC extends Controller
     {
         $tab = $this->animauxModel->triID();
         $data = [
-            'tab' => '',  
+            'tab' => '',
 
         ];
 
@@ -232,7 +245,7 @@ class animauxC extends Controller
             <td>' . $value[6] . '</td>
             <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
-        </tr>'  ;
+        </tr>';
         }
 
 
@@ -243,12 +256,12 @@ class animauxC extends Controller
     {
         $tab = $this->animauxModel->triAge();
         $data = [
-            'tab' => '',  
+            'tab' => '',
 
         ];
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
+            $data['tab'] .= '<tr class="tblRows" style="display:flex;" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
             <td>' . $value[0] . '</td>
             <td data-label="Nom">' . $value[1] . '</td>
             <td>' . $value[2] . '</td>
@@ -258,7 +271,7 @@ class animauxC extends Controller
             <td>' . $value[6] . '</td>
             <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
-        </tr>'  ;
+        </tr>';
         }
 
 
@@ -269,7 +282,7 @@ class animauxC extends Controller
     {
         $tab = $this->animauxModel->triNomAnimal();
         $data = [
-            'tab' => '',  
+            'tab' => '',
 
         ];
 
@@ -284,11 +297,10 @@ class animauxC extends Controller
             <td>' . $value[6] . '</td>
             <td> <img src="../public/img/' . $value[7] . '" width = "75" height = "50"/></td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
-        </tr>'  ;
+        </tr>';
         }
 
 
         $this->view('animaux', $data);
     }
-
 }

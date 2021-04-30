@@ -36,7 +36,7 @@ if (!isset($data['tab'])) {
             <div id="stars"></div>
             <div id="stars2"></div>
             <div id="stars3"></div>
-            <div class="left_area"> 
+            <div class="left_area">
                 <h3>Zoo <span>Pro</span></h3>
             </div>
             <div class="sidebar-btn">
@@ -113,26 +113,29 @@ if (!isset($data['tab'])) {
         <!--sidebar end-->
         <!--main container start-->
         <div class="main-container">
-            <div class="searchCss" id="search">
+            <!-- <div class="searchCss" id="search">
                 <input type="text" placeholder="recherche" name="rechercher" id="rechercher" />
-                <i class="fas fa-search"></i>
-            </div>
+               <a href=""><i class="fas fa-search"></i></a>
+            </div> -->
+
+            <div id="animalchart" class="card" stable='<?php echo $data['stable']; ?>' menace='<?php echo $data['menace']; ?>' endanger='<?php echo $data['endanger']; ?>'  style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
 
             <div class="card">
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">La liste des animaux </h3>
                 </div>
                 <div class="containerTriAjout">
-                
-                <div class="containerTri">
-                <button class="buttonStyle" id="triButton" >Trier</button>
-                <div class="triElements" id="triElements">
-                <a href="<?php echo URLROOT; ?>/animauxC/trierParID" id ="triId">Par ID</a>
-                <a href="<?php echo URLROOT; ?>/animauxC/trierParAge" id ="triAge">Par Age</a>
-                <a href="<?php echo URLROOT; ?>/animauxC/trierParNomAnimal" id ="triName">Par Nom Animal</a>
-                </div>
-                </div>
-                <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
+
+                    <div class="containerTri">
+                        <button class="buttonStyle" id="triButton">Trier</button>
+                        <div class="triElements" id="triElements">
+                            <a href="<?php echo URLROOT; ?>/animauxC/trierParID" id="triId">Par ID</a>
+                            <a href="<?php echo URLROOT; ?>/animauxC/trierParAge" id="triAge">Par Age</a>
+                            <a href="<?php echo URLROOT; ?>/animauxC/trierParNomAnimal" id="triName">Par Nom Animal</a>
+                        </div>
+                    </div>
+                    <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
                 </div>
                 <div class="form-popup" id="myForm">
                     <form action="<?php echo URLROOT; ?>/animauxC/addAnimauxC" class="form-container" method="POST">
@@ -147,7 +150,7 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorNomAnimal"></div>
 
                         <div class="formCss">
-                        <select name="type" id="type" required>
+                            <select name="type" id="type" required>
                                 <option value="0">choisir un type</option>
                                 <option value="amphibiens">amphibiens </option>
                                 <option value="oiseaux">oiseaux </option>
@@ -160,7 +163,7 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorType"></div>
 
                         <div class="formCss">
-                            <input placeholder="age" type="number" id="age" name="age" required>
+                            <input placeholder="age" type="number" id="age" name="age" min="0" required>
                         </div>
 
                         <div class="formCss">
@@ -201,7 +204,7 @@ if (!isset($data['tab'])) {
                             <input type="file" name="image" id="image" required>
                         </div>
 
-                       
+
 
 
                         <!-- <div class="error-table">
@@ -220,17 +223,15 @@ if (!isset($data['tab'])) {
 
                 <table class="styled-table" id="tableAnimaux">
                     <thead>
-                        <tr> 
-                            <th>id</th>  
-                            <th>Nom animaux </th>
-                            <th>type</th>
-                            <th>age</th>
-                            <th>pays</th>
-                            <th>status</th>
-                            <th>regime Alimentaire</th>
-                            <th>image</th>
-                            <th></th>
-                        </tr>
+                        <th>id</th>
+                        <th>Nom animaux </th>
+                        <th>type</th>
+                        <th>age</th>
+                        <th>pays</th>
+                        <th>status</th>
+                        <th>regime Alimentaire</th>
+                        <th>image</th>
+                        <th></th>
                     </thead>
                     <?php if (isset($data['tab'])) {
                         echo $data['tab'];
@@ -257,7 +258,7 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorNomAnimal1"></div>
 
                         <div class="formCss">
-                        <select name="type" id="type1" required>
+                            <select name="type" id="type1" required>
                                 <option value="0">choisir un type</option>
                                 <option value="amphibiens">amphibiens </option>
                                 <option value="oiseaux">oiseaux </option>
@@ -276,11 +277,11 @@ if (!isset($data['tab'])) {
                             <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required>
                         </div>
 
-                         <!--erreur-->
-                         <div class="errormsg" id="errorPays1"></div>
+                        <!--erreur-->
+                        <div class="errormsg" id="errorPays1"></div>
 
                         <div class="formCss">
-                        <select name="status" id="status1" required>
+                            <select name="status" id="status1" required>
                                 <option value="0">choisir Le statut de conservation</option>
                                 <option value="stable">stable </option>
                                 <option value="Menacé">Menacé </option>
@@ -303,11 +304,11 @@ if (!isset($data['tab'])) {
 
                         </div>
 
-                         <!--erreur-->
-                         <div class="errormsg" id="errorRegimeAlimentaire1"></div>
+                        <!--erreur-->
+                        <div class="errormsg" id="errorRegimeAlimentaire1"></div>
 
                         <div class="formCss">
-                            <input type="file" name="image" id="image1" required >
+                            <input type="file" name="image" id="image1">
                         </div>
 
                         <!-- <div class="error-table">
@@ -332,6 +333,7 @@ if (!isset($data['tab'])) {
         <!--main container end-->
     </div>
     <!--wrapper end-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/animaux.js"></script>

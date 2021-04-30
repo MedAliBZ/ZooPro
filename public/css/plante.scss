@@ -1,0 +1,151 @@
+.affichagePics
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+   
+}
+
+
+.card
+{
+   
+  color: var(--tc);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: solid 2px #e8e8e9;
+  width: fit-content;
+  margin-left:5px;
+  margin-right: 5px;
+  max-width: 100%;
+  height: auto;
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.picStyle
+{
+	border-radius: 20px;
+    width: 350px;
+    height: 300px;
+    
+}
+
+.textStyle
+{
+ 
+    padding: 3%;
+    font-size: 20px ;
+    border: solid 1px white;
+    border-radius: 20px;
+    margin: 2%;
+    cursor: pointer;
+    color: rgb(1, 129, 113) ;
+    font: bold;
+    &:hover 
+    {
+      border-color: rgb(1, 129, 113);
+      color: rgb(1, 129, 113) ;
+      
+    } 
+    
+    
+}
+
+#planteImage
+{
+    margin:10%;
+}
+
+#status
+{
+    font-size: 20px;
+    font: bold;
+}
+
+.listInfo
+{
+    max-width: fit-content;
+    padding: 5%;
+    font-size: 20px ;
+    font: bold;
+    color: white;
+    border: solid 1px white;
+    border-radius: 20px;
+    background-color: #70D76A;
+
+    
+}
+
+#QRCodePic
+{
+    
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    margin-top: 10%;
+}
+
+.QRCodeContainer
+{
+    border-radius: 20px;
+    border: solid 2px #70D76A;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 10%;
+    
+    
+}
+.iconQR
+{
+    font-size: 20px;
+    font: bold;
+    text-align: center;
+
+}
+
+.especeContainer
+{
+    color: var(--tc);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: solid 2px #e8e8e9;
+    width: 100%;
+    margin-left:5px;
+    margin-right: 5px;
+    height: auto;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+
+}
+
+.rechercheStyle
+{
+    margin: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+   
+    
+}
+
+#rechercher
+{
+    border-radius: 20px;
+    cursor:text !important;
+}

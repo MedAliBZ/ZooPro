@@ -1,5 +1,45 @@
+<?php
+	
+	if (!isset($_SESSION['lang']))
+		$_SESSION['lang'] = "en";
+	else if (isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
+		if ($_GET['lang'] == "en")
+			$_SESSION['lang'] = "en";
+		else if ($_GET['lang'] == "fr")
+			$_SESSION['lang'] = "fr";
+	}
+
+	require_once "../languages/" . $_SESSION['lang'] . ".php";
+?>
+
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="fr">
+
+
+<?php
+
+if (
+
+isset($_POST["nom"]) &&
+isset($_POST["email"]) &&
+isset($_POST["sujet"]) &&
+isset($_POST["message"]) 
+
+) {
+if (
+    !empty($_POST["nom"]) &&
+    !empty($_POST["email"]) &&
+    !empty($_POST["sujet"]) &&
+    !empty($_POST["message"]) 
+) {
+    $email = $_POST["email"];
+    $subject = $_POST["sujet"];
+    mail("$email" , "$email ($subject)" , $_POST["message"] , "From: $email");    
+} else
+    echo "Missing information";
+}
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -71,8 +111,8 @@
                     <div class="col-xl-10 col-lg-10 ">
                         <!-- Section Tittle -->
                         <div class="section-tittle text-center mb-80">
-                            <h2>Aménagements et enclos</h2>
-                            <p class="pl-20 pr-20">Le bien-être des animaux est la priorité absolue du Zoo. Nous veillons donc à ce que les enclos et autres aménagements soient parfaitement adaptés aux besoins des animaux, sur la base des connaissances les plus récentes en matière d’élevage. Le zoo a également pour ambition d’accueillir dans leur habitat naturel les espèces animales et végétales locales et de fournir aux visiteurs un cadre propice à la détente afin qu’ils puissent profiter du zoo loin du stress quotidien.</p>
+                            <h2><?php echo $lang['title'] ?></h2>
+                            <p class="pl-20 pr-20"><?php echo $lang['description'] ?></p>
                         </div>
                     </div>
                 </div>
@@ -82,14 +122,40 @@
                 echo $data['tab'];} ?>
                 </div>
 
-                 
-                
+                 <div class="overlay overlaysend">
+                    <div style="margin-top: 100px;" class="col-lg-3">
+                    <div>
+                        <form class="form-contact contact_form"  method="POST">
+                            <h2 class="contact-title" >Faites une donation </h2>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="entrer votre nom" name="nom" id="nom-popups" />
+                            </div>
+
+                            <div id="errorSendNom"></div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="entrer votre email" name="email" id="email-popups" />
+                            </div>
+                            <div id="errorSendEmail"></div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="number" placeholder="entrer le montant" name="sujet" id="sujet-popups" />
+                            </div>
+                            <div id="errorSendSujet"></div>
+
+                            <div class="form-group">
+                                <textarea class="form-control" rows="9" placeholder="entrer un message" name="message" id="message-popups" ></textarea>
+                            </div>
+                            <div id="errorSendMessage"></div>
+                            
+                            <button type="submit" value="send an email" class="button button-contactForm boxed-btn" id="emailPopup">contribuer</button>
+                            
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-
-
-
 
     </main>
     <footer>
@@ -176,6 +242,10 @@
                                         </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     </p>
+                                    <div class="text-center">
+                                        <a href="http://localhost/frontEnclos//enclos/afficherList?lang=en"><?php echo $lang   ['lang_en'] ?></a> 
+                                        |<a href="http://localhost/frontEnclos//enclos/afficherList?lang=fr"><?php echo $lang   ['lang_fr'] ?></a> 
+                                    </div> 
                                 </div>
                             </div>
                         </div>

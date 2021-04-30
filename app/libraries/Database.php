@@ -12,7 +12,7 @@ class Database
 
     public function __construct()
     {
-        $conn = 'mysql:host=' . $this->dbHost . ';port=3306;dbname=' . $this->dbName;
+        $conn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

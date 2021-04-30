@@ -12,7 +12,7 @@ class Enclos extends Controller
     {
         $tab = $this->encloModel->afficherEnclos();
         $data = [
-            'tab' => '',
+            'tab' => ''
         ];
 
         foreach ($tab as $key => $value) {
@@ -29,8 +29,8 @@ class Enclos extends Controller
                                 <p><b>Date de construction : </b>' . $value[4] . '</p>
                                 <p><b>Capacité maximale : </b>' . $value[5] . '</p>
                                 <p><b>ID du Type : </b>' . $value[6] . '</p>
-                                <p><b>Label du Type : </b>' . $value[8] . '</p>
-                                <p><b>Structure du Type : </b>' . $value[9] . '</p>
+                                <p><b>Label du Type : </b>' . $value[9] . '</p>
+                                <p><b>Structure du Type : </b>' . $value[10] . '</p>
                                 <!-- Progress Bar -->
                             </div>
 
@@ -53,6 +53,8 @@ class Enclos extends Controller
             ';
         }
         
+        
         $this->view('enclos', $data);
     }
+
 }

@@ -57,16 +57,4 @@ class Enclo
     }
     
 
-
-    
-    public function findUserByIDUpdate($id)
-    {
-        //Prepared statement
-        $this->db->query('SELECT * FROM enclos WHERE id != :id');
-
-        $this->db->bind(':id', $id);
-        $this->db->execute();
-    }
-
-
 }

@@ -95,8 +95,9 @@ class planteM
 
 
     public function updateplante($data){
-        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image,idespece=:idespece WHERE idP = :idP ');
+        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image,idespece=:idespece  WHERE idP = :idP ');
         //Bind values
+        $this->db->bind(':idP', $data['idP']);
         $this->db->bind(':nomP', $data['nomP']);
         $this->db->bind(':origine', $data['origine']);
         $this->db->bind(':longevite', $data['longevite']);
@@ -104,7 +105,7 @@ class planteM
         $this->db->bind(':famille', $data['famille']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':idespece', $data['idespece']);
-        $this->db->bind(':idP', $data['idP']);
+        
 
         //Execute function
         if ($this->db->execute()) {
@@ -122,5 +123,19 @@ class planteM
         return $this->db->resultSet();
     }
 
+
+
+    public function sortplanteByTaille()
+    {
+        $this->db->query('SELECT * FROM plante ORDER BY taille DESC');
+        return $this->db->resultSet();
+    }
+
+    public function getplanteByID($idP)
+    {
+        $this->db->query('SELECT * FROM plante WHERE idP = :idP');
+        $this->db->bind(':idP', $idP);
+        return $this->db->resultSet();
+    }
 
 }

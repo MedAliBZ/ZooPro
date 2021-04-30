@@ -252,3 +252,11 @@
     color: #018171;
   }
   
+  #errorAjnom {
+    color: red;
+    text-align: center;
+  }
+  #errorAjhauteur {
+    color: red;
+    text-align: center;
+  }

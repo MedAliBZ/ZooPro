@@ -36,6 +36,10 @@ if (!isset($_SESSION['id']))
 </head>
 
 <body>
+
+
+
+
     <div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px"></div>
     <!--wrapper start-->
     <div class="wrapper collapse">
@@ -124,7 +128,29 @@ if (!isset($_SESSION['id']))
 
         <!--sidebar end-->
         <!--main container start-->
+
+
         <div class="main-container">
+
+
+
+
+             
+        <div id="google_translate_element"></div>
+	<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {pageLanguage: 'en'},
+            'google_translate_element'
+        );
+    }
+</script>
+<script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+
+
             <div class="searchCss" id="search">
                 <input type="text" placeholder="rechercher" name="search" />
                 <i class="fas fa-search"></i>
@@ -152,15 +178,15 @@ if (!isset($_SESSION['id']))
 
                         <div class="formCss">
                         
-                            <input placeholder="Nom" type="text" id="nomE" name="nomE" required>
+                            <input placeholder="Nom" type="text" id="nomE" name="nomE" >
                         </div>
-                    
+                        <div id="errorAjnom"></div>
                         <div class="formCss">
-                            <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur" required>
+                            <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur" >
                         </div>
                        
-
-                        <input type="submit" class="buttonStyle" value="Ajouter">
+                        <div id="errorAjhauteur"></div>
+                        <input type="submit" class="buttonStyle" value="Ajouter" id="ajouterPopup">
                         <button type="button" class="buttonStyle" onclick="closeForm()">fermer</button>
 
                     </form>

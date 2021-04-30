@@ -33,9 +33,20 @@ if (!isset($_SESSION['id']))
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/plante.css" />
     <link rel="shortcut icon" href="<?php echo URLROOT ?>/public/img/logo.png" type="image/x-icon">
+
+
+    
+
+
 </head>
 
 <body>
+
+
+
+
+
+
     <div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px"></div>
     <!--wrapper start-->
     <div class="wrapper collapse">
@@ -118,14 +129,30 @@ if (!isset($_SESSION['id']))
                 </li>
             </div>
         </div>
+
+
+
+
         <!--sidebar end-->
         <!--main container start-->
         <div class="main-container">
-            <div class="searchCss" id="search">
-                <input type="text" placeholder="rechercher" name="search" />
-                <i class="fas fa-search"></i>
-            </div>
+             
             
+            
+        <div id="google_translate_element"></div>
+	<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {pageLanguage: 'en'},
+            'google_translate_element'
+        );
+    }
+</script>
+<script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+            
+
             <div class="card">
             <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
                                             echo $data["errorAdd"];
@@ -134,6 +161,21 @@ if (!isset($_SESSION['id']))
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">liste des plantes </h3>
                 </div>
+
+
+                <form class="content" action="<?php echo URLROOT; ?>/planteC/getplante" method="POST">
+                 <input class="btn" type="submit" value="Search" name="search_plante" style="float: right;" />
+                 <input type="text" placeholder="Enter id" name="idP" autocomplete="off" style="float: right;" class="input-fieldSearch" />
+                 </form>
+                
+                <form class="content" action="<?php echo URLROOT; ?>/planteC/afficherList" method="POST">
+                 <input class="btn" type="submit" value="Reset" name="reset_plante" style="float: right;" />
+                 </form>
+
+
+                <form class="content" action="<?php echo URLROOT; ?>/planteC/sortplante" method="POST">
+                 <input class="btn" type="submit" value="Sort" name="sort_plante" style="float: right;" />
+                 </form>
 
                 <button class="AddbuttonStyle" id="addButtonToList" onclick="openFormAjouter()">+</button>
                 <div class="form-popup" id="myForm">
@@ -148,33 +190,42 @@ if (!isset($_SESSION['id']))
 
                         <div class="formCss">
                         
-                            <input placeholder="Nom" type="text" id="nomP" name="nomP" required>
+                            <input placeholder="Nom" type="text" id="nomP" name="nomP" >
                         </div>
+
+                        <div id="errorAjnom"></div>
                     
                         <div class="formCss">
-                            <input placeholder="Longévité(ans)" type="number" id="longevite" name="longevite" required>
-                        </div>
-                        <div class="formCss">
-                            <input placeholder="Origine géographique" type="text" id="origine" name="origine" required>
+                            <input placeholder="Longévité(ans)" type="number" id="longevite" name="longevite" >
                         </div>
 
-                        <div class="formCss">
-                            <input type="number" placeholder="Taille(m)" name="taille" id="taille" required/>
-                        </div>
+                        <div id="errorAjlongevite"></div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="Famille" name="famille" id="famille" required/>
+                            <input placeholder="Origine géographique" type="text" id="origine" name="origine" >
                         </div>
-
                         
+                        <div id="errorAjorigine"></div>
+
+                        <div class="formCss">
+                            <input type="number" placeholder="Taille(m)" name="taille" id="taille" />
+                        </div>
+                        <div id="errorAjtaille"></div>
+
+                        <div class="formCss">
+                            <input type="text" placeholder="Famille" name="famille" id="famille" />
+                        </div>
+
+                        <div id="errorAjfamille"></div>
+
                         <div class="formCss">
                             <input type="file" name="image" id="image" required>
                         </div>
 
                             <div class="formCss">
 
-                            <select id="espece" name="idespece">
-                                <option value="0">choisir id espece</option>
+                            <select id="idespece" name="idespece">
+                                <option value="0">choisir une éspéce végétale</option>
                                 <?php if (isset($data['idespece'])) {
                                     echo $data["idespece"];
                                 } ?>
@@ -183,7 +234,8 @@ if (!isset($_SESSION['id']))
                         
                         </div>
 
-                        <input type="submit" class="buttonStyle" value="Ajouter">
+                        <div id="errorAj"></div>
+                        <input type="submit" class="buttonStyle" value="Ajouter" id="ajouterPopup">
                         <button type="button" class="buttonStyle" onclick="closeForm()">fermer</button>
 
                     </form>
@@ -228,43 +280,37 @@ if (!isset($_SESSION['id']))
                         </div>
 
                         <div class="formCss">
-                            <input placeholder="Nom" type="text" id="nomP1" name="nomP" required>
-                        </div>
-                  
-
-                        <div class="formCss">
-                            <input placeholder="longévité" type="number" id="longevite1" name="longevite" required>
-                        </div>
-                        <div class="formCss">
-                            <input placeholder="origine géographique" type="text" id="origine1" name="origine" required>
+                            <input placeholder="Nom" type="text" id="nomP1" name="nomP" >
                         </div>
 
+                      
+
                         <div class="formCss">
-                            <input type="number" placeholder="taille" name="taille" id="taille1" required />
+                            <input placeholder="longévité" type="number" id="longevite1" name="longevite" >
+                        </div>
+                        <div class="formCss">
+                            <input placeholder="origine géographique" type="text" id="origine1" name="origine" >
                         </div>
 
                         <div class="formCss">
-                            <input type="text" placeholder="famille" name="famille" id="famille1" required/>
+                            <input type="number" placeholder="taille" name="taille" id="taille1"  />
                         </div>
 
                         <div class="formCss">
-                            <input type="file" name="image" id="image1" required >
+                            <input type="text" placeholder="famille" name="famille" id="famille1" />
                         </div>
 
+                        <div class="formCss">
+                            <input type="text" name="image" id="image1" readonly  >
+                        </div>
+
+                        <div class="formCss">
+                            <input type="number" name="idespece" id="espece1" readonly  >
+                        </div>
                         
-                        <div class="formCss">
-
-                            <select id="espece1" name="idespece">
-                                <option value="0">choisir id espece</option>
-                                <?php if (isset($data['idespece'])) {
-                                    echo $data["idespece"];
-                                } ?>
-
-                            </select>
-
-                        </div>
+                        
                     
-
+                        
                         <input name="update" type="submit" class="buttonStyle" value="Modifier">
                         <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
 

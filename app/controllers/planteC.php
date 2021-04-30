@@ -57,7 +57,9 @@ class planteC extends Controller
                 $data['errorAdd'] = 'entrer la famille de la plante.';
             } 
 
-            
+            if (empty($data['image'])) { //check if name is empty or not
+                $data['errorAdd'] = 'entrer limage de la plante.';
+            } 
 
             if (empty($data['idespece'])) { //check if name is empty or not
                 $data['errorAdd'] = 'entrer l id de lespece de la plante.';
@@ -109,9 +111,12 @@ class planteC extends Controller
             <td>'. $value[3] .'</td>
             <td>'. $value[4] .'</td>
             <td>'. $value[5] .'</td>
-            <td>'. $value[6] .'</td>
+            <td> <img src="../public/img/' . $value[6] . '" width = "75" height = "50"/></td>
+            
             <td>'. $value[7] .'</td>
-            <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()">
+           
+            
+            <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()"  >
         </tr>';
         }
 
@@ -162,7 +167,7 @@ class planteC extends Controller
                     'errorUpdate' => ''
                 ];
 
-                //Validate nom_regime
+              
             if (empty($data['nomP'])) { //check if name is empty or not
                 $data['errorAdd'] = 'Please enter name.';
             } 
@@ -201,9 +206,78 @@ class planteC extends Controller
     }
 
 
-    //afficher forign key
+    public function sortplante($error = '')
+    {
+        $tab = $this->planteModel->sortplanteByTaille();
+        $data = [
+            'tab' => '',
+            'idespece' => '',
+            'errorAdd' => ''
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4]."-".$value[5]."-".$value[6]."-".$value[7].'>
+            <td >'. $value[0] .'</td>
+            <td>'. $value[1] .'</td>
+            <td>'. $value[2] .'</td>
+            <td>'. $value[3] .'</td>
+            <td>'. $value[4] .'</td>
+            <td>'. $value[5] .'</td>
+            <td>'. $value[6] .'</td>
+            <td>'. $value[7] .'</td>
+            
+            <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()">
+        </tr>';
+        }
+
+        $idespece = $this->planteModel->listespeceID();
+        foreach ($idespece as $key => $value)
+        {
+            $data['idespece'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';
+        }
+
+
+        $this->view('plante', $data);
+    }
    
 
+    public function getplante()
+    {       
+    if(isset($_POST['search_plante'])) {
+        $tab = $this->planteModel->getplanteByID($_POST['idP']);
+    }
 
+       $data = [
+            'tab' => '',
+            'idespece' => '',
+            'errorAdd' => ''
+        ];
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4]."-".$value[5]."-".$value[6]."-".$value[7].'>
+            <td >'. $value[0] .'</td>
+            <td>'. $value[1] .'</td>
+            <td>'. $value[2] .'</td>
+            <td>'. $value[3] .'</td>
+            <td>'. $value[4] .'</td>
+            <td>'. $value[5] .'</td>
+            <td>'. $value[6] .'</td>
+            <td>'. $value[7] .'</td>
+            
+            <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()" >
+        </tr>';
+        }
+
+        $idespece = $this->planteModel->listespeceID();
+        foreach ($idespece as $key => $value)
+        {
+            $data['idespece'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';
+        }
+
+
+        $this->view('plante', $data);
+    }
+
+    
 
 }

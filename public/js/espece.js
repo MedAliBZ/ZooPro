@@ -1,3 +1,81 @@
+// CS ajout
+let addButtonToList = document.getElementById('addButtonToList');
+let nomE = document.querySelector('#nomE');
+let hauteur = document.querySelector('#hauteur');
+
+
+
+addButtonToList.addEventListener('click', () => {
+  document.querySelector('#nomE').value='';
+  document.querySelector('#hauteur').value='';
+  
+  
+  /*popupAjouter.style.visibility = 'visible';
+  popupAjouter.style.opacity = 1;*/
+});
+
+document.querySelector('#ajouterPopup').addEventListener('click',(e)=>{
+resetErrorsPopUp();
+if(nomE.value.length==0)
+{
+ document.getElementById('errorAjnom').innerHTML='Veuillez saisir un nom!';
+ nomE.parentElement.style.border='1px solid red';
+ e.preventDefault();}
+else if(/\d/.test(nomE.value)){ 
+    document.getElementById('errorAjnom').innerHTML='nom ne doit pas contenir de nombres!';
+   nomE.parentElement.style.border='1px solid red';
+    e.preventDefault();
+}
+else
+  {
+   document.getElementById('errorAjnom').innerHTML='';
+   nomE.parentElement.style.border='solid 1px #e8e8e9'; 
+  }
+
+
+  if  (hauteur.value==0){ 
+    document.getElementById('errorAjhauteur').innerHTML='Veuillez saisir un nombre!';
+    hauteur.parentElement.style.border='1px solid red';
+    e.preventDefault();}
+    else if((hauteur.value<0)||(hauteur.value==0)){ 
+    document.getElementById('errorAjhauteur').innerHTML='Veuillez saisir un nombre positif!';
+    hauteur.parentElement.style.border='1px solid red';
+    e.preventDefault();}
+    else
+    {
+    document.getElementById('errorAjhauteur').innerHTML='';
+    hauteur.parentElement.style.border='solid 1px #e8e8e9'; 
+    }
+
+
+})
+
+function resetErrorsPopUp(){
+  document.getElementById('errorAjnom').innerHTML='';
+  document.getElementById('errorAjhauteur').innerHTML='';
+  nomE.parentElement.style.border='solid 1px #e8e8e9';
+  hauteur.parentElement.style.border='solid 1px #e8e8e9';
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function openFormAjouter() {
     document.getElementById("myForm").style.display = "flex";
     document.getElementById("tableespece").style.opacity = 0.5;

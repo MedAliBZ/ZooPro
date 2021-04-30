@@ -252,3 +252,66 @@
     color: red;
   }
 
+  .input-fieldSearch {
+    border: solid 1px #e8e8e9;
+    max-width: 50px;
+    min-width: 15%;
+    background-color: transparent;
+    margin: 10px 0;
+    height: 50px;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 25px 89%;
+    padding: 0 0.4rem;
+    position: relative;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  #errorAj {
+  color: red;
+  text-align: center;
+}
+
+#errorAjnom {
+  color: red;
+  text-align: center;
+}
+
+#errorAjlongevite {
+  color: red;
+  text-align: center;
+}
+
+
+#errorAjfamille {
+  color: red;
+  text-align: center;
+}
+
+#errorAjtaille {
+  color: red;
+  text-align: center;
+}
+#errorAjorigine {
+  color: red;
+  text-align: center;
+}
+#google_translate_element{
+
+  width: 20%;
+  background-color: var(--accent);
+  outline: none;
+  height: 49px;
+  border-color: transparent;
+  border-radius: 49px;
+  color: #fff;
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: 0.9rem;
+  
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+ 
+}

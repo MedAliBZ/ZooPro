@@ -16,6 +16,12 @@ if (isset($_SESSION['id']))
 </head>
 
 <body>
+
+
+
+
+
+
   <div class="container <?php if(isset($data['errorSignUp'])){echo "sign-up-mode";} ?>" >
     <div class="forms-container">
       <div class="signin-signup">

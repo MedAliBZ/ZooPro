@@ -114,6 +114,8 @@ if (!isset($data['tab'])) {
                 <div class="error-table"><?php if (isset($data['errorUpdate'])) {
                                                 echo $data["errorUpdate"];
                                             } ?></div>
+                <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
                 <div style="display: flex;justify-content: space-between;">
                     <button class="triButton"><i class="fas fa-align-left"></i>
                         <p>Filtres</p>
@@ -245,6 +247,7 @@ if (!isset($data['tab'])) {
         <!--main container end-->
     </div>
     <!--wrapper end-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/employes.js"></script>

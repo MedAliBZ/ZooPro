@@ -29,14 +29,21 @@ class Employe
         echo $this->prenom;
     }
 
-    public function getDateNaissance()
+    public function getDateNaissance() 
     {
         echo $this->dateNaissance;
     }
 
-    public function getSalaire()
+    public function getSalaireSup()
     {
-        echo $this->salaire;
+        $this->db->query('SELECT count(*) FROM `personel` WHERE salaire >= 1500');
+        return $this->db->resultSet();
+    }
+
+    public function getSalaireInf()
+    {
+        $this->db->query('SELECT count(*) FROM `personel` WHERE salaire < 1500');
+        return $this->db->resultSet();
     }
 
     public function addEmployes($data)

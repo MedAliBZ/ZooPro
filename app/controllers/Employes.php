@@ -91,8 +91,17 @@ class Employes extends Controller
         $data = [
             'tab' => '',
             'errorAdd' => '',
-            'errorUpdate' => ''
+            'errorUpdate' => '',
+            'sup' => '',
+            'inf' => ''
         ];
+
+        $sup = $this->employeModel->getSalaireSup();
+        $data['sup'] = $sup[0][0];
+
+        $inf = $this->employeModel->getSalaireInf();
+        $data['inf'] = $inf[0][0];
+
         if (isset($error)) {
             $errorTab = explode("-", $error);
             if ($errorTab[0] == 'err') {
@@ -157,7 +166,7 @@ class Employes extends Controller
                     'salaire' => trim($_POST['salaire']),
                     'errorUpdate' => ''
                 ];
-                
+
                 $cinValidation = "/^[0-9]{8}$/";
 
                 if (empty($data['cin'])) {
@@ -216,8 +225,17 @@ class Employes extends Controller
         if (array_search($case, $column)) {
             $tab = $this->employeModel->tri($case);
             $data = [
-                'tab' => ''
+                'tab' => '',
+                'sup' => '',
+                'inf' => ''
             ];
+
+            $sup = $this->employeModel->getSalaireSup();
+            $data['sup'] = $sup[0][0];
+
+            $inf = $this->employeModel->getSalaireInf();
+            $data['inf'] = $inf[0][0];
+
             foreach ($tab as $key => $value) {
                 $data['tab'] .= '<li class="table-row">
                 <div class="col col-1" data-label="ID">' . $value[0] . '</div>
@@ -243,8 +261,17 @@ class Employes extends Controller
         if (array_search($role, $column)) {
             $tab = $this->employeModel->filter($role);
             $data = [
-                'tab' => ''
+                'tab' => '',
+                'sup' => '',
+                'inf' => ''
             ];
+
+            $sup = $this->employeModel->getSalaireSup();
+            $data['sup'] = $sup[0][0];
+
+            $inf = $this->employeModel->getSalaireInf();
+            $data['inf'] = $inf[0][0];
+
             foreach ($tab as $key => $value) {
                 $data['tab'] .= '<li class="table-row">
                 <div class="col col-1" data-label="ID">' . $value[0] . '</div>

@@ -80,6 +80,85 @@ function resetErrorsPopUp(){
     popupAjouter.style.opacity = 1;
 });
 
+sendButton.addEventListener('click', () => {
+    document.querySelector('#nom-popups').value='';
+    document.getElementById('errorSendNom').innerHTML='';
+    nomSend.parentElement.style.border='solid 1px #e8e8e9';
+    document.querySelector('#email-popups').value='';
+    document.getElementById('errorSendEmail').innerHTML='';
+    emailSend.parentElement.style.border='solid 1px #e8e8e9';
+    document.querySelector('#sujet-popups').value='';
+    document.getElementById('errorSendSujet').innerHTML='';
+    sujetSend.parentElement.style.border='solid 1px #e8e8e9';
+    document.querySelector('#message-popups').value='';
+    document.getElementById('errorSendMessage').innerHTML='';
+    messageSend.parentElement.style.border='solid 1px #e8e8e9';
+})
+
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+let nomSend = document.querySelector('#nom-popups');
+let emailSend = document.querySelector('#email-popups');
+let sujetSend = document.querySelector('#sujet-popups');
+let messageSend = document.querySelector('#message-popups');
+
+document.querySelector('#emailPopup').addEventListener('click',(e)=>{
+     if(nomSend.value.length==0)
+    {
+     document.getElementById('errorSendNom').innerHTML='La case est vide.Veuillez saisir un nom!';
+     nomSend.parentElement.style.border='1px solid red';
+     e.preventDefault();}
+    else if(/\d/.test(nomSend.value)){ 
+     document.getElementById('errorSendNom').innerHTML='Nom ne doit pas contenir de nombres!';
+     nomSend.parentElement.style.border='1px solid red';
+     e.preventDefault();}
+    else
+    {
+     document.getElementById('errorSendNom').innerHTML='';
+     nomSend.parentElement.style.border='solid 1px #e8e8e9'; 
+    }
+
+     if(emailSend.value.length==0)
+    {
+     document.getElementById('errorSendEmail').innerHTML="La case est vide.Veuillez saisir l'adresse email!";
+     emailSend.parentElement.style.border='1px solid red';
+     e.preventDefault();}
+    else if((!validateEmail(emailSend.value))){ 
+     document.getElementById('errorSendEmail').innerHTML="Veuillez saisir le format correcte de l'email!";
+     emailSend.parentElement.style.border='1px solid red';
+     e.preventDefault();}
+    else
+    {
+     document.getElementById('errorSendEmail').innerHTML='';
+     emailSend.parentElement.style.border='solid 1px #e8e8e9'; 
+    }
+
+     if(sujetSend.value.length==0)
+    {
+     document.getElementById('errorSendSujet').innerHTML="La case est vide.Veuillez saisir l'adresse email!";
+     sujetSend.parentElement.style.border='1px solid red';
+     e.preventDefault();}
+    else
+    {
+     document.getElementById('errorSendSujet').innerHTML='';
+     sujetSend.parentElement.style.border='solid 1px #e8e8e9'; 
+    }
+
+     if(messageSend.value.length==0)
+    {
+     document.getElementById('errorSendMessage').innerHTML="La case est vide.Veuillez saisir un message";
+     messageSend.parentElement.style.border='1px solid red';
+     e.preventDefault();}
+    else
+    {
+     document.getElementById('errorSendMessage').innerHTML='';
+     messageSend.parentElement.style.border='solid 1px #e8e8e9'; 
+    }
+
+})
+
 document.querySelector('#ajouterPopup').addEventListener('click',(e)=>{
     //validate appellation
     if(appellationPopA.value.length==0)
@@ -310,3 +389,25 @@ closeP.addEventListener('click', () => {
     popup.style.visibility = 'hidden';
     popup.style.opacity = 0;
 })
+
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Salaire', 'Nombre'],
+        ['Taille ≥ 1500', document.getElementById('donutchart').getAttribute('sup')*1],
+        ['Taille < 1500', document.getElementById('donutchart').getAttribute('inf')*1]
+    ]);
+
+    var options = {
+        title: 'Taille des enclos',
+        pieHole: 0.4,
+        height: 300,
+        slices: {
+            1: { offset: 0.1 },
+        }
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+}

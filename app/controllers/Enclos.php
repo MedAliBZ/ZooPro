@@ -34,46 +34,46 @@ class Enclos extends Controller
                 'typeEnclos' => trim($_POST['typeEnclos']),
                 'errorAdd' => ''
             ];
-            $nameValidation = "/^[a-zA-Z0-9]*$/";
-            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+            // $nameValidation = "/^[a-zA-Z0-9]*$/";
+            // $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
-             //Validate appellation
-                if (empty($data['appellation'])) { //check if name is empty or not
-                    $data['errorAdd'] = 'Please enter the name.';
-                } elseif (!ctype_alpha($data['appellation'])) { //check name regex
-                    $data['errorAdd'] = 'Please enter the real name.';
-                }
+            //  //Validate appellation
+            //     if (empty($data['appellation'])) { //check if name is empty or not
+            //         $data['errorAdd'] = 'Please enter the name.';
+            //     } elseif (!ctype_alpha($data['appellation'])) { //check name regex
+            //         $data['errorAdd'] = 'Please enter the real name.';
+            //     }
 
              //Validate localisation
-                if (empty($data['localisation'])) { //check if location is empty or not
-                    $data['errorAdd'] = 'Please enter the location.';
-                } elseif (!ctype_alpha($data['localisation'])) { //check location regex
-                    $data['errorAdd'] = 'Please enter the real location.';
-                }
-              //Validate taille
-                 if (empty($data['taille'])) {
-                    $data['errorAdd'] = 'Please enter the size.';
-                } elseif (!is_numeric($data['taille'])) {
-                    $data['errorAdd'] = 'size can only contain numbers.';
-                }
+            //     if (empty($data['localisation'])) { //check if location is empty or not
+            //         $data['errorAdd'] = 'Please enter the location.';
+            //     } elseif (!ctype_alpha($data['localisation'])) { //check location regex
+            //         $data['errorAdd'] = 'Please enter the real location.';
+            //     }
+            //   //Validate taille
+            //      if (empty($data['taille'])) {
+            //         $data['errorAdd'] = 'Please enter the size.';
+            //     } elseif (!is_numeric($data['taille'])) {
+            //         $data['errorAdd'] = 'size can only contain numbers.';
+            //     }
               //Validate capacite
-                 if (empty($data['capaciteMaximale'])) {
-                    $data['errorAdd'] = 'Please enter the capacity.';
-                } elseif (!is_numeric($data['capaciteMaximale'])) {
-                    $data['errorAdd'] = 'capacity can only contain numbers.';
-                }
+            //      if (empty($data['capaciteMaximale'])) {
+            //         $data['errorAdd'] = 'Please enter the capacity.';
+            //     } elseif (!is_numeric($data['capaciteMaximale'])) {
+            //         $data['errorAdd'] = 'capacity can only contain numbers.';
+            //     }
 
-              //Validate photo
-                 if (empty($data['photo'])) {
-                    $data['errorAdd'] = 'Please enter the picture.';
-                } 
+            //   //Validate photo
+            //      if (empty($data['photo'])) {
+            //         $data['errorAdd'] = 'Please enter the picture.';
+            //     } 
 
-             //Validate typeEnclos
-                  if (empty($data['typeEnclos'])) {
-                    $data['errorUpdate'] = 'Please enter type.';
-                } elseif (!preg_match($nameValidation, $data['typeEnclos'])) {
-                    $data['errorUpdate'] = 'type can only contain letters and numbers.';
-                } 
+            //  //Validate typeEnclos
+            //       if (empty($data['typeEnclos'])) {
+            //         $data['errorUpdate'] = 'Please enter type.';
+            //     } elseif (!preg_match($nameValidation, $data['typeEnclos'])) {
+            //         $data['errorUpdate'] = 'type can only contain letters and numbers.';
+            //     } 
                 
 
             // Make sure that errors are empty
@@ -104,8 +104,15 @@ class Enclos extends Controller
         $data = [
             'tab' => '',
             'idenclos' => '',
-            'errorAdd' => ''
+            'errorAdd' => '',
+            'sup' => '',
+            'inf' => ''
         ];
+        $sup = $this->encloModel->getTailleSup();
+        $data['sup'] = $sup[0][0];
+
+        $inf = $this->encloModel->getTailleInf();
+        $data['inf'] = $inf[0][0];
 
         foreach ($tab as $key => $value) {
             $data['tab'] .= ' <li class="table-row">
@@ -122,7 +129,7 @@ class Enclos extends Controller
                     </div>
                 </li>';
         }
-         $typeEnclos = $this->encloModel->listeTypeID();
+        $typeEnclos = $this->encloModel->listeTypeID();
         foreach ($typeEnclos as $key => $value)
         {
             $data['typeEnclos'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';

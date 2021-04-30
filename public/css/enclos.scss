@@ -289,5 +289,32 @@ $mobile: 1050px;
     transform: scale(2.6);
   }
 
+  #donutchart {
+  color: var(--tc);
+
+  rect {
+    fill: transparent;
+  }
+
+  text {
+    font-family: "Poppins", sans-serif;
+    
+    fill: var(--tc);
+  }
+
+  g:nth-child(1) {
+    text{
+      fill: black;
+    }
+  }
+
+  g:nth-child(5),
+  g:nth-child(6) {
+    text {
+      fill: whitesmoke;
+    }
+  }
+}
+
   
 }

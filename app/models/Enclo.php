@@ -66,6 +66,18 @@ class Enclo
         }
     }
 
+     public function getTailleSup()
+    {
+        $this->db->query('SELECT count(*) FROM `enclos` WHERE taille >= 1500');
+        return $this->db->resultSet();
+    }
+
+    public function getTailleInf()
+    {
+        $this->db->query('SELECT count(*) FROM `enclos` WHERE taille < 1500');
+        return $this->db->resultSet();
+    }
+
     public function afficher(){
         $this->db->query('SELECT * FROM enclos');
         return $this->db->resultSet();

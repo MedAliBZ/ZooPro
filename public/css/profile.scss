@@ -42,7 +42,7 @@ $mobile: 1050px;
       grid-area: 3 / 3 / 5 / 5;
       margin-left: 2%;
     }
-    #error-msg{
+    #error-msg {
       grid-area: 5 / 1 / 6 / 5;
       text-align: center;
       color: red;
@@ -87,7 +87,7 @@ $mobile: 1050px;
         margin-left: 0;
       }
 
-      #error-msg{
+      #error-msg {
         grid-area: 6;
       }
 
@@ -103,12 +103,11 @@ $mobile: 1050px;
   margin: 0 auto;
   padding: 0 10px;
   margin-top: 3%;
-  .error-table{
+  .error-table {
     text-align: center;
     color: red;
   }
 }
-
 
 .col-buttons {
   display: flex;
@@ -163,7 +162,6 @@ $mobile: 1050px;
     flex-basis: 10%;
   }
 
-
   input {
     box-sizing: border-box;
     width: 100%;
@@ -179,9 +177,7 @@ $mobile: 1050px;
     }
 
     .col {
-
       flex-basis: 100%;
-
     }
 
     .col {
@@ -262,7 +258,6 @@ $mobile: 1050px;
     }
 
     .btn {
-
       width: 150px;
     }
   }
@@ -288,7 +283,6 @@ $mobile: 1050px;
     position: relative;
   }
 
-
   /* input */
   input {
     opacity: 0;
@@ -298,7 +292,6 @@ $mobile: 1050px;
     transform: translate(-50%, -50%);
     z-index: -1;
   }
-
 
   /* .design */
   .design {
@@ -336,44 +329,40 @@ $mobile: 1050px;
     background: var(--accent);
   }
 
-
   /* .text */
   .text {
     color: var(--tc);
     font-weight: bold;
   }
 
-
   /* checked state */
-  input:checked+.design::before {
+  input:checked + .design::before {
     opacity: 1;
     width: 11px;
     height: 11px;
-    transform: translate(-50%,-50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.7);
     left: 50%;
     top: 50%;
-    
   }
 
-
   /* other states */
-  input:hover+.design,
-  input:focus+.design {
+  input:hover + .design,
+  input:focus + .design {
     border: 1px solid var(--accent);
   }
 
-  input:hover+.design:before,
-  input:focus+.design:before {
+  input:hover + .design:before,
+  input:focus + .design:before {
     background: var(--accent);
   }
 
-  input:hover~.text {
+  input:hover ~ .text {
     color: var(--accent);
   }
 
-  input:focus+.design::after,
-  input:active+.design::after {
-    opacity: .1;
+  input:focus + .design::after,
+  input:active + .design::after {
+    opacity: 0.1;
     transform: scale(2.6);
   }
 }

@@ -146,12 +146,14 @@ if (
                 <div class="error-table"><?php if (isset($data['errorAdd'])){echo $data['errorAdd'];}?></div>
                 <div class="error-table"><?php if (isset($data['errorUpdate'])){echo $data['errorUpdate'];}?></div>
                 
+                <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
 
                 <form class="content" action="<?php echo URLROOT; ?>/enclos/afficherList" method="POST">
                  <input class="btn" type="submit" value="Reset" name="reset_enclos" style="float: right;" />
                  </form>
                 
-                 <form class="content" action="<?php echo URLROOT; ?>/enclos/afficherID" method="POST">
+                 <form class="content" action="<?php echo URLROOT; ?>/enclos/getEnclos" method="POST">
                  <input class="btn" type="submit" value="Search" name="search_enclos" style="float: right;" />
                  <input type="text" placeholder="Enter id" name="id" autocomplete="off" style="float: right;" class="input-fieldSearch" />
                  </form>
@@ -282,7 +284,7 @@ if (
                     </div>
                 </div>
             </div>
-            <div class="overlay overlaysend">
+                <div class="overlay overlaysend">
                     <div class="popup">
                         <a class="close closesend" href="#">&times;</a>
                         <form class="content"  method="POST">
@@ -292,22 +294,27 @@ if (
                                 <i class="fas fa-building"></i>
                                 <input type="text" placeholder="entrer un nom" name="nom" id="nom-popups" />
                             </div>
+                            <div id="errorSendNom"></div>
+
                             <div class="input-field two">
                                 <i class="fas fa-inbox"></i>
                                 <input type="text" placeholder="entrer l email" name="email" id="email-popups" />
                             </div>
+                            <div id="errorSendEmail"></div>
 
                             <div class="input-field two">
                                 <i class="fas fa-pen"></i>
                                 <input type="text" placeholder="entrer le sujet" name="sujet" id="sujet-popups" />
                             </div>
+                            <div id="errorSendSujet"></div>
 
                             <div class="input-field two">
                                 <i class="fas fa-envelope-square"></i>
-                                <textarea rows="5" placeholder="type message" name="message" id="message-popups" ></textarea>
+                                <textarea rows="7" placeholder="type message" name="message" id="message-popups" ></textarea>
                             </div>
+                            <div id="errorSendMessage"></div>
                             
-                            <button type="submit" value="send an email">submit</button>
+                            <button type="submit" value="send an email" class="btn" id="emailPopup">submit</button>
                             
                         </form>
                     </div>
@@ -316,6 +323,7 @@ if (
         <!--main container end-->
     </div>
     <!--wrapper end-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/enclos.js"></script>

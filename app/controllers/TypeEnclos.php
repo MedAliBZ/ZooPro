@@ -27,30 +27,26 @@ class TypeEnclos extends Controller
                 'errorAdd' => ''
             ];
 
-                $idValidation = "/^[a-zA-Z0-9]*$/";
+                //$idValidation = "/^[a-zA-Z0-9]*$/";
 
                 //Validate id on letters/numbers
-                 if (empty($data['id'])) {
-                    $data['errorAdd'] = 'Please enter id.';
-                } elseif (!preg_match($idValidation, $data['id'])) {
-                    $data['errorAdd'] = 'id can only contain letters and numbers.';
-                }   else {if ($this->typeModel->findTypeByID($data['id'])) {
+                 {if ($this->typeModel->findTypeByID($data['id'])) {
                     $data['errorAdd'] = 'ID is already taken.';
                 } }  
 
-                //Validate label
-                if (empty($data['label'])) { //check if label is empty or not
-                    $data['errorAdd'] = 'Please enter the label.';
-                } elseif (!ctype_alpha($data['label'])) { //check label regex
-                    $data['errorAdd'] = 'Please enter the real label.';
-                }
+                // //Validate label
+                // if (empty($data['label'])) { //check if label is empty or not
+                //     $data['errorAdd'] = 'Please enter the label.';
+                // } elseif (!ctype_alpha($data['label'])) { //check label regex
+                //     $data['errorAdd'] = 'Please enter the real label.';
+                // }
 
-                //Validate structure
-                if (empty($data['structure'])) { //check if structure is empty or not
-                    $data['errorAdd'] = 'Please enter the structure.';
-                } elseif (!ctype_alpha($data['structure'])) { //check structure regex
-                    $data['errorAdd'] = 'Please enter the real structure.';
-                }
+                // //Validate structure
+                // if (empty($data['structure'])) { //check if structure is empty or not
+                //     $data['errorAdd'] = 'Please enter the structure.';
+                // } elseif (!ctype_alpha($data['structure'])) { //check structure regex
+                //     $data['errorAdd'] = 'Please enter the real structure.';
+                // }
 
 
 
@@ -137,28 +133,28 @@ class TypeEnclos extends Controller
                     'errorUpdate' => ''
                 ];
                 
-                 $idValidation = "/^[a-zA-Z0-9]*$/";
+                 //$idValidation = "/^[a-zA-Z0-9]*$/";
 
                 //Validate id on letters/numbers
-                if (empty($data['id'])) {
-                    $data['errorUpdate'] = 'Please enter id.';
-                } elseif (!preg_match($idValidation, $data['id'])) {
-                    $data['errorUpdate'] = 'id can only contain letters and numbers.';
-                }   
+                // if (empty($data['id'])) {
+                //     $data['errorUpdate'] = 'Please enter id.';
+                // } elseif (!preg_match($idValidation, $data['id'])) {
+                //     $data['errorUpdate'] = 'id can only contain letters and numbers.';
+                // }   
 
                 //Validate label
-                if (empty($data['label'])) { //check if label is empty or not
-                    $data['errorUpdate'] = 'Please enter the label.';
-                } elseif (!ctype_alpha($data['label'])) { //check label regex
-                    $data['errorUpdate'] = 'Please enter the real label.';
-                }
+                // if (empty($data['label'])) { //check if label is empty or not
+                //     $data['errorUpdate'] = 'Please enter the label.';
+                // } elseif (!ctype_alpha($data['label'])) { //check label regex
+                //     $data['errorUpdate'] = 'Please enter the real label.';
+                // }
 
-                //Validate structure
-                if (empty($data['structure'])) { //check if structure is empty or not
-                    $data['errorUpdate'] = 'Please enter the structure.';
-                } elseif (!ctype_alpha($data['structure'])) { //check structure regex
-                    $data['errorUpdate'] = 'Please enter the real structure.';
-                }
+                // //Validate structure
+                // if (empty($data['structure'])) { //check if structure is empty or not
+                //     $data['errorUpdate'] = 'Please enter the structure.';
+                // } elseif (!ctype_alpha($data['structure'])) { //check structure regex
+                //     $data['errorUpdate'] = 'Please enter the real structure.';
+                // }
 
 
 

@@ -57,11 +57,30 @@ function validatePassword(password) {
 
 let saveButton = document.querySelector("form[class='card profile'] input[value='Sauvegrader']");
 let email = document.querySelector("form[class='card profile'] input[name='email']");
+let username = document.querySelector("form[class='card profile'] input[name='username']");
 let password = document.querySelector("form[class='card profile'] input[name='password']");
 let errorProfile = document.querySelector("#error-msg");
 saveButton.addEventListener("click", (e) => {
-    if (!validateEmail(email.value)) {
-        password.parentElement.style.border = "solid 1px #e8e8e9";
+    password.parentElement.style.border = "solid 1px #e8e8e9";
+    username.parentElement.style.border = "solid 1px #e8e8e9";
+    email.parentElement.style.border = "solid 1px #e8e8e9";
+    if(username.value.length == 0){
+        username.parentElement.style.border = "1px solid red";
+        errorProfile.innerHTML = 'Veillez remplir tous les champs!';
+        e.preventDefault();
+    }
+    if(password.value.length == 0){
+        password.parentElement.style.border = "1px solid red";
+        errorProfile.innerHTML = 'Veillez remplir tous les champs!';
+        e.preventDefault();
+    }
+
+    if(email.value.length == 0){
+        email.parentElement.style.border = "1px solid red";
+        errorProfile.innerHTML = 'Veillez remplir tous les champs!';
+        e.preventDefault();
+    }
+    else if (!validateEmail(email.value)) {
         email.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'email invalide';
         e.preventDefault();
@@ -77,6 +96,8 @@ let cardError = document.getElementById('error-msgPass');
 
 
 cardButton.addEventListener("click", (e) => {
+
+    
     if (!validatePassword(cardNewPass.value)) {
         cardConfirmPass.parentElement.style.border = "solid 1px #e8e8e9";
         cardNewPass.parentElement.style.border = "1px solid red";
@@ -137,13 +158,12 @@ function drawChart() {
 
     var data = google.visualization.arrayToDataTable([
         ['Role', 'Nombre'],
-        ['Admines', document.getElementById('piechart').getAttribute('admins')*1],
-        ['Utilisateurs', document.getElementById('piechart').getAttribute('users')*1]
+        ['Admine', document.getElementById('piechart').getAttribute('admins')*1],
+        ['Utilisateur Simple', document.getElementById('piechart').getAttribute('users')*1]
     ]);
 
     var options = {
-        title: 'Role par utilisateurs',
-        width: '50%',
+        title: 'Role par utilisateur',
         height: 300
     };
 

@@ -12,90 +12,156 @@ let prenomPopA = document.querySelector('#prenom-popupA');
 let BDPopA = document.querySelector('#BD-popupA');
 let salairePopA = document.querySelector('#salaire-popupA');
 
-function resetErrorsPopUp(){
-    document.getElementById('errorAj').innerHTML='';
-    cinPopA.parentElement.style.border='solid 1px #e8e8e9';
-    nomPopA.parentElement.style.border='solid 1px #e8e8e9';
-    prenomPopA.parentElement.style.border='solid 1px #e8e8e9';
-    BDPopA.parentElement.style.border='solid 1px #e8e8e9';
-    salairePopA.parentElement.style.border='solid 1px #e8e8e9';
+let erreurAjout = Array.from(document.getElementsByClassName('erreurAjout'));
+
+function resetErrorsPopUp() {
+    erreurAjout.map(e => e.innerHTML = '');
+    cinPopA.parentElement.style.border = 'solid 1px #e8e8e9';
+    nomPopA.parentElement.style.border = 'solid 1px #e8e8e9';
+    prenomPopA.parentElement.style.border = 'solid 1px #e8e8e9';
+    BDPopA.parentElement.style.border = 'solid 1px #e8e8e9';
+    salairePopA.parentElement.style.border = 'solid 1px #e8e8e9';
 }
 
 ajouterButton.addEventListener('click', () => {
     document.querySelector('html').style.overflow = "hidden";
-    cinPopA.value='';
-    nomPopA.value='';
-    prenomPopA.value='';
-    BDPopA.value='';
-    salairePopA.value='';
+    cinPopA.value = '';
+    nomPopA.value = '';
+    prenomPopA.value = '';
+    BDPopA.value = '';
+    salairePopA.value = '';
     popupAjouter.style.visibility = 'visible';
     popupAjouter.style.opacity = 1;
     resetErrorsPopUp();
 });
 
-document.querySelector('#ajouterPopup').addEventListener('click',(e)=>{
+document.querySelector('#ajouterPopup').addEventListener('click', (e) => {
     resetErrorsPopUp();
-    if(cinPopA.value.trim().length != 9){
-        document.getElementById('errorAj').innerHTML='La longeur du cin doit ere egale à 9';
-        cinPopA.parentElement.style.border='1px solid red';
-        e.preventDefault();
-    } else if(isNaN(cinPopA.value)){ 
-        document.getElementById('errorAj').innerHTML='Le cin doit etre composé de nombres!';
-        cinPopA.parentElement.style.border='1px solid red';
-        e.preventDefault();
-    } else if(/\d/.test(nomPopA.value)){ 
-        document.getElementById('errorAj').innerHTML='Le nom ne doit pas contenir de nombres!';
-        nomPopA.parentElement.style.border='1px solid red';
-        e.preventDefault();
-    } else if(/\d/.test(prenomPopA.value)){ 
-        document.getElementById('errorAj').innerHTML='Le prenom ne doit pas contenir de nombres!';
-        prenomPopA.parentElement.style.border='1px solid red';
+    if (cinPopA.value.length == 0) {
+        erreurAjout[0].innerHTML = 'Ce champs ne doit pas rester vide!';
+        cinPopA.parentElement.style.border = '1px solid red';
         e.preventDefault();
     }
-    else if(salairePopA.value*1 < 0){
-        document.getElementById('errorAj').innerHTML='Le salaire doit etre supérieur ou egale à 0!';
-        salairePopA.parentElement.style.border='1px solid red';
+    else if (cinPopA.value.trim().length != 9) {
+        erreurAjout[0].innerHTML = 'La longeur du cin doit ere egale à 9';
+        cinPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+    else if (isNaN(cinPopA.value)) {
+        erreurAjout[0].innerHTML = 'Le cin doit etre composé de nombres!';
+        cinPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+    if (nomPopA.value.length == 0) {
+        erreurAjout[1].innerHTML = 'Ce champs ne doit pas rester vide!';
+        nomPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+    else if (/\d/.test(nomPopA.value)) {
+        erreurAjout[1].innerHTML = 'Le nom ne doit pas contenir de nombres!';
+        nomPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (prenomPopA.value.length == 0) {
+        erreurAjout[2].innerHTML = 'Ce champs ne doit pas rester vide!';
+        prenomPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+    else if (/\d/.test(prenomPopA.value)) {
+        erreurAjout[2].innerHTML = 'Le prenom ne doit pas contenir de nombres!';
+        prenomPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (BDPopA.value.length == 0) {
+        erreurAjout[3].innerHTML = 'Ce champs ne doit pas rester vide!';
+        BDPopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (salairePopA.value.length == 0) {
+        erreurAjout[4].innerHTML = 'Ce champs ne doit pas rester vide!';
+        salairePopA.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+    else if (salairePopA.value * 1 < 0) {
+        erreurAjout[4].innerHTML = 'Le salaire doit etre supérieur ou egale à 0!';
+        salairePopA.parentElement.style.border = '1px solid red';
         e.preventDefault();
     }
 })
 
-function resetErrorsPopUpM(){
-    document.getElementById('errorMd').innerHTML='';
-    document.querySelector('.salaire-popup').parentElement.style.border='solid 1px #e8e8e9';
-    document.querySelector('.BD-popup').parentElement.style.border='solid 1px #e8e8e9';
-    document.querySelector('.prenom-popup').parentElement.style.border='solid 1px #e8e8e9';
-    document.querySelector('.nom-popup').parentElement.style.border='solid 1px #e8e8e9';
-    document.querySelector('.cin-popup').parentElement.style.border='solid 1px #e8e8e9';
-    document.querySelector('.id-popup').parentElement.style.border='solid 1px #e8e8e9';
+
+
+let prenomPopM = document.querySelector('.prenom-popup');
+let nomPopM = document.querySelector('.nom-popup');
+let cinPopM = document.querySelector('.cin-popup');
+let salairePopM = document.querySelector('.salaire-popup');
+let bdPopM = document.querySelector('.BD-popup');
+
+let erreurModifier = Array.from(document.getElementsByClassName('erreurModifier'));
+
+function resetErrorsPopUpM() {
+    erreurModifier.map(e => e.innerHTML = '');
+    document.querySelector('.salaire-popup').parentElement.style.border = 'solid 1px #e8e8e9';
+    document.querySelector('.BD-popup').parentElement.style.border = 'solid 1px #e8e8e9';
+    document.querySelector('.prenom-popup').parentElement.style.border = 'solid 1px #e8e8e9';
+    document.querySelector('.nom-popup').parentElement.style.border = 'solid 1px #e8e8e9';
+    document.querySelector('.cin-popup').parentElement.style.border = 'solid 1px #e8e8e9';
 }
 
-let prenomPopM=document.querySelector('.prenom-popup');
-let nomPopM=document.querySelector('.nom-popup');
-let cinPopM=document.querySelector('.cin-popup');
-let salairePopM=document.querySelector('.salaire-popup');
-
-document.querySelector('#modifierPopupM').addEventListener('click',(e)=>{
+document.querySelector('#modifierPopupM').addEventListener('click', (e) => {
     resetErrorsPopUpM();
-    if(cinPopM.value.length != 9){
-        document.getElementById('errorMd').innerHTML='La longeur du cin doit ere egale à 9';
-        cinPopM.parentElement.style.border='1px solid red';
-        e.preventDefault();
-    } else if(isNaN(cinPopM.value)){ 
-        document.getElementById('errorMd').innerHTML='Le cin doit etre composé de nombres!';
-        cinPopM.parentElement.style.border='1px solid red';
-        e.preventDefault();
-    } else if(/\d/.test(nomPopM.value)){ 
-        document.getElementById('errorMd').innerHTML='Le nom ne doit pas contenir de nombres!';
-        nomPopM.parentElement.style.border='1px solid red';
-        e.preventDefault();
-    } else if(/\d/.test(prenomPopM.value)){ 
-        document.getElementById('errorMd').innerHTML='Le prenom ne doit pas contenir de nombres!';
-        prenomPopM.parentElement.style.border='1px solid red';
+    if (cinPopM.value.length == 0) {
+        erreurModifier[0].innerHTML = 'Ce champs ne doit pas rester vide!';
+        cinPopM.parentElement.style.border = '1px solid red';
         e.preventDefault();
     }
-    else if(salairePopM.value*1 < 0){ 
-        document.getElementById('errorMd').innerHTML='Le salaire doit etre supérieur ou egale à 0!';
-        salairePopM.parentElement.style.border='1px solid red';
+    else if (cinPopM.value.length != 9) {
+        erreurModifier[0].innerHTML = 'La longeur du cin doit ere egale à 9';
+        cinPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    } else if (isNaN(cinPopM.value)) {
+        erreurModifier[0].innerHTML = 'Le cin doit etre composé de nombres!';
+        cinPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (nomPopM.value.length == 0) {
+        erreurModifier[1].innerHTML = 'Ce champs ne doit pas rester vide!';
+        nomPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+    else if (/\d/.test(nomPopM.value)) {
+        erreurModifier[1].innerHTML = 'Le nom ne doit pas contenir de nombres!';
+        nomPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (prenomPopM.value.length == 0) {
+        erreurModifier[2].innerHTML = 'Ce champs ne doit pas rester vide!';
+        prenomPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    } else if (/\d/.test(prenomPopM.value)) {
+        erreurModifier[2].innerHTML = 'Le prenom ne doit pas contenir de nombres!';
+        prenomPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (bdPopM.value.length == 0) {
+        erreurModifier[3].innerHTML = 'Ce champs ne doit pas rester vide!';
+        bdPopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    }
+
+    if (salairePopM.value.length == 0) {
+        erreurModifier[4].innerHTML = 'Ce champs ne doit pas rester vide!';
+        salairePopM.parentElement.style.border = '1px solid red';
+        e.preventDefault();
+    } else if (salairePopM.value * 1 < 0) {
+        erreurModifier[4].innerHTML = 'Le salaire doit etre supérieur ou egale à 0!';
+        salairePopM.parentElement.style.border = '1px solid red';
         e.preventDefault();
     }
 })
@@ -119,13 +185,14 @@ openP.map(el => el.addEventListener('click', () => {
     let cin = el.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
     let id = el.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
     // that doesn't represent me!!
+    resetErrorsPopUpM();
 
-    document.querySelector('.salaire-popup').value=salaire;
-    document.querySelector('.BD-popup').value=dateNaissance;
-    document.querySelector('.prenom-popup').value=prenom;
-    document.querySelector('.nom-popup').value=nom;
-    document.querySelector('.cin-popup').value=cin;
-    document.querySelector('.id-popup').value=id;
+    document.querySelector('.salaire-popup').value = salaire;
+    document.querySelector('.BD-popup').value = dateNaissance;
+    document.querySelector('.prenom-popup').value = prenom;
+    document.querySelector('.nom-popup').value = nom;
+    document.querySelector('.cin-popup').value = cin;
+    document.querySelector('.id-popup').value = id;
 }))
 
 closeP.addEventListener('click', () => {

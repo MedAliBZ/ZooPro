@@ -160,7 +160,8 @@ if (!isset($data['tab']))
 						echo $data['errorUpdate'];
 					} ?>
 				</div>
-				<div id="piechart" class="card" admins='<?php echo $data['admins']; ?>' users="<?php echo $data['users']; ?>" style="height: fit-content;width: fit-content;padding: 0;"></div>
+				<div id="piechart" class="card" admins='<?php echo $data['admins']; ?>' users="<?php echo $data['users']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 70%;display: flex;justify-content: center;"></div>
 				<div style="display: flex;">
 					<button class="triButton"><i class="fas fa-align-left"></i>
 						<p>Filtres</p>
@@ -245,7 +246,7 @@ if (!isset($data['tab']))
 	<script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
 	<script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
 	<script src="<?php echo URLROOT ?>/public/js/profile.js"></script>
-	
+
 </body>
 
 </html>

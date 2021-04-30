@@ -353,3 +353,9 @@ $mobile:1051px;
     color: var(--accent);
   }
 }
+
+.erreurAjout,.erreurModifier{
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}

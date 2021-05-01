@@ -125,6 +125,35 @@ class regimeM
         return $this->db->resultSet();
     }
 
+    //stat
+
+    public function getHerbivore()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `regimealimentaire` WHERE nom_regime="herbivore"');
+        return $this->db->resultSet();
+    }
+    public function getCarnivore()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `regimealimentaire` WHERE nom_regime="carnivore"');
+        return $this->db->resultSet();
+    }
+    public function getGranivore()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `regimealimentaire` WHERE nom_regime="granivore"');
+        return $this->db->resultSet();
+    }
+
+    public function getOmnivore()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `regimealimentaire` WHERE nom_regime="omnivore"');
+        return $this->db->resultSet();
+    }
+    public function getFrugivore()
+    {
+        $this->db->query('SELECT COUNT(*) FROM `regimealimentaire` WHERE nom_regime="frugivore"');
+        return $this->db->resultSet();
+    }
+
     
 
 }

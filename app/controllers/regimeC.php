@@ -58,10 +58,10 @@ class regimeC extends Controller
             if (empty($data['errorAdd'])) {
 
                 //add employe from model function
-                 if (!$this->regimeModel->addRegimeC($data)) {
-                     die('Something went wrong.');
+                if (!$this->regimeModel->addRegimeC($data)) {
+                    die('Something went wrong.');
                 }
-           }
+            }
         }
         $this->view('regime', $data);
     }
@@ -72,19 +72,44 @@ class regimeC extends Controller
         $tab = $this->regimeModel->afficherRegime();
         $data = [
             'tab' => '',
-            'errorAffiche' => ''
+            'errorAffiche' => '',
+            'herbivore' => '',
+            'omnivore' => '',
+            'frugivore' => '',
+            'carnivore' => '',
+            'granivore' => ''
+
+
         ];
+        //stat elements
+
+        $herbivore = $this->regimeModel->getHerbivore();
+        $data['herbivore'] = $herbivore[0][0];
+
+        $omnivore = $this->regimeModel->getOmnivore();
+        $data['omnivore'] = $omnivore[0][0];
+
+        $frugivore = $this->regimeModel->getFrugivore();
+        $data['frugivore'] = $frugivore[0][0];
+
+
+        $carnivore = $this->regimeModel->getCarnivore();
+        $data['carnivore'] = $carnivore[0][0];
+
+        $granivore = $this->regimeModel->getGranivore();
+        $data['granivore'] = $granivore[0][0];
+
+        //
+
         if (isset($error)) {
             $errorTab = explode("-", $error);
             if ($errorTab[0] == 'err') {
                 array_shift($errorTab);
                 $data['errorAdd'] = implode(" ", $errorTab);
-            }
-            else if ($errorTab[0] == 'errUp') {
+            } else if ($errorTab[0] == 'errUp') {
                 array_shift($errorTab);
                 $data['errorUpdate'] = implode(" ", $errorTab);
-            } 
-            else {
+            } else {
                 $data['errorAdd'] = '';
                 $data['errorUpdate'] = '';
             }
@@ -92,12 +117,12 @@ class regimeC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
-            <td >'. $value[0] .'</td>
-            <td>'. $value[1] .'</td>
-            <td>'. $value[2] .'</td>
-            <td>'. $value[3] .'</td>
-            <td>'. $value[4] .'</td>
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . '>
+            <td >' . $value[0] . '</td>
+            <td>' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
         }
@@ -110,7 +135,6 @@ class regimeC extends Controller
         if (isset($_POST['delete'])) {
             $this->regimeModel->deleteRegime($_POST['id']);
             header('location:' . URLROOT . '/pages/regime');
-
         } elseif (isset($_POST['update'])) {
             $data = [
                 'id',
@@ -135,34 +159,11 @@ class regimeC extends Controller
                     'errorUpdate' => ''
                 ];
 
-                //Validate nom_regime
-            if (empty($data['nom_regime'])) { //check if name is empty or not
-                $data['errorAdd'] = 'Please enter name.';
-            } elseif (!ctype_alpha($data['nom'])) { //check name regex
-                $data['errorAdd'] = 'Please enter the real name.';
-            }
+                
 
-            if (empty($data['type_nourriture '])) {
-                $data['errorAdd'] = 'Please enter the type of food.';
-            } elseif (!ctype_alpha($data['type_nourriture '])) {
-                $data['errorAdd'] = 'Please enter the type.';
-            }
-
-            if (empty($data['nombre_de_repas '])) {
-                $data['errorAdd'] = 'Please enter a number of meals.';
-            } elseif (!is_numeric($data['nombre_de_repas '])) {
-                $data['errorAdd'] = 'number of meals can only contain numbers.';
-            }
-
-            if (empty($data['quantite_par_repas '])) {
-                $data['errorAdd'] = 'Please enter the quantity.';
-            } elseif (!is_numeric($data['quantite_par_repas'])) {
-                $data['errorAdd'] = 'the quantity can only contain numbers.';
-            }
-    
                 // Make sure that errors are empty
                 if (empty($data['errorUpdate'])) {
-    
+
                     //add employe from model function
                     if (!$this->regimeModel->updateRegime($data)) {
                         die('Something went wrong.');
@@ -182,12 +183,12 @@ class regimeC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
-            <td >'. $value[0] .'</td>
-            <td>'. $value[1] .'</td>
-            <td>'. $value[2] .'</td>
-            <td>'. $value[3] .'</td>
-            <td>'. $value[4] .'</td>
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . '>
+            <td >' . $value[0] . '</td>
+            <td>' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
         }
@@ -204,12 +205,12 @@ class regimeC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
-            <td >'. $value[0] .'</td>
-            <td>'. $value[1] .'</td>
-            <td>'. $value[2] .'</td>
-            <td>'. $value[3] .'</td>
-            <td>'. $value[4] .'</td>
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . '>
+            <td >' . $value[0] . '</td>
+            <td>' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
         }
@@ -226,27 +227,16 @@ class regimeC extends Controller
 
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4].'>
-            <td >'. $value[0] .'</td>
-            <td>'. $value[1] .'</td>
-            <td>'. $value[2] .'</td>
-            <td>'. $value[3] .'</td>
-            <td>'. $value[4] .'</td>
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . '>
+            <td >' . $value[0] . '</td>
+            <td>' . $value[1] . '</td>
+            <td>' . $value[2] . '</td>
+            <td>' . $value[3] . '</td>
+            <td>' . $value[4] . '</td>
             <td> <i class="fas fa-pencil-alt updateButton" onclick="openFormModifier()">
         </tr>';
         }
 
         $this->view('regime', $data);
     }
-
-
 }
-
-
-
-
-
-
-
-
-

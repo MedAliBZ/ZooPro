@@ -342,4 +342,25 @@
 #animalchart g:nth-child(7) text {
   fill: whitesmoke;
 }
+
+#Regimechart {
+  color: var(--tc);
+}
+
+#Regimechart text {
+  font-family: "Poppins", sans-serif;
+}
+
+#Regimechart g:nth-child(1) text {
+  fill: black;
+}
+
+#Regimechart g:nth-child(5),
+#Regimechart g:nth-child(6),
+#Regimechart g:nth-child(7),
+#Regimechart g:nth-child(8),
+#Regimechart g:nth-child(9)
+text {
+  fill: black;
+}
 /*# sourceMappingURL=animaux.css.map */

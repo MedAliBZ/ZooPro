@@ -118,9 +118,6 @@ if (!isset($data['tab'])) {
                <a href=""><i class="fas fa-search"></i></a>
             </div> -->
 
-            <div id="animalchart" class="card" stable='<?php echo $data['stable']; ?>' menace='<?php echo $data['menace']; ?>' endanger='<?php echo $data['endanger']; ?>'  style="height: fit-content;padding: 0;margin-left: calc(50%);
-				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
-
             <div class="card">
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">La liste des animaux </h3>
@@ -163,8 +160,12 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorType"></div>
 
                         <div class="formCss">
-                            <input placeholder="age" type="number" id="age" name="age" min="0" required>
+                            <input placeholder="age" type="number" id="age" name="age"  required>
                         </div>
+
+                         <!--erreur-->
+                         <div class="errormsg" id="errorAge"></div>
+
 
                         <div class="formCss">
                             <input placeholder="pays de naissance" type="text" id="pays" name="pays" required>
@@ -239,6 +240,8 @@ if (!isset($data['tab'])) {
 
 
                 </table>
+                
+
                 <!-- MODIFIER HEREEEEEEE -->
                 <div class="form-popup" id="myForm1">
                     <form action="<?php echo URLROOT; ?>/animauxC/deleteUpdateTabAnimal" class="form-container" method="POST">
@@ -270,8 +273,11 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorType1"></div>
 
                         <div class="formCss">
-                            <input placeholder="age" type="number" id="age1" name="age" required>
+                            <input placeholder="age" type="text" id="age1" name="age" required>
                         </div>
+
+                        <!--erreur-->
+                        <div class="errormsg" id="errorAge1"></div>
 
                         <div class="formCss">
                             <input placeholder="pays de naissance" type="text" id="pays1" name="pays" required>
@@ -328,6 +334,9 @@ if (!isset($data['tab'])) {
 
                 <!-- end table -->
             </div>
+
+            <div id="animalchart" class="card" stable='<?php echo $data['stable']; ?>' menace='<?php echo $data['menace']; ?>' endanger='<?php echo $data['endanger']; ?>'  style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
 
         </div>
         <!--main container end-->

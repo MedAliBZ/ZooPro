@@ -3,6 +3,7 @@ function openFormAjouter() {
   document.getElementById("tableAnimaux").style.opacity = 0.5;
   document.getElementById("firstRow").style.opacity = 0.5;
   document.getElementById("addButtonToList").style.opacity = 0.5;
+  document.getElementById("triButton").style.opacity = 0.5;
   //document.getElementById("search").style.opacity = 0.5;
 }
 function openFormModifier() {
@@ -11,6 +12,7 @@ function openFormModifier() {
   document.getElementById("tableAnimaux").style.opacity = 0.5;
   document.getElementById("firstRow").style.opacity = 0.5;
   document.getElementById("addButtonToList").style.opacity = 0.5;
+  document.getElementById("triButton").style.opacity = 0.5;
   //document.getElementById("search").style.opacity = 0.5;
 
   $(".tblRows").click(function () { 
@@ -50,6 +52,7 @@ function closeForm() {
   document.getElementById("tableAnimaux").style.opacity = 1;
   document.getElementById("firstRow").style.opacity = 1;
   document.getElementById("addButtonToList").style.opacity = 1;
+  document.getElementById("triButton").style.opacity = 1;
   //document.getElementById("search").style.opacity = 1;
 
 
@@ -61,6 +64,7 @@ function closeFormModifier() {
   document.getElementById("tableAnimaux").style.opacity = 1;
   document.getElementById("firstRow").style.opacity = 1;
   document.getElementById("addButtonToList").style.opacity = 1;
+  document.getElementById("triButton").style.opacity = 1;
  // document.getElementById("search").style.opacity = 1;
 
 }
@@ -76,6 +80,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
   let indexT = type.selectedIndex;
 
   let pays = document.getElementById("pays").value;
+  let age = document.getElementById("age").value;
 
   let status = document.getElementById("status");
   let indexS = status.selectedIndex;
@@ -89,6 +94,8 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
   let errorType = document.getElementById("errorType");
 
   let errorPays = document.getElementById("errorPays");
+  let errorAge = document.getElementById("errorAge");
+
 
   let errorStatus = document.getElementById("errorStatus");
   let errorNomAnimal = document.getElementById("errorNomAnimal");
@@ -155,6 +162,16 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
     document.getElementById("pays").parentElement.style.border = "solid 1px #e8e8e9";
 
   }
+  //validate age
+  if (isNaN(age) || age.length == 0 || age<0) {
+    errorAge.innerHTML = "merci d'ecrire juste des nombres positifs";
+    document.getElementById("age").parentElement.style.border = "1px solid red";
+    e.preventDefault();
+  }
+  else {
+    errorAge.style.display = "none";
+    document.getElementById("age").parentElement.style.border = "solid 1px #e8e8e9";
+  }
 })
 
 function validateString(str) {
@@ -181,6 +198,9 @@ function reset()
     errorPays.style.display = "none";
     document.getElementById("pays").parentElement.style.border = "solid 1px #e8e8e9";
 
+    errorAge.style.display = "none";
+    document.getElementById("age").parentElement.style.border = "solid 1px #e8e8e9";
+
 
 }
 
@@ -193,6 +213,7 @@ document.getElementById('modifierAnimal').addEventListener('click', (e1) => {
   let indexT1 = type1.selectedIndex;
 
   let pays1 = document.getElementById("pays1").value;
+  let age1 = document.getElementById("age1").value;
 
   let status1 = document.getElementById("status1");
   let indexS1 = status1.selectedIndex;
@@ -206,6 +227,7 @@ document.getElementById('modifierAnimal').addEventListener('click', (e1) => {
   let errorType1 = document.getElementById("errorType1");
 
   let errorPays1 = document.getElementById("errorPays1");
+  let errorAge1 = document.getElementById("errorAge1");
 
   let errorStatus1 = document.getElementById("errorStatus1");
   let errorNomAnimal1 = document.getElementById("errorNomAnimal1");
@@ -242,6 +264,16 @@ document.getElementById('modifierAnimal').addEventListener('click', (e1) => {
     document.getElementById("pays1").parentElement.style.border = "1px solid red";
     e1.preventDefault();
   }
+    //validate age
+    if (isNaN(age1) || age1.length == 0 || age1<0) {
+      errorAge1.innerHTML = "merci d'ecrire juste des nombres positifs";
+      document.getElementById("age1").parentElement.style.border = "1px solid red";
+      e1.preventDefault();
+    }
+    else {
+      errorAge1.style.display = "none";
+      document.getElementById("age1").parentElement.style.border = "solid 1px #e8e8e9";
+    }
 })
 
 

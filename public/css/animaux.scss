@@ -336,3 +336,29 @@ margin-left: 80%;
     }
   }
 }
+#Regimechart {
+  color: var(--tc);
+
+
+
+  text {
+    font-family: "Poppins", sans-serif;
+  }
+
+  g:nth-child(1) {
+    text{
+      fill: black;
+    }
+
+  }
+  
+  g:nth-child(5),
+  g:nth-child(6),
+  g:nth-child(7),
+  g:nth-child(8),
+  g:nth-child(9)
+    text {
+      fill: black;
+    }
+  
+}

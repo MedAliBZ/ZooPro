@@ -92,7 +92,7 @@ class animauxC extends Controller
             'stable' => '',
             'menace' => '',
             'endanger' => ''
-
+ 
         ];
         //stat elements
 

@@ -164,13 +164,13 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorTypeNourriture"></div>
 
                         <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="number" id="quantiteParRepas" name="quantite_par_repas" min="0" required>
+                            <input placeholder="quantité par repas(kg)" type="number" id="quantiteParRepas" name="quantite_par_repas"  required>
                         </div>
                         <!--erreur-->
                         <div class="errormsg" id="errorQuantiteParRepas"></div>
 
                         <div class="formCss">
-                            <input type="number" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas" min="0" required />
+                            <input type="number" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas"  required />
                         </div>
 
                         <!--erreur-->
@@ -269,10 +269,15 @@ if (!isset($data['tab'])) {
                 <!-- end table -->
             </div>
 
+            <div id="Regimechart" class="card" herbivore='<?php echo $data['herbivore']; ?>' omnivore='<?php echo $data['omnivore']; ?>' frugivore='<?php echo $data['frugivore']; ?>' 
+            carnivore='<?php echo $data['carnivore']; ?>' granivore='<?php echo $data['granivore']; ?>' style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
+
         </div>
         <!--main container end-->
     </div>
     <!--wrapper end-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/regime.js"></script>

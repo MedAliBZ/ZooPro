@@ -175,6 +175,7 @@ if (
                         <div class="col col-4">Taille</div>
                         <div class="col col-5">Date de construction</div>
                         <div class="col col-6">Capacité maximale</div>
+                        
                         <div class="col col-7">
                         </div>
                     </li>
@@ -182,8 +183,12 @@ if (
                     <?php if (isset($data['tab'])) {
                         echo $data['tab'];
                     } ?>
+                    
 
                 </ul>
+                <div> 
+                    <button onClick="window.print()" class="btn">Print</button>
+                </div>
            
                         
                 <div class="overlay" style="opacity: 1;overflow: auto;">

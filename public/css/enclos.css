@@ -332,4 +332,18 @@
   text-align: center;
 }
 
+@media print {
+  .sidebar-menu {
+    display: none;
+  }
+  .input-fieldSearch {
+    display: none;
+  }
+  .btn {
+    display: none;
+  }
+  #themeButton {
+    display: none;
+  }
 
+}

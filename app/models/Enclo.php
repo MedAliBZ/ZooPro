@@ -93,19 +93,15 @@ class Enclo
 
 
     public function updateE($data){
-        $this->db->query('UPDATE enclos SET appellation = :appellation , localisation = :localisation, taille = :taille , dateConstruction = :dateConstruction , capaciteMaximale = :capaciteMaximale  WHERE id = :id ');
+        $this->db->query('UPDATE enclos SET appellation = :appellation , localisation = :localisation, taille = :taille , dateConstruction = :dateConstruction , capaciteMaximale = :capaciteMaximale  WHERE id = :id');
         //Bind values
         $this->db->bind(':appellation', $data['appellation']);
         $this->db->bind(':localisation', $data['localisation']);
         $this->db->bind(':taille', $data['taille']);
         $this->db->bind(':dateConstruction', $data['dateConstruction']);
         $this->db->bind(':capaciteMaximale', $data['capaciteMaximale']);
-        // $this->db->bind(':typeEnclos', $data['typeEnclos']);
-        // $this->db->bind(':photo', $data['photo']);
         $this->db->bind(':id', $data['id']);
         
-
-
         //Execute function
         if ($this->db->execute()) {
             return true;

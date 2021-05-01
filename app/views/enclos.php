@@ -214,7 +214,7 @@ if (
                             <div id="errorMdTaille"></div>
                             <div class="input-field two">
                                 <i class="fas fa-calendar"></i>
-                                <input type="Date" name="dateConstruction" class="CD-popup" required />
+                                <input type="Date" name="dateConstruction" class="CD-popup" max="03-05-2021" required />
                             </div>
                             <div id="errorMdCD"></div>
                             <div class="input-field two">

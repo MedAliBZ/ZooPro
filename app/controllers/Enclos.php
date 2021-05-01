@@ -34,48 +34,7 @@ class Enclos extends Controller
                 'typeEnclos' => trim($_POST['typeEnclos']),
                 'errorAdd' => ''
             ];
-            // $nameValidation = "/^[a-zA-Z0-9]*$/";
-            // $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
-
-            //  //Validate appellation
-            //     if (empty($data['appellation'])) { //check if name is empty or not
-            //         $data['errorAdd'] = 'Please enter the name.';
-            //     } elseif (!ctype_alpha($data['appellation'])) { //check name regex
-            //         $data['errorAdd'] = 'Please enter the real name.';
-            //     }
-
-             //Validate localisation
-            //     if (empty($data['localisation'])) { //check if location is empty or not
-            //         $data['errorAdd'] = 'Please enter the location.';
-            //     } elseif (!ctype_alpha($data['localisation'])) { //check location regex
-            //         $data['errorAdd'] = 'Please enter the real location.';
-            //     }
-            //   //Validate taille
-            //      if (empty($data['taille'])) {
-            //         $data['errorAdd'] = 'Please enter the size.';
-            //     } elseif (!is_numeric($data['taille'])) {
-            //         $data['errorAdd'] = 'size can only contain numbers.';
-            //     }
-              //Validate capacite
-            //      if (empty($data['capaciteMaximale'])) {
-            //         $data['errorAdd'] = 'Please enter the capacity.';
-            //     } elseif (!is_numeric($data['capaciteMaximale'])) {
-            //         $data['errorAdd'] = 'capacity can only contain numbers.';
-            //     }
-
-            //   //Validate photo
-            //      if (empty($data['photo'])) {
-            //         $data['errorAdd'] = 'Please enter the picture.';
-            //     } 
-
-            //  //Validate typeEnclos
-            //       if (empty($data['typeEnclos'])) {
-            //         $data['errorUpdate'] = 'Please enter type.';
-            //     } elseif (!preg_match($nameValidation, $data['typeEnclos'])) {
-            //         $data['errorUpdate'] = 'type can only contain letters and numbers.';
-            //     } 
-                
-
+            
             // Make sure that errors are empty
             if (empty($data['errorAdd'])) {
 
@@ -90,9 +49,6 @@ class Enclos extends Controller
             }
         }
          
-      
-
-
         $this->view('enclos', $data);
     }
 
@@ -138,9 +94,7 @@ class Enclos extends Controller
         $this->view('enclos', $data);
     }
 
-    
-
-    
+        
     public function deleteUpdateTab()
     {
         if (isset($_POST['delete'])) {
@@ -172,30 +126,6 @@ class Enclos extends Controller
                     'errorUpdate' => ''
                 ];
                 
-            $nameValidation = "/^[a-zA-Z0-9]*$/";
-            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
-
-             //Validate appellation
-                if (empty($data['appellation'])) { //check if name is empty or not
-                    $data['errorUpdate'] = 'Please enter the name.';
-                } elseif (!ctype_alpha($data['appellation'])) { //check name regex
-                    $data['errorUpdate'] = 'Please enter the real name.';
-                }
-
-             //Validate localisation
-                if (empty($data['localisation'])) { //check if location is empty or not
-                    $data['errorUpdate'] = 'Please enter the location.';
-                } elseif (!ctype_alpha($data['localisation'])) { //check location regex
-                    $data['errorUpdate'] = 'Please enter the real location.';
-                }
-              //Validate taille
-                 if (empty($data['taille'])) {
-                    $data['errorUpdate'] = 'Please enter the size.';
-                } elseif (!is_numeric($data['taille'])) {
-                    $data['errorUpdate'] = 'size can only contain numbers.';
-                }
-
-
             // Make sure that errors are empty
             if (empty($data['errorUpdate'])) {
 
@@ -269,35 +199,6 @@ class Enclos extends Controller
 
         $this->view('enclos', $data);
     }
-
-    //  public function pagination($page, $perPage)
-    //     {
-    //         $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
-    //         $sql = "SELECT * FROM enclos LIMIT {$start},{$perPage}";
-    //         try {
-    //             $liste = $db->prepare($sql);
-    //             $liste->execute();
-    //             $liste = $liste->fetchAll(PDO::FETCH_ASSOC);
-    //             return $liste;
-    //         } catch (Exception $e) {
-    //             die('Erreur: ' . $e->getMessage());
-    //         }
-    //     }
-    
-    
-        // public function calcTotalRows($perPage)
-        // {
-        //     $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM enclos";
-        //     try {
-    
-        //         $liste = $db->query($sql);
-        //         $total = $db->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
-        //         $pages = ceil($total / $perPage);
-        //         return $pages;
-        //     } catch (Exception $e) {
-        //         die('Erreur: ' . $e->getMessage());
-        //     }
-        // }
 
        
 }

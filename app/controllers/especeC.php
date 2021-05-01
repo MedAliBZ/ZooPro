@@ -60,8 +60,19 @@ class especeC extends Controller
         $tab = $this->especeModel->afficherespece();
         $data = [
             'tab' => '',
+            'sup' => '',
+            'inf' => '',
             'errorAffiche' => ''
         ];
+
+
+        $sup = $this->especeModel->gethauteurSup();
+        $data['sup'] = $sup[0][0];
+
+        $inf = $this->especeModel->gethauteurInf();
+        $data['inf'] = $inf[0][0];
+
+        
         if (isset($error)) {
             $errorTab = explode("-", $error);
             if ($errorTab[0] == 'err') {
@@ -88,6 +99,8 @@ class especeC extends Controller
             <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()">
         </tr>';
         }
+
+
 
         $this->view('espece', $data);
     }

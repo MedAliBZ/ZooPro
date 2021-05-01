@@ -161,6 +161,10 @@ if (!isset($_SESSION['id']))
                                             echo $data["errorAdd"];
                                         } ?></div> -->
 
+            <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;">
+                </div>
+
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">liste des éspéce végétales </h3>
                 </div>
@@ -252,6 +256,7 @@ if (!isset($_SESSION['id']))
         <!--main container end-->
     </div>
     <!--wrapper end-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/espece.js"></script>

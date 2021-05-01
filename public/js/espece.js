@@ -133,3 +133,25 @@ function openFormAjouter() {
     document.getElementById("search").style.opacity = 1;
 
   }
+
+  google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Salaire', 'Nombre'],
+        ['hauteur ≥ 100', document.getElementById('donutchart').getAttribute('sup')*1],
+        ['hauteur < 100', document.getElementById('donutchart').getAttribute('inf')*1]
+    ]);
+
+    var options = {
+        title: 'Hauteur des éspéces',
+        pieHole: 0.4,
+        height: 300,
+        slices: {
+            1: { offset: 0.1 },
+        }
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+}

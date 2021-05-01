@@ -81,7 +81,17 @@ class especeM
         }
     }
 
-    
+    public function gethauteurSup()
+    {
+        $this->db->query('SELECT count(*) FROM espece WHERE hauteur >= 100');
+        return $this->db->resultSet();
+    }
+
+    public function gethauteurInf()
+    {
+        $this->db->query('SELECT count(*) FROM espece WHERE hauteur < 100');
+        return $this->db->resultSet();
+    }
    
 
 

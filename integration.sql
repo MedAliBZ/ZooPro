@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2021 at 12:46 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Generation Time: May 01, 2021 at 10:46 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,6 +46,29 @@ CREATE TABLE `animaux` (
 INSERT INTO `animaux` (`id`, `nomAnimal`, `type`, `age`, `pays`, `status`, `regimeAlimentaire`, `image`, `updated_by`) VALUES
 (16, 'bird', 'oiseaux', 1, 'afrique', 'stable', 20, 'bird.png', 32),
 (17, 'koala', 'mammifere', 2, 'afrique', 'endanger', 20, 'koala.png', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `espece`
+--
+
+CREATE TABLE `espece` (
+  `idE` int(11) NOT NULL,
+  `nomE` varchar(255) NOT NULL,
+  `hauteur` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `espece`
+--
+
+INSERT INTO `espece` (`idE`, `nomE`, `hauteur`) VALUES
+(1, 'jjjjjjjjjjjg', 2555),
+(3, 'pppp', 11),
+(4, 'succulente', 120),
+(5, 'hejer', 220),
+(6, 'hzehjsf', 1222220);
 
 -- --------------------------------------------------------
 
@@ -110,6 +133,42 @@ INSERT INTO `personel` (`id`, `cin`, `nom`, `prenom`, `date_de_naissance`, `sala
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `plante`
+--
+
+CREATE TABLE `plante` (
+  `idP` int(11) NOT NULL,
+  `nomP` varchar(255) NOT NULL,
+  `longevite` int(255) NOT NULL,
+  `origine` varchar(255) NOT NULL,
+  `taille` float NOT NULL,
+  `famille` varchar(255) NOT NULL,
+  `image` varchar(500) NOT NULL,
+  `idespece` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plante`
+--
+
+INSERT INTO `plante` (`idP`, `nomP`, `longevite`, `origine`, `taille`, `famille`, `image`, `idespece`) VALUES
+(5, 'olive2', 250, 'sfax', 12, 'fshfsh', 'succulente.jfif', 4),
+(7, 'succulente', 12, 'amazon', 12, 'arbre', 'anthurium.jfif', 4),
+(8, 'arbustre', 12, 'sfax', 2, 'fshfsh', 'cactus.jfif', 5),
+(9, 'arbustre', 250, 'sggfgdh', 2, 'arbre', 'anthurium.jfif', 4),
+(10, 'olive', 120, 'amazon', 3, 'arbre', 'cactus.jfif', 3),
+(11, 'olive12', 12, 'sfax', 2, 'fshfsh', 'succulente.jfif', 3),
+(12, 'heje123', 12, 'sfax', 2, 'fshfsh', 'cactus.jfif', 3),
+(13, 'heje111', 12, 'sfax', 2, 'fshfsh', 'succulente.jfif', 4),
+(14, 'ggg12', 250, 'amazon', 2, 'arbre', 'anthurium.jfif', 3),
+(15, 'olive', 12, 'sfax', 2, 'fshfsh', 'succulente.jfif', 3),
+(16, 'olive', 12, 'sfax', 2, 'fshfsh', 'succulente.jfif', 4),
+(17, 'olive', 12, '5', 2, '2', 'succulente.jfif', 6),
+(18, 'olive', 12, 'sfax', 5, 'fshfsh', 'anthurium.jfif', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `regimealimentaire`
 --
 
@@ -169,6 +228,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`) VALUES
 (19, 'admin123', '$2y$10$EW9vdWcabWIUbpla2GgHru2c.AITqaR.e2gPfAYcsTPeUOs4h6sDK', 'aaaa@sgqhbds.com', 0),
 (24, 'dqsqsdqd', '$2y$10$fJ1SS6iajnujgVMqw79tNuMdDuFO2SarUk9jHbZqmISLSfc40eVn6', 'dsqdsqdqs@sqds.com', 0),
 (30, 'haziyama', '$2y$10$qiMA3JazKMntZ4OLYRNLOuqdxAUr3Y6mSchxJrniJS6hKWp/pMboa', 'sdqs@dq.com', 0),
+(34, 'hejer', '$2y$10$RgF0ZJXckVrZHVRMTv5vE.KWGhk80HHxEjDV9B5OJCk3jJxqez.bq', 'hejer.jaouadi@esprit.tn', 1),
 (28, 'MAB', '$2y$10$yn6uv4kn/hHgUGsLkyYXPOwprbZn/oUmehcMEdk21NqZgi9DkWrUy', 'bouzaiene.dali@gmail.com', 1),
 (32, 'meriammhedhbi', '$2y$10$GGgbJkvGgOF5XAnREoXm1eB1c3OAuQjOYkANViGK89lpX7Hu7O2oS', 'meriamMhedhbi1@gmail.com', 1),
 (22, 'realMAB', '$2y$10$ZgAYwxSdMFPmPoK6xbVHbup.nKWLqgR8uOfj7iGNOEUAF.61g4Aau', 'dbouzaiene@gmail.com', 1),
@@ -188,6 +248,12 @@ ALTER TABLE `animaux`
   ADD KEY `foreignKey1` (`updated_by`);
 
 --
+-- Indexes for table `espece`
+--
+ALTER TABLE `espece`
+  ADD PRIMARY KEY (`idE`);
+
+--
 -- Indexes for table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -201,6 +267,13 @@ ALTER TABLE `personel`
   ADD PRIMARY KEY (`cin`),
   ADD KEY `KEY` (`id`),
   ADD KEY `personel_ibfk_1` (`updated_by`);
+
+--
+-- Indexes for table `plante`
+--
+ALTER TABLE `plante`
+  ADD PRIMARY KEY (`idP`),
+  ADD KEY `fk_plante_espece` (`idespece`);
 
 --
 -- Indexes for table `regimealimentaire`
@@ -233,6 +306,12 @@ ALTER TABLE `animaux`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `espece`
+--
+ALTER TABLE `espece`
+  MODIFY `idE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -245,6 +324,12 @@ ALTER TABLE `personel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `plante`
+--
+ALTER TABLE `plante`
+  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `regimealimentaire`
 --
 ALTER TABLE `regimealimentaire`
@@ -254,7 +339,7 @@ ALTER TABLE `regimealimentaire`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
@@ -279,6 +364,12 @@ ALTER TABLE `password_reset`
 ALTER TABLE `personel`
   ADD CONSTRAINT `personel_ibfk_1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `personel_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `plante`
+--
+ALTER TABLE `plante`
+  ADD CONSTRAINT `fk_plante_espece` FOREIGN KEY (`idespece`) REFERENCES `espece` (`idE`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Constraints for table `users`

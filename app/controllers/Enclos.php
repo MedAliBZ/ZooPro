@@ -23,7 +23,7 @@ class Enclos extends Controller
                                 <img src="../public/Images/' . $value[7] . '" alt="">
                             </div>
                             <div class="cases-caption">
-                                <h3><a href="#">' . $value[1] . '</a></h3>
+                                  <h3><a href="#">' . $value[1] . '</a></h3>
                                 <p><b>Localisation : </b>' . $value[2] . '</p>
                                 <p><b>Taille : </b>' . $value[3] . '</p>
                                 <p><b>Date de construction : </b>' . $value[4] . '</p>
@@ -44,10 +44,13 @@ class Enclos extends Controller
                                         </div>
                                     </div>
                                 </div>
-                                <!-- / progress -->
                                 <div class="prices">
                                     <p><span>animaux hébérgés</span></p>
                                 </div>
+                                
+                                <a class="btn-more stretched-link" href="'.URLROOT.'/animauxInEnclos/afficherList">En savoir plus 
+                                <i class="fas fa-arrow-right"></i></a>
+                                
                         </div>
                     </div>
             ';

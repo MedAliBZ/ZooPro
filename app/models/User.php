@@ -28,7 +28,7 @@ class User
 
     public function register($data)
     {
-        
+        $this->db->query('INSERT INTO users (username, email, password,role_id) VALUES(:username, :email, :password,1)');
 
         //Bind values
         $this->db->bind(':username', $data['username']);

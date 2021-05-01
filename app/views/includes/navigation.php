@@ -1,3 +1,17 @@
+<?php
+	
+	if (!isset($_SESSION['lang']))
+		$_SESSION['lang'] = "en";
+	else if (isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
+		if ($_GET['lang'] == "en")
+			$_SESSION['lang'] = "en";
+		else if ($_GET['lang'] == "fr")
+			$_SESSION['lang'] = "fr";
+	}
+
+	require_once "../languages/" . $_SESSION['lang'] . ".php";
+?>
+
 <header>
     <!-- Header Start -->
     <div class="header-area">
@@ -17,28 +31,28 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="<?php echo URLROOT ?>/Pages/index">Home</a></li>
-                                            <li><a href="<?php echo URLROOT ?>/enclos/afficherList">enclos</a></li>
+                                            <li><a href="<?php echo URLROOT ?>/Pages/index"><?php echo $lang['menuItem1'] ?></a></li>
+                                            <li><a href="<?php echo URLROOT ?>/enclos/afficherList"><?php echo $lang['menuItem2'] ?></a></li>
 
-                                            <li><a href="#">What we Do</a></li>
-                                            <li><a href="#">Projects</a></li>
-                                            <li><a href="#">Blog</a>
+                                            <li><a href="#"><?php echo $lang['menuItem3'] ?></a></li>
+                                            <li><a href="#"><?php echo $lang['menuItem4'] ?></a></li>
+                                            <li><a href="#"><?php echo $lang['menuItem5'] ?></a>
                                                 <ul class="submenu">
                                                     <li><a href="#">Blog</a></li>
                                                     <li><a href="#">Blog Details</a></li>
                                                     <li><a href="#">Element</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="<?php echo URLROOT ?>/Pages/profile">Profile</a></li>
+                                            <li><a href="<?php echo URLROOT ?>/Pages/profile"><?php echo $lang['menuItem6'] ?></a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block ml-20">
                                     <?php if (isset($_SESSION['id'])) : ?>
-                                        <a class="btn header-btn" href="<?php echo URLROOT; ?>/users/logout">Log out</a>
+                                        <a class="btn header-btn" href="<?php echo URLROOT; ?>/users/logout"><?php echo $lang['btnHeaderLogOut'] ?></a>
                                     <?php else : ?>
-                                        <a class="btn header-btn" href="<?php echo URLROOT; ?>/users/login">Login</a>
+                                        <a class="btn header-btn" href="<?php echo URLROOT; ?>/users/login"><?php echo $lang['btnHeaderLogIn'] ?></a>
                                     <?php endif; ?>
                                 </div>
                             </div>

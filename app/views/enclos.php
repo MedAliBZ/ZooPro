@@ -1,16 +1,3 @@
-<?php
-	
-	if (!isset($_SESSION['lang']))
-		$_SESSION['lang'] = "en";
-	else if (isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
-		if ($_GET['lang'] == "en")
-			$_SESSION['lang'] = "en";
-		else if ($_GET['lang'] == "fr")
-			$_SESSION['lang'] = "fr";
-	}
-
-	require_once "../languages/" . $_SESSION['lang'] . ".php";
-?>
 
 <!doctype html>
 <html class="no-js" lang="fr">
@@ -90,11 +77,11 @@ if (
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 pt-70">
-                                <h2>enclos</h2>
+                                <h2><?php echo $lang['menuItem2'] ?></h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">les enclos</a></li>
+                                        <li class="breadcrumb-item"><a href="index.html"><?php echo $lang['menuItem1'] ?></a></li>
+                                        <li class="breadcrumb-item"><a href="#"><?php echo $lang['breadcrumb-item'] ?></a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -126,29 +113,35 @@ if (
                     <div style="margin-top: 100px;" class="col-lg-3">
                     <div>
                         <form class="form-contact contact_form"  method="POST">
-                            <h2 class="contact-title" >Faites une donation </h2>
+                            <h2 class="contact-title" ><?php echo $lang['contact-title'] ?></h2>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="entrer votre nom" name="nom" id="nom-popups" />
+                                <input class="form-control" type="text" placeholder="<?php echo $lang['PlaceholderNom'] ?>"name="nom" id="nom-popups" value="<?php echo $_SESSION['username']; ?>"  />
                             </div>
 
                             <div id="errorSendNom"></div>
 
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="entrer votre email" name="email" id="email-popups" />
+                                <input class="form-control" type="text" placeholder="<?php echo $lang['PlaceholderEmail'] ?>" name="email" id="email-popups" value="<?php echo $_SESSION['email']; ?>" />
                             </div>
                             <div id="errorSendEmail"></div>
+                            <!-- <script>
+                               document.getElementById('email-popups').value=document.getElementById('subject').value;
+                            </script> -->
 
                             <div class="form-group">
-                                <input class="form-control" type="number" placeholder="entrer le montant" name="sujet" id="sujet-popups" />
+                                <input class="form-control" type="number" placeholder="<?php echo $lang['PlaceholderMontant'] ?>" name="sujet" id="sujet-popups" />
                             </div>
                             <div id="errorSendSujet"></div>
 
                             <div class="form-group">
-                                <textarea class="form-control" rows="9" placeholder="entrer un message" name="message" id="message-popups" ></textarea>
+                                <textarea class="form-control" rows="9" placeholder="<?php echo $lang['PlaceholderMessage'] ?>" name="message" id="message-popups" ></textarea>
+                                <script>
+                                document.querySelector('.appellation-popup')
+                                </script>
                             </div>
                             <div id="errorSendMessage"></div>
                             
-                            <button type="submit" value="send an email" class="button button-contactForm boxed-btn" id="emailPopup">contribuer</button>
+                            <button type="submit" value="send an email" class="button button-contactForm boxed-btn" id="emailPopup"><?php echo $lang['button-contactForm'] ?></button>
                             
                         </form>
                     </div>

@@ -27,7 +27,7 @@ function openFormModifier() {
     document.querySelector('#pays1').value = str[4];
     document.querySelector('#status1').value = str[5];
     document.querySelector('#regimeAlimentaire1').value = str[6];
-    //document.getElementById('image1').src="../public/img/"+str[7];
+    document.getElementById('image1').value=str[7];
     console.log(str[7]);
 
 

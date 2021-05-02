@@ -178,9 +178,34 @@ class regimeC extends Controller
     {
         $tab = $this->regimeModel->triID();
         $data = [
-            'tab' => ''
-        ];
+            'tab' => '',
+            'herbivore' => '',
+            'omnivore' => '',
+            'frugivore' => '',
+            'carnivore' => '',
+            'granivore' => ''
 
+
+        ];
+        //stat elements
+
+        $herbivore = $this->regimeModel->getHerbivore();
+        $data['herbivore'] = $herbivore[0][0];
+
+        $omnivore = $this->regimeModel->getOmnivore();
+        $data['omnivore'] = $omnivore[0][0];
+
+        $frugivore = $this->regimeModel->getFrugivore();
+        $data['frugivore'] = $frugivore[0][0];
+
+
+        $carnivore = $this->regimeModel->getCarnivore();
+        $data['carnivore'] = $carnivore[0][0];
+
+        $granivore = $this->regimeModel->getGranivore();
+        $data['granivore'] = $granivore[0][0];
+
+        //
 
         foreach ($tab as $key => $value) {
             $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . '>
@@ -200,8 +225,34 @@ class regimeC extends Controller
     {
         $tab = $this->regimeModel->triNombreRepas();
         $data = [
-            'tab' => ''
+            'tab' => '',
+            'herbivore' => '',
+            'omnivore' => '',
+            'frugivore' => '',
+            'carnivore' => '',
+            'granivore' => ''
+
+
         ];
+        //stat elements
+
+        $herbivore = $this->regimeModel->getHerbivore();
+        $data['herbivore'] = $herbivore[0][0];
+
+        $omnivore = $this->regimeModel->getOmnivore();
+        $data['omnivore'] = $omnivore[0][0];
+
+        $frugivore = $this->regimeModel->getFrugivore();
+        $data['frugivore'] = $frugivore[0][0];
+
+
+        $carnivore = $this->regimeModel->getCarnivore();
+        $data['carnivore'] = $carnivore[0][0];
+
+        $granivore = $this->regimeModel->getGranivore();
+        $data['granivore'] = $granivore[0][0];
+
+        //
 
 
         foreach ($tab as $key => $value) {
@@ -222,8 +273,34 @@ class regimeC extends Controller
     {
         $tab = $this->regimeModel->triNomregime();
         $data = [
-            'tab' => ''
+            'tab' => '',
+            'herbivore' => '',
+            'omnivore' => '',
+            'frugivore' => '',
+            'carnivore' => '',
+            'granivore' => ''
+
+
         ];
+        //stat elements
+
+        $herbivore = $this->regimeModel->getHerbivore();
+        $data['herbivore'] = $herbivore[0][0];
+
+        $omnivore = $this->regimeModel->getOmnivore();
+        $data['omnivore'] = $omnivore[0][0];
+
+        $frugivore = $this->regimeModel->getFrugivore();
+        $data['frugivore'] = $frugivore[0][0];
+
+
+        $carnivore = $this->regimeModel->getCarnivore();
+        $data['carnivore'] = $carnivore[0][0];
+
+        $granivore = $this->regimeModel->getGranivore();
+        $data['granivore'] = $granivore[0][0];
+
+        //
 
 
         foreach ($tab as $key => $value) {

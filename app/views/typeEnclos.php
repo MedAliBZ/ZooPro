@@ -6,7 +6,7 @@ if (!isset($data['tab'])) {
      if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
          $errorTab = explode(" ", $data['errorAdd']);
          $err = implode("-", $errorTab);
-         header('location: ' . URLROOT . '/typeEnclos/afficherList/err-' . $err);
+         header('location: ' . URLROOT . '/TypeEnclos/afficherList/err-' . $err);
      } 
     //  elseif (isset($data['errorUpdate']) || !empty($data['errorUpdate'])) {
     //     $errorTab = explode(" ", $data['errorUpdate']);
@@ -14,7 +14,7 @@ if (!isset($data['tab'])) {
     //     header('location: ' . URLROOT . '/enclos/afficherList/errUp-' . $err);
     //  } 
      else
-         header('location: ' . URLROOT . '/typeEnclos/afficherList');
+         header('location: ' . URLROOT . '/TypeEnclos/afficherList');
 }
     
 ?>
@@ -141,7 +141,7 @@ if (!isset($data['tab'])) {
                 <div class="overlay">
                     <div class="popup">
                         <a class="close" href="#">&times;</a>
-                        <form class="content" action="<?php echo URLROOT; ?>/typeEnclos/deleteUpdateTab" method="POST">
+                        <form class="content" action="<?php echo URLROOT; ?>/TypeEnclos/deleteUpdateTab" method="POST">
                             <h2>Modifier un type</h2>
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>

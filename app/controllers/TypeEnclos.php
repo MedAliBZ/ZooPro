@@ -134,5 +134,5 @@ class TypeEnclos extends Controller
         }
     }
 
-
+}
      

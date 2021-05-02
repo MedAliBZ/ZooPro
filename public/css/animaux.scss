@@ -190,6 +190,7 @@ font-size: 1.1rem;
   width: 100%;
   align-items: center ;
   justify-content: center;
+ 
 
 }
  
@@ -200,7 +201,9 @@ font-size: 1.1rem;
   background-color: white;
   border-radius: 0.5em;
   border: white;
-  box-shadow: 0 10px 20px rgba(white, 0.2);
+  box-shadow: 0 5px 5px rgba(white, 0.2);
+  background: var(--mainContainerColor);
+
 }
 
 #closeButton
@@ -231,6 +234,7 @@ font-size: 1.1rem;
 {
   text-align: center;
   color: red;
+  font-size: small;
 }
 
 .containerTriAjout
@@ -314,6 +318,7 @@ margin-left: 80%;
 
   rect {
     fill: transparent;
+    
   }
 
   text {
@@ -338,7 +343,8 @@ margin-left: 80%;
 }
 #Regimechart {
   color: var(--tc);
-
+  
+ 
 
 
   text {
@@ -361,4 +367,34 @@ margin-left: 80%;
       fill: black;
     }
   
+}
+
+
+@media print {
+  .sidebar-menu {
+    display: none;
+  }
+  .input-fieldSearch {
+    display: none;
+  }
+  .buttonStyle {
+    display: none;
+  }
+  #Regimechart{
+    display: none !important;
+  }
+  #animalchart{
+    display: none !important;
+  }
+  .feather{
+    display: none !important;
+  }
+  .fas{
+    display: none !important;
+  }
+  #modifiericon{
+    display: none !important;
+  }
+  
+
 }

@@ -212,8 +212,9 @@
   background-color: white;
   border-radius: 0.5em;
   border: white;
-  -webkit-box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-          box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 5px 5px rgba(255, 255, 255, 0.2);
+          box-shadow: 0 5px 5px rgba(255, 255, 255, 0.2);
+  background: var(--mainContainerColor);
 }
 
 #closeButton {
@@ -242,6 +243,7 @@
 .errormsg {
   text-align: center;
   color: red;
+  font-size: small;
 }
 
 .containerTriAjout {
@@ -362,5 +364,32 @@
 #Regimechart g:nth-child(9)
 text {
   fill: black;
+}
+
+@media print {
+  .sidebar-menu {
+    display: none;
+  }
+  .input-fieldSearch {
+    display: none;
+  }
+  .buttonStyle {
+    display: none;
+  }
+  #Regimechart {
+    display: none !important;
+  }
+  #animalchart {
+    display: none !important;
+  }
+  .feather {
+    display: none !important;
+  }
+  .fas {
+    display: none !important;
+  }
+  #modifiericon {
+    display: none !important;
+  }
 }
 /*# sourceMappingURL=animaux.css.map */

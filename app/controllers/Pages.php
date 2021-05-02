@@ -42,7 +42,7 @@ class Pages extends Controller
     }
     public function types()
     {
-        $this->view('types');
+        $this->view('typeEnclos');
     }
     public function evenement()
     {

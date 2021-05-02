@@ -164,13 +164,13 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorTypeNourriture"></div>
 
                         <div class="formCss">
-                            <input placeholder="quantité par repas(kg)" type="number" id="quantiteParRepas" name="quantite_par_repas"  required>
+                            <input placeholder="quantité par repas(kg)" type="number" id="quantiteParRepas" name="quantite_par_repas" required>
                         </div>
                         <!--erreur-->
                         <div class="errormsg" id="errorQuantiteParRepas"></div>
 
                         <div class="formCss">
-                            <input type="number" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas"  required />
+                            <input type="number" placeholder="nombre de repas(jour)" name="nombre_de_repas" id="nombre_de_repas" required />
                         </div>
 
                         <!--erreur-->
@@ -196,7 +196,7 @@ if (!isset($data['tab'])) {
                             <th>type nourriture</th>
                             <th>quantité par repas(kg)</th>
                             <th>nombre de repas(jour)</th>
-                            <th></th>
+                            <th>  <i class="fas fa-print updateButton" onClick="window.print()"></i></th>
                         </tr>
                     </thead>
                     <?php if (isset($data['tab'])) {
@@ -269,8 +269,7 @@ if (!isset($data['tab'])) {
                 <!-- end table -->
             </div>
 
-            <div id="Regimechart" class="card" herbivore='<?php echo $data['herbivore']; ?>' omnivore='<?php echo $data['omnivore']; ?>' frugivore='<?php echo $data['frugivore']; ?>' 
-            carnivore='<?php echo $data['carnivore']; ?>' granivore='<?php echo $data['granivore']; ?>' style="height: fit-content;padding: 0;margin-left: calc(50%);
+            <div id="Regimechart" class="card" herbivore='<?php echo $data['herbivore']; ?>' omnivore='<?php echo $data['omnivore']; ?>' frugivore='<?php echo $data['frugivore']; ?>' carnivore='<?php echo $data['carnivore']; ?>' granivore='<?php echo $data['granivore']; ?>' style="height: fit-content;padding: 0;margin-left: calc(50%);
 				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
 
         </div>

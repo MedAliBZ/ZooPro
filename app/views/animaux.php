@@ -134,6 +134,7 @@ if (!isset($data['tab'])) {
                     </div>
                     <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
                 </div>
+               
                 <div class="form-popup" id="myForm">
                     <form action="<?php echo URLROOT; ?>/animauxC/addAnimauxC" class="form-container" method="POST">
 
@@ -220,6 +221,7 @@ if (!isset($data['tab'])) {
                     </form>
 
                 </div>
+                
                 <!-- start table -->
 
                 <table class="styled-table" id="tableAnimaux">
@@ -232,7 +234,7 @@ if (!isset($data['tab'])) {
                         <th>status</th>
                         <th>regime Alimentaire</th>
                         <th>image</th>
-                        <th></th>
+                        <th id="modifiericon"><i class="fas fa-print updateButton" onClick="window.print()"></i></th>
                     </thead>
                     <?php if (isset($data['tab'])) {
                         echo $data['tab'];
@@ -314,7 +316,7 @@ if (!isset($data['tab'])) {
                         <div class="errormsg" id="errorRegimeAlimentaire1"></div>
 
                         <div class="formCss">
-                            <input type="file" name="image" id="image1">
+                            <input type="text" name="image" id="image1" readonly>
                         </div>
 
                         <!-- <div class="error-table">

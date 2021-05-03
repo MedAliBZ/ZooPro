@@ -6,6 +6,9 @@ class evenements
     private $nom;
     private $date;
     private $nb;
+    private $photo;
+    private $description;
+
 
 
     public function __construct()
@@ -30,15 +33,25 @@ class evenements
         echo $this->nb;
     }
 
+    public function getphoto(){
+        echo $this->photo;
+    }
+
+    public function description(){
+        echo $this->description;
+    }
+
     public function addevent($data)
     {
-        $this->db->query('INSERT INTO event (nom_event,date,nbre_place) VALUES(:nom, :date,:nb)');
+        $this->db->query('INSERT INTO event (nom_event,date,nbre_place,photo,description) VALUES(:nom, :date,:nb, :photo,:description)');
 
         //Bind values
         
         $this->db->bind(':nom', $data['nom']);
         $this->db->bind(':date', $data['date']);
         $this->db->bind(':nb', $data['nb']);
+        $this->db->bind(':photo', $data['photo']);
+        $this->db->bind(':description', $data['description']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -69,6 +82,23 @@ class evenements
 
         //cin param will be binded with the id variable
         $this->db->bind(':date', $date);
+        $this->db->execute();
+
+        //Check if date is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function findphoto($photo)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM event WHERE photo = :photo');
+
+        //cin param will be binded with the id variable
+        $this->db->bind(':photo', $photo);
         $this->db->execute();
 
         //Check if date is already registered
@@ -111,12 +141,14 @@ class evenements
 
 
     public function updateP($data){
-        $this->db->query('UPDATE event SET  nom_event = :nom, date = :date, nbre_place = :nb WHERE id = :id ');
+        $this->db->query('UPDATE event SET  nom_event = :nom, date = :date, nbre_place = :nb, photo = :photo, description = :description WHERE id = :id ');
         //Bind values
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':nom', $data['nom']);
         $this->db->bind(':date', $data['date']);
         $this->db->bind(':nb', $data['nb']);
+        $this->db->bind(':photo', $data['photo']);
+        $this->db->bind(':description', $data['description']);
         
 
         //Execute function
@@ -127,6 +159,17 @@ class evenements
         }
     }
 
+    public function getnbSup()
+    {
+        $this->db->query('SELECT count(*) FROM event WHERE nbre_place >= 100');
+        return $this->db->resultSet();
+    }
+
+    public function getnbInf()
+    {
+        $this->db->query('SELECT count(*) FROM event WHERE nbre_place < 100');
+        return $this->db->resultSet();
+    }
     
 
 }

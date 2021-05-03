@@ -120,13 +120,15 @@ if (!isset($_SESSION['id']))
         <!--main container start-->
         <div class="main-container">
             <div class="container">
-                <div class="error-table"><?php if (isset($data['errorAdd'])) {
+                 <div class="error-table"><?php if (isset($data['errorAdd'])) {
                                                 echo $data["errorAdd"];
                                             } ?></div>
                 <div class="error-table"><?php if (isset($data['errorUpdate'])) {
                                                 echo $data["errorUpdate"];
-                                            } ?></div>
-                
+                                            } ?></div> 
+
+                <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
 
                 <form class="content" action="<?php echo URLROOT; ?>/evenement/getevent" method="POST">
                  <input class="btn" type="submit" value="Search" name="search_event" style="float: right;" />
@@ -176,8 +178,9 @@ if (!isset($_SESSION['id']))
                                 <i class="fas fa-chair"></i>
                                 <input type="number" placeholder="nombre de places" name="nb" class="nb-popup" />
                             </div>
+                            <div id="errorMdCM"></div>
                             <div class="buttonsPUpdate">
-                                <input name="update" type="submit" class="btn" value="Modifier" />
+                                <input name="update" type="submit" class="btn" value="Modifier" id="modifierPopupM"/>
                                 <input name="delete" type="submit" class="btn" value="Supprimer" />
                             </div>
                         </form>
@@ -194,16 +197,32 @@ if (!isset($_SESSION['id']))
                                 <i class="fas fa-signature"></i>
                                 <input type="text" placeholder="Nom d evenement" name="nom" id="nom-popupA" />
                             </div>
-                        
+                            <div id="errorAjnom"></div>
                                
                             <div class="input-field ">
                                 <i class="fas fa-calendar"></i>
-                                <input type="date" name="date" id="BD-popupA" />
+                                <input type="date" name="date" id="BD-popupA" min="03-05-2021" />
                             </div>
+                            <div id="errorAjdate"></div>
+                           
                             <div class="input-field ">
                                 <i class="fas fa-chair"></i>
                                 <input type="number" placeholder="nombre de places" name="nb" id="nb-popupA" />
                             </div>
+                            <div id="errorAjnb"></div>
+
+                            <div class="input-field two">
+                                <i class="fas fa-images"></i>
+                                 <input type="file" placeholder="Photo" name="photo" id="photo-popupA" >
+                            </div>
+                            <div id="errorAjphoto"></div>
+                            
+                            <div class="input-field ">
+                                <i class="fas fa-signature"></i>
+                                <input type="text" placeholder="description" name="description" id="description-popupA" />
+                            </div>
+                            <div id="errorAjdes"></div>
+
                             <div id="errorAj"></div>
                             <div class="buttonsP">
                                 <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup"/>
@@ -216,6 +235,7 @@ if (!isset($_SESSION['id']))
         <!--main container end-->
     </div>
     <!--wrapper end-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/sidebar.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/theme.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/event.js"></script> 

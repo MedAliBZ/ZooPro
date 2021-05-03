@@ -18,6 +18,31 @@ if (!isset($_SESSION['id']))
 
 ?>
 
+<?php
+
+if (
+
+isset($_POST["nom"]) &&
+isset($_POST["email"]) &&
+isset($_POST["sujet"]) &&
+isset($_POST["message"]) 
+
+) {
+if (
+    !empty($_POST["nom"]) &&
+    !empty($_POST["email"]) &&
+    !empty($_POST["sujet"]) &&
+    !empty($_POST["message"]) 
+) {
+    $email = $_POST["email"];
+    $subject = $_POST["sujet"];
+    mail("$email" , "$email ($subject)" , $_POST["message"] , "From: $email");    
+} else
+    echo "Missing information";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -192,23 +217,34 @@ if (!isset($_SESSION['id']))
                                 <i class="fas fa-building"></i>
                                 <input type="text" placeholder="Nom de société" name="nom" id="nom-popupA" />
                             </div>
+                            <div id="errorAjnom"></div>
+
                             <div class="input-field two">
                                 <i class="fas fa-phone"></i>
                                 <input type="number" placeholder="Numéro de téléphone" name="nb" id="nb-popupA" />
                             </div>
+                            <div id="errorAjnb"></div>
 
                             <div class="input-field two">
                                 <i class="fas fa-inbox"></i>
                                 <input type="text" placeholder="Email" name="email" id="email-popupA" />
                             </div>
+                            <div id="errorAjemail"></div>
+
+                            <div class="input-field two">
+                                <i class="fas fa-images"></i>
+                                 <input type="file" placeholder="Photo" name="photo" id="photo-popupA" />
+                            </div>
+                            <div id="errorAjphoto"></div>
+
                             <div class="buttonsP">
-                                <input name="ajouter" type="submit" class="btn" value="Ajouter" />
+                                <input name="ajouter" type="submit" class="btn" value="Ajouter" id="ajouterPopup" />
                             </div>
                         </form>
                     </div>
                 </div>
                 
-                <form id="myForm">
+        
                 <div class="overlay overlaysend">
                     <div class="popup">
                         <a class="close closesend" href="#">&times;</a>
@@ -234,13 +270,13 @@ if (!isset($_SESSION['id']))
                                 <textarea rows="5" placeholder="type message" name="message" id="message-popups" ></textarea>
                             </div>
                             
-                            <button type="button" onclick="sendEmail()" value="send an email">submit</button>
+                            <button type="submit" value="send an email">submit</button>
                             
                         </form>
                     </div>
                 </div>
-                </form>
-                <?php mail('zoopro2021@gmail.com','test subject','hello there','Form:zoopro2021@gmail.com') ?>
+                
+                
 
 
             </div>

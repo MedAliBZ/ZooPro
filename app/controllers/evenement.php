@@ -12,6 +12,8 @@ class evenement extends Controller
             'nom' => '',
             'date' => '',
             'nb' => '',
+            'photo' => '',
+            'description' => '',
             'errorAdd' => ''
         ];
 
@@ -24,6 +26,8 @@ class evenement extends Controller
                 'nom' => trim($_POST['nom']),
                 'date' => trim($_POST['date']),
                 'nb' => trim($_POST['nb']),
+                'photo' => trim($_POST['photo']),
+                'description' => trim($_POST['description']),
                 'errorAdd' => ''
             ];
 
@@ -33,36 +37,37 @@ class evenement extends Controller
             
 
             //Validate nom
-            if (empty($data['nom'])) { //check if name is empty or not
-                $data['errorAdd'] = 'Please enter your event name.';
-            } elseif (!ctype_alpha($data['nom'])) { //check name regex
-                $data['errorAdd'] = 'Please enter your event name.';
-            }
+            //if (empty($data['nom']))  //check if name is empty or not
+               // $data['errorAdd'] = 'Champ empty Please enter your event name.';
+            // } elseif (!ctype_alpha($data['nom'])) { //check name regex
+            //     $data['errorAdd'] = 'Please enter your event name.';
+            // }
 
             //validation date
-            if (empty($data['date'])) {
-                $data['errorAdd'] = 'Please enter the date.';
-            } 
-            else {
-                if ($this->eventModel->finddate($data['date'])) {
-                    $data['errorAdd'] = 'date is already taken.';
-                }
-            }
+            //if (empty($data['date'])) {
+                //$data['errorAdd'] = 'Please enter the date.';
+            //} 
+            //else {
+                // if ($this->eventModel->finddate($data['date'])) {
+                //     $data['errorAdd'] = 'date is already taken.';
+                // }
+            //}
             
 
-            if (empty($data['nb'])) {
-                $data['errorAdd'] = 'Please enter the number of places.';
-            } elseif (!is_numeric($data['nb'])) {
-                $data['errorAdd'] = 'this case can only contain numbers.';
-            }
+            //if (empty($data['nb'])) {
+             //   $data['errorAdd'] = 'Please enter the number of places.';
+            //} else
+            // if (!is_numeric($data['nb'])) {
+            //     $data['errorAdd'] = 'this case can only contain numbers.';
+            // }
 
             // Make sure that errors are empty
             if (empty($data['errorAdd'])) {
 
                 //add employe from model function
-                if (!$this->eventModel->addevent($data)) {
-                    die('Something went wrong.');
-                }
+                 if (!$this->eventModel->addevent($data)) {
+                     die('Something went wrong.');
+                 }
             }
         }
         $this->view('evenement', $data);
@@ -74,8 +79,16 @@ class evenement extends Controller
         $tab = $this->eventModel->afficher();
         $data = [
             'tab' => '',
-            'errorAdd' => ''
+            'errorAdd' => '',
+            'sup' => '',
+            'inf' => ''
         ];
+        $sup = $this->eventModel->getnbSup();
+        $data['sup'] = $sup[0][0];
+
+        $inf = $this->eventModel->getnbInf();
+        $data['inf'] = $inf[0][0];
+
         if (isset($error)) {
             $errorTab = explode("-", $error);
             if ($errorTab[0] == 'err') {
@@ -99,7 +112,6 @@ class evenement extends Controller
             <div class="col col-2" data-label="NOM D EVENEMENT">' . $value[1] . '</div>
             <div class="col col-3" data-label="DATE">' . $value[2] . '</div>
             <div class="col col-4" data-label="NOMBRE DE PLACES">' . $value[3] . '</div>
-           
             <div class="col col-5">
                 <div class="col-buttons">
                     <button class="tab-btn"><i data-feather="edit"></i></button>
@@ -123,6 +135,8 @@ class evenement extends Controller
                 'nom' => '',
                 'date' => '',
                 'nb' => '',
+                'photo' => '',
+                'description' => '',
                 'errorUpdate' => ''
             ];
 
@@ -136,38 +150,40 @@ class evenement extends Controller
                     'date' => trim($_POST['date']),
                     'nom' => trim($_POST['nom']),
                     'nb' => trim($_POST['nb']),
+                    'photo' => trim($_POST['photo']),
+                    'description' => trim($_POST['description']),
                     'errorUpdate' => ''
                 ];
 
                 
     
                 //Validate nom
-                if (empty($data['nom'])) { //check if name is empty or not
-                    $data['errorUpdate'] = 'Please enter your event name.';
-                } elseif (!ctype_alpha($data['nom'])) { //check name regex
-                    $data['errorUpdate'] = 'Please enter your real name.';
-                }
+                // if (empty($data['nom'])) { //check if name is empty or not
+                //     $data['errorUpdate'] = 'Please enter your event name.';
+                // } elseif (!ctype_alpha($data['nom'])) { //check name regex
+                //     $data['errorUpdate'] = 'Please enter your real name.';
+                // }
     
                
     
-                if (empty($data['nb'])) {
-                    $data['errorUpdate'] = 'Please enter place number.';
-                } elseif (!is_numeric($data['nb'])) {
-                    $data['errorUpdate'] = 'salary can only contain numbers.';
-                }
+                // if (empty($data['nb'])) {
+                //     $data['errorUpdate'] = 'Please enter place number.';
+                // } elseif (!is_numeric($data['nb'])) {
+                //     $data['errorUpdate'] = 'salary can only contain numbers.';
+                // }
     
-                // Make sure that errors are empty
-                if (empty($data['errorUpdate'])) {
+                // // Make sure that errors are empty
+                 if (empty($data['errorUpdate'])) {
     
-                    //add employe from model function
-                    if (!$this->eventModel->updateP($data)) {
-                        die('Something went wrong.');
-                    }
-                }
+                //     //add employe from model function
+                     if (!$this->eventModel->updateP($data)) {
+                         die('Something went wrong.');
+                     }
+                 }
             }
             $this->view('evenement', $data);
         }
-    }
+    }   
 
     public function sortevent($error = '')
     {

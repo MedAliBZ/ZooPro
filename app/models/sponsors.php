@@ -6,6 +6,7 @@ class sponsors
     private $nom;
     private $email;
     private $nb;
+    private $photo;
 
 
     public function __construct()
@@ -30,15 +31,21 @@ class sponsors
         echo $this->nb;
     }
 
+    public function getphoto(){
+        echo $this->photo;
+    }
+
+
     public function addsponsor($data)
     {
-        $this->db->query('INSERT INTO spons (nom,email,num) VALUES(:nom, :email,:nb)');
+        $this->db->query('INSERT INTO spons (nom,email,num,photo) VALUES(:nom, :email,:nb,:photo)');
 
         //Bind values
         
         $this->db->bind(':nom', $data['nom']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':nb', $data['nb']);
+        $this->db->bind(':photo', $data['photo']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -91,6 +98,23 @@ class sponsors
 
         //username param will be binded with the username variable
         $this->db->bind(':nom', $nom);
+        $this->db->execute();
+
+        //Check if username is already registered
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function findphoto($photo)
+    {
+        //Prepared statement
+        $this->db->query('SELECT * FROM spons WHERE photo = :photo');
+
+        //username param will be binded with the username variable
+        $this->db->bind(':photo', $photo);
         $this->db->execute();
 
         //Check if username is already registered

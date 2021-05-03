@@ -12,6 +12,7 @@ class sponsor extends Controller
             'nom' => '',
             'email' => '',
             'nb' => '',
+            'photo' => '',
             'errorAdd' => ''
         ];
 
@@ -24,6 +25,7 @@ class sponsor extends Controller
                 'nom' => trim($_POST['nom']),
                 'email' => trim($_POST['email']),
                 'nb' => trim($_POST['nb']),
+                'photo' => trim($_POST['photo']),
                 'errorAdd' => ''
             ];
 

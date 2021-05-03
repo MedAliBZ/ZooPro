@@ -50,6 +50,7 @@
                 <!-- Single Slider -->
                 <div class="single-slider hero-overly slider-height slider-bg1 d-flex align-items-center">
                     <div class="container">
+                    
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10">
                                 <div class="hero__caption">

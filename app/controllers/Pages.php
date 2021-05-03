@@ -28,5 +28,10 @@ class Pages extends Controller {
         $this->view('getUsername');
     }
 
+    public function evenement() {
+        $this->view('evenement');
+    }
+
+
 
 }

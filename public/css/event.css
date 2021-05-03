@@ -1,0 +1,70 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-transition: opacity 500ms;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+  }
+  
+  .popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: var(--mainContainerColor);
+    border-radius: 5px;
+    width: 50%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: relative;
+    -webkit-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+    color: var(--tc);
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .popup .close {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--accent);
+  }
+  
+  .popup .content {
+    padding: 10px;
+    overflow: auto;
+  }
+  
+  .popup .content .buttonsP {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: calc(100% - 310px);
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  
+  .popup .content .btn {
+    width: 150px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .popup {
+      width: 70%;
+    }
+}

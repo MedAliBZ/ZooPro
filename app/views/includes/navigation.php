@@ -18,10 +18,10 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li><a href="<?php echo URLROOT ?>/Pages/index">Home</a></li>
-                                                <li><a href="#">About</a></li>
+                                                <li><a href="<?php echo URLROOT ?>/sponsor/afficherList">Sponsors</a>
                                                 <li><a href="#">What we Do</a></li>
-                                                <li><a href="#">Projects</a></li>
-                                                <li><a href="#">Blog</a>
+                                                <li><a href="<?php echo URLROOT ?>/evenement/afficherList">Evenement</a></li>
+                                                
                                                     <ul class="submenu">
                                                         <li><a href="#">Blog</a></li>
                                                         <li><a href="#">Blog Details</a></li>

@@ -221,38 +221,3 @@ document.getElementById('triButton').addEventListener('click', (e1) => {
   document.getElementById('triElements').style.display = 'flex';
 
 })
-
-//stat
-
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-    ["TYPE", "" ,{ role: 'style' }],
-    ["herbivore", document.getElementById('Regimechart').getAttribute('herbivore') * 1,'#fa7b62'],
-    ["omnivore", document.getElementById('Regimechart').getAttribute('omnivore') * 1,'#b18845'],
-    ["carnivore", document.getElementById('Regimechart').getAttribute('carnivore') * 1,'#4e77ba '],
-    ["frugivore", document.getElementById('Regimechart').getAttribute('frugivore') * 1,'#733635'],
-    ["granivore", document.getElementById('Regimechart').getAttribute('granivore') * 1,'#9c8aa4']
-  ]);
-
-
-  var options = {
-    title: "types de régime alimentaire",
-    width: 600,
-    height: 400,
-    bar: { groupWidth: "95%" 
-  },
-  legend: { position: 'none' },
-
-
-  };
-  var chart = new google.visualization.BarChart(document.getElementById("Regimechart"));
-  chart.draw(data, options);
-}
-
-
-
-
-
-

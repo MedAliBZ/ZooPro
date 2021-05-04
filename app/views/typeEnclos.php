@@ -62,6 +62,11 @@ if (!isset($data['tab'])) {
                     <img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
                 </li>
                 <li class="item">
+                    <a href="<?php echo URLROOT ?>/pages/dashboard" class="menu-btn">
+                        <i class="fas fa-chart-line"></i><span> Dashboard</span>
+                    </a>
+                </li>
+                <li class="item">
                     <a href="<?php echo URLROOT ?>/pages/usersV" class="menu-btn">
                         <i class="fas fa-user-circle"></i><span> Profile</span>
                     </a>

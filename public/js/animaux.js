@@ -301,31 +301,6 @@ document.getElementById('triButton').addEventListener('click', (e1) => {
 
 //statestic
 
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Status de conservation', 'Nombre'],
-        ['Stable', document.getElementById('animalchart').getAttribute('stable')*1],
-        ['Menacé', document.getElementById('animalchart').getAttribute('menace')*1],
-        ['En danger', document.getElementById('animalchart').getAttribute('endanger')*1]
-    ]);
-
-    var options = {
-        title: 'Status de conservation supérieur des Animaux',
-        pieHole: 0.4,
-        height: 300,
-        slices: {
-            0: { offset: 0 , color: '#007c6c' },
-            1: { offset: 0 ,color: 'rgb(242,121,0)'},
-            2: { offset: 0 , color: 'rgb(191,0,0)' },
-            
-        }
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('animalchart'));
-    chart.draw(data, options);
-}
 
 ////
 

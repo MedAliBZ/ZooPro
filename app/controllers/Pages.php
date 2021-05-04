@@ -60,4 +60,8 @@ class Pages extends Controller
     {
         $this->view('changePass');
     }
+    public function dashboard()
+    {
+        $this->view('dashboard');
+    }
 }

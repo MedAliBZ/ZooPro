@@ -147,27 +147,3 @@ window.addEventListener('resize', () => {
 
 });
 
-
-//chart
-
-google.charts.load('current', { 'packages': ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-    
-
-    var data = google.visualization.arrayToDataTable([
-        ['Role', 'Nombre'],
-        ['Admine', document.getElementById('piechart').getAttribute('admins')*1],
-        ['Utilisateur Simple', document.getElementById('piechart').getAttribute('users')*1]
-    ]);
-
-    var options = {
-        title: 'Role par utilisateur',
-        height: 300
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}

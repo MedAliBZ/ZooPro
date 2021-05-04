@@ -48,6 +48,11 @@ if (!isset($data['tab']))
 				<li class="logo">
 					<img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
 				</li>
+				<li class="item">
+                    <a href="<?php echo URLROOT ?>/pages/dashboard" class="menu-btn">
+                        <i class="fas fa-chart-line"></i><span> Dashboard</span>
+                    </a>
+                </li>
 				<li class="item active">
 					<a href="<?php echo URLROOT ?>/pages/usersV" class="menu-btn">
 						<i class="fas fa-user-circle"></i><span> Profile</span>
@@ -160,8 +165,6 @@ if (!isset($data['tab']))
 						echo $data['errorUpdate'];
 					} ?>
 				</div>
-				<div id="piechart" class="card" admins='<?php echo $data['admins']; ?>' users="<?php echo $data['users']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
-				transform: translate(-50%,0);width: 70%;display: flex;justify-content: center;"></div>
 				<div style="display: flex;">
 					<button class="triButton"><i class="fas fa-align-left"></i>
 						<p>Filtres</p>

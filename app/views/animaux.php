@@ -57,6 +57,11 @@ if (!isset($data['tab'])) {
                     <img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
                 </li>
                 <li class="item">
+                    <a href="<?php echo URLROOT ?>/pages/dashboard" class="menu-btn">
+                        <i class="fas fa-chart-line"></i><span> Dashboard</span>
+                    </a>
+                </li>
+                <li class="item">
                     <a href="<?php echo URLROOT ?>/pages/usersV" class="menu-btn">
                         <i class="fas fa-user-circle"></i><span> Profile</span>
                     </a>
@@ -336,9 +341,6 @@ if (!isset($data['tab'])) {
 
                 <!-- end table -->
             </div>
-
-            <div id="animalchart" class="card" stable='<?php echo $data['stable']; ?>' menace='<?php echo $data['menace']; ?>' endanger='<?php echo $data['endanger']; ?>'  style="height: fit-content;padding: 0;margin-left: calc(50%);
-				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;"></div>
 
         </div>
         <!--main container end-->

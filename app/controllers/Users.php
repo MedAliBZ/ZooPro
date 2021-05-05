@@ -160,7 +160,7 @@ class Users extends Controller
         $_SESSION['id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
-        header('location:' . URLROOT . '/pages/usersV');
+        header('location:' . URLROOT . '/pages/dashboard');
     }
 
     public function logout()

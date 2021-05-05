@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['id']))
-  header('location: ' . URLROOT . '/pages/usersV');
+  header('location: ' . URLROOT . '/pages/dashboard');
 ?>
 
 <html lang="en">

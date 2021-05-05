@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : dim. 02 mai 2021 à 00:41
--- Version du serveur :  10.4.18-MariaDB
--- Version de PHP : 7.3.27
+-- Host: 127.0.0.1
+-- Generation Time: May 05, 2021 at 02:21 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `integration`
+-- Database: `integration`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `animaux`
+-- Table structure for table `animaux`
 --
 
 CREATE TABLE `animaux` (
@@ -40,17 +40,18 @@ CREATE TABLE `animaux` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `animaux`
+-- Dumping data for table `animaux`
 --
 
 INSERT INTO `animaux` (`id`, `nomAnimal`, `type`, `age`, `pays`, `status`, `regimeAlimentaire`, `image`, `updated_by`) VALUES
-(16, 'bird', 'oiseaux', 1, 'afrique', 'stable', 20, 'bird.png', 32),
-(17, 'koala', 'mammifere', 2, 'afrique', 'endanger', 20, 'koala.png', NULL);
+(16, 'bird', 'oiseaux', 1, 'afrique', 'Menacé', 27, 'bird.png', 34),
+(17, 'koala', 'mammifere', 2, 'afrique', 'endanger', 20, 'koala.png', NULL),
+(18, 'giraffe', 'amphibiens', 2, 'afrique', 'stable', 23, 'giraffe.png', 34);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `enclos`
+-- Table structure for table `enclos`
 --
 
 CREATE TABLE `enclos` (
@@ -65,7 +66,7 @@ CREATE TABLE `enclos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `enclos`
+-- Dumping data for table `enclos`
 --
 
 INSERT INTO `enclos` (`id`, `appellation`, `localisation`, `taille`, `dateConstruction`, `capaciteMaximale`, `typeEnclos`, `photo`) VALUES
@@ -76,7 +77,7 @@ INSERT INTO `enclos` (`id`, `appellation`, `localisation`, `taille`, `dateConstr
 -- --------------------------------------------------------
 
 --
--- Structure de la table `espece`
+-- Table structure for table `espece`
 --
 
 CREATE TABLE `espece` (
@@ -86,7 +87,7 @@ CREATE TABLE `espece` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `espece`
+-- Dumping data for table `espece`
 --
 
 INSERT INTO `espece` (`idE`, `nomE`, `hauteur`) VALUES
@@ -99,7 +100,7 @@ INSERT INTO `espece` (`idE`, `nomE`, `hauteur`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `password_reset`
+-- Table structure for table `password_reset`
 --
 
 CREATE TABLE `password_reset` (
@@ -111,7 +112,7 @@ CREATE TABLE `password_reset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `password_reset`
+-- Dumping data for table `password_reset`
 --
 
 INSERT INTO `password_reset` (`id`, `username`, `key`, `expDate`, `used`) VALUES
@@ -121,7 +122,7 @@ INSERT INTO `password_reset` (`id`, `username`, `key`, `expDate`, `used`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `personel`
+-- Table structure for table `personel`
 --
 
 CREATE TABLE `personel` (
@@ -135,7 +136,7 @@ CREATE TABLE `personel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `personel`
+-- Dumping data for table `personel`
 --
 
 INSERT INTO `personel` (`id`, `cin`, `nom`, `prenom`, `date_de_naissance`, `salaire`, `updated_by`) VALUES
@@ -159,7 +160,7 @@ INSERT INTO `personel` (`id`, `cin`, `nom`, `prenom`, `date_de_naissance`, `sala
 -- --------------------------------------------------------
 
 --
--- Structure de la table `plante`
+-- Table structure for table `plante`
 --
 
 CREATE TABLE `plante` (
@@ -174,7 +175,7 @@ CREATE TABLE `plante` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `plante`
+-- Dumping data for table `plante`
 --
 
 INSERT INTO `plante` (`idP`, `nomP`, `longevite`, `origine`, `taille`, `famille`, `image`, `idespece`) VALUES
@@ -195,7 +196,27 @@ INSERT INTO `plante` (`idP`, `nomP`, `longevite`, `origine`, `taille`, `famille`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `regimealimentaire`
+-- Table structure for table `reclamation`
+--
+
+CREATE TABLE `reclamation` (
+  `id` int(20) NOT NULL,
+  `idUser` int(20) DEFAULT NULL,
+  `reclamation` varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reclamation`
+--
+
+INSERT INTO `reclamation` (`id`, `idUser`, `reclamation`) VALUES
+(1, 34, 'gggggggggggggggggg'),
+(2, 34, 'cet animal est en danger');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `regimealimentaire`
 --
 
 CREATE TABLE `regimealimentaire` (
@@ -207,16 +228,21 @@ CREATE TABLE `regimealimentaire` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `regimealimentaire`
+-- Dumping data for table `regimealimentaire`
 --
 
 INSERT INTO `regimealimentaire` (`id`, `nom_regime`, `type_nourriture`, `quantite_par_repas`, `nombre_de_repas`) VALUES
-(20, 'herbivore', 'plantes', 10, 4);
+(20, 'herbivore', 'plantes', 10, 4),
+(22, 'omnivore', 'viande', 2, 8),
+(23, 'frugivore', 'banane', 9, 2),
+(24, 'carnivore', 'viande', 2, 4),
+(27, 'granivore', 'ble', 7, 8),
+(28, 'carnivore', 'viande', 8, 8);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -225,7 +251,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id`, `nom`) VALUES
@@ -235,7 +261,7 @@ INSERT INTO `role` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typeenclos`
+-- Table structure for table `typeenclos`
 --
 
 CREATE TABLE `typeenclos` (
@@ -245,7 +271,7 @@ CREATE TABLE `typeenclos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `typeenclos`
+-- Dumping data for table `typeenclos`
 --
 
 INSERT INTO `typeenclos` (`id`, `label`, `structure`) VALUES
@@ -254,7 +280,7 @@ INSERT INTO `typeenclos` (`id`, `label`, `structure`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -266,27 +292,27 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`) VALUES
 (19, 'admin123', '$2y$10$EW9vdWcabWIUbpla2GgHru2c.AITqaR.e2gPfAYcsTPeUOs4h6sDK', 'aaaa@sgqhbds.com', 0),
 (24, 'dqsqsdqd', '$2y$10$fJ1SS6iajnujgVMqw79tNuMdDuFO2SarUk9jHbZqmISLSfc40eVn6', 'dsqdsqdqs@sqds.com', 0),
 (30, 'haziyama', '$2y$10$qiMA3JazKMntZ4OLYRNLOuqdxAUr3Y6mSchxJrniJS6hKWp/pMboa', 'sdqs@dq.com', 0),
-(34, 'hejer', '$2y$10$RgF0ZJXckVrZHVRMTv5vE.KWGhk80HHxEjDV9B5OJCk3jJxqez.bq', 'hejer.jaouadi@esprit.tn', 1),
 (28, 'MAB', '$2y$10$yn6uv4kn/hHgUGsLkyYXPOwprbZn/oUmehcMEdk21NqZgi9DkWrUy', 'bouzaiene.dali@gmail.com', 1),
-(35, 'mariem', '$2y$10$nFZh7qVJ0kPDFfHJ/8wR2.6LQq0EZhN83/TyHX.KwfscG0NaDqkLa', 'Aziza.sliti@gmail.com', 1),
+(34, 'meriam', '$2y$10$G9ORo/tVQqgqKYKp4KDjs.Xwb0FvfiXNgPMzEpGXXlf.Sy7pKor4i', 'meriam.mhedhbi@esprit.tn', 1),
 (32, 'meriammhedhbi', '$2y$10$GGgbJkvGgOF5XAnREoXm1eB1c3OAuQjOYkANViGK89lpX7Hu7O2oS', 'meriamMhedhbi1@gmail.com', 1),
+(36, 'meriamR', '$2y$10$YCjsWtnETjvb/mx.rRdNuOdufXNenvOGH4LX9FL7SBHG.5x/0/Njy', 'recovery.mary2000@gmail.com', 0),
 (22, 'realMAB', '$2y$10$ZgAYwxSdMFPmPoK6xbVHbup.nKWLqgR8uOfj7iGNOEUAF.61g4Aau', 'dbouzaiene@gmail.com', 1),
 (3, 'test1', '$2y$10$pYJtTsLu7oHQQHtQw/8HSO6hIBAAS3DblVZbVydpQiB43wi/QeiYW', 'azez@qsd.com', 1),
 (13, 'test2', '$2y$10$QcWzIn1.jxRekkHG6iphM.Tnl1K7NRDGgENMfORpvutg2DF0qEsji', 'azez@qsd.com', 1);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `animaux`
+-- Indexes for table `animaux`
 --
 ALTER TABLE `animaux`
   ADD PRIMARY KEY (`id`),
@@ -294,27 +320,27 @@ ALTER TABLE `animaux`
   ADD KEY `foreignKey1` (`updated_by`);
 
 --
--- Index pour la table `enclos`
+-- Indexes for table `enclos`
 --
 ALTER TABLE `enclos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_typeEnclos` (`typeEnclos`);
 
 --
--- Index pour la table `espece`
+-- Indexes for table `espece`
 --
 ALTER TABLE `espece`
   ADD PRIMARY KEY (`idE`);
 
 --
--- Index pour la table `password_reset`
+-- Indexes for table `password_reset`
 --
 ALTER TABLE `password_reset`
   ADD PRIMARY KEY (`id`),
   ADD KEY `username` (`username`);
 
 --
--- Index pour la table `personel`
+-- Indexes for table `personel`
 --
 ALTER TABLE `personel`
   ADD PRIMARY KEY (`cin`),
@@ -322,32 +348,39 @@ ALTER TABLE `personel`
   ADD KEY `personel_ibfk_1` (`updated_by`);
 
 --
--- Index pour la table `plante`
+-- Indexes for table `plante`
 --
 ALTER TABLE `plante`
   ADD PRIMARY KEY (`idP`),
   ADD KEY `fk_plante_espece` (`idespece`);
 
 --
--- Index pour la table `regimealimentaire`
+-- Indexes for table `reclamation`
+--
+ALTER TABLE `reclamation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_reclamation` (`idUser`);
+
+--
+-- Indexes for table `regimealimentaire`
 --
 ALTER TABLE `regimealimentaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `typeenclos`
+-- Indexes for table `typeenclos`
 --
 ALTER TABLE `typeenclos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`),
@@ -355,95 +388,107 @@ ALTER TABLE `users`
   ADD KEY `fk_foreign_role_id` (`role_id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `animaux`
+-- AUTO_INCREMENT for table `animaux`
 --
 ALTER TABLE `animaux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT pour la table `enclos`
+-- AUTO_INCREMENT for table `enclos`
 --
 ALTER TABLE `enclos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pour la table `espece`
+-- AUTO_INCREMENT for table `espece`
 --
 ALTER TABLE `espece`
   MODIFY `idE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT pour la table `password_reset`
+-- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT pour la table `personel`
+-- AUTO_INCREMENT for table `personel`
 --
 ALTER TABLE `personel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT pour la table `plante`
+-- AUTO_INCREMENT for table `plante`
 --
 ALTER TABLE `plante`
   MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT pour la table `regimealimentaire`
+-- AUTO_INCREMENT for table `reclamation`
+--
+ALTER TABLE `reclamation`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `regimealimentaire`
 --
 ALTER TABLE `regimealimentaire`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `animaux`
+-- Constraints for table `animaux`
 --
 ALTER TABLE `animaux`
   ADD CONSTRAINT `foreignKey` FOREIGN KEY (`regimeAlimentaire`) REFERENCES `regimealimentaire` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `foreignKey1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `enclos`
+-- Constraints for table `enclos`
 --
 ALTER TABLE `enclos`
   ADD CONSTRAINT `fk_typeEnclos` FOREIGN KEY (`typeEnclos`) REFERENCES `typeenclos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `password_reset`
+-- Constraints for table `password_reset`
 --
 ALTER TABLE `password_reset`
   ADD CONSTRAINT `password_reset_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
--- Contraintes pour la table `personel`
+-- Constraints for table `personel`
 --
 ALTER TABLE `personel`
   ADD CONSTRAINT `personel_ibfk_1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `personel_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `plante`
+-- Constraints for table `plante`
 --
 ALTER TABLE `plante`
   ADD CONSTRAINT `fk_plante_espece` FOREIGN KEY (`idespece`) REFERENCES `espece` (`idE`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
--- Contraintes pour la table `users`
+-- Constraints for table `reclamation`
+--
+ALTER TABLE `reclamation`
+  ADD CONSTRAINT `fk_reclamation` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_foreign_role_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);

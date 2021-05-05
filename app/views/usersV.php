@@ -49,10 +49,10 @@ if (!isset($data['tab']))
 					<img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
 				</li>
 				<li class="item">
-                    <a href="<?php echo URLROOT ?>/pages/dashboard" class="menu-btn">
-                        <i class="fas fa-chart-line"></i><span> Dashboard</span>
-                    </a>
-                </li>
+					<a href="<?php echo URLROOT ?>/pages/dashboard" class="menu-btn">
+						<i class="fas fa-chart-line"></i><span> Dashboard</span>
+					</a>
+				</li>
 				<li class="item active">
 					<a href="<?php echo URLROOT ?>/pages/usersV" class="menu-btn">
 						<i class="fas fa-user-circle"></i><span> Profile</span>
@@ -112,6 +112,21 @@ if (!isset($data['tab']))
 		<!--sidebar end-->
 		<!--main container start-->
 		<div class="main-container">
+			<form method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdatePic" class="card" style="max-width: 700px;margin-left: 50%;transform: translate(-50%);display:flex;flex-direction: column;justify-content: center;align-items: center;">
+				<div style="display: flex;flex-direction:column;justify-content: space-evenly;align-items: center;">
+					<h2 style="margin-bottom: 20px;color: var(--accent);">Welcome back!</h2>
+					<div class="profilePic" style="background-image: url('<?php echo URLROOT; ?>/img/<?php echo $_SESSION['image']; ?>');"></div>
+					<div style="display: flex;flex-direction:column;">
+						<label  for="file" class="label-file">Choisir une image</label>
+						<input type="file" id="file" name="file" class="input-file"	accept="image/x-png,image/gif,image/jpeg">
+
+					</div>
+				</div>
+				<div style="margin-top: 10px;display:flex;">
+					<input name="save" type="submit" class="btn" value="Sauvegarder" style="margin-right: 1%;" />
+					<input name="delete" type="submit" class="btn" value="Supprimer" style="margin-left: 1%;" />
+				</div>
+			</form>
 			<div class="updatePass">
 				<form class="card profile" method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdate">
 					<p class="sectionTitle">Mon profile</p>

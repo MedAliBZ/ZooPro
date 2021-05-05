@@ -6,6 +6,33 @@ class Users extends Controller
         $this->userModel = $this->model('User');
     }
 
+    public function deleteUpdatePic()
+    {
+        if (isset($_POST['delete'])) {
+            if($this->userModel->updatePic("default.jpg"))
+                $_SESSION['image']="default.jpg";
+        } 
+        elseif (isset($_POST['save'])) {
+            $data = [
+                'file' => ''
+            ];
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'file' => trim($_POST['file'])
+                ];
+                if($this->userModel->updatePic($data['file']))
+                    $_SESSION['image']=$data['file'];
+            }
+        }
+        $this->view('usersV');
+
+    }
+
     public function register()
     {
         $data = [
@@ -160,6 +187,7 @@ class Users extends Controller
         $_SESSION['id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
+        $_SESSION['image'] = $user->image;
         header('location:' . URLROOT . '/pages/dashboard');
     }
 
@@ -168,6 +196,7 @@ class Users extends Controller
         unset($_SESSION['id']);
         unset($_SESSION['username']);
         unset($_SESSION['email']);
+        unset($_SESSION['image']);
         header('location:' . URLROOT . '/users/login');
     }
 

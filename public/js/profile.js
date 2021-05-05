@@ -1,3 +1,8 @@
+document.querySelector(".input-file").addEventListener("change",()=>{
+    document.querySelector('.profilePic').style.backgroundImage= `url('../img/${document.querySelector(".input-file").value.replace('C:\\fakepath\\','')}')`;
+})
+
+
 let openP = Array.from(document.getElementsByClassName('tab-btn'));
 let popup = document.querySelector('.overlay');
 let closeP = document.querySelector('.close');

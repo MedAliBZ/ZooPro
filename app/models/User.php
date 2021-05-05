@@ -26,6 +26,19 @@ class User
         return $this->db->resultSet();
     }
 
+    public function updatePic($file){
+        $this->db->query('UPDATE `users` SET `image` = :file WHERE id = "' . $_SESSION["id"] . '" ');
+        //Bind values
+        $this->db->bind(':file', $file);
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function register($data)
     {
         $this->db->query('INSERT INTO users (username, email, password,role_id) VALUES(:username, :email, :password,1)');

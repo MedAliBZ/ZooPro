@@ -458,29 +458,27 @@ $mobile: 1051px;
   }
 }
 
-#piechart {
-  color: var(--tc);
 
-  rect {
-    fill: transparent;
-  }
+.profilePic{
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 1px solid var(--tc);
+  height: 300px;
+  width: 300px;
+}
 
-  text {
-    font-family: "Poppins", sans-serif;
-    
-    fill: var(--tc);
-  }
+.label-file {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: bold;
+  margin: 20px 0;
+}
+.label-file:hover {
+  color: var(--accent);
+}
 
-  g:nth-child(1) {
-    text{
-      fill: black;
-    }
-  }
-
-  g:nth-child(5),
-  g:nth-child(6) {
-    text {
-      fill: whitesmoke;
-    }
-  }
+// et on masque le input
+.input-file {
+  display: none;
 }

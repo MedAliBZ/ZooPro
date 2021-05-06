@@ -117,4 +117,22 @@ function drawChart() {
 
     chart = new google.visualization.PieChart(document.getElementById('enclos'));
     chart.draw(data, options);
+
+    data = google.visualization.arrayToDataTable([
+        ['evenement', 'Nombre de places'],
+        ['Nombre de place ≥ 100', document.getElementById('evenement').getAttribute('sup')*1],
+        ['Nombre de place < 100', document.getElementById('evenement').getAttribute('inf')*1]
+    ]);
+
+    options = {
+        title: 'Nombre de places',
+        pieHole: 0.4,
+        height: 300,
+        slices: {
+            1: { offset: 0.1 },
+        }
+    };
+
+    chart = new google.visualization.PieChart(document.getElementById('evenement'));
+    chart.draw(data, options);
 }

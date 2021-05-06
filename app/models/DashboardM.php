@@ -91,4 +91,14 @@ class DashboardM
         $this->db->query('SELECT count(*) FROM `enclos` WHERE taille < 1500');
         return $this->db->resultSet();
     }
+    public function getnbSup()
+    {
+        $this->db->query('SELECT count(*) FROM event WHERE nbre_place >= 100');
+        return $this->db->resultSet();
+    }
+    public function getnbInf()
+    {
+        $this->db->query('SELECT count(*) FROM event WHERE nbre_place < 100');
+        return $this->db->resultSet();
+    }
 }

@@ -24,8 +24,15 @@ class Dashboard extends Controller
             'supp' => '',
             'inff' => '',
             'suppp' => '',
-            'infff' => ''
+            'infff' => '',
+            'su' => '',
+            'in' => ''
         ];
+        $sup = $this->statsModel->getnbSup();
+        $data['su'] = $sup[0][0];
+
+        $inf = $this->statsModel->getnbInf();
+        $data['in'] = $inf[0][0];
 
         $sup = $this->statsModel->gethauteurSup();
         $data['suppp'] = $sup[0][0];

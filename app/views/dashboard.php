@@ -129,6 +129,9 @@ if (!isset($data['admins']))
 
             <div id="enclos" class="donutchart card" sup='<?php echo $data['supp']; ?>' inf="<?php echo $data['inff']; ?>" 
             style="height: fit-content;padding: 0;width:40%;display: flex;justify-content: center;"></div>
+
+            <div id="evenement" class="donutchart card" sup='<?php echo $data['su']; ?>' inf="<?php echo $data['in']; ?>" 
+            style="height: fit-content;padding: 0;width:40%;display: flex;justify-content: center;"></div>
             
         </div>
         <!--main container end-->

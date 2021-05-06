@@ -18,7 +18,7 @@ let mm = today.getMonth()+1; //January is 0!
 let yyyy = today.getFullYear();
  if(dd<10){
         dd='0'+dd
-    } 
+    }  
     if(mm<10){
         mm='0'+mm
     } 
@@ -238,24 +238,3 @@ let dateM = document.querySelector('.BD-popup');
 //      }
 //  })
 
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['evenement', 'Nombre de places'],
-        ['Nombre de place ≥ 100', document.getElementById('donutchart').getAttribute('sup')*1],
-        ['Nombre de place < 100', document.getElementById('donutchart').getAttribute('inf')*1]
-    ]);
-
-    var options = {
-        title: 'Nombre de places',
-        pieHole: 0.4,
-        height: 300,
-        slices: {
-            1: { offset: 0.1 },
-        }
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    chart.draw(data, options);
-}

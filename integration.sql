@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 05 mai 2021 à 20:51
--- Version du serveur :  10.4.18-MariaDB
--- Version de PHP : 8.0.3
+-- Généré le : jeu. 06 mai 2021 à 05:18
+-- Version du serveur :  10.4.17-MariaDB
+-- Version de PHP : 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -96,6 +96,43 @@ INSERT INTO `espece` (`idE`, `nomE`, `hauteur`) VALUES
 (4, 'succulente', 120),
 (5, 'hejer', 220),
 (6, 'hzehjsf', 1222220);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `event`
+--
+
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL,
+  `nom_event` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `nbre_place` int(11) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `event`
+--
+
+INSERT INTO `event` (`id`, `nom_event`, `date`, `nbre_place`, `photo`, `description`) VALUES
+(7, 'Nettoyer jusqu&#39;au bout', '2021-05-08', 60, 'fd6f3950914f9c0a115178a446cdd5de175398655a7af8569c8c65109d9e8516-rimg-w526-h296-gmir.jpg', 'cet évènement consiste à nettoyer notre zoo dans un atmosphère de joie + afromusic'),
+(8, 'un jour avec les koala', '2021-05-09', 120, 'koala.jpg', 'jouer avec les koala'),
+(9, 'un jour avec les éléphants', '2021-05-23', 80, 'safe_fb_share2.png', 'jouer avec les éléphants + quelques animaux domestiques');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `participation`
+--
+
+CREATE TABLE `participation` (
+  `id` int(11) NOT NULL,
+  `id_event` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `nb` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -253,6 +290,42 @@ INSERT INTO `role` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `spons`
+--
+
+CREATE TABLE `spons` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `num` int(11) NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `spons`
+--
+
+INSERT INTO `spons` (`id`, `nom`, `email`, `num`, `photo`) VALUES
+(3, 'COCACOLA', 'cocacola@contact.com', 71503251, 'coco-cola.jpg'),
+(2, 'Qatar airways', 'Qatarairways@contact.com', 75803462, 'Qatar_Airways.gif'),
+(1, 'UBS', 'ubs@conatact.com', 71852963, '310x190_ubs-plus-grande-banque-suisse-illustration.jpg'),
+(4, 'Yves saint laurent', 'YSL@contact.com', 71852963, 'téléchargement.png');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sponsorisation`
+--
+
+CREATE TABLE `sponsorisation` (
+  `id` int(11) NOT NULL,
+  `idevent` int(11) NOT NULL,
+  `nomsponsor` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `typeenclos`
 --
 
@@ -290,6 +363,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`, `image`) VALUES
 (19, 'admin123', '$2y$10$EW9vdWcabWIUbpla2GgHru2c.AITqaR.e2gPfAYcsTPeUOs4h6sDK', 'aaaa@sgqhbds.com', 0, 'default.jpg'),
+(38, 'chkiwa', '$2y$10$VhLcudcJE3/GMGEM9oYcXOCuBnoaZdo6pApvHNd5TK7NRhdb4jbzy', 'chkiwanour@gmail.com', 1, 'default.jpg'),
 (24, 'dqsqsdqd', '$2y$10$fJ1SS6iajnujgVMqw79tNuMdDuFO2SarUk9jHbZqmISLSfc40eVn6', 'dsqdsqdqs@sqds.com', 0, 'default.jpg'),
 (30, 'haziyama', '$2y$10$qiMA3JazKMntZ4OLYRNLOuqdxAUr3Y6mSchxJrniJS6hKWp/pMboa', 'sdqs@dq.com', 0, 'default.jpg'),
 (37, 'MAB', '$2y$10$lid9LN.TiTFLTr6I.pZ4W.HBXj9vpa4YS91WAdRWXWjYdPUIOjjEe', 'bouzaiene.dali@gmail.com', 1, 'githubpic.jpg'),
@@ -323,6 +397,20 @@ ALTER TABLE `enclos`
 --
 ALTER TABLE `espece`
   ADD PRIMARY KEY (`idE`);
+
+--
+-- Index pour la table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `participation`
+--
+ALTER TABLE `participation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_event1` (`id_event`),
+  ADD KEY `fk_user` (`id_user`);
 
 --
 -- Index pour la table `password_reset`
@@ -366,6 +454,21 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `spons`
+--
+ALTER TABLE `spons`
+  ADD PRIMARY KEY (`nom`),
+  ADD KEY `id` (`id`);
+
+--
+-- Index pour la table `sponsorisation`
+--
+ALTER TABLE `sponsorisation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_event` (`idevent`),
+  ADD KEY `fk_sponsor` (`nomsponsor`);
+
+--
 -- Index pour la table `typeenclos`
 --
 ALTER TABLE `typeenclos`
@@ -402,6 +505,18 @@ ALTER TABLE `espece`
   MODIFY `idE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT pour la table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `participation`
+--
+ALTER TABLE `participation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
 -- AUTO_INCREMENT pour la table `password_reset`
 --
 ALTER TABLE `password_reset`
@@ -432,10 +547,22 @@ ALTER TABLE `regimealimentaire`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT pour la table `spons`
+--
+ALTER TABLE `spons`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `sponsorisation`
+--
+ALTER TABLE `sponsorisation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Contraintes pour les tables déchargées
@@ -453,6 +580,13 @@ ALTER TABLE `animaux`
 --
 ALTER TABLE `enclos`
   ADD CONSTRAINT `fk_typeEnclos` FOREIGN KEY (`typeEnclos`) REFERENCES `typeenclos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `participation`
+--
+ALTER TABLE `participation`
+  ADD CONSTRAINT `fk_event1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `password_reset`
@@ -478,6 +612,13 @@ ALTER TABLE `plante`
 --
 ALTER TABLE `reclamation`
   ADD CONSTRAINT `fk_reclamation` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Contraintes pour la table `sponsorisation`
+--
+ALTER TABLE `sponsorisation`
+  ADD CONSTRAINT `fk_event` FOREIGN KEY (`idevent`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sponsor` FOREIGN KEY (`nomsponsor`) REFERENCES `spons` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `users`

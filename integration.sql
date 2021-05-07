@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 06 mai 2021 à 05:18
--- Version du serveur :  10.4.17-MariaDB
+-- Généré le : sam. 08 mai 2021 à 00:05
+-- Version du serveur :  10.4.18-MariaDB
 -- Version de PHP : 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -62,17 +62,19 @@ CREATE TABLE `enclos` (
   `dateConstruction` date NOT NULL,
   `capaciteMaximale` float NOT NULL,
   `typeEnclos` varchar(250) CHARACTER SET utf8 NOT NULL,
-  `photo` varchar(250) CHARACTER SET utf8 NOT NULL
+  `photo` varchar(250) CHARACTER SET utf8 NOT NULL,
+  `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `enclos`
 --
 
-INSERT INTO `enclos` (`id`, `appellation`, `localisation`, `taille`, `dateConstruction`, `capaciteMaximale`, `typeEnclos`, `photo`) VALUES
-(5, 'Pavillons Des Antillopes', 'sud', 80, '2021-04-29', 20, '70', 'pavillons des antilopes.jpg'),
-(6, 'Pavillon African', 'east', 2000, '2020-02-01', 50, '70', 'espace african.jpg'),
-(8, 'Pavillons des Singes', 'east', 1700, '2021-03-04', 70, '70', 'pavillons des singes.jpg');
+INSERT INTO `enclos` (`id`, `appellation`, `localisation`, `taille`, `dateConstruction`, `capaciteMaximale`, `typeEnclos`, `photo`, `updated_by`) VALUES
+(5, 'Pavillons Des Antillopes', 'sud', 80, '2021-04-29', 25, '70', 'pavillons des antilopes.jpg', NULL),
+(6, 'Pavillon African', 'east', 2000, '2020-02-01', 50, '70', 'espace african.jpg', NULL),
+(8, 'Pavillons des Singes', 'east', 1700, '2021-03-04', 70, '70', 'pavillons des singes.jpg', NULL),
+(13, 'test', 'test', 800, '2021-05-07', 90, '70', 'cactus.jfif', NULL);
 
 -- --------------------------------------------------------
 
@@ -362,7 +364,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`, `image`) VALUES
-(19, 'admin123', '$2y$10$EW9vdWcabWIUbpla2GgHru2c.AITqaR.e2gPfAYcsTPeUOs4h6sDK', 'aaaa@sgqhbds.com', 0, 'default.jpg'),
+(19, 'admin123', '$2y$10$EW9vdWcabWIUbpla2GgHru2c.AITqaR.e2gPfAYcsTPeUOs4h6sDK', 'yasmine.sliti@esprit.tn', 0, 'default.jpg'),
 (38, 'chkiwa', '$2y$10$VhLcudcJE3/GMGEM9oYcXOCuBnoaZdo6pApvHNd5TK7NRhdb4jbzy', 'chkiwanour@gmail.com', 1, 'default.jpg'),
 (24, 'dqsqsdqd', '$2y$10$fJ1SS6iajnujgVMqw79tNuMdDuFO2SarUk9jHbZqmISLSfc40eVn6', 'dsqdsqdqs@sqds.com', 0, 'default.jpg'),
 (30, 'haziyama', '$2y$10$qiMA3JazKMntZ4OLYRNLOuqdxAUr3Y6mSchxJrniJS6hKWp/pMboa', 'sdqs@dq.com', 0, 'default.jpg'),
@@ -371,6 +373,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`, `image`) 
 (32, 'meriammhedhbi', '$2y$10$GGgbJkvGgOF5XAnREoXm1eB1c3OAuQjOYkANViGK89lpX7Hu7O2oS', 'meriamMhedhbi1@gmail.com', 1, 'default.jpg'),
 (36, 'meriamR', '$2y$10$YCjsWtnETjvb/mx.rRdNuOdufXNenvOGH4LX9FL7SBHG.5x/0/Njy', 'recovery.mary2000@gmail.com', 0, 'default.jpg'),
 (22, 'realMAB', '$2y$10$ZgAYwxSdMFPmPoK6xbVHbup.nKWLqgR8uOfj7iGNOEUAF.61g4Aau', 'dbouzaiene@gmail.com', 1, 'default.jpg'),
+(39, 'sq', '$2y$10$ITyEPmv5HXiQIwhQ46cH8uofefhmeSGhODmU8xunSRXprl2n6HfsC', 'Aziza.sliti@gmail.com', 1, 'default.jpg'),
 (13, 'test2', '$2y$10$QcWzIn1.jxRekkHG6iphM.Tnl1K7NRDGgENMfORpvutg2DF0qEsji', 'azez@qsd.com', 1, 'default.jpg');
 
 --
@@ -390,7 +393,8 @@ ALTER TABLE `animaux`
 --
 ALTER TABLE `enclos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_typeEnclos` (`typeEnclos`);
+  ADD KEY `fk_typeEnclos` (`typeEnclos`),
+  ADD KEY `fk_updated_by` (`updated_by`);
 
 --
 -- Index pour la table `espece`
@@ -496,7 +500,7 @@ ALTER TABLE `animaux`
 -- AUTO_INCREMENT pour la table `enclos`
 --
 ALTER TABLE `enclos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `espece`
@@ -562,7 +566,7 @@ ALTER TABLE `sponsorisation`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Contraintes pour les tables déchargées
@@ -579,7 +583,8 @@ ALTER TABLE `animaux`
 -- Contraintes pour la table `enclos`
 --
 ALTER TABLE `enclos`
-  ADD CONSTRAINT `fk_typeEnclos` FOREIGN KEY (`typeEnclos`) REFERENCES `typeenclos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_typeEnclos` FOREIGN KEY (`typeEnclos`) REFERENCES `typeenclos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `participation`

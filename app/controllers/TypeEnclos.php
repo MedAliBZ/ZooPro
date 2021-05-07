@@ -95,7 +95,7 @@ class TypeEnclos extends Controller
     {
         if (isset($_POST['delete'])) {
             $this->typeModel->deleteType($_POST['id']);
-            header('location:' . URLROOT . '/pages/types');
+            header('location:' . URLROOT . '/pages/typeEnclos');
         } elseif (isset($_POST['update'])) {
             $data = [
                 'id',
@@ -133,6 +133,7 @@ class TypeEnclos extends Controller
               $this->view('typeEnclos', $data);
         }
     }
-
 }
+
+
      

@@ -66,15 +66,15 @@ class Enclo
         }
     }
 
-     public function getTailleSup()
+     public function getCapaciteSup()
     {
-        $this->db->query('SELECT count(*) FROM `enclos` WHERE taille >= 1500');
+        $this->db->query('SELECT count(*) FROM `enclos` WHERE capaciteMaximale >= 7');
         return $this->db->resultSet();
     }
 
-    public function getTailleInf()
+    public function getCapaciteInf()
     {
-        $this->db->query('SELECT count(*) FROM `enclos` WHERE taille < 1500');
+        $this->db->query('SELECT count(*) FROM `enclos` WHERE capaciteMaximale < 7');
         return $this->db->resultSet();
     }
 
@@ -110,23 +110,47 @@ class Enclo
         }
     }
 
-    public function getEnclosByID($id)
-    {
-        $this->db->query('SELECT * FROM enclos WHERE id = :id');
-        $this->db->bind(':id', $id);
-        return $this->db->resultSet();
-    }
+    // public function getEnclosByID($id)
+    // {
+    //     $this->db->query('SELECT * FROM enclos WHERE id = :id');
+    //     $this->db->bind(':id', $id);
+    //     return $this->db->resultSet();
+    // }
 
-    public function sortEnclosByTaille()
-    {
-        $this->db->query('SELECT * FROM enclos ORDER BY taille DESC');
-        return $this->db->resultSet();
-    }
+    // public function sortEnclosByTaille()
+    // {
+    //     $this->db->query('SELECT * FROM enclos ORDER BY taille DESC');
+    //     return $this->db->resultSet();
+    // }
 
     public function listeTypeID()
     {
         $this->db->query('SELECT id FROM `typeenclos`');
         return $this->db->resultSet();
+    }
+
+    public function tri($case)
+    {
+        $this->db->query('SELECT * FROM enclos ORDER BY ' . $case);
+
+        return $this->db->resultSet();
+    }
+
+    public function filter($role)
+    {
+        if ($role == 'sup')
+            $this->db->query('SELECT * FROM enclos WHERE capaciteMaximale >= 1500 ORDER BY capaciteMaximale');
+        else if ($role == 'inf')
+            $this->db->query('SELECT * FROM enclos WHERE capaciteMaximale < 1500 ORDER BY capaciteMaximale');
+
+        return $this->db->resultSet();
+    }
+
+    public function getUsersEmails()
+    {
+      $this->db->query('SELECT email FROM users');
+
+        return $this->db->resultSet();  
     }
 
 

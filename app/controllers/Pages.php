@@ -40,7 +40,7 @@ class Pages extends Controller
     {
         $this->view('enclos');
     }
-    public function types()
+    public function typeEnclos()
     {
         $this->view('typeEnclos');
     }

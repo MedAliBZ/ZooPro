@@ -41,6 +41,12 @@ class Enclos extends Controller
                 //Register user from model function
                 if ($this->encloModel->addEnclos($data)) {
                  $this->view('enclos', $data);
+
+                  $emailUsers = $this->encloModel->getUsersEmails();
+                   foreach ($emailUsers as $key => $value)
+                   {
+                   mail($data['emailUsers'].= ''.$value[0].'', "Ajout d'un nouveau enclos dans notre zoo." , "Chers clients,veuillez visitez notre site zoopro pour plus d'informations.", "From: zoopro2021@gmail.com");
+                  }
                 } 
                 else
                 {
@@ -48,6 +54,7 @@ class Enclos extends Controller
                 }
             }
         }
+
          
         $this->view('enclos', $data);
     }
@@ -62,12 +69,12 @@ class Enclos extends Controller
             'typeEnclos'=> '',
             'errorAdd' => '',
             'sup' => '',
-            'inf' => ''
+            'inf' => '' 
         ];
-        $sup = $this->encloModel->getTailleSup();
+        $sup = $this->encloModel->getCapaciteSup();
         $data['sup'] = $sup[0][0];
 
-        $inf = $this->encloModel->getTailleInf();
+        $inf = $this->encloModel->getCapaciteInf();
         $data['inf'] = $inf[0][0];
 
         foreach ($tab as $key => $value) {
@@ -144,18 +151,97 @@ class Enclos extends Controller
         }
     }
 
-    public function getEnclos()
-    {       
-    if(isset($_POST['search_enclos'])) {
-        $tab = $this->encloModel->getEnclosByID($_POST['id']);
-    }
-      $data = [
-            'tab' => '',
-            'errorAdd' => ''
-        ];
+    // public function getEnclos()
+    // {       
+    // if(isset($_POST['search_enclos'])) {
+    //     $tab = $this->encloModel->getEnclosByID($_POST['id']);
+    // }
+    //   $data = [
+    //         'tab' => '',
+    //         'typeEnclos'=> '',
+    //         'errorAdd' => '',
+    //         'sup' => '',
+    //         'inf' => ''
+    //     ];
+    //     $sup = $this->encloModel->getTailleSup();
+    //     $data['sup'] = $sup[0][0];
 
-        foreach ($tab as $key => $value) {
-            $data['tab'] .= ' <li class="table-row">
+    //     $inf = $this->encloModel->getTailleInf();
+    //     $data['inf'] = $inf[0][0];
+
+    //     foreach ($tab as $key => $value) {
+    //         $data['tab'] .= ' <li class="table-row">
+    //                 <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+    //                 <div class="col col-2" data-label="Appellation">' . $value[1] . '</div>
+    //                 <div class="col col-3" data-label="Localisation">' . $value[2] . '</div>
+    //                 <div class="col col-4" data-label="Taille">' . $value[3] . '</div>
+    //                 <div class="col col-5" data-label="Date de construction">' . $value[4] . '</div>
+    //                 <div class="col col-6" data-label="Capacite maximale">' . $value[5] . '</div>
+    //                 <div class="col col-7">
+    //                     <div class="col-buttons">
+    //                         <button class="tab-btn"><i data-feather="edit"></i></button>
+    //                     </div>
+    //                 </div>
+    //             </li>';
+    //     }
+
+    //     $this->view('enclos', $data);
+    // }
+
+    //  public function sortEnclos($error = '')
+    // {
+    //     $tab = $this->encloModel->sortEnclosByTaille();
+    //     $data = [
+    //         'tab' => '',
+    //         'typeEnclos'=> '',
+    //         'errorAdd' => '',
+    //         'sup' => '',
+    //         'inf' => ''
+    //     ];
+    //     $sup = $this->encloModel->getTailleSup();
+    //     $data['sup'] = $sup[0][0];
+
+    //     $inf = $this->encloModel->getTailleInf();
+    //     $data['inf'] = $inf[0][0];
+
+    //     foreach ($tab as $key => $value) {
+    //         $data['tab'] .= ' <li class="table-row">
+    //                 <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+    //                 <div class="col col-2" data-label="Appellation">' . $value[1] . '</div>
+    //                 <div class="col col-3" data-label="Localisation">' . $value[2] . '</div>
+    //                 <div class="col col-4" data-label="Taille">' . $value[3] . '</div>
+    //                 <div class="col col-5" data-label="Date de construction">' . $value[4] . '</div>
+    //                 <div class="col col-6" data-label="Capacite maximale">' . $value[5] . '</div>
+    //                 <div class="col col-7">
+    //                     <div class="col-buttons">
+    //                         <button class="tab-btn"><i data-feather="edit"></i></button>
+    //                     </div>
+    //                 </div>
+    //             </li>';
+    //     }
+
+    //     $this->view('enclos', $data);
+    // }
+
+      public function trier($case = '')
+    {
+        $column = array("a" => "ID", "b" => "APPELLATION", "c" => "LOCALISATION", "d" => "TAILLE", "e" => "DATECONSTRUCTION", "f" => "CAPACITEMAXIMALE");
+        if (array_search($case, $column)) {
+            $tab = $this->encloModel->tri($case);
+            $data = [
+                'tab' => '',
+                'sup' => '',
+                'inf' => ''
+            ];
+
+            $sup = $this->encloModel->getCapaciteSup();
+            $data['sup'] = $sup[0][0];
+
+            $inf = $this->encloModel->getCapaciteInf();
+            $data['inf'] = $inf[0][0];
+
+            foreach ($tab as $key => $value) {
+                $data['tab'] .= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>
                     <div class="col col-2" data-label="Appellation">' . $value[1] . '</div>
                     <div class="col col-3" data-label="Localisation">' . $value[2] . '</div>
@@ -168,21 +254,30 @@ class Enclos extends Controller
                         </div>
                     </div>
                 </li>';
+            }
         }
-
         $this->view('enclos', $data);
     }
 
-     public function sortEnclos($error = '')
+    public function filtrer($role = '')
     {
-        $tab = $this->encloModel->sortEnclosByTaille();
-        $data = [
-            'tab' => '',
-            'errorAdd' => ''
-        ];
+        $column = array("a" => "sup", "b" => "inf");
+        if (array_search($role, $column)) {
+            $tab = $this->encloModel->filter($role);
+            $data = [
+                'tab' => '',
+                'sup' => '',
+                'inf' => ''
+            ];
 
-        foreach ($tab as $key => $value) {
-            $data['tab'] .= ' <li class="table-row">
+            $sup = $this->encloModel->getCapaciteSup();
+            $data['sup'] = $sup[0][0];
+
+            $inf = $this->encloModel->getCapaciteInf();
+            $data['inf'] = $inf[0][0];
+
+            foreach ($tab as $key => $value) {
+                $data['tab'] .= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>
                     <div class="col col-2" data-label="Appellation">' . $value[1] . '</div>
                     <div class="col col-3" data-label="Localisation">' . $value[2] . '</div>
@@ -195,8 +290,8 @@ class Enclos extends Controller
                         </div>
                     </div>
                 </li>';
+            }
         }
-
         $this->view('enclos', $data);
     }
 

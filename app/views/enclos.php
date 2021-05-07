@@ -81,7 +81,8 @@ if (
         <!--sidebar start-->
         <div class="sidebar">
             <div class="sidebar-menu">
-                <li class="logo">
+            
+                 <li class="logo">
                     <img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
                 </li>
                 <li class="item">
@@ -124,7 +125,7 @@ if (
                     </a>
                     <div class="sub-menu-settings">
                         <a href="<?php echo URLROOT ?>/pages/enclos"><i class="fas fa-dungeon"></i><span>Enclos</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/types"><i class="fas fa-landmark"></i><span>Types</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i class="fas fa-landmark"></i><span>TypeEnclos</span></a>
                     </div>
                 </li>
                 <li class="item" id="event">
@@ -152,24 +153,39 @@ if (
                 <div class="error-table"><?php if (isset($data['errorUpdate'])){echo $data['errorUpdate'];}?></div>
                 
 
-                <form class="content" action="<?php echo URLROOT; ?>/enclos/afficherList" method="POST">
-                 <input class="btn" type="submit" value="Reset" name="reset_enclos" style="float: right;" />
-                 </form>
+                <div style="display: flex;justify-content: space-between;">
+                    <button class="triButton"><i class="fas fa-align-left"></i>
+                        <!-- <p>Filtres</p> -->
+                    </button>
+                    <div class="input-field" style="position: relative;width:60%;">
+                        <i class="fas fa-search"></i>
+                        <input style="overflow: hidden;" id="rechercher" type="text" placeholder="Rechercher par nom" name="Rechercher" />
+                    </div>
+                    <button class="btn" id="ajouterEnc">Ajouter</button>
+                    <button class="btn" id="sendemail">Envoyer un email</button>
+                </div>
+                <div class="triAndFilter">
+                    <div class="card" style="position: relative;display:flex;justify-content: space-evenly;">
+                        <div class="tri">
+                            <h3>Tri</h3>
+                            <a href="<?php echo URLROOT; ?>/enclos/trier/ID">ID</a>
+                            <a href="<?php echo URLROOT; ?>/enclos/trier/APPELLATION">APPELLATION</a>
+                            <a href="<?php echo URLROOT; ?>/enclos/trier/LOCALISATION">LOCALISATION</a>
+                            <a href="<?php echo URLROOT; ?>/enclos/trier/TAILLE">TAILLE</a>
+                            <a href="<?php echo URLROOT; ?>/enclos/trier/DATE_DE_CONSTRUCTION">DATE DE CONSTRUCTION</a>
+                            <a href="<?php echo URLROOT; ?>/enclos/trier/CAPACITÉ_MAXIMALE">CAPACITÉ MAXIMALE</a>
+                        </div>
+                        <div class="filter">
+                            <h3>Filtre</h3>
+                            <a href="<?php echo URLROOT; ?>/enclos/filtrer/sup">Capacité ≥ 7</a>
+                            <a href="<?php echo URLROOT; ?>/enclos/filtrer/inf">Capacité< 7</a>
+                        </div>
+                        <div class="removeFT">
+                            <a style="font-weight: 800;" href="<?php echo URLROOT; ?>/enclos/filtrer/afficherList">Supprimer les filtres</a>
+                        </div>
+                    </div>
+                </div>
                 
-                 <form class="content" action="<?php echo URLROOT; ?>/enclos/getEnclos" method="POST">
-                 <input class="btn" type="submit" value="Search" name="search_enclos" style="float: right;" />
-                 <input type="text" placeholder="Enter id" name="id" autocomplete="off" style="float: right;" class="input-fieldSearch" />
-                 </form>
-
-                 <form class="content" action="<?php echo URLROOT; ?>/enclos/sortEnclos" method="POST">
-                 <input class="btn" type="submit" value="Sort" name="sort_enclos" style="float: right;" />
-                 </form>
-
-
-                <button class="btn" id="ajouterEnc">Ajouter</button>
-                <button class="btn" id="sendemail">Envoyer un email</button>
-                
-
                <ul class="responsive-table">
                     <li class="table-header">
                         <div class="col col-1">ID</div>

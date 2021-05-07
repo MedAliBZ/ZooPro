@@ -6,7 +6,7 @@ if (!isset($data['tab'])) {
      if (isset($data['errorAdd']) && !empty($data['errorAdd'])) {
          $errorTab = explode(" ", $data['errorAdd']);
          $err = implode("-", $errorTab);
-         header('location: ' . URLROOT . '/TypeEnclos/afficherList/err-' . $err);
+         header('location: ' . URLROOT . '/typeEnclos/afficherList/err-' . $err);
      } 
     //  elseif (isset($data['errorUpdate']) || !empty($data['errorUpdate'])) {
     //     $errorTab = explode(" ", $data['errorUpdate']);
@@ -14,7 +14,7 @@ if (!isset($data['tab'])) {
     //     header('location: ' . URLROOT . '/enclos/afficherList/errUp-' . $err);
     //  } 
      else
-         header('location: ' . URLROOT . '/TypeEnclos/afficherList');
+         header('location: ' . URLROOT . '/typeEnclos/afficherList');
 }
     
 ?>
@@ -101,7 +101,7 @@ if (!isset($data['tab'])) {
                     </a>
                     <div class="sub-menu-settings">
                         <a href="<?php echo URLROOT ?>/pages/enclos"><i class="fas fa-dungeon"></i><span>Enclos</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/types"><i class="fas fa-landmark"></i><span>Types</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i class="fas fa-landmark"></i><span>TypeEnclos</span></a>
                     </div>
                 </li>
                 <li class="item" id="event">
@@ -146,7 +146,7 @@ if (!isset($data['tab'])) {
                 <div class="overlay">
                     <div class="popup">
                         <a class="close" href="#">&times;</a>
-                        <form class="content" action="<?php echo URLROOT; ?>/TypeEnclos/deleteUpdateTab" method="POST">
+                        <form class="content" action="<?php echo URLROOT; ?>/typeEnclos/deleteUpdateTab" method="POST">
                             <h2>Modifier un type</h2>
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>

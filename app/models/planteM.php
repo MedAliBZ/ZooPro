@@ -117,7 +117,7 @@ class planteM
         $this->db->bind(':famille', $data['famille']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':idespece', $data['idespece']);
-        $this->db->bind(':id_user', $_SESSION['idP']);
+        $this->db->bind(':id_user', $_SESSION['id']);
         
 
         //Execute function

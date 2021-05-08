@@ -172,7 +172,8 @@ function openFormAjouter() {
       document.querySelector('#famille1').value=str[5];
 
       document.querySelector('#image1').value=str[6];
-      document.querySelector('#idespece').value=str[7];
+      document.querySelector('#espece1').value=str[7];
+      
      
   });
 

@@ -324,7 +324,7 @@ function myTimer() {
                         </div>
 
                         <div class="formCss">
-                            <input type="number" name="idespece" id="idespece" readonly  >
+                            <input type="number" name="idespece" id="espece1" readonly  >
                         </div>
                         
                         

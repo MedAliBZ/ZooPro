@@ -92,6 +92,21 @@ class especeM
         $this->db->query('SELECT count(*) FROM espece WHERE hauteur < 100');
         return $this->db->resultSet();
     }
+
+    
+
+    public function sortespeceByHauteur()
+    {
+        $this->db->query('SELECT * FROM espece ORDER BY hauteur DESC');
+        return $this->db->resultSet();
+    }
+
+    public function getespeceByID($idE)
+    {
+        $this->db->query('SELECT * FROM espece WHERE idE = :idE');
+        $this->db->bind(':idE', $idE);
+        return $this->db->resultSet();
+    }
    
 
 

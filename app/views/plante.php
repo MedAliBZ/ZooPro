@@ -8,18 +8,13 @@ if (!isset($_SESSION['id']))
             $errorTab = explode(" ", $data['errorAdd']);
             $err = implode("-", $errorTab);
             header('location: ' . URLROOT . '/planteC/afficherList/err-' . $err);
-        }
-        //  elseif (isset($data['errorUpdate']) || !empty($data['errorUpdate'])) {
-        //     $errorTab = explode(" ", $data['errorUpdate']);
-        //     $err = implode("-", $errorTab);
-        //     header('location: ' . URLROOT . '/employes/afficherList/errUp-' . $err);
-        // } 
-        else
+        } else
             header('location: ' . URLROOT . '/planteC/afficherList');
     }
     
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +110,7 @@ if (!isset($_SESSION['id']))
                     </a>
                     <div class="sub-menu-settings">
                         <a href="<?php echo URLROOT ?>/pages/enclos"><i class="fas fa-dungeon"></i><span>Enclos</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i class="fas fa-landmark"></i><span>TypeEnclos</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/types"><i class="fas fa-landmark"></i><span>Types</span></a>
                     </div>
                 </li>
                 <li class="item" id="event">
@@ -156,8 +151,23 @@ if (!isset($_SESSION['id']))
 <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
-            
 
+<p  >Le temps en ce moment :   </p>
+
+<p id="demo"></p>
+
+
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  document.getElementById("demo").innerHTML = t;
+}
+
+</script>
+                    
             <div class="card">
             <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
                                             echo $data["errorAdd"];
@@ -169,17 +179,17 @@ if (!isset($_SESSION['id']))
 
 
                 <form class="content" action="<?php echo URLROOT; ?>/planteC/getplante" method="POST">
-                 <input class="btn" type="submit" value="Search" name="search_plante" style="float: right;" />
+                 <input class="btn" type="submit" value="Rechercher" name="search_plante" style="float: right;" />
                  <input type="text" placeholder="Enter id" name="idP" autocomplete="off" style="float: right;" class="input-fieldSearch" />
                  </form>
                 
                 <form class="content" action="<?php echo URLROOT; ?>/planteC/afficherList" method="POST">
-                 <input class="btn" type="submit" value="Reset" name="reset_plante" style="float: right;" />
+                 <input class="btn" type="submit" value="Réinitialiser" name="reset_plante" style="float: right;" />
                  </form>
 
 
                 <form class="content" action="<?php echo URLROOT; ?>/planteC/sortplante" method="POST">
-                 <input class="btn" type="submit" value="Sort" name="sort_plante" style="float: right;" />
+                 <input class="btn" type="submit" value="Trier" name="sort_plante" style="float: right;" />
                  </form>
 
                 <button class="AddbuttonStyle" id="addButtonToList" onclick="openFormAjouter()">+</button>
@@ -248,6 +258,7 @@ if (!isset($_SESSION['id']))
                 </div>
                 <!-- start table -->
 
+
                 <table class="styled-table" id="tableplante">
                     <thead>
                         <tr>
@@ -268,7 +279,10 @@ if (!isset($_SESSION['id']))
                         
                     } ?>
 
+
+
                 </table>
+              
 
 
                <!-- MODIFIER HEREEEEEEE -->
@@ -310,7 +324,7 @@ if (!isset($_SESSION['id']))
                         </div>
 
                         <div class="formCss">
-                            <input type="number" name="idespece" id="espece1" readonly  >
+                            <input type="number" name="idespece" id="idespece" readonly  >
                         </div>
                         
                         

@@ -103,7 +103,6 @@ class planteC extends Controller
             }
         }
 
-
         foreach ($tab as $key => $value) {
             $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2]."-".$value[3]."-".$value[4]."-".$value[5]."-".$value[6]."-".$value[7].'>
             <td >'. $value[0] .'</td>
@@ -137,6 +136,8 @@ class planteC extends Controller
         // $temp++;
         // query update visiteur set nombre=! $temp 
     }
+
+
 
      public function deleteUpdateTabplante()
     {
@@ -244,6 +245,7 @@ class planteC extends Controller
             $data['idespece'] .= '<option value="'.$value[0].'">'.$value[0].'</option>';
         }
 
+        
 
         $this->view('plante', $data);
     }

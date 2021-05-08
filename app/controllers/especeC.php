@@ -165,6 +165,112 @@ class especeC extends Controller
 
 
 
+    public function sortespece($error = '')
+    {
+        $tab = $this->especeModel->sortespeceByhauteur();
+        
+        $data = [
+            'tab' => '',
+            'sup' => '',
+            'inf' => '',
+            'errorAffiche' => ''
+        ];
+
+
+        $sup = $this->especeModel->gethauteurSup();
+        $data['sup'] = $sup[0][0];
+
+        $inf = $this->especeModel->gethauteurInf();
+        $data['inf'] = $inf[0][0];
+
+        
+        if (isset($error)) {
+            $errorTab = explode("-", $error);
+            if ($errorTab[0] == 'err') {
+                array_shift($errorTab);
+                $data['errorAdd'] = implode(" ", $errorTab);
+            }
+            else if ($errorTab[0] == 'errUp') {
+                array_shift($errorTab);
+                $data['errorUpdate'] = implode(" ", $errorTab);
+            } 
+            else {
+                $data['errorAdd'] = '';
+                $data['errorUpdate'] = '';
+            }
+        }
+
+
+        foreach ($tab as $key => $value) {
+            $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2].'>
+            <td >'. $value[0] .'</td>
+            <td>'. $value[1] .'</td>
+            <td>'. $value[2] .'</td>
+           
+            <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()">
+        </tr>';
+        }
+
+
+
+        $this->view('espece', $data);
+    }
+   
+
+    public function getespece()
+    {       
+    if(isset($_POST['search_espece'])) {
+        $tab = $this->especeModel->getespeceByID($_POST['idE']);
+    }
+
+   
+    $data = [
+        'tab' => '',
+        'sup' => '',
+        'inf' => '',
+        'errorAffiche' => ''
+    ];
+
+
+    $sup = $this->especeModel->gethauteurSup();
+    $data['sup'] = $sup[0][0];
+
+    $inf = $this->especeModel->gethauteurInf();
+    $data['inf'] = $inf[0][0];
+
+    
+    if (isset($error)) {
+        $errorTab = explode("-", $error);
+        if ($errorTab[0] == 'err') {
+            array_shift($errorTab);
+            $data['errorAdd'] = implode(" ", $errorTab);
+        }
+        else if ($errorTab[0] == 'errUp') {
+            array_shift($errorTab);
+            $data['errorUpdate'] = implode(" ", $errorTab);
+        } 
+        else {
+            $data['errorAdd'] = '';
+            $data['errorUpdate'] = '';
+        }
+    }
+
+
+    foreach ($tab as $key => $value) {
+        $data['tab'] .= '<tr class="tblRows" data='.$value[0]."-".$value[1]."-".$value[2].'>
+        <td >'. $value[0] .'</td>
+        <td>'. $value[1] .'</td>
+        <td>'. $value[2] .'</td>
+       
+        <td> <i class="fas fa-edit updateButton" onclick="openFormModifier()">
+    </tr>';
+    }
+
+
+
+    $this->view('espece', $data);
+    }
+
 
 
 

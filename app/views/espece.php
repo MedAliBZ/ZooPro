@@ -70,6 +70,7 @@ if (!isset($_SESSION['id']))
                 <li class="logo">
                     <img src="<?php echo URLROOT ?>/public/img/logo.png" alt="logo" />
                 </li>
+
                 <li class="item">
                     <a href="<?php echo URLROOT ?>/pages/dashboard" class="menu-btn">
                         <i class="fas fa-chart-line"></i><span> Dashboard</span>
@@ -100,7 +101,7 @@ if (!isset($_SESSION['id']))
                         <i class="fas fa-leaf"></i><span>Végetation<i class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu-messages">
-                        <a href="<?php echo URLROOT ?>/pages/plante"><i class="fas fa-seedling"></i><span>Plantes</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/plante"><i class="fas fa-seedling"></i><span>plante</span></a>
                         <a href="<?php echo URLROOT ?>/pages/espece"><i class="fas fa-tree"></i><span>Espéce vegetale</span></a>
                     </div>
                 </li>
@@ -110,7 +111,7 @@ if (!isset($_SESSION['id']))
                     </a>
                     <div class="sub-menu-settings">
                         <a href="<?php echo URLROOT ?>/pages/enclos"><i class="fas fa-dungeon"></i><span>Enclos</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i class="fas fa-landmark"></i><span>TypesEnclos</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/types"><i class="fas fa-landmark"></i><span>Types</span></a>
                     </div>
                 </li>
                 <li class="item" id="event">
@@ -138,6 +139,7 @@ if (!isset($_SESSION['id']))
         <div class="main-container">
 
 
+       
 
 
              
@@ -154,21 +156,52 @@ if (!isset($_SESSION['id']))
 
 
 
+<p  >                                              Le temps en ce moment :   </p>
+
+<p id="demo"></p>
 
 
-            <div class="searchCss" id="search">
-                <input type="text" placeholder="rechercher" name="search" />
-                <i class="fas fa-search"></i>
-            </div>
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  document.getElementById("demo").innerHTML = t;
+}
+
+</script>
+
+           
             
             <div class="card">
             <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
                                             echo $data["errorAdd"];
                                         } ?></div> -->
 
+            <!-- <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;">
+                </div>-->
+
                 <div class="firstRow" id="firstRow">
                     <h3 id="titreTab">liste des éspéce végétales </h3>
                 </div>
+
+                
+                <form class="content" action="<?php echo URLROOT; ?>/especeC/getespece" method="POST">
+                 <input class="btn" type="submit" value="rechercher" name="search_espece" style="float: right;" />
+                 <input type="text" placeholder="Enter id" name="idE" autocomplete="off" style="float: right;" class="input-fieldSearch" />
+                 </form>
+                
+                <form class="content" action="<?php echo URLROOT; ?>/especeC/afficherList" method="POST">
+                 <input class="btn" type="submit" value="Réinitialiser" name="reset_espece" style="float: right;" />
+                 </form>
+
+
+                <form class="content" action="<?php echo URLROOT; ?>/especeC/sortespece" method="POST">
+                 <input class="btn" type="submit" value="Trier" name="sort_espece" style="float: right;" />
+                 </form>
+
 
                 <button class="AddbuttonStyle" id="addButtonToList" onclick="openFormAjouter()">+</button>
                 <div class="form-popup" id="myForm">
@@ -214,7 +247,7 @@ if (!isset($_SESSION['id']))
                         
                     } ?>
 
-                </table>
+              
 
 
                <!-- MODIFIER HEREEEEEEE -->

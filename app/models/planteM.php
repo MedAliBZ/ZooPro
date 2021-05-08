@@ -51,7 +51,7 @@ class planteM
 
     public function addplanteC($data)
     {
-        $this->db->query('INSERT INTO plante (nomP,longevite,origine,taille,famille,image,idespece) VALUES(:nomP,:longevite,:origine,:taille,:famille,:image,:idespece)');
+        $this->db->query('INSERT INTO plante (nomP,longevite,origine,taille,famille,image,idespece,id_user) VALUES(:nomP,:longevite,:origine,:taille,:famille,:image,:idespece,:id_user)');
 
         //Bind values
         $this->db->bind(':nomP', $data['nomP']);
@@ -61,6 +61,7 @@ class planteM
         $this->db->bind(':famille', $data['famille']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':idespece', $data['idespece']);
+        $this->db->bind(':id_user', $_SESSION['id']);
 
         //Execute function
         if ($this->db->execute()) {
@@ -80,12 +81,14 @@ class planteM
     }
 
 
-    public function affichervisiteur(){
+  
+
+   /* public function affichervisiteur(){
         $this->db->query('SELECT * FROM visiteur ');
         return $this->db->resultSet();
 
         
-    }
+    }*/
 
     public function deleteplante($idP){
         $this->db->query('DELETE FROM plante WHERE idP = :idP');
@@ -104,7 +107,7 @@ class planteM
 
 
     public function updateplante($data){
-        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image,idespece=:idespece  WHERE idP = :idP ');
+        $this->db->query('UPDATE plante SET nomP =:nomP,longevite =:longevite,origine =:origine,taille=:taille, famille=:famille,image=:image,idespece=:idespece,id_user=:id_user  WHERE idP = :idP ');
         //Bind values
         $this->db->bind(':idP', $data['idP']);
         $this->db->bind(':nomP', $data['nomP']);
@@ -114,6 +117,7 @@ class planteM
         $this->db->bind(':famille', $data['famille']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':idespece', $data['idespece']);
+        $this->db->bind(':id_user', $_SESSION['idP']);
         
 
         //Execute function

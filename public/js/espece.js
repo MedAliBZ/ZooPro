@@ -73,15 +73,12 @@ function resetErrorsPopUp(){
 
 
 
-
-
-
 function openFormAjouter() {
     document.getElementById("myForm").style.display = "flex";
     document.getElementById("tableespece").style.opacity = 0.5;
     document.getElementById("firstRow").style.opacity = 0.5;
     document.getElementById("addButtonToList").style.opacity = 0.5;
-    document.getElementById("search").style.opacity = 0.5;
+   
   }
   function openFormModifier() {
 
@@ -89,7 +86,7 @@ function openFormAjouter() {
     document.getElementById("tableespece").style.opacity = 0.5;
     document.getElementById("firstRow").style.opacity = 0.5;
     document.getElementById("addButtonToList").style.opacity = 0.5;
-    document.getElementById("search").style.opacity = 0.5;
+    
 
     $( ".tblRows" ).click(function() {
       var row_data = $(this).attr("data");
@@ -110,14 +107,14 @@ function openFormAjouter() {
 
       document.querySelector('#nomE').value='';
       document.querySelector('#hauteur').value='';
-     
+      
  
 
     document.getElementById("myForm").style.display = "none";
     document.getElementById("tableespece").style.opacity = 1;
     document.getElementById("firstRow").style.opacity = 1;
     document.getElementById("addButtonToList").style.opacity = 1;
-    document.getElementById("search").style.opacity = 1;
+   
 
   }
   function closeFormModifier() {
@@ -130,6 +127,27 @@ function openFormAjouter() {
     document.getElementById("tableespece").style.opacity = 1;
     document.getElementById("firstRow").style.opacity = 1;
     document.getElementById("addButtonToList").style.opacity = 1;
-    document.getElementById("search").style.opacity = 1;
-
+   
   }
+
+  google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Salaire', 'Nombre'],
+        ['hauteur ≥ 100', document.getElementById('donutchart').getAttribute('sup')*1],
+        ['hauteur < 100', document.getElementById('donutchart').getAttribute('inf')*1]
+    ]);
+
+    var options = {
+        title: 'Hauteur des éspéces',
+        pieHole: 0.4,
+        height: 300,
+        slices: {
+            1: { offset: 0.1 },
+        }
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+}

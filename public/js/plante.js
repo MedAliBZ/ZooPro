@@ -172,7 +172,7 @@ function openFormAjouter() {
       document.querySelector('#famille1').value=str[5];
 
       document.querySelector('#image1').value=str[6];
-      document.querySelector('#espece1').value=str[7];
+      document.querySelector('#idespece').value=str[7];
      
   });
 
@@ -196,6 +196,8 @@ function openFormAjouter() {
     document.getElementById("firstRow").style.opacity = 1;
     document.getElementById("addButtonToList").style.opacity = 1;
    // document.getElementById("search").style.opacity = 1;
+
+   
 
   }
   function closeFormModifier() {

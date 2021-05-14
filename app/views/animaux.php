@@ -130,14 +130,19 @@ if (!isset($data['tab'])) {
                 <div class="containerTriAjout">
 
                     <div class="containerTri">
-                        <button class="buttonStyle" id="triButton">Trier</button>
-                        <div class="triElements" id="triElements">
+                        <button class="buttonStyle" id="triButton" style="width: 70px;">Trier</button>
+                        <div class="triElements" id="triElements" >
                             <a href="<?php echo URLROOT; ?>/animauxC/trierParID" id="triId">Par ID</a>
                             <a href="<?php echo URLROOT; ?>/animauxC/trierParAge" id="triAge">Par Age</a>
                             <a href="<?php echo URLROOT; ?>/animauxC/trierParNomAnimal" id="triName">Par Nom Animal</a>
                         </div>
                     </div>
-                    <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un animal</button>
+                  
+                    <div class="input-field" style="position: relative;width:60%;margin-left:auto;">
+                        <i class="fas fa-search"></i>
+                        <input style="overflow: hidden;" id="searchAnimal" type="text" placeholder="Rechercher par nom" name="Rechercher" />
+                    </div>
+                    <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()" style="margin-left:auto;">Ajouter un animal</button>
                 </div>
                
                 <div class="form-popup" id="myForm">

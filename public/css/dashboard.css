@@ -1,1 +1,48 @@
-.piechart,.donutchart{color:var(--tc)}.piechart rect,.donutchart rect{fill:transparent}.piechart text,.donutchart text{font-family:"Poppins", sans-serif;fill:var(--tc)}.piechart g:nth-child(1) text,.donutchart g:nth-child(1) text{fill:black}.piechart g:nth-child(5) text,.piechart g:nth-child(6) text,.donutchart g:nth-child(5) text,.donutchart g:nth-child(6) text{fill:whitesmoke}#animalchart g:nth-child(7) text{fill:whitesmoke}#Regimechart svg[aria-label="A chart."] rect[fill="#ffffff"]{fill:transparent}#Regimechart text{font-family:"Poppins", sans-serif;fill:var(--tc)}@media all and (max-width: 1500px){#Regimechart,.piechart,.donutchart{width:100% !important}}
+.piechart,
+.donutchart {
+  color: var(--tc);
+}
+
+.piechart rect,
+.donutchart rect {
+  fill: transparent;
+}
+
+.piechart text,
+.donutchart text {
+  font-family: "Poppins", sans-serif;
+  fill: var(--tc);
+}
+
+.piechart g:nth-child(1) text,
+.donutchart g:nth-child(1) text {
+  fill: black;
+}
+
+.piechart g:nth-child(5) text,
+.piechart g:nth-child(6) text,
+.donutchart g:nth-child(5) text,
+.donutchart g:nth-child(6) text {
+  fill: whitesmoke;
+}
+
+#animalchart g:nth-child(7) text {
+  fill: whitesmoke;
+}
+
+#Regimechart svg[aria-label="A chart."] rect[fill="#ffffff"] {
+  fill: transparent;
+}
+
+#Regimechart text {
+  font-family: "Poppins", sans-serif;
+  fill: var(--tc);
+}
+
+@media all and (max-width: 1500px) {
+  #Regimechart, .piechart,
+  .donutchart {
+    width: 100% !important;
+  }
+}
+/*# sourceMappingURL=dashboard.css.map */

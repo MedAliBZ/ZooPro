@@ -103,6 +103,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
 
   //validate régime
   if (indexR == 0) {
+    errorRegimeAlimentaire.style.display="flex";
     errorRegimeAlimentaire.innerHTML = "merci de choisir un regime alimentaire";
     document.getElementById("regimeAlimentaire").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -115,6 +116,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
   }
   //validate type
   if (indexT == 0) {
+    errorType.style.display="flex";
     errorType.innerHTML = "merci de choisir un type";
     document.getElementById("type").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -127,6 +129,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
   }
   //validate status
   if (indexS == 0) {
+    errorStatus.style.display="flex";
     errorStatus.innerHTML = "merci de choisir une statut de conservation";
     document.getElementById("status").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -139,6 +142,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
 
   //validate name
   if (!validateString(nomAnimal)) {
+    errorNomAnimal.style.display="flex";
     errorNomAnimal.innerHTML = "merci d'ecrire juste des lettres alphabétiques";
     document.getElementById("nomAnimal").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -152,6 +156,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
 
   //validate pays
   if (!validateString(pays)) {
+    errorPays.style.display="flex";
     errorPays.innerHTML = "merci d'ecrire juste des lettres alphabétiques";
     document.getElementById("pays").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -164,6 +169,7 @@ document.getElementById('ajouterAnimal').addEventListener('click', (e) => {
   }
   //validate age
   if (isNaN(age) || age.length == 0 || age<0) {
+    errorAge.style.display="flex";
     errorAge.innerHTML = "merci d'ecrire juste des nombres positifs";
     document.getElementById("age").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -278,18 +284,18 @@ document.getElementById('modifierAnimal').addEventListener('click', (e1) => {
 
 
 //recherche function
-// let nomAnimal = Array.from(document.querySelectorAll("td[data-label='Nom']"));
+ let nomAnimal = Array.from(document.querySelectorAll("td[data-label='Nom']"));
 
-// document.getElementById('rechercher').addEventListener('keyup', (e) => {
-//   nomAnimal.map(el => {
-//       if (el.innerHTML.toLowerCase().search(e.target.value.toLowerCase()) == -1) {
-//           el.parentElement.style.display = 'none';
-//       }
-//       else {
-//         el.parentElement.style.display = 'flex';     
-//     }
-//   })
-// })
+document.getElementById('searchAnimal').addEventListener('keyup', (e) => {
+  nomAnimal.map(el => {
+      if (el.innerHTML.toLowerCase().search(e.target.value.toLowerCase()) == -1) {
+          el.parentElement.style.display = 'none';
+      }
+      else {
+        el.parentElement.style.display = '';     
+    }
+  })
+})
 
 
 document.getElementById('triButton').addEventListener('click', (e1) => {
@@ -299,9 +305,6 @@ document.getElementById('triButton').addEventListener('click', (e1) => {
 })
 
 
-//statestic
 
-
-////
 
 

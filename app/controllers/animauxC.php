@@ -230,22 +230,9 @@ class animauxC extends Controller
     {
         $tab = $this->animauxModel->triID();
         $data = [
-            'tab' => '',
-            'stable' => '',
-            'menace' => '',
-            'endanger' => ''
- 
+            'tab' => ''
         ];
-        //stat elements
-
-        $stable = $this->animauxModel->getStable();
-        $data['stable'] = $stable[0][0];
-
-        $menace = $this->animauxModel->getMenace();
-        $data['menace'] = $menace[0][0];
-
-        $endanger = $this->animauxModel->getEndanger();
-        $data['endanger'] = $endanger[0][0];
+    
 
         //
         foreach ($tab as $key => $value) {
@@ -270,27 +257,12 @@ class animauxC extends Controller
     {
         $tab = $this->animauxModel->triAge();
         $data = [
-            'tab' => '',
-            'stable' => '',
-            'menace' => '',
-            'endanger' => ''
+            'tab' => ''
  
         ];
-        //stat elements
-
-        $stable = $this->animauxModel->getStable();
-        $data['stable'] = $stable[0][0];
-
-        $menace = $this->animauxModel->getMenace();
-        $data['menace'] = $menace[0][0];
-
-        $endanger = $this->animauxModel->getEndanger();
-        $data['endanger'] = $endanger[0][0];
-
-        //
 
         foreach ($tab as $key => $value) {
-            $data['tab'] .= '<tr class="tblRows" style="display:flex;" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
+            $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
             <td>' . $value[0] . '</td>
             <td data-label="Nom">' . $value[1] . '</td>
             <td>' . $value[2] . '</td>
@@ -311,28 +283,12 @@ class animauxC extends Controller
     {
         $tab = $this->animauxModel->triNomAnimal();
         $data = [
-            'tab' => '',
-            'stable' => '',
-            'menace' => '',
-            'endanger' => ''
- 
+            'tab' => ''
         ];
-        //stat elements
-
-        $stable = $this->animauxModel->getStable();
-        $data['stable'] = $stable[0][0];
-
-        $menace = $this->animauxModel->getMenace();
-        $data['menace'] = $menace[0][0];
-
-        $endanger = $this->animauxModel->getEndanger();
-        $data['endanger'] = $endanger[0][0];
-
-        //
         foreach ($tab as $key => $value) {
             $data['tab'] .= '<tr class="tblRows" data=' . $value[0] . "-" . $value[1] . "-" . $value[2] . "-" . $value[3] . "-" . $value[4] . "-" . $value[5] . "-" . $value[6] . "-" . $value[7] . '>
-            <td>' . $value[0] . '</td>
-            <td data-label="Nom">' . $value[1] . '</td>
+            <td data-label="Nom">' . $value[0] . '</td>
+            <td >' . $value[1] . '</td>
             <td>' . $value[2] . '</td>
             <td>' . $value[3] . '</td>
             <td>' . $value[4] . '</td>

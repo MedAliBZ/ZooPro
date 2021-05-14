@@ -151,19 +151,17 @@
 }
 
 .searchCss {
-  border: solid 1px #018171;
-  width: 130px;
+  border: transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   background-color: transparent;
   margin: 10px 0;
   height: 50px;
-  border-radius: 40px;
   padding: 0 0.7rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 80% 20%;
-      grid-template-columns: 80% 20%;
-  position: relative;
-  margin-left: 89%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .searchCss input {
@@ -174,15 +172,6 @@
   font-weight: 300;
   font-size: 0.9rem;
   color: var(--tc);
-}
-
-.searchCss i {
-  text-align: center;
-  line-height: 55px;
-  color: #acacac;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  font-size: 1.1rem;
 }
 
 #addButtonToList {
@@ -250,10 +239,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
 }
 
 .containerTri {

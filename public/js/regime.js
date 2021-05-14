@@ -81,6 +81,7 @@ document.getElementById('ajouterRegime').addEventListener('click', (e) => {
   let index = regimeAlimentaire.selectedIndex;
 
   if (index == 0) {
+    errorRegimeAlimentaire.style.display="flex";
     errorRegimeAlimentaire.innerHTML = "merci de choisir un regime alimentaire";
     document.getElementById("regimeAlimentaire").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -91,6 +92,7 @@ document.getElementById('ajouterRegime').addEventListener('click', (e) => {
   }
 
   if (!validateString(typeNourriture)) {
+    errorTypeNourriture.style.display="flex";
     errorTypeNourriture.innerHTML = "merci d'ecrire juste des lettres alphabétiques";
     document.getElementById("typeNourriture").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -101,6 +103,7 @@ document.getElementById('ajouterRegime').addEventListener('click', (e) => {
   }
 
   if (isNaN(quantiteParRepas) || quantiteParRepas.length == 0 || quantiteParRepas<0 ) {
+    errorQuantiteParRepas.style.display="flex";
     errorQuantiteParRepas.innerHTML = "merci d'ecrire juste des nombres positifs";
     document.getElementById("quantiteParRepas").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -110,6 +113,7 @@ document.getElementById('ajouterRegime').addEventListener('click', (e) => {
     document.getElementById("quantiteParRepas").parentElement.style.border = "solid 1px #e8e8e9";
   }
   if (isNaN(nombre_de_repas) || nombre_de_repas.length == 0 || nombre_de_repas<0) {
+    errorNombreDeRepas.style.display="flex";
     errorNombreDeRepas.innerHTML = "merci d'ecrire juste des nombres positifs";
     document.getElementById("nombre_de_repas").parentElement.style.border = "1px solid red";
     e.preventDefault();
@@ -220,4 +224,17 @@ document.getElementById('triButton').addEventListener('click', (e1) => {
 
   document.getElementById('triElements').style.display = 'flex';
 
+})
+
+let nomRegime = Array.from(document.querySelectorAll("td[data-label='Nom']"));
+
+document.getElementById('searchRegime').addEventListener('keyup', (e) => {
+  nomRegime.map(el => {
+      if (el.innerHTML.toLowerCase().search(e.target.value.toLowerCase()) == -1) {
+          el.parentElement.style.display = 'none';
+      }
+      else {
+        el.parentElement.style.display = '';     
+    }
+  })
 })

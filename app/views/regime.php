@@ -133,14 +133,18 @@ if (!isset($data['tab'])) {
                 <div class="containerTriAjout">
 
                     <div class="containerTri">
-                        <button class="buttonStyle" id="triButton">Trier</button>
+                        <button class="buttonStyle" id="triButton" style="width: 70px;">Trier</button>
                         <div class="triElements" id="triElements">
                             <a href="<?php echo URLROOT; ?>/regimeC/trierParID" id="triId">Par ID</a>
                             <a href="<?php echo URLROOT; ?>/regimeC/trierParNombreRepas" id="triNombreRepas">Par nombre de repas </a>
                             <a href="<?php echo URLROOT; ?>/regimeC/trierParNomRegime" id="triName">Par Nom Régime</a>
                         </div>
                     </div>
-                    <button class="buttonStyle" id="addButtonToList" onclick="openFormAjouter()">Ajouter un régime</button>
+                    <div class="input-field" style="position: relative;width:60%;margin-left:auto;">
+                        <i class="fas fa-search"></i>
+                        <input style="overflow: hidden;" id="searchRegime" type="text" placeholder="Rechercher par nom" name="Rechercher" />
+                    </div>
+                    <button class="buttonStyle" id="addButtonToList" style="margin-left:auto;" onclick="openFormAjouter()">Ajouter un régime</button>
 
                 </div>
                 <div class="form-popup" id="myForm">

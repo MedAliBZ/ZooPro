@@ -128,7 +128,32 @@ if (!isset($data['tab'])) {
                                                 echo $data["errorAdd"];
                                             } ?></div>
                 <div class="error-table"></div>
-                <button class="btn" id="ajouterType">Ajouter</button>
+
+                 <div style="display: flex;justify-content: space-between;">
+                    <button class="triButton"><i class="fas fa-align-left"></i>
+                        <!-- <p>Filtres</p> -->
+                    </button>
+                    <div class="input-field" style="position: relative;width:60%;">
+                        <i class="fas fa-search"></i>
+                        <input style="overflow: hidden;" id="rechercher" type="text" placeholder="Rechercher par nom" name="Rechercher" />
+                    </div>
+                    <button class="btn" id="ajouterType">Ajouter</button>
+                  </div>
+
+                  <div class="triAndFilter">
+                    <div class="card" style="position: relative;display:flex;justify-content: space-evenly;">
+                        <div class="tri">
+                            <h3>Tri</h3>
+                            <a href="<?php echo URLROOT; ?>/typeEnclos/trier/ID">ID</a>
+                            <a href="<?php echo URLROOT; ?>/typeEnclos/trier/LABEL">LABEL</a>
+                            <a href="<?php echo URLROOT; ?>/typeEnclos/trier/STRUCTURE">STRUCTURE</a>
+                        </div>
+                        <div class="removeFT">
+                            <a style="font-weight: 800;" href="<?php echo URLROOT; ?>/typeEnclos/afficherList">Supprimer les TRIS</a>
+                        </div>
+                    </div>
+                </div>
+                
                 <ul class="responsive-table">
                     <li class="table-header">
                         <div class="col col-1">ID</div>

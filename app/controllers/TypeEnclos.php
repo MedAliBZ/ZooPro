@@ -133,7 +133,33 @@ class TypeEnclos extends Controller
               $this->view('typeEnclos', $data);
         }
     }
+
+     public function trier($case = '')
+    {
+        $column = array("a" => "ID", "b" => "LABEL", "c" => "STRUCTURE");
+        if (array_search($case, $column)) {
+            $tab = $this->typeModel->tri($case);
+            $data = [
+                'tab' => ''
+            ];}
+
+
+                   foreach ($tab as $key => $value) {
+                    $data['tab'] .= '<li class="table-row">
+                    <div class="col col-1" data-label="ID">' . $value[0] . '</div>
+                    <div class="col col-2" data-label="Label">' . $value[1] . '</div>
+                    <div class="col col-3" data-label="Structure">' . $value[2] . '</div>
+                    <div class="col col-4">
+                        <div class="col-buttons">
+                            <button class="tab-btn"><i data-feather="edit"></i></button>
+                        </div>
+                    </div>
+                   </li>';}
+
+        $this->view('typeEnclos', $data);
+    }
 }
+
 
 
      

@@ -171,4 +171,11 @@ class TypeEnclo
             return false;
         }
     }
+
+    public function tri($case)
+    {
+        $this->db->query('SELECT * FROM typeEnclos ORDER BY ' . $case);
+
+        return $this->db->resultSet();
+    }
 }

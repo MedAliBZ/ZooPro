@@ -185,3 +185,36 @@ closeP.addEventListener('click', () => {
     popup.style.opacity = 0;
 })
 
+document.querySelector('.triButton').addEventListener('click', () => {
+    document.querySelector('.triAndFilter').classList.toggle('open');
+})
+
+let usernames = Array.from(document.querySelectorAll("div[data-label='Label']"));
+
+
+document.getElementById('rechercher').addEventListener('keyup', (e) => {
+    usernames.map(el => {
+        if (el.innerHTML.toLowerCase().search(e.target.value.toLowerCase()) == -1) {
+            el.parentElement.style.display = 'none';
+        }
+        else {
+            if (window.innerWidth > 1050)
+                el.parentElement.style.display = 'flex';
+            else
+                el.parentElement.style.display = 'block';
+        }
+    })
+})
+
+window.addEventListener('resize', () => {
+    document.getElementById('rechercher').value = '';
+    usernames.map(el => {
+        if (window.innerWidth > 1050)
+            el.parentElement.style.display = 'flex';
+        else
+            el.parentElement.style.display = 'block';
+    });
+
+}); 
+
+

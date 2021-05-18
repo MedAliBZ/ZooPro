@@ -4,25 +4,39 @@
   padding: 0 10px;
   margin-top: 3%;
 }
+
 .container .error-table {
   text-align: center;
   color: red;
 }
+
 .col-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
 }
+
 .responsive-table li {
   border-radius: 3px;
   padding: 25px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 10px;
   color: var(--tc);
 }
+
 .responsive-table .table-header {
   color: white;
   background-color: var(--accent);
@@ -31,36 +45,59 @@
   letter-spacing: 0.03em;
   margin-top: 2%;
 }
+
 .responsive-table .table-row {
   background-color: transparent;
   border-radius: 5px;
   border: solid 2px #e8e8e9;
 }
+
 .responsive-table .col-1 {
-  flex-basis: 10%;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
+
 .responsive-table .col-2 {
-  flex-basis: 20%;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
 }
+
 .responsive-table .col-3 {
-  flex-basis: 18%;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
 }
+
 .responsive-table .col-4 {
-  flex-basis: 15%;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
 }
+
 .responsive-table .col-5 {
-  flex-basis: 25%;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
 }
+
 .responsive-table .col-6 {
-  flex-basis: 15%;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
+
 .responsive-table .col-7 {
-  flex-basis: 5%;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
+
+.responsive-table .col-7 {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+}
+
 .responsive-table input {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
 }
+
 @media all and (max-width: 1050px) {
   .responsive-table .table-header {
     display: none;
@@ -69,9 +106,12 @@
     display: block;
   }
   .responsive-table .col {
-    flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
   }
   .responsive-table .col {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 10px 0;
   }
@@ -79,10 +119,12 @@
     color: var(--accent);
     padding-right: 10px;
     content: attr(data-label);
-    flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
     text-align: right;
   }
 }
+
 .tab-btn {
   cursor: pointer;
   background: transparent;
@@ -90,9 +132,11 @@
   border: 0;
   outline: none;
 }
+
 .tab-btn:hover {
   color: var(--accent);
 }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -100,11 +144,13 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
   z-index: 2;
 }
+
 .popup {
   margin: 70px auto;
   padding: 20px;
@@ -115,71 +161,111 @@
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
+  -webkit-transition: 1s ease-in-out;
   transition: 1s ease-in-out;
   color: var(--tc);
 }
+
 .popup h2 {
   margin-top: 0;
   text-align: center;
 }
+
 .popup .close {
   position: absolute;
   top: 10px;
   right: 30px;
+  -webkit-transition: all 200ms;
   transition: all 200ms;
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
   color: var(--accent);
 }
+
 .popup .content {
   padding: 10px;
   overflow: auto;
 }
+
 .popup .content .buttonsPUpdate {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-left: calc(100% - 310px);
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .popup .content .buttonsPUpdate .btn[value="Supprimer"] {
   background-color: #d12323 !important;
 }
+
 .popup .content .buttonsP {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-left: calc(100% - 150px);
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .popup .content .btn {
   width: 150px;
 }
+
 @media screen and (max-width: 700px) {
   .popup {
     width: 70%;
   }
 }
+
 .radio-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* input */
+  /* .design */
+  /* .text */
+  /* checked state */
+  /* other states */
 }
+
 .radio-field label {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   margin: 12px 0;
   cursor: pointer;
   position: relative;
 }
+
 .radio-field input {
   opacity: 0;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   z-index: -1;
 }
+
 .radio-field .design {
   width: 16px;
   height: 16px;
@@ -188,6 +274,7 @@
   margin-right: 16px;
   position: relative;
 }
+
 .radio-field .design::before,
 .radio-field .design::after {
   content: "";
@@ -197,173 +284,53 @@
   border-radius: inherit;
   position: absolute;
   -webkit-transform: scale(0);
-  transform: scale(0);
+          transform: scale(0);
   -webkit-transform-origin: center center;
-  transform-origin: center center;
+          transform-origin: center center;
 }
+
 .radio-field .design:before {
   background: var(--tc);
 }
+
 .radio-field .design::after {
   background: var(--accent);
 }
+
 .radio-field .text {
   color: var(--tc);
   font-weight: bold;
 }
+
 .radio-field input:checked + .design::before {
   opacity: 1;
   width: 11px;
   height: 11px;
   -webkit-transform: translate(-50%, -50%) scale(0.7);
-  transform: translate(-50%, -50%) scale(0.7);
+          transform: translate(-50%, -50%) scale(0.7);
   left: 50%;
   top: 50%;
 }
+
 .radio-field input:hover + .design,
 .radio-field input:focus + .design {
   border: 1px solid var(--accent);
 }
+
 .radio-field input:hover + .design:before,
 .radio-field input:focus + .design:before {
   background: var(--accent);
 }
+
 .radio-field input:hover ~ .text {
   color: var(--accent);
 }
+
 .radio-field input:focus + .design::after,
 .radio-field input:active + .design::after {
   opacity: 0.1;
   -webkit-transform: scale(2.6);
-  transform: scale(2.6);
-}
-
-#errorMdAppellation,
-#errorMdLocalisation,
-#errorMdTaille,
-#errorMdCD,
-#errorMdCM {
-  color: red;
-  text-align: center;
-}
-
-#errorAjAppellation,
-#errorAjLocalisation,
-#errorAjTaille,
-#errorAjCD,
-#errorAjCM,
-#errorAjTypeEnclos,
-#errorAjPhoto {
-  color: red;
-  text-align: center;
-}
-.input-fieldSearch {
-  border: solid 1px #e8e8e9;
-  max-width: 50px;
-  min-width: 15%;
-  background-color: transparent;
-  margin: 10px 0;
-  height: 50px;
-  border-radius: 25px;
-  display: grid;
-  grid-template-columns: 25px 89%;
-  padding: 0 0.4rem;
-  position: relative;
-  font-size: 20px;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.btn {
-  width: 150px;
-  background-color: var(--accent);
-  border: none;
-  outline: none;
-  height: 49px;
-  border-radius: 49px;
-  color: #fff;
-  margin: 10px 10px;
-  font-weight: 400;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.formCss {
-  border: solid 1px #e8e8e9;
-  width: 100%;
-  background-color: transparent;
-  margin: 20px 0;
-  height: 60px;
-  border-radius: 40px;
-  padding: 0 0.2rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 100%;
-  grid-template-columns: 100%;
-  position: relative;
-}
-
-#typeEnclos-popupA {
-  background: none;
-  outline: none;
-  border: none;
-  line-height: 1;
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: var(--tc);
-}
-
-#message-popups {
-  background: none;
-  outline: none;
-  border: none;
-  line-height: 3;
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: var(--tc);
-}
-
-#errorSendNom,
-#errorSendEmail,
-#errorSendSujet,
-#errorSendMessage {
-  color: red;
-  text-align: center;
-}
-
-@media print {
-  .sidebar-menu {
-    display: none;
-  }
-  .input-fieldSearch {
-    display: none;
-  }
-  .btn {
-    display: none;
-  }
-  #themeButton {
-    display: none;
-  }
-  .input-field {
-    display: none;
-  }
-  .triButton {
-    display: none;
-  }
-  .fas {
-    display: none;
-  }
-  .fa-align-left {
-    display: none;
-  }
-  .col-buttons {
-    display: none;
-  }
-
-  .tab-btn {
-    display: none;
-  }
+          transform: scale(2.6);
 }
 
 .radio-field #donutchart {
@@ -399,11 +366,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 5px;
 }
 
@@ -423,20 +390,18 @@
 }
 
 .tri,
-.filter,
-.removeFT {
+.filter, .removeFT {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .tri a,
-.filter a,
-.removeFT a {
+.filter a, .removeFT a {
   text-decoration: none;
   cursor: pointer;
   color: var(--tca);
@@ -445,14 +410,12 @@
 }
 
 .tri a:hover,
-.filter a:hover,
-.removeFT a:hover {
+.filter a:hover, .removeFT a:hover {
   color: var(--accent);
 }
 
 .tri h3,
-.filter h3,
-.removeFT h3 {
+.filter h3, .removeFT h3 {
   border-bottom: 2px solid var(--accent);
   margin-bottom: 12px;
   color: var(--accent);

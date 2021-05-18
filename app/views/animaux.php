@@ -138,7 +138,7 @@ if (!isset($data['tab'])) {
                         </div>
                     </div>
                   
-                    <div class="input-field" style="position: relative;width:60%;margin-left:auto;">
+                    <div class="input-field" id="searchAnimal1" style="position: relative;width:60%;margin-left:auto;">
                         <i class="fas fa-search"></i>
                         <input style="overflow: hidden;" id="searchAnimal" type="text" placeholder="Rechercher par nom" name="Rechercher" />
                     </div>

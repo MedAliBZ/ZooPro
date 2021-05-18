@@ -140,7 +140,7 @@ if (!isset($data['tab'])) {
                             <a href="<?php echo URLROOT; ?>/regimeC/trierParNomRegime" id="triName">Par Nom Régime</a>
                         </div>
                     </div>
-                    <div class="input-field" style="position: relative;width:60%;margin-left:auto;">
+                    <div class="input-field" id="searchRegime1" style="position: relative;width:60%;margin-left:auto;">
                         <i class="fas fa-search"></i>
                         <input style="overflow: hidden;" id="searchRegime" type="text" placeholder="Rechercher par nom" name="Rechercher" />
                     </div>

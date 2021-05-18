@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 08:55 PM
+-- Generation Time: May 18, 2021 at 08:19 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -45,9 +45,33 @@ CREATE TABLE `animaux` (
 --
 
 INSERT INTO `animaux` (`id`, `nomAnimal`, `type`, `age`, `pays`, `status`, `regimeAlimentaire`, `image`, `updated_by`, `id_enclos`) VALUES
-(16, 'bird', 'oiseaux', 1, 'afrique', 'Menacé', 27, 'bird.png', 34, 5),
-(17, 'koala', 'mammifere', 2, 'afrique', 'endanger', 20, 'koala.png', NULL, 6),
-(18, 'giraffe', 'amphibiens', 2, 'afrique', 'stable', 23, 'giraffe.png', 34, 8);
+(16, 'bird', 'oiseaux', 1, 'afrique', 'Menacé', 27, 'bird.png', NULL, 5),
+(18, 'giraffe', 'amphibiens', 2, 'afrique', 'stable', 23, 'giraffe.png', NULL, 8),
+(25, 'wolf', 'mammifere', 2, 'australia', 'Menacé', 23, 'wolf.jpg', NULL, NULL),
+(26, 'bear', 'mammifere', 3, 'afrique', 'stable', 24, 'bear.jpg', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id_comment` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `userName` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `animalID` int(11) DEFAULT NULL,
+  `imageUser` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT 'default.jpg'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id_comment`, `comment`, `userName`, `animalID`, `imageUser`) VALUES
+(39, 'un bon animal', 'meriam', 25, 'giraffe.png'),
+(40, 'adorable', 'meriam', 18, 'giraffe.png'),
+(41, 'magnifique', 'meriammhedhbi', 18, 'bird.png');
 
 -- --------------------------------------------------------
 
@@ -214,7 +238,7 @@ CREATE TABLE `plante` (
 INSERT INTO `plante` (`idP`, `nomP`, `longevite`, `origine`, `taille`, `famille`, `image`, `idespece`, `id_user`) VALUES
 (7, 'succulente', 12, 'amazon', 12, 'arbre', 'anthurium.jfif', 4, NULL),
 (8, 'arbustre', 12, 'sfax', 2, 'fshfsh', 'cactus.jfif', 5, NULL),
-(9, 'fleur', 250, 'sggfgdh', 2, 'arbre', 'anthurium.jfif', 4, 34),
+(9, 'fleur', 250, 'sggfgdh', 2, 'arbre', 'anthurium.jfif', 4, NULL),
 (10, 'olive', 120, 'amazon', 3, 'arbre', 'cactus.jfif', 3, NULL);
 
 -- --------------------------------------------------------
@@ -234,8 +258,8 @@ CREATE TABLE `reclamation` (
 --
 
 INSERT INTO `reclamation` (`id`, `idUser`, `reclamation`) VALUES
-(1, 34, 'gggggggggggggggggg'),
-(2, 34, 'cet animal est en danger');
+(5, 32, 'c&#39;est animal est en danger'),
+(6, 32, 'l enclos de cet animal n est pas propre');
 
 -- --------------------------------------------------------
 
@@ -363,9 +387,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`, `image`) 
 (30, 'haziyama', '$2y$10$qiMA3JazKMntZ4OLYRNLOuqdxAUr3Y6mSchxJrniJS6hKWp/pMboa', 'sdqs@dq.com', 0, 'default.jpg'),
 (40, 'hejer', '$2y$10$4L47GjCt.AZQ3ZsG65z.qe8pGDJ/Odb8iaJLRrOYIYCSFIAQUgILS', 'hejer.jaouadi@esprit.tn', 1, 'default.jpg'),
 (37, 'MAB', '$2y$10$lid9LN.TiTFLTr6I.pZ4W.HBXj9vpa4YS91WAdRWXWjYdPUIOjjEe', 'bouzaiene.dali@gmail.com', 1, 'githubpic.jpg'),
-(34, 'meriam', '$2y$10$G9ORo/tVQqgqKYKp4KDjs.Xwb0FvfiXNgPMzEpGXXlf.Sy7pKor4i', 'meriam.mhedhbi@esprit.tn', 1, 'default.jpg'),
-(32, 'meriammhedhbi', '$2y$10$GGgbJkvGgOF5XAnREoXm1eB1c3OAuQjOYkANViGK89lpX7Hu7O2oS', 'meriamMhedhbi1@gmail.com', 1, 'default.jpg'),
-(36, 'meriamR', '$2y$10$YCjsWtnETjvb/mx.rRdNuOdufXNenvOGH4LX9FL7SBHG.5x/0/Njy', 'recovery.mary2000@gmail.com', 0, 'default.jpg'),
+(41, 'meriam', '$2y$10$XxZjE9OssvtxRgC5VCLh1uEx2vpDRmZRg83NRcblJ/Ty9dkSSI.lm', 'recovery.mary2000@gmail.com', 1, 'giraffe.png'),
+(32, 'meriammhedhbi', '$2y$10$GGgbJkvGgOF5XAnREoXm1eB1c3OAuQjOYkANViGK89lpX7Hu7O2oS', 'meriam.mhedhbi@esprit.tn', 1, 'bird.png'),
 (22, 'realMAB', '$2y$10$ZgAYwxSdMFPmPoK6xbVHbup.nKWLqgR8uOfj7iGNOEUAF.61g4Aau', 'dbouzaiene@gmail.com', 1, 'default.jpg'),
 (39, 'sq', '$2y$10$ITyEPmv5HXiQIwhQ46cH8uofefhmeSGhODmU8xunSRXprl2n6HfsC', 'Aziza.sliti@gmail.com', 1, 'default.jpg'),
 (13, 'test2', '$2y$10$QcWzIn1.jxRekkHG6iphM.Tnl1K7NRDGgENMfORpvutg2DF0qEsji', 'azez@qsd.com', 1, 'default.jpg');
@@ -382,6 +405,15 @@ ALTER TABLE `animaux`
   ADD KEY `foreignKey` (`regimeAlimentaire`),
   ADD KEY `foreignKey1` (`updated_by`),
   ADD KEY `fk_Enclos` (`id_enclos`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `fk_username` (`userName`),
+  ADD KEY `fk_image` (`imageUser`),
+  ADD KEY `fk_animalid` (`animalID`);
 
 --
 -- Indexes for table `enclos`
@@ -480,7 +512,8 @@ ALTER TABLE `typeenclos`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`),
   ADD KEY `id` (`id`),
-  ADD KEY `fk_foreign_role_id` (`role_id`);
+  ADD KEY `fk_foreign_role_id` (`role_id`),
+  ADD KEY `image` (`image`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -490,7 +523,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `animaux`
 --
 ALTER TABLE `animaux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `enclos`
@@ -538,7 +577,7 @@ ALTER TABLE `plante`
 -- AUTO_INCREMENT for table `reclamation`
 --
 ALTER TABLE `reclamation`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `regimealimentaire`
@@ -562,7 +601,7 @@ ALTER TABLE `sponsorisation`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
@@ -575,6 +614,14 @@ ALTER TABLE `animaux`
   ADD CONSTRAINT `fk_Enclos` FOREIGN KEY (`id_enclos`) REFERENCES `enclos` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `foreignKey` FOREIGN KEY (`regimeAlimentaire`) REFERENCES `regimealimentaire` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `foreignKey1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `fk_animalid` FOREIGN KEY (`animalID`) REFERENCES `animaux` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_image` FOREIGN KEY (`imageUser`) REFERENCES `users` (`image`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_username` FOREIGN KEY (`userName`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `enclos`

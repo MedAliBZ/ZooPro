@@ -376,5 +376,11 @@ text {
   #modifiericon {
     display: none !important;
   }
+  #searchAnimal1 {
+    display: none !important;
+  }
+  #searchRegime1 {
+    display: none !important;
+  }
 }
 /*# sourceMappingURL=animaux.css.map */

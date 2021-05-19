@@ -119,7 +119,6 @@ if (!isset($data['tab']))
 					<div style="display: flex;flex-direction:column;">
 						<label  for="file" class="label-file">Choisir une image</label>
 						<input type="file" id="file" name="file" class="input-file"	accept="image/x-png,image/gif,image/jpeg">
-
 					</div>
 				</div>
 				<div style="margin-top: 10px;display:flex;">

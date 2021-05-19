@@ -35,6 +35,7 @@ document.querySelector('#ajouterPopup').addEventListener('click',(e)=>{
   }
   else
     {
+      resetErrorsPopUp();
      document.getElementById('errorAjnom').innerHTML='';
      nomP.parentElement.style.border='solid 1px #e8e8e9'; 
     }
@@ -176,7 +177,7 @@ function openFormAjouter() {
       
      
   });
-
+  resetErrorsPopUp();
   }
 
   

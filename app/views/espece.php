@@ -151,26 +151,26 @@ if (!isset($_SESSION['id']))
             'google_translate_element'
         );
     }
-</script>
-<script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                </script>
+                <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
 
-<p  >                                              Le temps en ce moment :   </p>
+            <p>                                              Le temps en ce moment :   </p>
 
-<p id="demo"></p>
+            <p id="demo"></p>
 
 
-<script>
-var myVar = setInterval(myTimer, 1000);
+                <script>
+                var myVar = setInterval(myTimer, 1000);
 
-function myTimer() {
-  var d = new Date();
-  var t = d.toLocaleTimeString();
-  document.getElementById("demo").innerHTML = t;
-}
+                function myTimer() {
+                var d = new Date();
+                var t = d.toLocaleTimeString();
+                document.getElementById("demo").innerHTML = t;
+                }
 
-</script>
+                </script>
 
            
             
@@ -190,7 +190,7 @@ function myTimer() {
                 
                 <form class="content" action="<?php echo URLROOT; ?>/especeC/getespece" method="POST">
                  <input class="btn" type="submit" value="rechercher" name="search_espece" style="float: right;" />
-                 <input type="text" placeholder="Enter id" name="idE" autocomplete="off" style="float: right;" class="input-fieldSearch" />
+                 <input type="text" placeholder="Entrer id" name="idE" autocomplete="off" style="float: right;" class="input-fieldSearch" />
                  </form>
                 
                 <form class="content" action="<?php echo URLROOT; ?>/especeC/afficherList" method="POST">
@@ -218,12 +218,13 @@ function myTimer() {
                         
                             <input placeholder="Nom" type="text" id="nomE" name="nomE" >
                         </div>
-                        <div id="errorAjnom"></div>
+                        <div style="color:red" id="errorAjnom"></div>
                         <div class="formCss">
                             <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur" >
                         </div>
                        
-                        <div id="errorAjhauteur"></div>
+                        <div style="color:red"  id="errorAjhauteur"></div>
+
                         <input type="submit" class="buttonStyle" value="Ajouter" id="ajouterPopup">
                         <button type="button" class="buttonStyle" onclick="closeForm()">fermer</button>
 

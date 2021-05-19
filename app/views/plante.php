@@ -180,7 +180,7 @@ function myTimer() {
 
                 <form class="content" action="<?php echo URLROOT; ?>/planteC/getplante" method="POST">
                  <input class="btn" type="submit" value="Rechercher" name="search_plante" style="float: right;" />
-                 <input type="text" placeholder="Enter id" name="idP" autocomplete="off" style="float: right;" class="input-fieldSearch" />
+                 <input class="input-fieldSearch" type="text" placeholder="Entrer id" name="idP" autocomplete="off" style="float: right;"  />
                  </form>
                 
                 <form class="content" action="<?php echo URLROOT; ?>/planteC/afficherList" method="POST">
@@ -208,30 +208,30 @@ function myTimer() {
                             <input placeholder="Nom" type="text" id="nomP" name="nomP" >
                         </div>
 
-                        <div id="errorAjnom"></div>
+                        <div style="color:red"  id="errorAjnom"></div>
                     
                         <div class="formCss">
                             <input placeholder="Longévité(ans)" type="number" id="longevite" name="longevite" >
                         </div>
 
-                        <div id="errorAjlongevite"></div>
+                        <div style="color:red" id="errorAjlongevite"></div>
 
                         <div class="formCss">
                             <input placeholder="Origine géographique" type="text" id="origine" name="origine" >
                         </div>
                         
-                        <div id="errorAjorigine"></div>
+                        <div style="color:red" id="errorAjorigine"></div>
 
                         <div class="formCss">
                             <input type="number" placeholder="Taille(m)" name="taille" id="taille" />
                         </div>
-                        <div id="errorAjtaille"></div>
+                        <div style="color:red"  id="errorAjtaille"></div>
 
                         <div class="formCss">
                             <input type="text" placeholder="Famille" name="famille" id="famille" />
                         </div>
 
-                        <div id="errorAjfamille"></div>
+                        <div style="color:red" id="errorAjfamille"></div>
 
                         <div class="formCss">
                             <input type="file" name="image" id="image" required>

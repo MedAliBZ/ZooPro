@@ -131,10 +131,7 @@ class planteC extends Controller
 
 
        
-        // query select * from table visiteur 
-        // $temp =  visiteur->nombre ;
-        // $temp++;
-        // query update visiteur set nombre=! $temp 
+      
     }
 
 

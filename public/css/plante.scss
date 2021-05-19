@@ -73,6 +73,47 @@
         } 
       }
 
+
+      .input-fieldSearch
+      {
+        border: solid 1px  rgb(1, 129, 113);;
+        width: 420px;
+        background-color: transparent;
+        margin: 10px 0;
+        height: 50px;
+        border-radius: 40px;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns:  80% 20%;
+        position: relative; 
+        margin-left: 2%;
+        margin-right: 2%;
+      
+      }
+      .input-fieldSearch input
+      {
+        background: none;
+        outline: none;
+        border: none;
+        line-height: 1;
+        font-weight: 300;
+        font-size: 0.9rem;
+        color: var(--tc);
+        text-align: center;
+      
+      }
+      .input-fieldSearch i{
+      text-align: center;
+      line-height: 55px;
+      color: #acacac;
+      transition: 0.5s;
+      font-size: 1.1rem;
+      }
+      
+     .btn{
+  margin-left: 1%;
+  margin-right:1%;
+   }
     .buttonStyle {
         width: 20%;
         background-color: var(--accent);
@@ -141,41 +182,7 @@
   .styled-table td {
     padding: 12px 15px;
   }
-  
-  .searchCss 
-  {
-    border: solid 1px  rgb(1, 129, 113);;
-    width: 130px;
-    background-color: transparent;
-    margin: 10px 0;
-    height: 50px;
-    border-radius: 40px;
-    padding: 0 0.7rem;
-    display: grid;
-    grid-template-columns:  80% 20%;
-    position: relative; 
-    margin-left: 89%;
-  
-  }
-  .searchCss input
-  {
-    background: none;
-    outline: none;
-    border: none;
-    line-height: 1;
-    font-weight: 300;
-    font-size: 0.9rem;
-    color: var(--tc);
-  
-  }
-  .searchCss i{
-  text-align: center;
-  line-height: 55px;
-  color: #acacac;
-  transition: 0.5s;
-  font-size: 1.1rem;
-  }
-  
+
   #addButtonToList
   {
     margin-left: 95%;
@@ -230,3 +237,4 @@
       color: rgb(1, 129, 113);
     } 
   }
+

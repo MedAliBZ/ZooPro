@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 08:19 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Hôte : 127.0.0.1
+-- Généré le : jeu. 20 mai 2021 à 12:12
+-- Version du serveur :  10.4.18-MariaDB
+-- Version de PHP : 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `integration`
+-- Base de données : `integration`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `animaux`
+-- Structure de la table `animaux`
 --
 
 CREATE TABLE `animaux` (
@@ -41,42 +41,39 @@ CREATE TABLE `animaux` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `animaux`
+-- Déchargement des données de la table `animaux`
 --
 
 INSERT INTO `animaux` (`id`, `nomAnimal`, `type`, `age`, `pays`, `status`, `regimeAlimentaire`, `image`, `updated_by`, `id_enclos`) VALUES
 (16, 'bird', 'oiseaux', 1, 'afrique', 'Menacé', 27, 'bird.png', NULL, 5),
 (18, 'giraffe', 'amphibiens', 2, 'afrique', 'stable', 23, 'giraffe.png', NULL, 8),
 (25, 'wolf', 'mammifere', 2, 'australia', 'Menacé', 23, 'wolf.jpg', NULL, NULL),
-(26, 'bear', 'mammifere', 3, 'afrique', 'stable', 24, 'bear.jpg', NULL, NULL);
+(29, 'chameleon', 'reptiles', 2, 'afrique', 'endanger', 20, 'chameleon.png', 37, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Structure de la table `comments`
 --
 
 CREATE TABLE `comments` (
   `id_comment` int(11) NOT NULL,
   `comment` varchar(255) NOT NULL,
   `userName` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `animalID` int(11) DEFAULT NULL,
-  `imageUser` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT 'default.jpg'
+  `animalID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `comments`
+-- Déchargement des données de la table `comments`
 --
 
-INSERT INTO `comments` (`id_comment`, `comment`, `userName`, `animalID`, `imageUser`) VALUES
-(39, 'un bon animal', 'meriam', 25, 'giraffe.png'),
-(40, 'adorable', 'meriam', 18, 'giraffe.png'),
-(41, 'magnifique', 'meriammhedhbi', 18, 'bird.png');
+INSERT INTO `comments` (`id_comment`, `comment`, `userName`, `animalID`) VALUES
+(1, 'test', 'MAB', 18);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `enclos`
+-- Structure de la table `enclos`
 --
 
 CREATE TABLE `enclos` (
@@ -92,7 +89,7 @@ CREATE TABLE `enclos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `enclos`
+-- Déchargement des données de la table `enclos`
 --
 
 INSERT INTO `enclos` (`id`, `appellation`, `localisation`, `taille`, `dateConstruction`, `capaciteMaximale`, `typeEnclos`, `photo`, `updated_by`) VALUES
@@ -104,7 +101,7 @@ INSERT INTO `enclos` (`id`, `appellation`, `localisation`, `taille`, `dateConstr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `espece`
+-- Structure de la table `espece`
 --
 
 CREATE TABLE `espece` (
@@ -114,7 +111,7 @@ CREATE TABLE `espece` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `espece`
+-- Déchargement des données de la table `espece`
 --
 
 INSERT INTO `espece` (`idE`, `nomE`, `hauteur`) VALUES
@@ -127,7 +124,7 @@ INSERT INTO `espece` (`idE`, `nomE`, `hauteur`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Structure de la table `event`
 --
 
 CREATE TABLE `event` (
@@ -140,7 +137,7 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event`
+-- Déchargement des données de la table `event`
 --
 
 INSERT INTO `event` (`id`, `nom_event`, `date`, `nbre_place`, `photo`, `description`) VALUES
@@ -151,7 +148,7 @@ INSERT INTO `event` (`id`, `nom_event`, `date`, `nbre_place`, `photo`, `descript
 -- --------------------------------------------------------
 
 --
--- Table structure for table `participation`
+-- Structure de la table `participation`
 --
 
 CREATE TABLE `participation` (
@@ -164,7 +161,7 @@ CREATE TABLE `participation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_reset`
+-- Structure de la table `password_reset`
 --
 
 CREATE TABLE `password_reset` (
@@ -178,7 +175,7 @@ CREATE TABLE `password_reset` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personel`
+-- Structure de la table `personel`
 --
 
 CREATE TABLE `personel` (
@@ -192,7 +189,7 @@ CREATE TABLE `personel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `personel`
+-- Déchargement des données de la table `personel`
 --
 
 INSERT INTO `personel` (`id`, `cin`, `nom`, `prenom`, `date_de_naissance`, `salaire`, `updated_by`) VALUES
@@ -216,7 +213,7 @@ INSERT INTO `personel` (`id`, `cin`, `nom`, `prenom`, `date_de_naissance`, `sala
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plante`
+-- Structure de la table `plante`
 --
 
 CREATE TABLE `plante` (
@@ -232,7 +229,7 @@ CREATE TABLE `plante` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `plante`
+-- Déchargement des données de la table `plante`
 --
 
 INSERT INTO `plante` (`idP`, `nomP`, `longevite`, `origine`, `taille`, `famille`, `image`, `idespece`, `id_user`) VALUES
@@ -244,7 +241,7 @@ INSERT INTO `plante` (`idP`, `nomP`, `longevite`, `origine`, `taille`, `famille`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reclamation`
+-- Structure de la table `reclamation`
 --
 
 CREATE TABLE `reclamation` (
@@ -254,17 +251,22 @@ CREATE TABLE `reclamation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reclamation`
+-- Déchargement des données de la table `reclamation`
 --
 
 INSERT INTO `reclamation` (`id`, `idUser`, `reclamation`) VALUES
 (5, 32, 'c&#39;est animal est en danger'),
-(6, 32, 'l enclos de cet animal n est pas propre');
+(6, 32, 'l enclos de cet animal n est pas propre'),
+(7, 37, 'vgbhnj,qsdqsd'),
+(8, 37, ''),
+(9, 37, ''),
+(10, 37, 'qsdsqdesxdrfctvgybhunjik'),
+(11, 37, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `regimealimentaire`
+-- Structure de la table `regimealimentaire`
 --
 
 CREATE TABLE `regimealimentaire` (
@@ -276,21 +278,20 @@ CREATE TABLE `regimealimentaire` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `regimealimentaire`
+-- Déchargement des données de la table `regimealimentaire`
 --
 
 INSERT INTO `regimealimentaire` (`id`, `nom_regime`, `type_nourriture`, `quantite_par_repas`, `nombre_de_repas`) VALUES
 (20, 'herbivore', 'plantes', 10, 4),
 (22, 'omnivore', 'viande', 2, 8),
 (23, 'frugivore', 'banane', 9, 2),
-(24, 'carnivore', 'viande', 2, 4),
 (27, 'granivore', 'ble', 7, 8),
 (28, 'carnivore', 'viande', 8, 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Structure de la table `role`
 --
 
 CREATE TABLE `role` (
@@ -299,7 +300,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `role`
+-- Déchargement des données de la table `role`
 --
 
 INSERT INTO `role` (`id`, `nom`) VALUES
@@ -309,7 +310,7 @@ INSERT INTO `role` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spons`
+-- Structure de la table `spons`
 --
 
 CREATE TABLE `spons` (
@@ -321,7 +322,7 @@ CREATE TABLE `spons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `spons`
+-- Déchargement des données de la table `spons`
 --
 
 INSERT INTO `spons` (`id`, `nom`, `email`, `num`, `photo`) VALUES
@@ -333,7 +334,7 @@ INSERT INTO `spons` (`id`, `nom`, `email`, `num`, `photo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sponsorisation`
+-- Structure de la table `sponsorisation`
 --
 
 CREATE TABLE `sponsorisation` (
@@ -345,7 +346,7 @@ CREATE TABLE `sponsorisation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `typeenclos`
+-- Structure de la table `typeenclos`
 --
 
 CREATE TABLE `typeenclos` (
@@ -355,7 +356,7 @@ CREATE TABLE `typeenclos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `typeenclos`
+-- Déchargement des données de la table `typeenclos`
 --
 
 INSERT INTO `typeenclos` (`id`, `label`, `structure`) VALUES
@@ -364,7 +365,7 @@ INSERT INTO `typeenclos` (`id`, `label`, `structure`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -377,28 +378,28 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role_id`, `image`) VALUES
 (19, 'admin123', '$2y$10$EW9vdWcabWIUbpla2GgHru2c.AITqaR.e2gPfAYcsTPeUOs4h6sDK', 'yasmine.sliti@esprit.tn', 0, 'default.jpg'),
 (38, 'chkiwa', '$2y$10$VhLcudcJE3/GMGEM9oYcXOCuBnoaZdo6pApvHNd5TK7NRhdb4jbzy', 'chkiwanour@gmail.com', 1, 'default.jpg'),
-(24, 'dqsqsdqd', '$2y$10$fJ1SS6iajnujgVMqw79tNuMdDuFO2SarUk9jHbZqmISLSfc40eVn6', 'dsqdsqdqs@sqds.com', 0, 'default.jpg'),
 (30, 'haziyama', '$2y$10$qiMA3JazKMntZ4OLYRNLOuqdxAUr3Y6mSchxJrniJS6hKWp/pMboa', 'sdqs@dq.com', 0, 'default.jpg'),
 (40, 'hejer', '$2y$10$4L47GjCt.AZQ3ZsG65z.qe8pGDJ/Odb8iaJLRrOYIYCSFIAQUgILS', 'hejer.jaouadi@esprit.tn', 1, 'default.jpg'),
 (37, 'MAB', '$2y$10$lid9LN.TiTFLTr6I.pZ4W.HBXj9vpa4YS91WAdRWXWjYdPUIOjjEe', 'bouzaiene.dali@gmail.com', 1, 'githubpic.jpg'),
 (41, 'meriam', '$2y$10$XxZjE9OssvtxRgC5VCLh1uEx2vpDRmZRg83NRcblJ/Ty9dkSSI.lm', 'recovery.mary2000@gmail.com', 1, 'giraffe.png'),
 (32, 'meriammhedhbi', '$2y$10$GGgbJkvGgOF5XAnREoXm1eB1c3OAuQjOYkANViGK89lpX7Hu7O2oS', 'meriam.mhedhbi@esprit.tn', 1, 'bird.png'),
-(22, 'realMAB', '$2y$10$ZgAYwxSdMFPmPoK6xbVHbup.nKWLqgR8uOfj7iGNOEUAF.61g4Aau', 'dbouzaiene@gmail.com', 1, 'default.jpg'),
+(22, 'realMAB', '$2y$10$ZgAYwxSdMFPmPoK6xbVHbup.nKWLqgR8uOfj7iGNOEUAF.61g4Aau', 'd.bouzaiene@gmail.com', 0, 'default.jpg'),
 (39, 'sq', '$2y$10$ITyEPmv5HXiQIwhQ46cH8uofefhmeSGhODmU8xunSRXprl2n6HfsC', 'Aziza.sliti@gmail.com', 1, 'default.jpg'),
-(13, 'test2', '$2y$10$QcWzIn1.jxRekkHG6iphM.Tnl1K7NRDGgENMfORpvutg2DF0qEsji', 'azez@qsd.com', 1, 'default.jpg');
+(13, 'test2', '$2y$10$QcWzIn1.jxRekkHG6iphM.Tnl1K7NRDGgENMfORpvutg2DF0qEsji', 'azez@qsd.com', 1, 'default.jpg'),
+(42, 'valtest123', '$2y$10$a/i1hVyAAGq9V/AkGFWd0e537Vrw5.vFGhpmC7dJIOizaU/vVSkFW', 'mohamedali.bouzaiene@esprit.tn', 1, 'koala.png');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `animaux`
+-- Index pour la table `animaux`
 --
 ALTER TABLE `animaux`
   ADD PRIMARY KEY (`id`),
@@ -407,16 +408,15 @@ ALTER TABLE `animaux`
   ADD KEY `fk_Enclos` (`id_enclos`);
 
 --
--- Indexes for table `comments`
+-- Index pour la table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id_comment`),
-  ADD KEY `fk_username` (`userName`),
-  ADD KEY `fk_image` (`imageUser`),
-  ADD KEY `fk_animalid` (`animalID`);
+  ADD KEY `fk_usernameee` (`userName`),
+  ADD KEY `fk_animal` (`animalID`);
 
 --
--- Indexes for table `enclos`
+-- Index pour la table `enclos`
 --
 ALTER TABLE `enclos`
   ADD PRIMARY KEY (`id`),
@@ -424,19 +424,19 @@ ALTER TABLE `enclos`
   ADD KEY `fk_updated_by` (`updated_by`);
 
 --
--- Indexes for table `espece`
+-- Index pour la table `espece`
 --
 ALTER TABLE `espece`
   ADD PRIMARY KEY (`idE`);
 
 --
--- Indexes for table `event`
+-- Index pour la table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `participation`
+-- Index pour la table `participation`
 --
 ALTER TABLE `participation`
   ADD PRIMARY KEY (`id`),
@@ -444,14 +444,14 @@ ALTER TABLE `participation`
   ADD KEY `fk_user` (`id_user`);
 
 --
--- Indexes for table `password_reset`
+-- Index pour la table `password_reset`
 --
 ALTER TABLE `password_reset`
   ADD PRIMARY KEY (`id`),
   ADD KEY `username` (`username`);
 
 --
--- Indexes for table `personel`
+-- Index pour la table `personel`
 --
 ALTER TABLE `personel`
   ADD PRIMARY KEY (`cin`),
@@ -459,7 +459,7 @@ ALTER TABLE `personel`
   ADD KEY `personel_ibfk_1` (`updated_by`);
 
 --
--- Indexes for table `plante`
+-- Index pour la table `plante`
 --
 ALTER TABLE `plante`
   ADD PRIMARY KEY (`idP`),
@@ -467,33 +467,33 @@ ALTER TABLE `plante`
   ADD KEY `fk_plante_user` (`id_user`);
 
 --
--- Indexes for table `reclamation`
+-- Index pour la table `reclamation`
 --
 ALTER TABLE `reclamation`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_reclamation` (`idUser`);
 
 --
--- Indexes for table `regimealimentaire`
+-- Index pour la table `regimealimentaire`
 --
 ALTER TABLE `regimealimentaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Index pour la table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `spons`
+-- Index pour la table `spons`
 --
 ALTER TABLE `spons`
   ADD PRIMARY KEY (`nom`),
   ADD KEY `id` (`id`);
 
 --
--- Indexes for table `sponsorisation`
+-- Index pour la table `sponsorisation`
 --
 ALTER TABLE `sponsorisation`
   ADD PRIMARY KEY (`id`),
@@ -501,114 +501,113 @@ ALTER TABLE `sponsorisation`
   ADD KEY `fk_sponsor` (`nomsponsor`);
 
 --
--- Indexes for table `typeenclos`
+-- Index pour la table `typeenclos`
 --
 ALTER TABLE `typeenclos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`),
   ADD KEY `id` (`id`),
-  ADD KEY `fk_foreign_role_id` (`role_id`),
-  ADD KEY `image` (`image`) USING BTREE;
+  ADD KEY `fk_foreign_role_id` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `animaux`
+-- AUTO_INCREMENT pour la table `animaux`
 --
 ALTER TABLE `animaux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `enclos`
+-- AUTO_INCREMENT pour la table `enclos`
 --
 ALTER TABLE `enclos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `espece`
+-- AUTO_INCREMENT pour la table `espece`
 --
 ALTER TABLE `espece`
   MODIFY `idE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `event`
+-- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `participation`
+-- AUTO_INCREMENT pour la table `participation`
 --
 ALTER TABLE `participation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- AUTO_INCREMENT for table `password_reset`
+-- AUTO_INCREMENT pour la table `password_reset`
 --
 ALTER TABLE `password_reset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- AUTO_INCREMENT for table `personel`
+-- AUTO_INCREMENT pour la table `personel`
 --
 ALTER TABLE `personel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `plante`
+-- AUTO_INCREMENT pour la table `plante`
 --
 ALTER TABLE `plante`
-  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `reclamation`
+-- AUTO_INCREMENT pour la table `reclamation`
 --
 ALTER TABLE `reclamation`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `regimealimentaire`
+-- AUTO_INCREMENT pour la table `regimealimentaire`
 --
 ALTER TABLE `regimealimentaire`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `spons`
+-- AUTO_INCREMENT pour la table `spons`
 --
 ALTER TABLE `spons`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `sponsorisation`
+-- AUTO_INCREMENT pour la table `sponsorisation`
 --
 ALTER TABLE `sponsorisation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `animaux`
+-- Contraintes pour la table `animaux`
 --
 ALTER TABLE `animaux`
   ADD CONSTRAINT `fk_Enclos` FOREIGN KEY (`id_enclos`) REFERENCES `enclos` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
@@ -616,62 +615,61 @@ ALTER TABLE `animaux`
   ADD CONSTRAINT `foreignKey1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
--- Constraints for table `comments`
+-- Contraintes pour la table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_animalid` FOREIGN KEY (`animalID`) REFERENCES `animaux` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_image` FOREIGN KEY (`imageUser`) REFERENCES `users` (`image`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_username` FOREIGN KEY (`userName`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_animal` FOREIGN KEY (`animalID`) REFERENCES `animaux` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_usernameee` FOREIGN KEY (`userName`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `enclos`
+-- Contraintes pour la table `enclos`
 --
 ALTER TABLE `enclos`
   ADD CONSTRAINT `fk_typeEnclos` FOREIGN KEY (`typeEnclos`) REFERENCES `typeenclos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
--- Constraints for table `participation`
+-- Contraintes pour la table `participation`
 --
 ALTER TABLE `participation`
   ADD CONSTRAINT `fk_event1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `password_reset`
+-- Contraintes pour la table `password_reset`
 --
 ALTER TABLE `password_reset`
   ADD CONSTRAINT `password_reset_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
--- Constraints for table `personel`
+-- Contraintes pour la table `personel`
 --
 ALTER TABLE `personel`
   ADD CONSTRAINT `personel_ibfk_1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `personel_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `plante`
+-- Contraintes pour la table `plante`
 --
 ALTER TABLE `plante`
   ADD CONSTRAINT `fk_plante_espece` FOREIGN KEY (`idespece`) REFERENCES `espece` (`idE`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `fk_plante_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
--- Constraints for table `reclamation`
+-- Contraintes pour la table `reclamation`
 --
 ALTER TABLE `reclamation`
   ADD CONSTRAINT `fk_reclamation` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
--- Constraints for table `sponsorisation`
+-- Contraintes pour la table `sponsorisation`
 --
 ALTER TABLE `sponsorisation`
   ADD CONSTRAINT `fk_event` FOREIGN KEY (`idevent`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_sponsor` FOREIGN KEY (`nomsponsor`) REFERENCES `spons` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_foreign_role_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);

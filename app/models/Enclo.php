@@ -139,9 +139,9 @@ class Enclo
     public function filter($role)
     {
         if ($role == 'sup')
-            $this->db->query('SELECT * FROM enclos WHERE capaciteMaximale >= 1500 ORDER BY capaciteMaximale');
+            $this->db->query('SELECT * FROM enclos WHERE capaciteMaximale >=7  ORDER BY capaciteMaximale');
         else if ($role == 'inf')
-            $this->db->query('SELECT * FROM enclos WHERE capaciteMaximale < 1500 ORDER BY capaciteMaximale');
+            $this->db->query('SELECT * FROM enclos WHERE capaciteMaximale < 7 ORDER BY capaciteMaximale');
 
         return $this->db->resultSet();
     }

@@ -175,7 +175,7 @@ if (!isset($data['tab'])) {
                             <h2>Modifier un type</h2>
                             <div class="input-field one">
                                 <i class="fas fa-signature"></i>
-                                <input type="text" placeholder="Id" name="id" class="id-popup"
+                                <input type="text" placeholder="Id" name="id" class="id-popup" readonly
                                 required/>
                             </div>
                             <div id="errorMdID"></div>

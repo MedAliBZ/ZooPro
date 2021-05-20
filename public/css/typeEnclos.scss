@@ -286,7 +286,6 @@ $mobile: 1050px;
   }
 }
 
-
 .triButton {
   border: 0;
   background-color: transparent;
@@ -314,7 +313,8 @@ $mobile: 1050px;
 }
 
 .tri,
-.filter,.removeFT {
+.filter,
+.removeFT {
   display: flex;
   flex-direction: column;
 
@@ -335,4 +335,18 @@ $mobile: 1050px;
     margin-bottom: 12px;
     color: var(--accent);
   }
+}
+
+#errorAjID,
+#errorAjLabel,
+#errorAjStructure {
+  color: red;
+  text-align: center;
+}
+
+#errorMdID,
+#errorMdLabel,
+#errorMdStructure {
+  color: red;
+  text-align: center;
 }

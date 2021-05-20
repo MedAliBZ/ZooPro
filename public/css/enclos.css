@@ -420,4 +420,67 @@
   margin-bottom: 12px;
   color: var(--accent);
 }
+
+#errorMdAppellation,
+#errorMdLocalisation,
+#errorMdTaille,
+#errorMdCD,
+#errorMdCM {
+  color: red;
+  text-align: center;
+}
+
+#errorAjAppellation,
+#errorAjLocalisation,
+#errorAjTaille,
+#errorAjCD,
+#errorAjCM,
+#errorAjTypeEnclos,
+#errorAjPhoto {
+  color: red;
+  text-align: center;
+}
+#typeEnclos-popupA {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--tc);
+}
+ @media print {
+  .sidebar-menu {
+    display: none;
+  }
+  .input-fieldSearch {
+    display: none;
+  }
+  .btn {
+    display: none;
+  }
+  #themeButton {
+    display: none;
+  }
+  .input-field {
+    display: none;
+  }
+  .triButton {
+    display: none;
+  }
+  .fas {
+    display: none;
+  }
+  .fa-align-left {
+    display: none;
+  }
+  .col-buttons {
+    display: none;
+  }
+
+  .tab-btn {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=enclos.css.map */

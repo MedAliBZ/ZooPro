@@ -102,7 +102,7 @@ if (!isset($_SESSION['id']))
                     </a>
                     <div class="sub-menu-settings">
                         <a href="<?php echo URLROOT ?>/pages/enclos"><i class="fas fa-dungeon"></i><span>Enclos</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/typesEnclos"><i class="fas fa-landmark"></i><span>TypesEnclos</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i class="fas fa-landmark"></i><span>TypeEnclos</span></a>
                     </div>
                 </li>
                 <li class="item active" id="event">

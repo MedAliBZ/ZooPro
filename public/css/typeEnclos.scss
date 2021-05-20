@@ -285,3 +285,54 @@ $mobile: 1050px;
     transform: scale(2.6);
   }
 }
+
+
+.triButton {
+  border: 0;
+  background-color: transparent;
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+.triAndFilter {
+  transition: height 0.5s;
+  height: 0px;
+  overflow: hidden;
+  &.open {
+    height: 250px !important;
+  }
+}
+
+.tri,
+.filter,.removeFT {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--tca);
+    font-size: 18px;
+    font-weight: 400;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  h3 {
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+}

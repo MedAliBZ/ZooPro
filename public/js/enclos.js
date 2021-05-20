@@ -390,27 +390,6 @@ closeP.addEventListener('click', () => {
     popup.style.opacity = 0;
 })
 
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Salaire', 'Nombre'],
-        ['Capacite Maximale ≥ 7', document.getElementById('donutchart').getAttribute('sup')*1],
-        ['Capacite Maximale < 7', document.getElementById('donutchart').getAttribute('inf')*1]
-    ]);
-
-    var options = {
-        title: 'Tri des enclos par rapport a leurs capacités maximales',
-        pieHole: 0.4,
-        height: 300,
-        slices: {
-            1: { offset: 0.1 },
-        }
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    chart.draw(data, options);
-}
 
 document.querySelector('.triButton').addEventListener('click', () => {
     document.querySelector('.triAndFilter').classList.toggle('open');

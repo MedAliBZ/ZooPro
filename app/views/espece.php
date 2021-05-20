@@ -40,7 +40,8 @@ if (!isset($_SESSION['id']))
 
 
 
-    <div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px"></div>
+    <div id="loading"><img src="<?php echo URLROOT ?>/public/img/logo.png" alt="loader" class="loader" height="300px">
+    </div>
     <!--wrapper start-->
     <div class="wrapper collapse">
         <!--header menu start-->
@@ -91,8 +92,10 @@ if (!isset($_SESSION['id']))
                         <i class="fas fa-paw"></i><span> Animaux<i class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu-profile">
-                        <a href="<?php echo URLROOT ?>/pages/animaux"><i class="fas fa-hippo"></i><span>Animaux</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/regime"><i class="fas fa-bone"></i><span>Régime alimentaire</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/animaux"><i
+                                class="fas fa-hippo"></i><span>Animaux</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/regime"><i class="fas fa-bone"></i><span>Régime
+                                alimentaire</span></a>
                     </div>
                 </li>
 
@@ -101,8 +104,10 @@ if (!isset($_SESSION['id']))
                         <i class="fas fa-leaf"></i><span>Végetation<i class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu-messages">
-                        <a href="<?php echo URLROOT ?>/pages/plante"><i class="fas fa-seedling"></i><span>plante</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/espece"><i class="fas fa-tree"></i><span>Espéce vegetale</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/plante"><i
+                                class="fas fa-seedling"></i><span>plante</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/espece"><i class="fas fa-tree"></i><span>Espéce
+                                végétale</span></a>
                     </div>
                 </li>
                 <li class="item" id="settings">
@@ -110,17 +115,22 @@ if (!isset($_SESSION['id']))
                         <i class="fas fa-igloo"></i><span>Enclos<i class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu-settings">
-                        <a href="<?php echo URLROOT ?>/pages/enclos"><i class="fas fa-dungeon"></i><span>Enclos</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i class="fas fa-landmark"></i><span>Typesenclos</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/enclos"><i
+                                class="fas fa-dungeon"></i><span>Enclos</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/typeEnclos"><i
+                                class="fas fa-landmark"></i><span>Typesenclos</span></a>
                     </div>
                 </li>
                 <li class="item" id="event">
                     <a href="#" class="menu-btn">
-                        <i class="fas fa-calendar-alt"></i><span> Evénements<i class="fas fa-chevron-down drop-down"></i></span>
+                        <i class="fas fa-calendar-alt"></i><span> Evénements<i
+                                class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu-events">
-                        <a href="<?php echo URLROOT ?>/pages/evenement"><i class="fas fa-calendar-day"></i><span>Evenement</span></a>
-                        <a href="<?php echo URLROOT ?>/pages/sponsor"><i class="fas fa-hand-holding-usd"></i><span>Sponsor</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/evenement"><i
+                                class="fas fa-calendar-day"></i><span>Evenement</span></a>
+                        <a href="<?php echo URLROOT ?>/pages/sponsor"><i
+                                class="fas fa-hand-holding-usd"></i><span>Sponsor</span></a>
                     </div>
                 </li>
                 <li class="item">
@@ -139,47 +149,47 @@ if (!isset($_SESSION['id']))
         <div class="main-container">
 
 
-       
-
-
-             
-        <div id="google_translate_element"></div>
-	<script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-            {pageLanguage: 'en'},
-            'google_translate_element'
-        );
-    }
-                </script>
-                <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
 
-            <p>                                              Le temps en ce moment :   </p>
+
+            <div id="google_translate_element"></div>
+            <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                        pageLanguage: 'en'
+                    },
+                    'google_translate_element'
+                );
+            }
+            </script>
+            <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+            <p> Le temps en ce moment : </p>
 
             <p id="demo"></p>
 
 
-                <script>
-                var myVar = setInterval(myTimer, 1000);
+            <script>
+            var myVar = setInterval(myTimer, 1000);
 
-                function myTimer() {
+            function myTimer() {
                 var d = new Date();
                 var t = d.toLocaleTimeString();
                 document.getElementById("demo").innerHTML = t;
-                }
+            }
+            </script>
 
-                </script>
 
-           
-            
+
             <div class="card">
-            <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
+                <!-- <div class="error-table"><?php if (isset($data['errorAdd'])) {
                                             echo $data["errorAdd"];
                                         } ?></div> -->
 
-            <!-- <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
+                <!-- <div id="donutchart" class="card" sup='<?php echo $data['sup']; ?>' inf="<?php echo $data['inf']; ?>" style="height: fit-content;padding: 0;margin-left: calc(50%);
 				transform: translate(-50%,0);width: 100%;display: flex;justify-content: center;">
                 </div>-->
 
@@ -187,43 +197,44 @@ if (!isset($_SESSION['id']))
                     <h3 id="titreTab">liste des éspéce végétales </h3>
                 </div>
 
-                
+
                 <form class="content" action="<?php echo URLROOT; ?>/especeC/getespece" method="POST">
-                 <input class="btn" type="submit" value="rechercher" name="search_espece" style="float: right;" />
-                 <input type="text" placeholder="Entrer id" name="idE" autocomplete="off" style="float: right;" class="input-fieldSearch" />
-                 </form>
-                
+                    <input class="btn" type="submit" value="rechercher" name="search_espece" style="float: right;" />
+                    <input type="text" placeholder="Entrer id" name="idE" autocomplete="off" style="float: right;"
+                        class="input-fieldSearch" />
+                </form>
+
                 <form class="content" action="<?php echo URLROOT; ?>/especeC/afficherList" method="POST">
-                 <input class="btn" type="submit" value="Réinitialiser" name="reset_espece" style="float: right;" />
-                 </form>
+                    <input class="btn" type="submit" value="Réinitialiser" name="reset_espece" style="float: right;" />
+                </form>
 
 
                 <form class="content" action="<?php echo URLROOT; ?>/especeC/sortespece" method="POST">
-                 <input class="btn" type="submit" value="Trier" name="sort_espece" style="float: right;" />
-                 </form>
+                    <input class="btn" type="submit" value="Trier" name="sort_espece" style="float: right;" />
+                </form>
 
 
                 <button class="AddbuttonStyle" id="addButtonToList" onclick="openFormAjouter()">+</button>
                 <div class="form-popup" id="myForm">
                     <form action="<?php echo URLROOT; ?>/especeC/addespeceC" class="form-container" method="POST">
-                    <style>    
-                    h2{
-                            text-align:center;
+                        <style>
+                        h2 {
+                            text-align: center;
                         }
                         </style>
-                        <h2 style="color:#04907E" > Ajouter une éspéce végétale : </h2>
+                        <h2 style="color:#04907E"> Ajouter une éspéce végétale : </h2>
                         <br>
 
                         <div class="formCss">
-                        
-                            <input placeholder="Nom" type="text" id="nomE" name="nomE" >
+
+                            <input placeholder="Nom" type="text" id="nomE" name="nomE">
                         </div>
                         <div style="color:red" id="errorAjnom"></div>
                         <div class="formCss">
-                            <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur" >
+                            <input placeholder="Hauteur potentiel(m)" type="number" id="hauteur" name="hauteur">
                         </div>
-                       
-                        <div style="color:red"  id="errorAjhauteur"></div>
+
+                        <div style="color:red" id="errorAjhauteur"></div>
 
                         <input type="submit" class="buttonStyle" value="Ajouter" id="ajouterPopup">
                         <button type="button" class="buttonStyle" onclick="closeForm()">fermer</button>
@@ -248,43 +259,45 @@ if (!isset($_SESSION['id']))
                         
                     } ?>
 
-              
 
 
-               <!-- MODIFIER HEREEEEEEE -->
-               <div class="form-popup" id="myForm1">
-                    <form action="<?php echo URLROOT; ?>/especeC/deleteUpdateTabespece" class="form-container" method="POST">
+
+                    <!-- MODIFIER HEREEEEEEE -->
+                    <div class="form-popupmodif" id="myForm1">
+                        <form action="<?php echo URLROOT; ?>/especeC/deleteUpdateTabespece" 
+                            method="POST">
 
 
-                        <i class="fas fa-times" id="closeButton" onclick="closeFormModifier()"></i>
-                        <h2 style="color:#04907E"> Modifier une éspéce végétale : </h2>
+                            <i class="fas fa-times" id="closeButton" onclick="closeFormModifier()"></i>
+                            <h2 style="color:#04907E"> Modifier une éspéce végétale : </h2>
 
-                        <br>
-                        <div class="formCss">
-                            <input  type="text" id="idE" name="idE" readonly>
-                        </div>
+                            <br>
+                            <div class="formCss">
+                                <input type="text" id="idE" name="idE" readonly>
+                            </div>
 
-                        <div class="formCss">
-                            <input placeholder="Nom" type="text" id="nomE1" name="nomE" required>
-                        </div>
-                  
+                            <div class="formCss">
+                                <input placeholder="Nom" type="text" id="nomE1" name="nomE" required>
+                            </div>
 
-                        <div class="formCss">
-                            <input placeholder="Hauteur potentiel" type="number" id="hauteur1" name="hauteur" required>
-                        </div>
-                        
-                        
 
-                        <input name="update" type="submit" class="buttonStyle" value="Modifier">
-                        <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
+                            <div class="formCss">
+                                <input placeholder="Hauteur potentiel" type="number" id="hauteur1" name="hauteur"
+                                    required>
+                            </div>
+                           
 
-                    </form>
+                        <div style="flex-direction: row;width:130%;">
+                            <input name="update" type="submit" class="buttonStyle" value="Modifier">
+                            <input name="delete" type="submit" class="buttonStyle" value="Supprimer">
+                            </div>
+                        </form>
 
-                </div>
+                    </div>
 
-                <!--try pop up show-->
+                    <!--try pop up show-->
 
-                <!-- end table -->
+                    <!-- end table -->
             </div>
 
         </div>

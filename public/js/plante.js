@@ -177,7 +177,7 @@ function openFormAjouter() {
       
      
   });
-  resetErrorsPopUp();
+ 
   }
 
   

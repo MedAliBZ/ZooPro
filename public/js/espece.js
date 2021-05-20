@@ -121,8 +121,6 @@ function openFormAjouter() {
 
     document.querySelector('#nomE1').value='';
     document.querySelector('#hauteur1').value='';
-    
-
     document.getElementById("myForm1").style.display = "none";
     document.getElementById("tableespece").style.opacity = 1;
     document.getElementById("firstRow").style.opacity = 1;

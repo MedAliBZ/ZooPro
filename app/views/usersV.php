@@ -112,7 +112,7 @@ if (!isset($data['tab']))
 		<!--sidebar end-->
 		<!--main container start-->
 		<div class="main-container">
-			<form method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdatePic" class="card" style="max-width: 700px;margin-left: 50%;transform: translate(-50%);display:flex;flex-direction: column;justify-content: center;align-items: center;">
+			<form enctype="multipart/form-data" method="POST" action="<?php echo URLROOT; ?>/users/deleteUpdatePic" class="card" style="max-width: 700px;margin-left: 50%;transform: translate(-50%);display:flex;flex-direction: column;justify-content: center;align-items: center;">
 				<div style="display: flex;flex-direction:column;justify-content: space-evenly;align-items: center;">
 					<h2 style="margin-bottom: 20px;color: var(--accent);">Welcome back!</h2>
 					<div class="profilePic" style="background-image: url('<?php echo URLROOT; ?>/img/<?php echo $_SESSION['image']; ?>');"></div>
@@ -122,7 +122,7 @@ if (!isset($data['tab']))
 					</div>
 				</div>
 				<div style="margin-top: 10px;display:flex;">
-					<input name="save" type="submit" class="btn" value="Sauvegarder" style="margin-right: 1%;" />
+					<input name="save" type="submit" class="btn" value="Sauvegarder" style="margin-right: 1%;" /> 
 					<input name="delete" type="submit" class="btn" value="Supprimer" style="margin-left: 1%;" />
 				</div>
 			</form>

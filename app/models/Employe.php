@@ -2,36 +2,11 @@
 class Employe
 {
     private $db;
-    private $cin;
-    private $nom;
-    private $prenom;
-    private $dateNaissance;
-    private $salaire;
 
 
     public function __construct()
     {
         $this->db = new Database;
-    }
-
-    public function getCin()
-    {
-        echo $this->cin;
-    }
-
-    public function getNom()
-    {
-        echo $this->nom;
-    }
-
-    public function getPrenom()
-    {
-        echo $this->prenom;
-    }
-
-    public function getDateNaissance() 
-    {
-        echo $this->dateNaissance;
     }
 
     public function getSalaireSup()

@@ -1,5 +1,12 @@
-document.querySelector(".input-file").addEventListener("change",()=>{
-    document.querySelector('.profilePic').style.backgroundImage= `url('../img/${document.querySelector(".input-file").value.replace('C:\\fakepath\\','')}')`;
+document.querySelector(".input-file").addEventListener("change", (event) => {
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function () {
+        var dataURL = reader.result;
+        document.querySelector('.profilePic').style.backgroundImage = `url(${dataURL})`;
+    };
+    reader.readAsDataURL(input.files[0]);
+
 })
 
 
@@ -69,18 +76,18 @@ saveButton.addEventListener("click", (e) => {
     password.parentElement.style.border = "solid 1px #e8e8e9";
     username.parentElement.style.border = "solid 1px #e8e8e9";
     email.parentElement.style.border = "solid 1px #e8e8e9";
-    if(username.value.length == 0){
+    if (username.value.length == 0) {
         username.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'Veillez remplir tous les champs!';
         e.preventDefault();
     }
-    if(password.value.length == 0){
+    if (password.value.length == 0) {
         password.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'Veillez remplir tous les champs!';
         e.preventDefault();
     }
 
-    if(email.value.length == 0){
+    if (email.value.length == 0) {
         email.parentElement.style.border = "1px solid red";
         errorProfile.innerHTML = 'Veillez remplir tous les champs!';
         e.preventDefault();
@@ -102,7 +109,7 @@ let cardError = document.getElementById('error-msgPass');
 
 cardButton.addEventListener("click", (e) => {
 
-    
+
     if (!validatePassword(cardNewPass.value)) {
         cardConfirmPass.parentElement.style.border = "solid 1px #e8e8e9";
         cardNewPass.parentElement.style.border = "1px solid red";

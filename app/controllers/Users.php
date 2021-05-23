@@ -6,31 +6,52 @@ class Users extends Controller
         $this->userModel = $this->model('User');
     }
 
+    private function uploadToServer()
+    {
+    }
+
     public function deleteUpdatePic()
     {
         if (isset($_POST['delete'])) {
-            if($this->userModel->updatePic("default.jpg"))
-                $_SESSION['image']="default.jpg";
-        } 
-        elseif (isset($_POST['save'])) {
+            if ($this->userModel->updatePic("default.jpg"))
+                $_SESSION['image'] = "default.jpg";
+        } elseif (isset($_POST['save'])) {
+
             $data = [
                 'file' => ''
             ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Process form
-                // Sanitize POST data
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                //uploading image to server
+                print_r($_FILES['file']);
+                $file = $_FILES['file'];
+                $fileName = $file['name'];
+                $fileTmpName = $file['tmp_name'];
+                $fileSize = $file['size'];
+                $fileError = $file['error'];
+
+                $fileExt = explode('.', $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+
+                $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+
+                if (in_array($fileActualExt, $allowed)) {
+                    if ($fileError === 0) {
+                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                        $fileDestination = 'D:\\xampp\\htdocs\\integrationZooPro\\public\\img\\' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                    }
+                }
+                //upload over here
 
                 $data = [
-                    'file' => trim($_POST['file'])
+                    'file' => $fileNameNew
                 ];
-                if($this->userModel->updatePic($data['file']))
-                    $_SESSION['image']=$data['file'];
+                if ($this->userModel->updatePic($data['file']))
+                    $_SESSION['image'] = $data['file'];
             }
         }
         $this->view('usersV');
-
     }
 
     public function register()
@@ -638,7 +659,7 @@ class Users extends Controller
 
             $admins = $this->userModel->getAdmins();
             $data['admins'] = $admins[0][0];
-            
+
             foreach ($tab as $key => $value) {
                 $data['tab'] .= '<li class="table-row">
                     <div class="col col-1" data-label="ID">' . $value[0] . '</div>

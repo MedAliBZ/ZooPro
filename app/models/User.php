@@ -2,17 +2,10 @@
 class User
 {
     private $db;
-    private $email;
-    private $username;
 
     public function __construct()
     {
         $this->db = new Database;
-    }
-
-    public function getEmail()
-    {
-        echo $this->email;
     }
 
     public function getUsers()

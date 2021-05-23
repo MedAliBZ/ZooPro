@@ -6,10 +6,6 @@ class Users extends Controller
         $this->userModel = $this->model('User');
     }
 
-    private function uploadToServer()
-    {
-    }
-
     public function deleteUpdatePic()
     {
         if (isset($_POST['delete'])) {
@@ -23,23 +19,24 @@ class Users extends Controller
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 //uploading image to server
-                print_r($_FILES['file']);
                 $file = $_FILES['file'];
                 $fileName = $file['name'];
                 $fileTmpName = $file['tmp_name'];
-                $fileSize = $file['size'];
                 $fileError = $file['error'];
+
 
                 $fileExt = explode('.', $fileName);
                 $fileActualExt = strtolower(end($fileExt));
 
-                $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+                $allowed = array('jpg', 'jpeg', 'png');
 
                 if (in_array($fileActualExt, $allowed)) {
                     if ($fileError === 0) {
                         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                         $fileDestination = 'D:\\xampp\\htdocs\\integrationZooPro\\public\\img\\' . $fileNameNew;
+                        $secondDestination = 'D:\\xampp\\htdocs\\frontend-project\\public\\Images\\' . $fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
+                        copy($fileDestination, $secondDestination);
                     }
                 }
                 //upload over here
